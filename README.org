@@ -1,0 +1,21 @@
+[[https://scofild429.github.io/subjects/Advanced_Algorithmus.html][
+Algorithmus]]
+
+[[https://scofild429.github.io/subjects/computervision.html][computer vision]]
+
+[[https://scofild429.github.io/subjects/Inf.html][Information]]
+
+[[https://scofild429.github.io/subjects/InfII.html][Information II]]
+
+[[https://scofild429.github.io/subjects/Linear_algebra.html][Linear Algebra]]
+
+[[https://scofild429.github.io/subjects/Machine_learning.html][Machine Learning]]
+
+[[https://scofild429.github.io/subjects/Math.html][Math]]
+
+[[https://scofild429.github.io/subjects/Physik.html][Physik]]
+
+[[https://scofild429.github.io/subjects/statistik.html][Statistik]]
+
+
+
