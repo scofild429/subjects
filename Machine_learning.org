@@ -1,0 +1,154 @@
+#+TITLE: The Note of Machine Learning 
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup: content
+
+#+STARTUP: content
+* ML Zhouzhihua 
+** precision 查准率 recall 查全率
+
+*** Descripation
+|-----+---------------+-------------------------------------------------+-------------------------------------------------|
+| TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
+| FPR |               | predict positive 测正 &  实反 actually negative | predict negative  测反 & 实反 actually negative |
+|-----+---------------+-------------------------------------------------+-------------------------------------------------|
+|     |               | precision 查准 P                                |                                                 |
+
+R-P Couve : R P
+ROC couve : FPR TPR
+
+
+$$ F_{1} = \frac{1}{2} \cdot (\frac{1}{P}+\frac{1}{R})$$
+$$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
+(\frac{\beta^{2}}{P}+\frac{1}{R})$$
+
+
+
+
+*** Formal Setting
+关联性属性 ： 高中低 （3,2,1）
+非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
+
+** decision tree
+*** 方法描述和变量
+在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
+
+信息熵
+
+
+$$ Ent(D)=-\sum^{y}_{k=1}p_{k}log_{2}^{p_{k}}$$
+信息熵增益
+
+$$ Gain(D,a) = Ent(D)-\sum^{V}_{v=1}\frac{|D^{v}|}{|D|}Ent(D^{v}) $$
+吉尼系数
+$$ Gini(D) = \sum^{|y|}_{k=1}\sum_{k^{'}\not = k} p_{k}p_{k^{'}} = 1- \sum^{|y|}_{k=1}p_{k}^{2}$$
+
+*** 预剪枝和后剪枝
+在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
+集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
+
+后剪枝是在这个树完成后，用验证集去检验每一个内节点，从下到上，如果去掉
+该划分有更小的信息熵，则废除该划分。
+
+*** 属性有连续值和缺失值
+连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
+遍历所有离散值，找到最大信息增益的离散值，作二分。
+
+缺失值，取出该属性的非缺失子集，再配以相应的比率计算信息增益，处理和以
+前一样。如果选出的划分属性有缺失值，则给划分不作用到缺失样本，复制到每
+个划分子集
+*** 多变量决策
+每个划分属性是多个属性（变量）的线性组合
+
+
+** Decision List
+
+(f1,v1),(f2,v2)....(fr,vr)
+fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
+true. and each term can be viewed as if else extended. if fi is
+matched, so vi is its value.
+
+#+BEGIN_SRC 
+for 0<k<n, k-CNF and k-DNF are proper 
+
+#+END_SRC
+
+ 
+
+** 贝叶斯分类
+*** 朴素贝叶斯 
+假设各个属性完全独立
+要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
+例的各种属性出现的条件概论， 谁大选谁。（注意样本不足引起的某属性的条
+件为零）
+
+*** 半朴素贝叶斯
+
+*** 贝叶斯网
+
+
+
+
+
+* ML  Bachelor  CS2
+** Verlesung 01
+条件概论公式 + 全概率公式 = 贝叶斯公式
+*** sum rule :
+$$ p(x) = \sum_{y} p(X,Y) $$
+
+*** Product Rule :
+$$ p(x,y)  =  p(x|y) p(y) $$
+$$ p(y,x) = p(y|x)p(x) $$
+if x and y are independent:
+$$ p(x,y) =  p(y)p(x) = p(x) p(y) $$
+so 
+\begin{cases}
+p(x) = p(x|y) \\
+p(y) = p(y|x) 
+\end{cases}
+
+*** Bayes's Rule
+\begin{aligned}
+ P(x,y) = P(y,x) \\
+P(x|y)P(y) = P(y|x)P(x) \\
+P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
+\end{aligned}
+
+** Vorlesung 02
+
+*** Kovarianz Matrix
+seeing link
+*** Multi variable Gaussian distribution
+seeing the link [[https://zhuanlan.zhihu.com/p/58987388][zhihu link]]
+
+$$
+{\displaystyle f_{\mathbf {X} }(x_{1},\ldots ,x_{k})={\frac {\exp
+\left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}})\right)}{\sqrt {(2\pi )^{k}|{\boldsymbol {\Sigma
+}}|}}}}
+$$
+
+*** Mahalanobis distance 
+
+
+
+$$ D = \sqrt{ZZ^{T}} $$
+马氏距离所使用的变换$$ Z = B^{-1}(X - \mu) $$,
+$$ ZZ^{T} = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}})\right)
+$$
+$$ \Sigma = \sum U \Lambda U^{T} $$
+$$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
+关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
+上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
+
+
+
+
+* ML collection
+机器学习代码和课件可在此下
+https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
+
+

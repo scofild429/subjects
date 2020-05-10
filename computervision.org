@@ -1,0 +1,18 @@
+#+TITLE: The Note of Computer wissenschaft
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup:  content
+* computer vision
+** Ubungs 01
+<<computer version ubung 01>>
+Solution erkälerung
+Mediuem 
+under Quantil 25%
+ober Quantil  75%
+
+Entopie
+$$ E = \sum h_{rel}(w) log^{\frac{1}{h_{rel}}(w)} = - \sum p log^{p}$$
+
+Anisotorpie 
+
+Paar-Grauwertmatrix
