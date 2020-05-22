@@ -1,4 +1,4 @@
-#+TITLE: The Note of Advanced Information I
+#+TITLE:  Information I
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
@@ -112,4 +112,5 @@ SAT <- 3SAT <- 3 Farbarkeit
             <- Independent Set
             <- Vertex Set
             Pa
+
 

@@ -1,4 +1,4 @@
-#+TITLE: The Note of Matrix
+#+TITLE: Matrix
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content

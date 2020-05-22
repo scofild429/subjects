@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-10 So 21:22 -->
+<!-- 2020-05-22 Fr 21:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Note of Machine Learning</title>
+<title>Machine Learning</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -270,70 +270,70 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">The Note of Machine Learning</h1>
+<h1 class="title">Machine Learning</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org54599ab">ML Zhouzhihua</a>
+<li><a href="#orgd786713">ML Zhouzhihua</a>
 <ul>
-<li><a href="#org283bdec">precision 查准率 recall 查全率</a>
+<li><a href="#org319687c">precision 查准率 recall 查全率</a>
 <ul>
-<li><a href="#org0837397">Descripation</a></li>
-<li><a href="#orgee77266">Formal Setting</a></li>
+<li><a href="#org04a5ee0">Descripation</a></li>
+<li><a href="#orgf07aa99">Formal Setting</a></li>
 </ul>
 </li>
-<li><a href="#orge5424a1">decision tree</a>
+<li><a href="#orgd4c99d4">decision tree</a>
 <ul>
-<li><a href="#org79f62d2">方法描述和变量</a></li>
-<li><a href="#org9eacaf7">预剪枝和后剪枝</a></li>
-<li><a href="#orgc7cde31">属性有连续值和缺失值</a></li>
-<li><a href="#org61234cf">多变量决策</a></li>
+<li><a href="#orge85e9dc">方法描述和变量</a></li>
+<li><a href="#orgb58fb5f">预剪枝和后剪枝</a></li>
+<li><a href="#org45babaa">属性有连续值和缺失值</a></li>
+<li><a href="#orgf1193a1">多变量决策</a></li>
 </ul>
 </li>
-<li><a href="#org2450dde">Decision List</a></li>
-<li><a href="#org11477f9">贝叶斯分类</a>
+<li><a href="#orgc208eeb">Decision List</a></li>
+<li><a href="#org68134d8">贝叶斯分类</a>
 <ul>
-<li><a href="#org199e12a">朴素贝叶斯</a></li>
-<li><a href="#org3de9abd">半朴素贝叶斯</a></li>
-<li><a href="#orgc230125">贝叶斯网</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org6357082">ML  Bachelor  CS2</a>
-<ul>
-<li><a href="#org1fc2acb">Verlesung 01</a>
-<ul>
-<li><a href="#org43bb3c0">sum rule :</a></li>
-<li><a href="#org398b64b">Product Rule :</a></li>
-<li><a href="#org0450675">Bayes's Rule</a></li>
-</ul>
-</li>
-<li><a href="#orgec1ef11">Vorlesung 02</a>
-<ul>
-<li><a href="#orgc8068c9">Kovarianz Matrix</a></li>
-<li><a href="#org6b018e5">Multi variable Gaussian distribution</a></li>
-<li><a href="#orgf6e3cad">Mahalanobis distance</a></li>
+<li><a href="#org2dd8875">朴素贝叶斯</a></li>
+<li><a href="#org81b9ad0">半朴素贝叶斯</a></li>
+<li><a href="#org502dc83">贝叶斯网</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3871655">ML collection</a></li>
+<li><a href="#orgbf22260">ML  Bachelor  CS2</a>
+<ul>
+<li><a href="#org88a44e8">Verlesung 01</a>
+<ul>
+<li><a href="#org6925594">sum rule :</a></li>
+<li><a href="#org9d26a8c">Product Rule :</a></li>
+<li><a href="#org530935b">Bayes's Rule</a></li>
+</ul>
+</li>
+<li><a href="#orgdd87bb5">Vorlesung 02</a>
+<ul>
+<li><a href="#org788143a">Kovarianz Matrix</a></li>
+<li><a href="#orgb19b8bf">Multi variable Gaussian distribution</a></li>
+<li><a href="#orgcb19acf">Mahalanobis distance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9645262">ML collection</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org54599ab" class="outline-2">
-<h2 id="org54599ab">ML Zhouzhihua</h2>
-<div class="outline-text-2" id="text-org54599ab">
+<div id="outline-container-orgd786713" class="outline-2">
+<h2 id="orgd786713">ML Zhouzhihua</h2>
+<div class="outline-text-2" id="text-orgd786713">
 </div>
-<div id="outline-container-org283bdec" class="outline-3">
-<h3 id="org283bdec">precision 查准率 recall 查全率</h3>
-<div class="outline-text-3" id="text-org283bdec">
+<div id="outline-container-org319687c" class="outline-3">
+<h3 id="org319687c">precision 查准率 recall 查全率</h3>
+<div class="outline-text-3" id="text-org319687c">
 </div>
-<div id="outline-container-org0837397" class="outline-4">
-<h4 id="org0837397">Descripation</h4>
-<div class="outline-text-4" id="text-org0837397">
+<div id="outline-container-org04a5ee0" class="outline-4">
+<h4 id="org04a5ee0">Descripation</h4>
+<div class="outline-text-4" id="text-org04a5ee0">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -388,9 +388,9 @@ ROC couve : FPR TPR
 
 
 
-<div id="outline-container-orgee77266" class="outline-4">
-<h4 id="orgee77266">Formal Setting</h4>
-<div class="outline-text-4" id="text-orgee77266">
+<div id="outline-container-orgf07aa99" class="outline-4">
+<h4 id="orgf07aa99">Formal Setting</h4>
+<div class="outline-text-4" id="text-orgf07aa99">
 <p>
 关联性属性 ： 高中低 （3,2,1）
 非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
@@ -399,13 +399,13 @@ ROC couve : FPR TPR
 </div>
 </div>
 
-<div id="outline-container-orge5424a1" class="outline-3">
-<h3 id="orge5424a1">decision tree</h3>
-<div class="outline-text-3" id="text-orge5424a1">
+<div id="outline-container-orgd4c99d4" class="outline-3">
+<h3 id="orgd4c99d4">decision tree</h3>
+<div class="outline-text-3" id="text-orgd4c99d4">
 </div>
-<div id="outline-container-org79f62d2" class="outline-4">
-<h4 id="org79f62d2">方法描述和变量</h4>
-<div class="outline-text-4" id="text-org79f62d2">
+<div id="outline-container-orge85e9dc" class="outline-4">
+<h4 id="orge85e9dc">方法描述和变量</h4>
+<div class="outline-text-4" id="text-orge85e9dc">
 <p>
 在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
 </p>
@@ -428,9 +428,9 @@ ROC couve : FPR TPR
 </div>
 </div>
 
-<div id="outline-container-org9eacaf7" class="outline-4">
-<h4 id="org9eacaf7">预剪枝和后剪枝</h4>
-<div class="outline-text-4" id="text-org9eacaf7">
+<div id="outline-container-orgb58fb5f" class="outline-4">
+<h4 id="orgb58fb5f">预剪枝和后剪枝</h4>
+<div class="outline-text-4" id="text-orgb58fb5f">
 <p>
 在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
 集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
@@ -443,9 +443,9 @@ ROC couve : FPR TPR
 </div>
 </div>
 
-<div id="outline-container-orgc7cde31" class="outline-4">
-<h4 id="orgc7cde31">属性有连续值和缺失值</h4>
-<div class="outline-text-4" id="text-orgc7cde31">
+<div id="outline-container-org45babaa" class="outline-4">
+<h4 id="org45babaa">属性有连续值和缺失值</h4>
+<div class="outline-text-4" id="text-org45babaa">
 <p>
 连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
 遍历所有离散值，找到最大信息增益的离散值，作二分。
@@ -458,9 +458,9 @@ ROC couve : FPR TPR
 </p>
 </div>
 </div>
-<div id="outline-container-org61234cf" class="outline-4">
-<h4 id="org61234cf">多变量决策</h4>
-<div class="outline-text-4" id="text-org61234cf">
+<div id="outline-container-orgf1193a1" class="outline-4">
+<h4 id="orgf1193a1">多变量决策</h4>
+<div class="outline-text-4" id="text-orgf1193a1">
 <p>
 每个划分属性是多个属性（变量）的线性组合
 </p>
@@ -469,9 +469,9 @@ ROC couve : FPR TPR
 </div>
 
 
-<div id="outline-container-org2450dde" class="outline-3">
-<h3 id="org2450dde">Decision List</h3>
-<div class="outline-text-3" id="text-org2450dde">
+<div id="outline-container-orgc208eeb" class="outline-3">
+<h3 id="orgc208eeb">Decision List</h3>
+<div class="outline-text-3" id="text-orgc208eeb">
 <p>
 (f1,v1),(f2,v2)&#x2026;.(fr,vr)
 fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
@@ -488,13 +488,13 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 
 
 
-<div id="outline-container-org11477f9" class="outline-3">
-<h3 id="org11477f9">贝叶斯分类</h3>
-<div class="outline-text-3" id="text-org11477f9">
+<div id="outline-container-org68134d8" class="outline-3">
+<h3 id="org68134d8">贝叶斯分类</h3>
+<div class="outline-text-3" id="text-org68134d8">
 </div>
-<div id="outline-container-org199e12a" class="outline-4">
-<h4 id="org199e12a">朴素贝叶斯</h4>
-<div class="outline-text-4" id="text-org199e12a">
+<div id="outline-container-org2dd8875" class="outline-4">
+<h4 id="org2dd8875">朴素贝叶斯</h4>
+<div class="outline-text-4" id="text-org2dd8875">
 <p>
 假设各个属性完全独立
 要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
@@ -504,12 +504,12 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-<div id="outline-container-org3de9abd" class="outline-4">
-<h4 id="org3de9abd">半朴素贝叶斯</h4>
+<div id="outline-container-org81b9ad0" class="outline-4">
+<h4 id="org81b9ad0">半朴素贝叶斯</h4>
 </div>
 
-<div id="outline-container-orgc230125" class="outline-4">
-<h4 id="orgc230125">贝叶斯网</h4>
+<div id="outline-container-org502dc83" class="outline-4">
+<h4 id="org502dc83">贝叶斯网</h4>
 </div>
 </div>
 </div>
@@ -518,29 +518,29 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 
 
 
-<div id="outline-container-org6357082" class="outline-2">
-<h2 id="org6357082">ML  Bachelor  CS2</h2>
-<div class="outline-text-2" id="text-org6357082">
+<div id="outline-container-orgbf22260" class="outline-2">
+<h2 id="orgbf22260">ML  Bachelor  CS2</h2>
+<div class="outline-text-2" id="text-orgbf22260">
 </div>
-<div id="outline-container-org1fc2acb" class="outline-3">
-<h3 id="org1fc2acb">Verlesung 01</h3>
-<div class="outline-text-3" id="text-org1fc2acb">
+<div id="outline-container-org88a44e8" class="outline-3">
+<h3 id="org88a44e8">Verlesung 01</h3>
+<div class="outline-text-3" id="text-org88a44e8">
 <p>
 条件概论公式 + 全概率公式 = 贝叶斯公式
 </p>
 </div>
-<div id="outline-container-org43bb3c0" class="outline-4">
-<h4 id="org43bb3c0">sum rule :</h4>
-<div class="outline-text-4" id="text-org43bb3c0">
+<div id="outline-container-org6925594" class="outline-4">
+<h4 id="org6925594">sum rule :</h4>
+<div class="outline-text-4" id="text-org6925594">
 <p>
 \[ p(x) = \sum_{y} p(X,Y) \]
 </p>
 </div>
 </div>
 
-<div id="outline-container-org398b64b" class="outline-4">
-<h4 id="org398b64b">Product Rule :</h4>
-<div class="outline-text-4" id="text-org398b64b">
+<div id="outline-container-org9d26a8c" class="outline-4">
+<h4 id="org9d26a8c">Product Rule :</h4>
+<div class="outline-text-4" id="text-org9d26a8c">
 <p>
 \[ p(x,y)  =  p(x|y) p(y) \]
 \[ p(y,x) = p(y|x)p(x) \]
@@ -555,9 +555,9 @@ p(y) = p(y|x)
 </div>
 </div>
 
-<div id="outline-container-org0450675" class="outline-4">
-<h4 id="org0450675">Bayes's Rule</h4>
-<div class="outline-text-4" id="text-org0450675">
+<div id="outline-container-org530935b" class="outline-4">
+<h4 id="org530935b">Bayes's Rule</h4>
+<div class="outline-text-4" id="text-org530935b">
 \begin{aligned}
  P(x,y) = P(y,x) \\
 P(x|y)P(y) = P(y|x)P(x) \\
@@ -567,21 +567,21 @@ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
 </div>
 </div>
 
-<div id="outline-container-orgec1ef11" class="outline-3">
-<h3 id="orgec1ef11">Vorlesung 02</h3>
-<div class="outline-text-3" id="text-orgec1ef11">
+<div id="outline-container-orgdd87bb5" class="outline-3">
+<h3 id="orgdd87bb5">Vorlesung 02</h3>
+<div class="outline-text-3" id="text-orgdd87bb5">
 </div>
-<div id="outline-container-orgc8068c9" class="outline-4">
-<h4 id="orgc8068c9">Kovarianz Matrix</h4>
-<div class="outline-text-4" id="text-orgc8068c9">
+<div id="outline-container-org788143a" class="outline-4">
+<h4 id="org788143a">Kovarianz Matrix</h4>
+<div class="outline-text-4" id="text-org788143a">
 <p>
 seeing link
 </p>
 </div>
 </div>
-<div id="outline-container-org6b018e5" class="outline-4">
-<h4 id="org6b018e5">Multi variable Gaussian distribution</h4>
-<div class="outline-text-4" id="text-org6b018e5">
+<div id="outline-container-orgb19b8bf" class="outline-4">
+<h4 id="orgb19b8bf">Multi variable Gaussian distribution</h4>
+<div class="outline-text-4" id="text-orgb19b8bf">
 <p>
 seeing the link <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 </p>
@@ -598,9 +598,9 @@ seeing the link <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 </div>
 </div>
 
-<div id="outline-container-orgf6e3cad" class="outline-4">
-<h4 id="orgf6e3cad">Mahalanobis distance</h4>
-<div class="outline-text-4" id="text-orgf6e3cad">
+<div id="outline-container-orgcb19acf" class="outline-4">
+<h4 id="orgcb19acf">Mahalanobis distance</h4>
+<div class="outline-text-4" id="text-orgcb19acf">
 <p>
 \[ D = \sqrt{ZZ^{T}} \]
 马氏距离所使用的变换\[ Z = B^{-1}(X - \mu) \],
@@ -621,9 +621,9 @@ seeing the link <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 
 
 
-<div id="outline-container-org3871655" class="outline-2">
-<h2 id="org3871655">ML collection</h2>
-<div class="outline-text-2" id="text-org3871655">
+<div id="outline-container-org9645262" class="outline-2">
+<h2 id="org9645262">ML collection</h2>
+<div class="outline-text-2" id="text-org9645262">
 <p>
 机器学习代码和课件可在此下
 <a href="https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf">https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf</a>
@@ -633,7 +633,7 @@ seeing the link <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-10 So 21:22</p>
+<p class="date">Created: 2020-05-22 Fr 21:15</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

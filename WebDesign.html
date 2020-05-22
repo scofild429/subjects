@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-22 Fr 22:15 -->
+<!-- 2020-05-23 Sa 00:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Statistic</title>
+<title>Webdesige</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -245,104 +245,270 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Statistic</h1>
+<h1 class="title">Webdesige</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcbfcc1">Statistic</a>
+<li><a href="#org4dcff67">Web Design Envirement</a>
 <ul>
-<li><a href="#org9e60733">Co-variance matrix 协方差矩阵</a></li>
+<li><a href="#orga2d39d1">lsp-mode</a></li>
+<li><a href="#orgd979a90">lsp-java</a></li>
+<li><a href="#orgd7e1e28">dap-mode</a></li>
+<li><a href="#org3f7e1e8">Nginx</a>
+<ul>
+<li><a href="#org14273b2">Nginx Hitting</a></li>
+<li><a href="#org2c4ee62">利用Docker构建项目</a></li>
+<li><a href="#org07da0f8">在本地构建项目</a></li>
 </ul>
+</li>
+<li><a href="#orgeb30c82">Maven</a></li>
+<li><a href="#org14243c2">Spring</a></li>
+<li><a href="#org7f4d0ca">Spring Boot</a></li>
+</ul>
+</li>
+<li><a href="#org49ec077">project build</a></li>
+<li><a href="#org04e35be">appeared Problem</a>
+<ul>
+<li><a href="#org8fe9217">server is not startup</a></li>
+<li><a href="#org75c1910">can't find the main class to start project</a></li>
+<li><a href="#org8b01138">没有对应的补全</a></li>
+</ul>
+</li>
+<li><a href="#org9ce6e16">deployment with nginx in Docker</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org4dcff67" class="outline-2">
+<h2 id="org4dcff67">Web Design Envirement</h2>
+<div class="outline-text-2" id="text-org4dcff67">
+</div>
+<div id="outline-container-orga2d39d1" class="outline-3">
+<h3 id="orga2d39d1">lsp-mode</h3>
+</div>
+<div id="outline-container-orgd979a90" class="outline-3">
+<h3 id="orgd979a90">lsp-java</h3>
+</div>
+<div id="outline-container-orgd7e1e28" class="outline-3">
+<h3 id="orgd7e1e28">dap-mode</h3>
+</div>
+<div id="outline-container-org3f7e1e8" class="outline-3">
+<h3 id="org3f7e1e8">Nginx</h3>
+<div class="outline-text-3" id="text-org3f7e1e8">
+</div>
+<div id="outline-container-org14273b2" class="outline-4">
+<h4 id="org14273b2">Nginx Hitting</h4>
+<div class="outline-text-4" id="text-org14273b2">
+</div>
+<ul class="org-ul">
+<li><a id="org695123e"></a>fire wall 80 port if necessary<br />
+<div class="outline-text-5" id="text-org695123e">
+<pre class="example">
+add port :
+sudo firewall-cmd --add-port=80/tcp --permanent
+restart firewall:
+sudo  firewall-cmd --reload
+check port:
+sudo  firewall-cmd --list-all
+</pre>
+</div>
+</li>
+<li><a id="org297fb0c"></a>nginx control<br />
+<div class="outline-text-5" id="text-org297fb0c">
+<pre class="example">
+sudo apt systemctl stop nginx
+nginx -s stop
+sudo apt systemctl start nginx
+nginx -s reload
+</pre>
+</div>
+</li>
+
+<li><a id="org96449e1"></a>uninstall<br />
+<div class="outline-text-5" id="text-org96449e1">
+<p>
+sudo apt-get purge nginx nginx-common
+</p>
+</div>
 </li>
 </ul>
 </div>
+
+<div id="outline-container-org2c4ee62" class="outline-4">
+<h4 id="org2c4ee62">利用Docker构建项目</h4>
+<div class="outline-text-4" id="text-org2c4ee62">
+<p>
+sudo docker images
+sudo docker pull nginx
+sudo docker run -d -p 80:80 nginx -&gt; id:xxxxxxx
+sudo docker exec -it -v /&#x2026;&#x2026;/project:/usr/share/nginx/html xxxxxxx
+build in - &gt; local host :80  
+</p>
 </div>
-<p>
-标准高斯分布的积分包含了高斯积分
-</p>
-
-<div id="outline-container-orgdcbfcc1" class="outline-2">
-<h2 id="orgdcbfcc1">Statistic</h2>
-<div class="outline-text-2" id="text-orgdcbfcc1">
 </div>
-<div id="outline-container-org9e60733" class="outline-3">
-<h3 id="org9e60733">Co-variance matrix 协方差矩阵</h3>
-<div class="outline-text-3" id="text-org9e60733">
+
+<div id="outline-container-org07da0f8" class="outline-4">
+<h4 id="org07da0f8">在本地构建项目</h4>
+<div class="outline-text-4" id="text-org07da0f8">
 <p>
-<a id="org9bce589"></a>
-for i = {1&#x2026;n}, \(x_{i}\) is a random variable, which belong to
-Gaussian distribution
+sudo apt install nginx
 </p>
 
 <p>
-set  \[ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}
-\right) \]
-</p>
-
-
-<p>
-\[ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
-\\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) \]
-co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
-</p>
-
-\begin{equation}
-\Sigma = 
-  \left(
-  \begin{array}{c}
-          x_{1}-\bar{x}_{1} \\
-          x_{2}-\bar{x}_{2} \\
-          x_{3}-\bar{x}_{3} \\
-          ..                \\
-          x_{n}-\bar{x}_{n} 
- \end{array}
- \right)
-   \left(
-  \begin{array}{ccccc}
-          x_{1}-\bar{x}_{1} &
-          x_{2}-\bar{x}_{2} &
-          x_{3}-\bar{x}_{3} &
-          ..                &
-          x_{n}-\bar{x}_{n} 
-  \end{array}
-  \right)
-\end{equation}
-<p>
-对角线上是对应元素的方差，其他是相对于两个元素的协方差
+<i>etc/nginx</i> 是其配置文件夹，里面有很多include文件，
+nginx 的默认设置在其中一个 default 文件里。
+本机html仓库 /var/www/html
+将项目放在此文件夹下，运行对于的端口即可
+本机开机后,该文件的会被自动部署,端口可见
 </p>
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgeb30c82" class="outline-3">
+<h3 id="orgeb30c82">Maven</h3>
 </div>
+<div id="outline-container-org14243c2" class="outline-3">
+<h3 id="org14243c2">Spring</h3>
+</div>
+<div id="outline-container-org7f4d0ca" class="outline-3">
+<h3 id="org7f4d0ca">Spring Boot</h3>
+<div class="outline-text-3" id="text-org7f4d0ca">
+<p>
+Emacs : M-x lsp-java-springboot-generate
+after build the project, it can be compiled by Maven,and run
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org49ec077" class="outline-2">
+<h2 id="org49ec077">project build</h2>
+<div class="outline-text-2" id="text-org49ec077">
+
+<div class="figure">
+<p><img src="../sysconf/foto/webbuild.png" alt="webbuild.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org04e35be" class="outline-2">
+<h2 id="org04e35be">appeared Problem</h2>
+<div class="outline-text-2" id="text-org04e35be">
+</div>
+<div id="outline-container-org8fe9217" class="outline-3">
+<h3 id="org8fe9217">server is not startup</h3>
+<div class="outline-text-3" id="text-org8fe9217">
+<p>
+1, workspace 有重叠和包含，
+2, 需要重启 lsp mode
+</p>
+</div>
+</div>
+<div id="outline-container-org75c1910" class="outline-3">
+<h3 id="org75c1910">can't find the main class to start project</h3>
+<div class="outline-text-3" id="text-org75c1910">
+<p>
+mvn compile 出现问题，大多数时候是依赖的问题
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8b01138" class="outline-3">
+<h3 id="org8b01138">没有对应的补全</h3>
+<div class="outline-text-3" id="text-org8b01138">
+<p>
+mvn 依赖的version 不同会有不同的包，补全也不同
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org9ce6e16" class="outline-2">
+<h2 id="org9ce6e16">deployment with nginx in Docker</h2>
+<div class="outline-text-2" id="text-org9ce6e16">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">comands</th>
+<th scope="col" class="org-left">expains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">docker images</td>
+<td class="org-left">查看容器</td>
+</tr>
+
+<tr>
+<td class="org-left">docker pull nginx  <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></td>
+<td class="org-left">新增</td>
+</tr>
+
+<tr>
+<td class="org-left">docker run -d -p 80:80 nginx <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></td>
+<td class="org-left">开始，id， 后台</td>
+</tr>
+
+<tr>
+<td class="org-left">docker exec -it xxxxxx bash</td>
+<td class="org-left">前台进入，</td>
+</tr>
+
+<tr>
+<td class="org-left">docker commit xxxxxx newname</td>
+<td class="org-left">生成新容器</td>
+</tr>
+
+<tr>
+<td class="org-left">docker kill -s KILL xxxxxx</td>
+<td class="org-left">关闭</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+对于新到手的项目可以直接放到容器的nginx根目录（快速部署），可以在映射的
+本机端口进入
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+to my case:
+</p>
+<pre class="example">
+sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/usr/share/nginx/html/ nginx
+</pre></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-22 Fr 22:15</p>
+<p class="date">Created: 2020-05-23 Sa 00:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

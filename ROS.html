@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-22 Fr 22:15 -->
+<!-- 2020-05-10 So 20:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Statistic</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -270,71 +270,73 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Statistic</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcbfcc1">Statistic</a>
+<li><a href="#org2ada163">Note</a></li>
+<li><a href="#org938f94e">通信方式</a>
 <ul>
-<li><a href="#org9e60733">Co-variance matrix 协方差矩阵</a></li>
+<li><a href="#org2176fd2">Topic</a></li>
+<li><a href="#org5c6e445">Service</a></li>
+<li><a href="#org4cd658f">Param</a></li>
+<li><a href="#org9177e33">Action</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
+<div id="outline-container-org2ada163" class="outline-2">
+<h2 id="org2ada163">Note</h2>
+<div class="outline-text-2" id="text-org2ada163">
 <p>
-标准高斯分布的积分包含了高斯积分
+catkin<sub>make</sub> 可以代替老式的rosbuild
+最简单的package,只包括CMakelist.txt和package.xml
+每一个roscore就已经打开了master
+执行一个节点 rosrun 包名 节点名
 </p>
-
-<div id="outline-container-orgdcbfcc1" class="outline-2">
-<h2 id="orgdcbfcc1">Statistic</h2>
-<div class="outline-text-2" id="text-orgdcbfcc1">
 </div>
-<div id="outline-container-org9e60733" class="outline-3">
-<h3 id="org9e60733">Co-variance matrix 协方差矩阵</h3>
-<div class="outline-text-3" id="text-org9e60733">
+</div>
+<div id="outline-container-org938f94e" class="outline-2">
+<h2 id="org938f94e">通信方式</h2>
+<div class="outline-text-2" id="text-org938f94e">
+</div>
+<div id="outline-container-org2176fd2" class="outline-3">
+<h3 id="org2176fd2">Topic</h3>
+<div class="outline-text-3" id="text-org2176fd2">
 <p>
-<a id="org9bce589"></a>
-for i = {1&#x2026;n}, \(x_{i}\) is a random variable, which belong to
-Gaussian distribution
+异步通信
+多节点   \(\rightarrow\)   Topic(rostopic)   \(\rightarrow\)    多节点
+msg对象 \(\rightarrow\)   msg类型(rosmsg)  \(\rightarrow\) msg对象
 </p>
+</div>
+</div>
 
+<div id="outline-container-org5c6e445" class="outline-3">
+<h3 id="org5c6e445">Service</h3>
+<div class="outline-text-3" id="text-org5c6e445">
 <p>
-set  \[ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}
-\right) \]
+同步通信
+多节点    \(\rightarrow\)  Service (rosservice) \(\rightarrow\)  单服务
+srv对象   \(\rightarrow\)  srv类型(rossrv) 
+srv类可以嵌套msg类
 </p>
-
-
+</div>
+</div>
+<div id="outline-container-org4cd658f" class="outline-3">
+<h3 id="org4cd658f">Param</h3>
+<div class="outline-text-3" id="text-org4cd658f">
 <p>
-\[ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
-\\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) \]
-co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
+Parameter Service
+rosparam
 </p>
-
-\begin{equation}
-\Sigma = 
-  \left(
-  \begin{array}{c}
-          x_{1}-\bar{x}_{1} \\
-          x_{2}-\bar{x}_{2} \\
-          x_{3}-\bar{x}_{3} \\
-          ..                \\
-          x_{n}-\bar{x}_{n} 
- \end{array}
- \right)
-   \left(
-  \begin{array}{ccccc}
-          x_{1}-\bar{x}_{1} &
-          x_{2}-\bar{x}_{2} &
-          x_{3}-\bar{x}_{3} &
-          ..                &
-          x_{n}-\bar{x}_{n} 
-  \end{array}
-  \right)
-\end{equation}
+</div>
+</div>
+<div id="outline-container-org9177e33" class="outline-3">
+<h3 id="org9177e33">Action</h3>
+<div class="outline-text-3" id="text-org9177e33">
 <p>
-对角线上是对应元素的方差，其他是相对于两个元素的协方差
+action
 </p>
 </div>
 </div>
@@ -342,7 +344,7 @@ co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-22 Fr 22:15</p>
+<p class="date">Created: 2020-05-10 So 20:09</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

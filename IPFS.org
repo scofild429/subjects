@@ -1,0 +1,72 @@
+#+TITLE: IPFS
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup: content
+
+* install
+** build from source
+download go-ipfs and untar
+cp ipfs /usr/local/bin and sudo ./install.sh
+
+** apt 
+sudo apt install ipfs
+
+** config
+ipfs init
+export EDITOR=/usr/bin/emacs
+ipfs config edit
+ipfs id
+ipfs  help
+
+** start
+#+begin_src 
+
+mkdir IPFS
+echo "balabalu" > hallo.org
+ipfs add hallo.org  :get file_hash
+ipfs cat file_hash
+ipfs.io/ipfs/file_hash
+#+end_src
+** push
+
+#+begin_src 
+
+ipfs add -r . (we get all file_hash(s), and a folder_hash(IPFS))
+ipfs name publish folder_hash  (: to IDHASH)
+
+in Webborser: ipfs.io/ipns/IDHASH
+
+
+ipfs name resolve IDHASH : to HASH_file
+
+特殊加密，暂时不用
+ipfs key gen --type=rsa --size=2048 IPFS
+ipfs name publish --key=IPFS folder_hash
+#+end_src
+
+* CORS
+
+#+BEGIN_SRC 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST","OPTIONS"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+
+
+http://localhost:5001/webui
+
+#+END_SRC
+
+* File
+ipfs files mkdir /Docu
+
+ipfs files ls /Docu
+
+ipfs file cp /ipfs/HASH
+
+

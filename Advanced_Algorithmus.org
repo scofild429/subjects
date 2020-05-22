@@ -1,10 +1,12 @@
-#+TITLE: The Note of Advanced Algorithms
+#+TITLE: Advanced Algorithms
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
 
  zweite Semester für Computer Wissenschaft
+
 * Master theorem
+
 * Maximum increasing Subsequence
 It has three different solution,
 ** LCS C++
@@ -44,6 +46,7 @@ int main()
     return 0;  
 }  
 #+end_src
+
 #+RESULTS:
 : longest[0]=1
 : longest[1]=2
@@ -76,10 +79,12 @@ print("the LIS is {}".format(b[maxa]))
 
 
 #+end_src
+
 #+RESULTS:
 : [1, 1, 2, 3, 4, 5, 6, 4, 3, 4, 2, 5, 6, 7, 3, 8]
 : the maximun length of LIS of list1 is 8
 : the LIS is [2, 3, 4, 5, 6, 7, 8, 9]
+
 
 ** O(nlogn) method C++
 #+begin_src C++ :results output
@@ -177,6 +182,8 @@ int BiSearch(int *b, int len, int w)
 : B[3]=7
 : B[4]=9
 
+
+
 ** O(nlogn) method Python
 #+begin_src python :results output
 list1 = [2, 1, 3, 4, 5, 3, 6, 7, 8, 4, 9]
@@ -212,6 +219,8 @@ print(c)
 
 #+RESULTS:
 : [1, 3, 4, 5, 6, 7, 8, 9]
+
+
 * maximum submatrix
 **  Brute force solution Python
 #+begin_src python :results output
@@ -263,33 +272,34 @@ print(c)
 #+begin_example
 Original random matrix  
 
-   1   5   0  -5   2  -3
+   5   4  -4   3   4   4
 
-   3  -3  -2   1  -4  -1
+   4  -5  -4  -2  -5  -4
 
-  -1   2  -2   2   0  -1
+   2  -2   4  -2  -3  -1
 
-   5  -1  -4  -4  -1  -4
+  -3   5   4   1   4  -2
 
-   3  -2   2  -4  -5  -1
+   0  -4  -2  -1   4   2
 
-   0  -3   3   0  -3   3
+  -3   4  -2   5  -1   0
 
 maximux submatrix :
 
 
 
-   1   5
-
-   3  -3
-
-  -1   2
-
-   5  -1
-
-   3  -2
 
 
 
-The summary is  12
+
+
+
+   5   4   1   4
+
+  -4  -2  -1   4
+
+   4  -2   5  -1
+
+The summary is  17
 #+end_example
+

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-22 Fr 22:15 -->
+<!-- 2020-05-10 So 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Statistic</title>
+<title>The Note of IPFS</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -245,104 +245,143 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">Statistic</h1>
+<h1 class="title">The Note of IPFS</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcbfcc1">Statistic</a>
+<li><a href="#org5964b6e">install</a>
 <ul>
-<li><a href="#org9e60733">Co-variance matrix 协方差矩阵</a></li>
+<li><a href="#org57ad0d9">build from source</a></li>
+<li><a href="#org72bf24d">apt</a></li>
+<li><a href="#orgabd82ac">config</a></li>
+<li><a href="#org38d8d8d">start</a></li>
+<li><a href="#org18185bd">push</a></li>
 </ul>
 </li>
+<li><a href="#orgcf97b8a">CORS</a></li>
+<li><a href="#orgd1a0e67">File</a></li>
 </ul>
 </div>
 </div>
-<p>
-标准高斯分布的积分包含了高斯积分
-</p>
 
-<div id="outline-container-orgdcbfcc1" class="outline-2">
-<h2 id="orgdcbfcc1">Statistic</h2>
-<div class="outline-text-2" id="text-orgdcbfcc1">
+<div id="outline-container-org5964b6e" class="outline-2">
+<h2 id="org5964b6e">install</h2>
+<div class="outline-text-2" id="text-org5964b6e">
 </div>
-<div id="outline-container-org9e60733" class="outline-3">
-<h3 id="org9e60733">Co-variance matrix 协方差矩阵</h3>
-<div class="outline-text-3" id="text-org9e60733">
+<div id="outline-container-org57ad0d9" class="outline-3">
+<h3 id="org57ad0d9">build from source</h3>
+<div class="outline-text-3" id="text-org57ad0d9">
 <p>
-<a id="org9bce589"></a>
-for i = {1&#x2026;n}, \(x_{i}\) is a random variable, which belong to
-Gaussian distribution
-</p>
-
-<p>
-set  \[ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}
-\right) \]
-</p>
-
-
-<p>
-\[ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
-\\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) \]
-co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
-</p>
-
-\begin{equation}
-\Sigma = 
-  \left(
-  \begin{array}{c}
-          x_{1}-\bar{x}_{1} \\
-          x_{2}-\bar{x}_{2} \\
-          x_{3}-\bar{x}_{3} \\
-          ..                \\
-          x_{n}-\bar{x}_{n} 
- \end{array}
- \right)
-   \left(
-  \begin{array}{ccccc}
-          x_{1}-\bar{x}_{1} &
-          x_{2}-\bar{x}_{2} &
-          x_{3}-\bar{x}_{3} &
-          ..                &
-          x_{n}-\bar{x}_{n} 
-  \end{array}
-  \right)
-\end{equation}
-<p>
-对角线上是对应元素的方差，其他是相对于两个元素的协方差
+download go-ipfs and untar
+cp ipfs /usr/local/bin and sudo ./install.sh
 </p>
 </div>
+</div>
+
+
+
+<div id="outline-container-org72bf24d" class="outline-3">
+<h3 id="org72bf24d">apt</h3>
+<div class="outline-text-3" id="text-org72bf24d">
+<p>
+sudo apt install ipfs
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgabd82ac" class="outline-3">
+<h3 id="orgabd82ac">config</h3>
+<div class="outline-text-3" id="text-orgabd82ac">
+<p>
+ipfs init
+export EDITOR=/usr/bin/emacs
+ipfs config edit
+ipfs id
+ipfs  help
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org38d8d8d" class="outline-3">
+<h3 id="org38d8d8d">start</h3>
+<div class="outline-text-3" id="text-org38d8d8d">
+<pre class="example">
+
+mkdir IPFS
+echo "balabalu" &gt; hallo.org
+ipfs add hallo.org  :get file_hash
+ipfs cat file_hash
+ipfs.io/ipfs/file_hash
+</pre>
+</div>
+</div>
+<div id="outline-container-org18185bd" class="outline-3">
+<h3 id="org18185bd">push</h3>
+<div class="outline-text-3" id="text-org18185bd">
+<pre class="example">
+
+ipfs add -r . (we get all file_hash(s), and a folder_hash(IPFS))
+ipfs name publish folder_hash  (: to IDHASH)
+
+in Webborser: ipfs.io/ipns/IDHASH
+
+
+ipfs name resolve IDHASH : to HASH_file
+
+特殊加密，暂时不用
+ipfs key gen --type=rsa --size=2048 IPFS
+ipfs name publish --key=IPFS folder_hash
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf97b8a" class="outline-2">
+<h2 id="orgcf97b8a">CORS</h2>
+<div class="outline-text-2" id="text-orgcf97b8a">
+<pre class="example">
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST","OPTIONS"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+
+
+http://localhost:5001/webui
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgd1a0e67" class="outline-2">
+<h2 id="orgd1a0e67">File</h2>
+<div class="outline-text-2" id="text-orgd1a0e67">
+<p>
+ipfs files mkdir /Docu
+</p>
+
+<p>
+ipfs files ls /Docu
+</p>
+
+<p>
+ipfs file cp /ipfs/HASH
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-22 Fr 22:15</p>
+<p class="date">Created: 2020-05-10 So 22:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -1,7 +1,16 @@
-#+TITLE: The Note of Math
+#+TITLE: Math
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
+
+[[https://scofild429.github.io/subjects/Linear_algebra.html][LinearAlgebra web]]
+[[~/Dropbox/subjects/Linear_algebra.org][Linear Algebra org]]
+
+[[https://scofild429.github.io/subjects/statistik.html][Statistik web]]
+[[~/Dropbox/subjects/statistik.org][Startistik org]]
+
+
+
 * Math
 ** Transfromation
 *** DONE Fourier Transfromation

@@ -1,0 +1,127 @@
+#+TITLE: Webdesige
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup: content
+
+
+* Web Design Envirement
+** lsp-mode
+** lsp-java
+** dap-mode
+** Nginx
+
+*** Nginx Hitting
+**** fire wall 80 port if necessary
+#+BEGIN_SRC 
+  add port :
+  sudo firewall-cmd --add-port=80/tcp --permanent
+  restart firewall:
+  sudo  firewall-cmd --reload
+  check port:
+  sudo  firewall-cmd --list-all
+#+END_SRC
+**** nginx control
+#+BEGIN_SRC 
+sudo apt systemctl stop nginx
+nginx -s stop
+sudo apt systemctl start nginx
+nginx -s reload
+#+END_SRC
+
+**** uninstall
+sudo apt-get purge nginx nginx-common
+
+*** 利用Docker构建项目
+sudo docker images
+sudo docker pull nginx
+sudo docker run -d -p 80:80 nginx -> id:xxxxxxx
+sudo docker exec -it -v /....../project:/usr/share/nginx/html xxxxxxx
+build in - > local host :80  
+
+*** 在本地构建项目
+sudo apt install nginx
+
+/etc/nginx/ 是其配置文件夹，里面有很多include文件，
+nginx 的默认设置在其中一个 default 文件里。
+本机html仓库 /var/www/html
+将项目放在此文件夹下，运行对于的端口即可
+本机开机后,该文件的会被自动部署,端口可见
+
+** Maven
+** Spring
+** Spring Boot
+Emacs : M-x lsp-java-springboot-generate
+after build the project, it can be compiled by Maven,and run
+
+
+* project build
+
+#+BEGIN_SRC  dot :file ../sysconf/foto/webbuild.png
+  digraph diagramm {
+          Emacs  [shape=box,color=red]
+          LspJavaSpringInitizer [shape=box,color=red]
+          Config [shape=box,color=red]
+          dapDebug [shape=box,color=red]
+	    Programmierung [shape=box,color=red]
+
+          Terminal ->  Maven建包;
+          Maven建包 -> Maven加依赖pom;
+          Maven加依赖pom -> OpenEmacsFile;
+          OpenEmacsFile ->   Programmierung;
+          Programmierung -> MavenCompile;
+          MavenCompile -> MavenPackage;
+          MavenCompile -> dapDebug[label = "也可./mvnx"];
+          MavenPackage -> 执行jar包;
+          MavenPackage -> dapDebug;
+          执行jar包 -> dapDebug;
+
+          Emacs -> LspJavaSpringInitizer;
+          LspJavaSpringInitizer -> Config;
+          Config -> Programmierung;
+          Programmierung -> dapDebug;
+          dapDebug -> Webbroser;
+
+  }
+#+END_SRC
+
+#+RESULTS:
+[[file:../sysconf/foto/webbuild.png]]
+
+
+
+
+* appeared Problem
+** server is not startup
+1, workspace 有重叠和包含，
+2, 需要重启 lsp mode
+** can't find the main class to start project
+mvn compile 出现问题，大多数时候是依赖的问题
+
+** 没有对应的补全
+mvn 依赖的version 不同会有不同的包，补全也不同
+
+
+
+* deployment with nginx in Docker 
+
+
+|--------------------------------------------+-----------------|
+| comands                                    | expains         |
+|--------------------------------------------+-----------------|
+| docker images                              | 查看容器        |
+| docker pull nginx  [fn:nginx]              | 新增            |
+| docker run -d -p 80:80 nginx [fn:docker-v] | 开始，id， 后台 |
+| docker exec -it xxxxxx bash                | 前台进入，      |
+| docker commit xxxxxx newname               | 生成新容器      |
+| docker kill -s KILL xxxxxx                 | 关闭            |
+|--------------------------------------------+-----------------|
+
+
+[fn:nginx] 对于新到手的项目可以直接放到容器的nginx根目录（快速部署），可以在映射的
+本机端口进入
+
+
+[fn:docker-v] to my case:
+#+begin_src 
+sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/usr/share/nginx/html/ nginx
+#+end_src
