@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-23 Sa 00:54 -->
+<!-- 2020-05-23 Sa 01:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Webdesige</title>
@@ -253,61 +253,61 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4dcff67">Web Design Envirement</a>
+<li><a href="#org55bd454">Web Design Envirement</a>
 <ul>
-<li><a href="#orga2d39d1">lsp-mode</a></li>
-<li><a href="#orgd979a90">lsp-java</a></li>
-<li><a href="#orgd7e1e28">dap-mode</a></li>
-<li><a href="#org3f7e1e8">Nginx</a>
+<li><a href="#orgb485e45">lsp-mode</a></li>
+<li><a href="#org3a8e103">lsp-java</a></li>
+<li><a href="#org8773b1b">dap-mode</a></li>
+<li><a href="#org125600a">Nginx</a>
 <ul>
-<li><a href="#org14273b2">Nginx Hitting</a></li>
-<li><a href="#org2c4ee62">利用Docker构建项目</a></li>
-<li><a href="#org07da0f8">在本地构建项目</a></li>
+<li><a href="#orgd772439">Nginx Hitting</a></li>
+<li><a href="#org76e8844">利用Docker构建项目</a></li>
+<li><a href="#org0115101">在本地构建项目</a></li>
 </ul>
 </li>
-<li><a href="#orgeb30c82">Maven</a></li>
-<li><a href="#org14243c2">Spring</a></li>
-<li><a href="#org7f4d0ca">Spring Boot</a></li>
+<li><a href="#org63e1283">Maven</a></li>
+<li><a href="#orgd57f844">Spring</a></li>
+<li><a href="#orgb9fa48a">Spring Boot</a></li>
 </ul>
 </li>
-<li><a href="#org49ec077">project build</a></li>
-<li><a href="#org04e35be">appeared Problem</a>
+<li><a href="#org5d3705e">project build</a></li>
+<li><a href="#org634e530">appeared Problem</a>
 <ul>
-<li><a href="#org8fe9217">server is not startup</a></li>
-<li><a href="#org75c1910">can't find the main class to start project</a></li>
-<li><a href="#org8b01138">没有对应的补全</a></li>
+<li><a href="#org15cdcc8">server is not startup</a></li>
+<li><a href="#org0b4b325">can't find the main class to start project</a></li>
+<li><a href="#org0765ff4">没有对应的补全</a></li>
 </ul>
 </li>
-<li><a href="#org9ce6e16">deployment with nginx in Docker</a></li>
+<li><a href="#org93f6446">deployment with nginx in Docker</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org4dcff67" class="outline-2">
-<h2 id="org4dcff67">Web Design Envirement</h2>
-<div class="outline-text-2" id="text-org4dcff67">
+<div id="outline-container-org55bd454" class="outline-2">
+<h2 id="org55bd454">Web Design Envirement</h2>
+<div class="outline-text-2" id="text-org55bd454">
 </div>
-<div id="outline-container-orga2d39d1" class="outline-3">
-<h3 id="orga2d39d1">lsp-mode</h3>
+<div id="outline-container-orgb485e45" class="outline-3">
+<h3 id="orgb485e45">lsp-mode</h3>
 </div>
-<div id="outline-container-orgd979a90" class="outline-3">
-<h3 id="orgd979a90">lsp-java</h3>
+<div id="outline-container-org3a8e103" class="outline-3">
+<h3 id="org3a8e103">lsp-java</h3>
 </div>
-<div id="outline-container-orgd7e1e28" class="outline-3">
-<h3 id="orgd7e1e28">dap-mode</h3>
+<div id="outline-container-org8773b1b" class="outline-3">
+<h3 id="org8773b1b">dap-mode</h3>
 </div>
-<div id="outline-container-org3f7e1e8" class="outline-3">
-<h3 id="org3f7e1e8">Nginx</h3>
-<div class="outline-text-3" id="text-org3f7e1e8">
+<div id="outline-container-org125600a" class="outline-3">
+<h3 id="org125600a">Nginx</h3>
+<div class="outline-text-3" id="text-org125600a">
 </div>
-<div id="outline-container-org14273b2" class="outline-4">
-<h4 id="org14273b2">Nginx Hitting</h4>
-<div class="outline-text-4" id="text-org14273b2">
+<div id="outline-container-orgd772439" class="outline-4">
+<h4 id="orgd772439">Nginx Hitting</h4>
+<div class="outline-text-4" id="text-orgd772439">
 </div>
 <ul class="org-ul">
-<li><a id="org695123e"></a>fire wall 80 port if necessary<br />
-<div class="outline-text-5" id="text-org695123e">
+<li><a id="orgd907b06"></a>fire wall 80 port if necessary<br />
+<div class="outline-text-5" id="text-orgd907b06">
 <pre class="example">
 add port :
 sudo firewall-cmd --add-port=80/tcp --permanent
@@ -318,8 +318,8 @@ sudo  firewall-cmd --list-all
 </pre>
 </div>
 </li>
-<li><a id="org297fb0c"></a>nginx control<br />
-<div class="outline-text-5" id="text-org297fb0c">
+<li><a id="orgf334a96"></a>nginx control<br />
+<div class="outline-text-5" id="text-orgf334a96">
 <pre class="example">
 sudo apt systemctl stop nginx
 nginx -s stop
@@ -329,8 +329,8 @@ nginx -s reload
 </div>
 </li>
 
-<li><a id="org96449e1"></a>uninstall<br />
-<div class="outline-text-5" id="text-org96449e1">
+<li><a id="org2dca7f1"></a>uninstall<br />
+<div class="outline-text-5" id="text-org2dca7f1">
 <p>
 sudo apt-get purge nginx nginx-common
 </p>
@@ -339,9 +339,9 @@ sudo apt-get purge nginx nginx-common
 </ul>
 </div>
 
-<div id="outline-container-org2c4ee62" class="outline-4">
-<h4 id="org2c4ee62">利用Docker构建项目</h4>
-<div class="outline-text-4" id="text-org2c4ee62">
+<div id="outline-container-org76e8844" class="outline-4">
+<h4 id="org76e8844">利用Docker构建项目</h4>
+<div class="outline-text-4" id="text-org76e8844">
 <p>
 sudo docker images
 sudo docker pull nginx
@@ -352,9 +352,9 @@ build in - &gt; local host :80
 </div>
 </div>
 
-<div id="outline-container-org07da0f8" class="outline-4">
-<h4 id="org07da0f8">在本地构建项目</h4>
-<div class="outline-text-4" id="text-org07da0f8">
+<div id="outline-container-org0115101" class="outline-4">
+<h4 id="org0115101">在本地构建项目</h4>
+<div class="outline-text-4" id="text-org0115101">
 <p>
 sudo apt install nginx
 </p>
@@ -370,15 +370,15 @@ nginx 的默认设置在其中一个 default 文件里。
 </div>
 </div>
 
-<div id="outline-container-orgeb30c82" class="outline-3">
-<h3 id="orgeb30c82">Maven</h3>
+<div id="outline-container-org63e1283" class="outline-3">
+<h3 id="org63e1283">Maven</h3>
 </div>
-<div id="outline-container-org14243c2" class="outline-3">
-<h3 id="org14243c2">Spring</h3>
+<div id="outline-container-orgd57f844" class="outline-3">
+<h3 id="orgd57f844">Spring</h3>
 </div>
-<div id="outline-container-org7f4d0ca" class="outline-3">
-<h3 id="org7f4d0ca">Spring Boot</h3>
-<div class="outline-text-3" id="text-org7f4d0ca">
+<div id="outline-container-orgb9fa48a" class="outline-3">
+<h3 id="orgb9fa48a">Spring Boot</h3>
+<div class="outline-text-3" id="text-orgb9fa48a">
 <p>
 Emacs : M-x lsp-java-springboot-generate
 after build the project, it can be compiled by Maven,and run
@@ -388,9 +388,9 @@ after build the project, it can be compiled by Maven,and run
 </div>
 
 
-<div id="outline-container-org49ec077" class="outline-2">
-<h2 id="org49ec077">project build</h2>
-<div class="outline-text-2" id="text-org49ec077">
+<div id="outline-container-org5d3705e" class="outline-2">
+<h2 id="org5d3705e">project build</h2>
+<div class="outline-text-2" id="text-org5d3705e">
 
 <div class="figure">
 <p><img src="../sysconf/foto/webbuild.png" alt="webbuild.png" />
@@ -402,31 +402,31 @@ after build the project, it can be compiled by Maven,and run
 
 
 
-<div id="outline-container-org04e35be" class="outline-2">
-<h2 id="org04e35be">appeared Problem</h2>
-<div class="outline-text-2" id="text-org04e35be">
+<div id="outline-container-org634e530" class="outline-2">
+<h2 id="org634e530">appeared Problem</h2>
+<div class="outline-text-2" id="text-org634e530">
 </div>
-<div id="outline-container-org8fe9217" class="outline-3">
-<h3 id="org8fe9217">server is not startup</h3>
-<div class="outline-text-3" id="text-org8fe9217">
+<div id="outline-container-org15cdcc8" class="outline-3">
+<h3 id="org15cdcc8">server is not startup</h3>
+<div class="outline-text-3" id="text-org15cdcc8">
 <p>
 1, workspace 有重叠和包含，
 2, 需要重启 lsp mode
 </p>
 </div>
 </div>
-<div id="outline-container-org75c1910" class="outline-3">
-<h3 id="org75c1910">can't find the main class to start project</h3>
-<div class="outline-text-3" id="text-org75c1910">
+<div id="outline-container-org0b4b325" class="outline-3">
+<h3 id="org0b4b325">can't find the main class to start project</h3>
+<div class="outline-text-3" id="text-org0b4b325">
 <p>
 mvn compile 出现问题，大多数时候是依赖的问题
 </p>
 </div>
 </div>
 
-<div id="outline-container-org8b01138" class="outline-3">
-<h3 id="org8b01138">没有对应的补全</h3>
-<div class="outline-text-3" id="text-org8b01138">
+<div id="outline-container-org0765ff4" class="outline-3">
+<h3 id="org0765ff4">没有对应的补全</h3>
+<div class="outline-text-3" id="text-org0765ff4">
 <p>
 mvn 依赖的version 不同会有不同的包，补全也不同
 </p>
@@ -436,9 +436,9 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 
 
 
-<div id="outline-container-org9ce6e16" class="outline-2">
-<h2 id="org9ce6e16">deployment with nginx in Docker</h2>
-<div class="outline-text-2" id="text-org9ce6e16">
+<div id="outline-container-org93f6446" class="outline-2">
+<h2 id="org93f6446">deployment with nginx in Docker</h2>
+<div class="outline-text-2" id="text-org93f6446">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -508,7 +508,7 @@ sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/u
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-23 Sa 00:54</p>
+<p class="date">Created: 2020-05-23 Sa 01:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
