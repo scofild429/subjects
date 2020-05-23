@@ -1,9 +1,14 @@
 #+TITLE: Machine Learning 
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+startup: content
-
 #+STARTUP: content
+
+* ML collection
+机器学习代码和课件可在此下
+https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
+
+
+
 * ML Zhouzhihua 
 ** precision 查准率 recall 查全率
 
@@ -21,7 +26,6 @@ ROC couve : FPR TPR
 $$ F_{1} = \frac{1}{2} \cdot (\frac{1}{P}+\frac{1}{R})$$
 $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 (\frac{\beta^{2}}{P}+\frac{1}{R})$$
-
 
 
 
@@ -60,7 +64,6 @@ $$ Gini(D) = \sum^{|y|}_{k=1}\sum_{k^{'}\not = k} p_{k}p_{k^{'}} = 1- \sum^{|y|}
 *** 多变量决策
 每个划分属性是多个属性（变量）的线性组合
 
-
 ** Decision List
 
 (f1,v1),(f2,v2)....(fr,vr)
@@ -74,7 +77,6 @@ for 0<k<n, k-CNF and k-DNF are proper
 #+END_SRC
 
  
-
 ** 贝叶斯分类
 *** 朴素贝叶斯 
 假设各个属性完全独立
@@ -89,9 +91,8 @@ for 0<k<n, k-CNF and k-DNF are proper
 
 
 
-
-* ML  Bachelor  CS2
-** Verlesung 01
+* ML Bachelor  CS2
+** Verlesung 01, Product Rule, Bayes's Rule
 条件概论公式 + 全概率公式 = 贝叶斯公式
 *** sum rule :
 $$ p(x) = \sum_{y} p(X,Y) $$
@@ -114,8 +115,7 @@ P(x|y)P(y) = P(y|x)P(x) \\
 P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
 \end{aligned}
 
-** Vorlesung 02
-
+** Vorlesung 02, Kovarianz Matrix, Multi Gauss Distribute, Mahalanobis distance
 *** Kovarianz Matrix
 seeing link
 *** Multi variable Gaussian distribution
@@ -144,11 +144,112 @@ $$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
 关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
 上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
 
+** Vorlesung 03 Linear Regression OLS 正规化方程, greadient decent, Sklearn
+*** OLS 正规化方程
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  testsize = 5
+  print("prepera data")
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  # ordinary  least squares (正规化方法）
+  weight = np.dot(np.dot(np.linalg.pinv(np.dot(X.T, X)), X.T), y)
+  print("OLS : the weight is{}, and the bais is {} ".format(weight[:-1], weight[-1]))
+  print("the predect of 3 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], weight)))
 
 
+#+end_src
 
-* ML collection
-机器学习代码和课件可在此下
-https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
+#+RESULTS:
+: prepera data
+: the X shape is (100, 3), and y shape is (100,)
+: OLS : the weight is[1.00005041 2.00010081], and the bais is 21.587524752475453 
+: the predect of 3 ele is [21.58752475 24.58767597 27.58782718 30.5879784  33.58812961]
 
+*** greadient decent
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  testsize = 5
+  print("prepera data")
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  # sklearn
+  reg = linear_model.LinearRegression()
+  model = reg.fit(X,y)
+  print("Sklearn: the weith is {}, and the intercept is {}".format(model.coef_[:-1] ,model.intercept_))
+  print("the predect of 3 ele is {}".format(model.predict(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)])))
+
+#+end_src
+
+#+RESULTS:
+: prepera data
+: the X shape is (100, 3), and y shape is (100,)
+: Sklearn: the weith is [1.00045125 2.00090249], and the intercept is 21.4483168316832
+: the predect of 3 ele is [21.44831683 24.44967057 27.4510243  30.45237804 33.45373177]
+
+*** sklearn
+
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  testsize = 5
+  print("prepera data")
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  #greadient decent
+  def featureNormalize(X):
+      (m,n) = X.shape
+      X_norm = X
+      mu = np.zeros(n);
+      sigma = np.zeros(n);
+      for i in range(n):
+          mu[i] = np.mean(X[:,i])
+          sigma[i] = np.std(X[:,i])
+          X_norm[:,i] = (X_norm[:,i]-mu[i])/sigma[i]
+      return X_norm
+  def computeCost(X, y, theta):
+      return np.sum((np.dot(X,theta) -y)**2)/(2*len(y));
+
+  def gradientDescent(X, y, theta, alpha, num_iters):
+      m = len(y)
+      J_history = np.zeros(num_iters);
+      theta_len = len(theta);
+      for num_iter in range(num_iters):
+          theta = theta - (alpha/m)*np.dot(X.T,(np.dot(X,theta).reshape(-1)-y))
+          J_history[num_iter] = computeCost(X, y, theta)
+      return theta, J_history
+
+  alpha = 0.0001
+  num_iters = 400000
+  theta = np.zeros(2+1)
+  theta, J_history = gradientDescent(X, y, theta, alpha, num_iters)
+  print("Greadient decent: the weight is {}, and the intercept is {}".format(theta[:-1],theta[-1]))
+  print("the predect of 3 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], theta)))
+#+end_src
+
+#+RESULTS:
+: prepera data
+: the X shape is (100, 3), and y shape is (100,)
+: Greadient decent: the weight is [1.00017775 2.0003555 ], and the intercept is 21.51579385880701
+: the predect of 3 ele is [21.51579386 24.51632711 27.51686036 30.51739361 33.51792685]
 

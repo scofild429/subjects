@@ -3,27 +3,27 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
 
+
+* AI
+[[~/Dropbox/subjects/AI.org][AI org]]
+
+
 * Algorithmus 
-[[https://scofild429.github.io/subjects/Advanced_Algorithmus.html][Algorithmus web]]
 [[~/Dropbox/subjects/Advanced_Algorithmus.org][Algorithmus org]]
 
 
 * computer vision
-[[https://scofild429.github.io/subjects/computervision.html][computervision web ]]
 [[~/Dropbox/subjects/computervision.org][computer version org]]
 
 
-* Informatik
-[[https://scofild429.github.io/subjects/Inf.html][Information web]]
+* Inf III
 [[~/Dropbox/subjects/Inf.org][Information org]]
 
 
 * Inf II 
-[[https://scofild429.github.io/subjects/InfII.html][Information II web]]
 [[~/Dropbox/subjects/InfII.org][Informatik II org]]
 
 
 * linux 
-[[~/Dropbox/subjects/linux_program.html][linux programming web]]
 [[~/Dropbox/subjects/linux_program.org][linux programming org]]
 

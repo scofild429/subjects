@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-10 So 21:15 -->
+<!-- 2020-05-23 Sa 12:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Note of Advanced Algorithms</title>
+<title>Advanced Algorithms</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -248,25 +248,31 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">The Note of Advanced Algorithms</h1>
+<h1 class="title">Advanced Algorithms</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org665cc04">Master theorem</a></li>
-<li><a href="#org0bbdb4c">Maximum increasing Subsequence</a>
+<li><a href="#orgb9ebb32">Master theorem</a></li>
+<li><a href="#org43b517a">Maximum increasing Subsequence</a>
 <ul>
-<li><a href="#org98b1293">LCS C++</a></li>
-<li><a href="#org2b32964">LCS python</a></li>
-<li><a href="#orgdebf523">Dynamic program C++</a></li>
-<li><a href="#org8438ae5">Dynamic Program Python</a></li>
-<li><a href="#org5aa65a3">O(nlogn) method C++</a></li>
-<li><a href="#org1eab696">O(nlogn) method Python</a></li>
+<li><a href="#org3899c06">LCS C++</a></li>
+<li><a href="#org4583989">LCS python</a></li>
+<li><a href="#orgdd9e2a2">Dynamic program C++</a></li>
+<li><a href="#org6a56a3a">Dynamic Program Python</a></li>
+<li><a href="#orge5d4acc">O(nlogn) method C++</a></li>
+<li><a href="#org01630dc">O(nlogn) method Python</a></li>
 </ul>
 </li>
-<li><a href="#org1edab4e">maximum submatrix</a>
+<li><a href="#orgdf694a1">maximum submatrix</a>
 <ul>
-<li><a href="#org629ca56">Brute force solution Python</a></li>
+<li><a href="#org363cf90">Brute force solution Python</a></li>
+</ul>
+</li>
+<li><a href="#org49f890c">Backlinks</a></li>
+<li><a href="#org884f630">1 Backlinks</a>
+<ul>
+<li><a href="#orgb821a48">CS</a></li>
 </ul>
 </li>
 </ul>
@@ -275,84 +281,86 @@ for the JavaScript code in this tag.
 <p>
 zweite Semester für Computer Wissenschaft
 </p>
-<div id="outline-container-org665cc04" class="outline-2">
-<h2 id="org665cc04">Master theorem</h2>
+
+<div id="outline-container-orgb9ebb32" class="outline-2">
+<h2 id="orgb9ebb32">Master theorem</h2>
 </div>
-<div id="outline-container-org0bbdb4c" class="outline-2">
-<h2 id="org0bbdb4c">Maximum increasing Subsequence</h2>
-<div class="outline-text-2" id="text-org0bbdb4c">
+
+<div id="outline-container-org43b517a" class="outline-2">
+<h2 id="org43b517a">Maximum increasing Subsequence</h2>
+<div class="outline-text-2" id="text-org43b517a">
 <p>
 It has three different solution,
 </p>
 </div>
-<div id="outline-container-org98b1293" class="outline-3">
-<h3 id="org98b1293">LCS C++</h3>
+<div id="outline-container-org3899c06" class="outline-3">
+<h3 id="org3899c06">LCS C++</h3>
 </div>
-<div id="outline-container-org2b32964" class="outline-3">
-<h3 id="org2b32964">LCS python</h3>
+<div id="outline-container-org4583989" class="outline-3">
+<h3 id="org4583989">LCS python</h3>
 </div>
-<div id="outline-container-orgdebf523" class="outline-3">
-<h3 id="orgdebf523">Dynamic program C++</h3>
-<div class="outline-text-3" id="text-orgdebf523">
+<div id="outline-container-orgdd9e2a2" class="outline-3">
+<h3 id="orgdd9e2a2">Dynamic program C++</h3>
+<div class="outline-text-3" id="text-orgdd9e2a2">
 <div class="org-src-container">
-<pre class="src src-C++"><span style="color: #6495ed;">#include</span> <span style="color: #ffa07a;">&lt;iostream&gt;</span>  
-<span style="color: #20b2aa; font-weight: bold;">using</span> <span style="color: #20b2aa; font-weight: bold;">namespace</span> <span style="color: #1e90ff;">std</span>;  
-<span style="color: #6495ed;">#define</span> <span style="color: #00ff7f;">len</span>(<span style="color: #9acd32;">a</span>) (<span style="color: #20b2aa; font-weight: bold;">sizeof</span>(a) / <span style="color: #20b2aa; font-weight: bold;">sizeof</span>(a[0])) <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#25968;&#32452;&#38271;&#24230;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">lis</span>(<span style="color: #9370db;">int</span> <span style="color: #9acd32;">arr</span>[], <span style="color: #9370db;">int</span> <span style="color: #9acd32;">len</span>)  
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;iostream&gt;</span>  
+<span style="color: #4f97d7; font-weight: bold;">using</span> <span style="color: #4f97d7; font-weight: bold;">namespace</span> <span style="color: #a45bad;">std</span>;  
+<span style="color: #bc6ec5;">#define</span> <span style="color: #bc6ec5; font-weight: bold;">len</span>(<span style="color: #7590db;">a</span>) (<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(a) / <span style="color: #4f97d7; font-weight: bold;">sizeof</span>(a[0])) <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;&#38271;&#24230;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">lis</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">arr</span>[], <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>)  
 {  
-    <span style="color: #9370db;">int</span> <span style="color: #9acd32;">longest</span>[len];  
-    <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #9370db;">int</span> <span style="color: #9acd32;">i</span>=0; i&lt;len; i++)  
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">longest</span>[len];  
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>=0; i&lt;len; i++)  
         longest[i] = 1;  
 
-    <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #9370db;">int</span> <span style="color: #9acd32;">j</span>=1; j&lt;len; j++) {  
-        <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #9370db;">int</span> <span style="color: #9acd32;">i</span>=0; i&lt;j; i++) {  
-            <span style="color: #20b2aa; font-weight: bold;">if</span> (arr[j]&gt;arr[i] &amp;&amp; longest[j]&lt;longest[i]+1){ <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#27880;&#24847;longest[j]&lt;longest[i]+1&#36825;&#20010;&#26465;&#20214;&#65292;&#19981;&#33021;&#30465;&#30053;&#12290;  </span>
-                longest[j] = longest[i] + 1; <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#35745;&#31639;&#20197;arr[j]&#32467;&#23614;&#30340;&#24207;&#21015;&#30340;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#38271;&#24230;  </span>
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span>=1; j&lt;len; j++) {  
+        <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>=0; i&lt;j; i++) {  
+            <span style="color: #4f97d7; font-weight: bold;">if</span> (arr[j]&gt;arr[i] &amp;&amp; longest[j]&lt;longest[i]+1){ <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27880;&#24847;longest[j]&lt;longest[i]+1&#36825;&#20010;&#26465;&#20214;&#65292;&#19981;&#33021;&#30465;&#30053;&#12290;  </span>
+                longest[j] = longest[i] + 1; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#35745;&#31639;&#20197;arr[j]&#32467;&#23614;&#30340;&#24207;&#21015;&#30340;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#38271;&#24230;  </span>
             }  
         }  
     }  
 
-    <span style="color: #9370db;">int</span> <span style="color: #9acd32;">max</span> = 0;  
-    <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #9370db;">int</span> <span style="color: #9acd32;">j</span>=0; j&lt;len; j++) {  
-        cout &lt;&lt; <span style="color: #ffa07a;">"longest["</span> &lt;&lt; j &lt;&lt; <span style="color: #ffa07a;">"]="</span> &lt;&lt; longest[j] &lt;&lt; endl;  
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (longest[j] &gt; max) max = longest[j];  <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#20174;longest[j]&#20013;&#25214;&#20986;&#26368;&#22823;&#20540;  </span>
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">max</span> = 0;  
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span>=0; j&lt;len; j++) {  
+        cout &lt;&lt; <span style="color: #2d9574;">"longest["</span> &lt;&lt; j &lt;&lt; <span style="color: #2d9574;">"]="</span> &lt;&lt; longest[j] &lt;&lt; endl;  
+        <span style="color: #4f97d7; font-weight: bold;">if</span> (longest[j] &gt; max) max = longest[j];  <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20174;longest[j]&#20013;&#25214;&#20986;&#26368;&#22823;&#20540;  </span>
     }  
-    <span style="color: #20b2aa; font-weight: bold;">return</span> max;  
+    <span style="color: #4f97d7; font-weight: bold;">return</span> max;  
 }  
 
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">main</span>()  
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()  
 {  
-    <span style="color: #9370db;">int</span> <span style="color: #9acd32;">arr</span>[] = {1, 4, 5, 6, 2, 3, 8}; <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#27979;&#35797;&#25968;&#32452;  </span>
-    <span style="color: #9370db;">int</span> <span style="color: #9acd32;">ret</span> = lis(arr, len(arr));  
-    cout &lt;&lt; <span style="color: #ffa07a;">"max increment substring len="</span> &lt;&lt; ret &lt;&lt; endl;  
-    <span style="color: #20b2aa; font-weight: bold;">return</span> 0;  
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">arr</span>[] = {1, 4, 5, 6, 2, 3, 8}; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27979;&#35797;&#25968;&#32452;  </span>
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">ret</span> = lis(arr, len(arr));  
+    cout &lt;&lt; <span style="color: #2d9574;">"max increment substring len="</span> &lt;&lt; ret &lt;&lt; endl;  
+    <span style="color: #4f97d7; font-weight: bold;">return</span> 0;  
 }  
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8438ae5" class="outline-3">
-<h3 id="org8438ae5">Dynamic Program Python</h3>
-<div class="outline-text-3" id="text-org8438ae5">
+<div id="outline-container-org6a56a3a" class="outline-3">
+<h3 id="org6a56a3a">Dynamic Program Python</h3>
+<div class="outline-text-3" id="text-org6a56a3a">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #9acd32;">list1</span> = [2, 1, 3, 45, 76, 89, 457, 54, 4, 5, 3, 6, 7, 8, 4, 9]
-<span style="color: #9acd32;">l</span> = <span style="color: #76ee00;">len</span>(list1)
-<span style="color: #9acd32;">a</span> = [1]*l
-<span style="color: #9acd32;">b</span> = [[] <span style="color: #20b2aa; font-weight: bold;">for</span> x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l)]
+<pre class="src src-python"><span style="color: #7590db;">list1</span> = [2, 1, 3, 45, 76, 89, 457, 54, 4, 5, 3, 6, 7, 8, 4, 9]
+<span style="color: #7590db;">l</span> = <span style="color: #4f97d7;">len</span>(list1)
+<span style="color: #7590db;">a</span> = [1]*l
+<span style="color: #7590db;">b</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
 
 
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l):
-    <span style="color: #20b2aa; font-weight: bold;">for</span> j <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(i):
-        <span style="color: #20b2aa; font-weight: bold;">if</span> (list1[i] &gt; list1[j]) <span style="color: #20b2aa; font-weight: bold;">and</span> (a[i] &lt; (a[j] + 1)):
-            <span style="color: #9acd32;">a</span>[i] = a[j]+1
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+    <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i):
+        <span style="color: #4f97d7; font-weight: bold;">if</span> (list1[i] &gt; list1[j]) <span style="color: #4f97d7; font-weight: bold;">and</span> (a[i] &lt; (a[j] + 1)):
+            <span style="color: #7590db;">a</span>[i] = a[j]+1
             b[i].append(list1[j])
     b[i].append(list1[i])
 
-<span style="color: #20b2aa; font-weight: bold;">print</span>(a)
-<span style="color: #9acd32;">maxa</span> = a.index(<span style="color: #76ee00;">max</span>(a))
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"the maximun length of LIS of list1 is {}"</span>.<span style="color: #76ee00;">format</span>(<span style="color: #76ee00;">max</span>(a)))
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"the LIS is {}"</span>.<span style="color: #76ee00;">format</span>(b[maxa]))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(a)
+<span style="color: #7590db;">maxa</span> = a.index(<span style="color: #4f97d7;">max</span>(a))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"the maximun length of LIS of list1 is {}"</span>.<span style="color: #4f97d7;">format</span>(<span style="color: #4f97d7;">max</span>(a)))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"the LIS is {}"</span>.<span style="color: #4f97d7;">format</span>(b[maxa]))
 
 
 </pre>
@@ -360,87 +368,88 @@ It has three different solution,
 </div>
 </div>
 
-<div id="outline-container-org5aa65a3" class="outline-3">
-<h3 id="org5aa65a3">O(nlogn) method C++</h3>
-<div class="outline-text-3" id="text-org5aa65a3">
+
+<div id="outline-container-orge5d4acc" class="outline-3">
+<h3 id="orge5d4acc">O(nlogn) method C++</h3>
+<div class="outline-text-3" id="text-orge5d4acc">
 <div class="org-src-container">
-<pre class="src src-C++"><span style="color: #6495ed;">#include</span> <span style="color: #ffa07a;">&lt;stdio.h&gt;</span>  
-<span style="color: #6495ed;">#include</span> <span style="color: #ffa07a;">&lt;stdlib.h&gt;</span>  
-<span style="color: #6495ed;">#include</span> <span style="color: #ffa07a;">&lt;string.h&gt;</span>  
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>  
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdlib.h&gt;</span>  
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>  
 
-<span style="color: #6495ed;">#define</span> <span style="color: #9acd32;">N</span> 9 <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#25968;&#32452;&#20803;&#32032;&#20010;&#25968;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #9acd32;">array</span>[N] = {2, 1, 6, 3, 5, 4, 8, 7, 9}; <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#21407;&#25968;&#32452;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #9acd32;">B</span>[N]; <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#22312;&#21160;&#24577;&#35268;&#21010;&#20013;&#20351;&#29992;&#30340;&#25968;&#32452;,&#29992;&#20110;&#35760;&#24405;&#20013;&#38388;&#32467;&#26524;,&#20854;&#21547;&#20041;&#19977;&#35328;&#20004;&#35821;&#35828;&#19981;&#28165;,&#35831;&#21442;&#35265;&#21338;&#25991;&#30340;&#35299;&#37322;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #9acd32;">len</span>; <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#29992;&#20110;&#26631;&#31034;B&#25968;&#32452;&#20013;&#30340;&#20803;&#32032;&#20010;&#25968;  </span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">N</span> 9 <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;&#20803;&#32032;&#20010;&#25968;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">array</span>[N] = {2, 1, 6, 3, 5, 4, 8, 7, 9}; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#21407;&#25968;&#32452;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">B</span>[N]; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#22312;&#21160;&#24577;&#35268;&#21010;&#20013;&#20351;&#29992;&#30340;&#25968;&#32452;,&#29992;&#20110;&#35760;&#24405;&#20013;&#38388;&#32467;&#26524;,&#20854;&#21547;&#20041;&#19977;&#35328;&#20004;&#35821;&#35828;&#19981;&#28165;,&#35831;&#21442;&#35265;&#21338;&#25991;&#30340;&#35299;&#37322;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#29992;&#20110;&#26631;&#31034;B&#25968;&#32452;&#20013;&#30340;&#20803;&#32032;&#20010;&#25968;  </span>
 
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">LIS</span>(<span style="color: #9370db;">int</span> *<span style="color: #9acd32;">array</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">n</span>); <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#35745;&#31639;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#30340;&#38271;&#24230;,&#35745;&#31639;B&#25968;&#32452;&#30340;&#20803;&#32032;,array[]&#24490;&#29615;&#23436;&#19968;&#36941;&#21518;,B&#30340;&#38271;&#24230;len&#21363;&#20026;&#25152;&#27714;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">BiSearch</span>(<span style="color: #9370db;">int</span> *<span style="color: #9acd32;">b</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">len</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">w</span>); <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#20570;&#20102;&#20462;&#25913;&#30340;&#20108;&#20998;&#25628;&#32034;&#31639;&#27861;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">LIS</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">array</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#35745;&#31639;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#30340;&#38271;&#24230;,&#35745;&#31639;B&#25968;&#32452;&#30340;&#20803;&#32032;,array[]&#24490;&#29615;&#23436;&#19968;&#36941;&#21518;,B&#30340;&#38271;&#24230;len&#21363;&#20026;&#25152;&#27714;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">BiSearch</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">b</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">w</span>); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20570;&#20102;&#20462;&#25913;&#30340;&#20108;&#20998;&#25628;&#32034;&#31639;&#27861;  </span>
 
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">main</span>()  
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()  
 {
 
-  printf(<span style="color: #ffa07a;">"LIS: %d\n"</span>, LIS(array, N));  
+  printf(<span style="color: #2d9574;">"LIS: %d\n"</span>, LIS(array, N));  
 
-  <span style="color: #9370db;">int</span> <span style="color: #9acd32;">i</span>;  
-  <span style="color: #20b2aa; font-weight: bold;">for</span>(i=0; i&lt;len; ++i)  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>;  
+  <span style="color: #4f97d7; font-weight: bold;">for</span>(i=0; i&lt;len; ++i)  
     {  
-      printf(<span style="color: #ffa07a;">"B[%d]=%d\n"</span>, i, B[i]);  
+      printf(<span style="color: #2d9574;">"B[%d]=%d\n"</span>, i, B[i]);  
     }  
 
-  <span style="color: #20b2aa; font-weight: bold;">return</span> 0;  
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;  
 }  
 
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">LIS</span>(<span style="color: #9370db;">int</span> *<span style="color: #9acd32;">array</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">n</span>)  
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">LIS</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">array</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>)  
 {  
 
   len = 1;  
   B[0] = array[0];  
-  <span style="color: #9370db;">int</span> <span style="color: #9acd32;">i</span>, <span style="color: #9acd32;">pos</span> = 0;
-  <span style="color: #9370db;">int</span> *<span style="color: #9acd32;">lis</span> =(<span style="color: #9370db;">int</span> *) malloc(<span style="color: #9370db;">n</span>*<span style="color: #20b2aa; font-weight: bold;">sizeof</span>(<span style="color: #9370db;">int</span>));
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>, <span style="color: #7590db;">pos</span> = 0;
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">lis</span> =(<span style="color: #ce537a; font-weight: bold;">int</span> *) malloc(<span style="color: #ce537a; font-weight: bold;">n</span>*<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(<span style="color: #ce537a; font-weight: bold;">int</span>));
 
   lis[0] = array[0];
-  <span style="color: #20b2aa; font-weight: bold;">for</span>(i=1; i&lt;n; ++i)  
+  <span style="color: #4f97d7; font-weight: bold;">for</span>(i=1; i&lt;n; ++i)  
     {  
-      <span style="color: #20b2aa; font-weight: bold;">if</span>(array[i] &gt; B[len-1]) <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#22914;&#26524;&#22823;&#20110;B&#20013;&#26368;&#22823;&#30340;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#25554;&#20837;&#21040;B&#25968;&#32452;&#26411;&#23614;  </span>
+      <span style="color: #4f97d7; font-weight: bold;">if</span>(array[i] &gt; B[len-1]) <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#22914;&#26524;&#22823;&#20110;B&#20013;&#26368;&#22823;&#30340;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#25554;&#20837;&#21040;B&#25968;&#32452;&#26411;&#23614;  </span>
         {  
           B[len] = array[i];  
           ++len;
           lis[i] = array[i]; 
         }  
-      <span style="color: #20b2aa; font-weight: bold;">else</span>  
+      <span style="color: #4f97d7; font-weight: bold;">else</span>  
         {  
-          pos = BiSearch(B, len, array[i]); <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#20108;&#20998;&#26597;&#25214;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;</span>
+          pos = BiSearch(B, len, array[i]); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20108;&#20998;&#26597;&#25214;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;</span>
           lis[pos] = array[i];
           B[pos] = array[i];  
         }
     }  
 
-  printf(<span style="color: #ffa07a;">"the LIS is :\n"</span>);
-  <span style="color: #20b2aa; font-weight: bold;">for</span> (<span style="color: #9370db;">int</span> <span style="color: #9acd32;">i</span> = 0; i &lt; n; ++i) {
-    printf(<span style="color: #ffa07a;">"%d "</span>,lis[i]);
+  printf(<span style="color: #2d9574;">"the LIS is :\n"</span>);
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0; i &lt; n; ++i) {
+    printf(<span style="color: #2d9574;">"%d "</span>,lis[i]);
   }
   free(lis);
-  printf(<span style="color: #ffa07a;">" \n"</span>);
+  printf(<span style="color: #2d9574;">" \n"</span>);
 
-  <span style="color: #20b2aa; font-weight: bold;">return</span> len;  
+  <span style="color: #4f97d7; font-weight: bold;">return</span> len;  
 }  
 
-<span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#20462;&#25913;&#30340;&#20108;&#20998;&#26597;&#25214;&#31639;&#27861;&#65292;&#36820;&#22238;&#25968;&#32452;&#20803;&#32032;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;&#12290;  </span>
-<span style="color: #9370db;">int</span> <span style="color: #00ff7f;">BiSearch</span>(<span style="color: #9370db;">int</span> *<span style="color: #9acd32;">b</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">len</span>, <span style="color: #9370db;">int</span> <span style="color: #9acd32;">w</span>)  
+<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20462;&#25913;&#30340;&#20108;&#20998;&#26597;&#25214;&#31639;&#27861;&#65292;&#36820;&#22238;&#25968;&#32452;&#20803;&#32032;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;&#12290;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">BiSearch</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">b</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">w</span>)  
 {  
-  <span style="color: #9370db;">int</span> <span style="color: #9acd32;">left</span> = 0, <span style="color: #9acd32;">right</span> = len - 1;  
-  <span style="color: #9370db;">int</span> <span style="color: #9acd32;">mid</span>;  
-  <span style="color: #20b2aa; font-weight: bold;">while</span> (left &lt;= right)  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">left</span> = 0, <span style="color: #7590db;">right</span> = len - 1;  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">mid</span>;  
+  <span style="color: #4f97d7; font-weight: bold;">while</span> (left &lt;= right)  
     {  
       mid = left + (right-left)/2;  
-      <span style="color: #20b2aa; font-weight: bold;">if</span> (b[mid] &gt; w)  
+      <span style="color: #4f97d7; font-weight: bold;">if</span> (b[mid] &gt; w)  
         right = mid - 1;  
-      <span style="color: #20b2aa; font-weight: bold;">else</span> <span style="color: #20b2aa; font-weight: bold;">if</span> (b[mid] &lt; w)  
+      <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #4f97d7; font-weight: bold;">if</span> (b[mid] &lt; w)  
         left = mid + 1;  
-      <span style="color: #20b2aa; font-weight: bold;">else</span>    <span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#25214;&#21040;&#20102;&#35813;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#36820;&#22238;  </span>
-        <span style="color: #20b2aa; font-weight: bold;">return</span> mid;  
+      <span style="color: #4f97d7; font-weight: bold;">else</span>    <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25214;&#21040;&#20102;&#35813;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#36820;&#22238;  </span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> mid;  
     }  
-  <span style="color: #20b2aa; font-weight: bold;">return</span> left;<span style="color: #cd853f;">//</span><span style="color: #cd853f;">&#25968;&#32452;b&#20013;&#19981;&#23384;&#22312;&#35813;&#20803;&#32032;&#65292;&#21017;&#36820;&#22238;&#35813;&#20803;&#32032;&#24212;&#35813;&#25554;&#20837;&#30340;&#20301;&#32622;  </span>
+  <span style="color: #4f97d7; font-weight: bold;">return</span> left;<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;b&#20013;&#19981;&#23384;&#22312;&#35813;&#20803;&#32032;&#65292;&#21017;&#36820;&#22238;&#35813;&#20803;&#32032;&#24212;&#35813;&#25554;&#20837;&#30340;&#20301;&#32622;  </span>
 }  
 
 
@@ -451,103 +460,127 @@ It has three different solution,
 </div>
 </div>
 
-<div id="outline-container-org1eab696" class="outline-3">
-<h3 id="org1eab696">O(nlogn) method Python</h3>
-<div class="outline-text-3" id="text-org1eab696">
+
+
+<div id="outline-container-org01630dc" class="outline-3">
+<h3 id="org01630dc">O(nlogn) method Python</h3>
+<div class="outline-text-3" id="text-org01630dc">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #9acd32;">list1</span> = [2, 1, 3, 4, 5, 3, 6, 7, 8, 4, 9]
-<span style="color: #9acd32;">l</span> = <span style="color: #76ee00;">len</span>(list1)
+<pre class="src src-python"><span style="color: #7590db;">list1</span> = [2, 1, 3, 4, 5, 3, 6, 7, 8, 4, 9]
+<span style="color: #7590db;">l</span> = <span style="color: #4f97d7;">len</span>(list1)
 
 
-<span style="color: #20b2aa; font-weight: bold;">def</span> <span style="color: #00ff7f;">getpos</span>(list2, n, x):  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">binary search of postion</span>
-    <span style="color: #9acd32;">left</span> = 0
-    <span style="color: #9acd32;">right</span> = n-1
-    <span style="color: #20b2aa; font-weight: bold;">while</span> (left &lt;= right):
-        <span style="color: #9acd32;">mid</span> = <span style="color: #76ee00;">int</span>(left + (right-left)/2)
-        <span style="color: #20b2aa; font-weight: bold;">if</span> x &lt; list1[mid]:
-            <span style="color: #9acd32;">right</span> = mid-1
-        <span style="color: #20b2aa; font-weight: bold;">elif</span> x &gt; list1[mid]:
-            <span style="color: #9acd32;">left</span> = mid + 1
-        <span style="color: #20b2aa; font-weight: bold;">else</span>:
-            <span style="color: #20b2aa; font-weight: bold;">return</span> mid
-    <span style="color: #20b2aa; font-weight: bold;">return</span> left
+<span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">getpos</span>(list2, n, x):  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">binary search of postion</span>
+    <span style="color: #7590db;">left</span> = 0
+    <span style="color: #7590db;">right</span> = n-1
+    <span style="color: #4f97d7; font-weight: bold;">while</span> (left &lt;= right):
+        <span style="color: #7590db;">mid</span> = <span style="color: #4f97d7;">int</span>(left + (right-left)/2)
+        <span style="color: #4f97d7; font-weight: bold;">if</span> x &lt; list1[mid]:
+            <span style="color: #7590db;">right</span> = mid-1
+        <span style="color: #4f97d7; font-weight: bold;">elif</span> x &gt; list1[mid]:
+            <span style="color: #7590db;">left</span> = mid + 1
+        <span style="color: #4f97d7; font-weight: bold;">else</span>:
+            <span style="color: #4f97d7; font-weight: bold;">return</span> mid
+    <span style="color: #4f97d7; font-weight: bold;">return</span> left
 
 
-<span style="color: #9acd32;">c</span> = [list1[0]]  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">copy the first element to c</span>
+<span style="color: #7590db;">c</span> = [list1[0]]  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">copy the first element to c</span>
 
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(1, l):
-    <span style="color: #20b2aa; font-weight: bold;">if</span> c[-1] &lt; list1[i]:  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">if the new element is bigger than the last c, add it</span>
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+    <span style="color: #4f97d7; font-weight: bold;">if</span> c[-1] &lt; list1[i]:  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if the new element is bigger than the last c, add it</span>
         c.append(list1[i])
-    <span style="color: #20b2aa; font-weight: bold;">else</span>:
-        <span style="color: #9acd32;">pos</span> = getpos(c, <span style="color: #76ee00;">len</span>(c), list1[i])  <span style="color: #cd853f;"># </span><span style="color: #cd853f;">if not, find the right pos</span>
-        <span style="color: #9acd32;">c</span>[pos-1] = list1[i]
+    <span style="color: #4f97d7; font-weight: bold;">else</span>:
+        <span style="color: #7590db;">pos</span> = getpos(c, <span style="color: #4f97d7;">len</span>(c), list1[i])  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if not, find the right pos</span>
+        <span style="color: #7590db;">c</span>[pos-1] = list1[i]
 
-<span style="color: #20b2aa; font-weight: bold;">print</span>(c)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(c)
 
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org1edab4e" class="outline-2">
-<h2 id="org1edab4e">maximum submatrix</h2>
-<div class="outline-text-2" id="text-org1edab4e">
+
+
+<div id="outline-container-orgdf694a1" class="outline-2">
+<h2 id="orgdf694a1">maximum submatrix</h2>
+<div class="outline-text-2" id="text-orgdf694a1">
 </div>
-<div id="outline-container-org629ca56" class="outline-3">
-<h3 id="org629ca56">Brute force solution Python</h3>
-<div class="outline-text-3" id="text-org629ca56">
+<div id="outline-container-org363cf90" class="outline-3">
+<h3 id="org363cf90">Brute force solution Python</h3>
+<div class="outline-text-3" id="text-org363cf90">
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #20b2aa; font-weight: bold;">import</span> random
-<span style="color: #9acd32;">l</span> = 6
-<span style="color: #9acd32;">a</span> = [[]]*l
-<span style="color: #9acd32;">gsm</span> = [[]]*l
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l):
-    <span style="color: #9acd32;">a</span>[i] = [random.randint(-5, 5) <span style="color: #20b2aa; font-weight: bold;">for</span> x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l)]
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> random
+<span style="color: #7590db;">l</span> = 6
+<span style="color: #7590db;">a</span> = [[]]*l
+<span style="color: #7590db;">gsm</span> = [[]]*l
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+    <span style="color: #7590db;">a</span>[i] = [random.randint(-5, 5) <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
 
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"Original random matrix  \n"</span>)
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l):
-    <span style="color: #20b2aa; font-weight: bold;">for</span> j <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l):
-        <span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"{:&gt;4d}"</span>.<span style="color: #76ee00;">format</span>(a[i][j]), end=<span style="color: #ffa07a;">""</span>)
-    <span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"\n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"Original random matrix  \n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+    <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+        <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"{:&gt;4d}"</span>.<span style="color: #4f97d7;">format</span>(a[i][j]), end=<span style="color: #2d9574;">""</span>)
+    <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
 
-<span style="color: #76ee00;">max</span> = 0
+<span style="color: #4f97d7;">max</span> = 0
 
-<span style="color: #cd853f;"># </span><span style="color: #cd853f;">distance between x dimension of submatrix</span>
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(1, l):
-    <span style="color: #20b2aa; font-weight: bold;">for</span> xstart <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(i-1, l):                            <span style="color: #cd853f;"># </span><span style="color: #cd853f;">x start  of submatrix</span>
-        <span style="color: #20b2aa; font-weight: bold;">for</span> xstop <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(i+xstart, l+1-i+1):              <span style="color: #cd853f;"># </span><span style="color: #cd853f;">x stop    of submatrix</span>
-            <span style="color: #cd853f;"># </span><span style="color: #cd853f;">distance between y dimension of submatrix</span>
-            <span style="color: #20b2aa; font-weight: bold;">for</span> j <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(1, l):
-                <span style="color: #20b2aa; font-weight: bold;">for</span> ystart <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(j-1, l):                 <span style="color: #cd853f;"># </span><span style="color: #cd853f;">y start of submatrix</span>
-                    <span style="color: #20b2aa; font-weight: bold;">for</span> ystop <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(j+ystart, l+1-j+1):   <span style="color: #cd853f;"># </span><span style="color: #cd853f;">y stop of submatrix</span>
-                        <span style="color: #9acd32;">lip</span> = [[] <span style="color: #20b2aa; font-weight: bold;">for</span> x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l)]
-                        <span style="color: #9acd32;">count</span> = 0
-                        <span style="color: #20b2aa; font-weight: bold;">for</span> x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(xstart, xstop):
-                            <span style="color: #20b2aa; font-weight: bold;">for</span> y <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(ystart, ystop):
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">distance between x dimension of submatrix</span>
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+    <span style="color: #4f97d7; font-weight: bold;">for</span> xstart <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i-1, l):                            <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">x start  of submatrix</span>
+        <span style="color: #4f97d7; font-weight: bold;">for</span> xstop <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i+xstart, l+1-i+1):              <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">x stop    of submatrix</span>
+            <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">distance between y dimension of submatrix</span>
+            <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+                <span style="color: #4f97d7; font-weight: bold;">for</span> ystart <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(j-1, l):                 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y start of submatrix</span>
+                    <span style="color: #4f97d7; font-weight: bold;">for</span> ystop <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(j+ystart, l+1-j+1):   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y stop of submatrix</span>
+                        <span style="color: #7590db;">lip</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+                        <span style="color: #7590db;">count</span> = 0
+                        <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(xstart, xstop):
+                            <span style="color: #4f97d7; font-weight: bold;">for</span> y <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(ystart, ystop):
                                 lip[x].append(a[x][y])
-                                <span style="color: #9acd32;">count</span> += a[x][y]
-                        <span style="color: #20b2aa; font-weight: bold;">if</span> count &gt; <span style="color: #76ee00;">max</span>:
-                            <span style="color: #9acd32;">lipmax</span> = [[] <span style="color: #20b2aa; font-weight: bold;">for</span> x <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(l)]
-                            <span style="color: #76ee00;">max</span> = count
-                            <span style="color: #9acd32;">lipmax</span> = lip
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"maximux submatrix :\n"</span>)
-<span style="color: #20b2aa; font-weight: bold;">for</span> i <span style="color: #20b2aa; font-weight: bold;">in</span> <span style="color: #76ee00;">range</span>(<span style="color: #76ee00;">len</span>(lipmax)):
-    <span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"\n"</span>)
-    <span style="color: #20b2aa; font-weight: bold;">for</span> j <span style="color: #20b2aa; font-weight: bold;">in</span> lipmax[i]:
-        <span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"{:&gt;4d}"</span>.<span style="color: #76ee00;">format</span>(j), end=<span style="color: #ffa07a;">""</span>)
+                                <span style="color: #7590db;">count</span> += a[x][y]
+                        <span style="color: #4f97d7; font-weight: bold;">if</span> count &gt; <span style="color: #4f97d7;">max</span>:
+                            <span style="color: #7590db;">lipmax</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+                            <span style="color: #4f97d7;">max</span> = count
+                            <span style="color: #7590db;">lipmax</span> = lip
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"maximux submatrix :\n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(<span style="color: #4f97d7;">len</span>(lipmax)):
+    <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
+    <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> lipmax[i]:
+        <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"{:&gt;4d}"</span>.<span style="color: #4f97d7;">format</span>(j), end=<span style="color: #2d9574;">""</span>)
 
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"\n"</span>)
-<span style="color: #20b2aa; font-weight: bold;">print</span>(<span style="color: #ffa07a;">"The summary is "</span>, <span style="color: #76ee00;">max</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"The summary is "</span>, <span style="color: #4f97d7;">max</span>)
 
 </pre>
 </div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org49f890c" class="outline-2">
+<h2 id="org49f890c">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-org884f630" class="outline-2">
+<h2 id="org884f630">1 Backlinks</h2>
+<div class="outline-text-2" id="text-org884f630">
+</div>
+<div id="outline-container-orgb821a48" class="outline-3">
+<h3 id="orgb821a48"><a href="file:///home/sx/Dropbox/subjects/computerscience.html">CS</a></h3>
+<div class="outline-text-3" id="text-orgb821a48">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/Advanced_Algorithmus.html">Algorithmus org</a>
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-10 So 21:15</p>
+<p class="date">Created: 2020-05-23 Sa 12:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

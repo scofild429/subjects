@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-22 Fr 19:59 -->
+<!-- 2020-05-23 Sa 12:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux Programming</title>
@@ -253,99 +253,110 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org708967e">Makefile</a>
+<li><a href="#org40fc9c6">Makefile</a>
 <ul>
-<li><a href="#org4610414">格式</a></li>
-<li><a href="#org0f62d0d">1example</a></li>
-<li><a href="#orgdc11ddc">2修改后只编译改动后的文件</a></li>
-<li><a href="#org1b9898b">3使用自动变量</a></li>
-<li><a href="#org1f2cd5f">4增加可移植性</a></li>
-<li><a href="#orgd00c42f">5清洁中间的生成的不必要保存文件</a></li>
+<li><a href="#orgfb39e8e">格式</a></li>
+<li><a href="#org21a6b7b">1example</a></li>
+<li><a href="#org43d3477">2修改后只编译改动后的文件</a></li>
+<li><a href="#org0d56c2b">3使用自动变量</a></li>
+<li><a href="#orge3ace6e">4增加可移植性</a></li>
+<li><a href="#orge101005">5清洁中间的生成的不必要保存文件</a></li>
 </ul>
 </li>
-<li><a href="#org0f2ae61">静态库的制作</a>
+<li><a href="#org4ac892c">静态库的制作</a>
 <ul>
-<li><a href="#orgf5d5388">库方</a></li>
-<li><a href="#orgf51942f">甲方</a></li>
-<li><a href="#org0e5cfa8">特点</a></li>
+<li><a href="#org99e5a11">库方</a></li>
+<li><a href="#org98187f2">甲方</a></li>
+<li><a href="#orgdb64063">特点</a></li>
 </ul>
 </li>
-<li><a href="#org966676b">动态库的制作</a>
+<li><a href="#org7650946">动态库的制作</a>
 <ul>
-<li><a href="#orgdbcbcfa">环境变量</a></li>
-<li><a href="#orgb6d5e4f">修改配置文件</a></li>
-<li><a href="#orgd5d495e">通过函数加载</a></li>
+<li><a href="#org66251b6">环境变量</a></li>
+<li><a href="#orge5fc11c">修改配置文件</a></li>
+<li><a href="#org58f6506">通过函数加载</a></li>
 </ul>
 </li>
-<li><a href="#orgcaffde9">exit</a></li>
-<li><a href="#orgde56767">memory</a>
+<li><a href="#org7bf56d2">exit</a></li>
+<li><a href="#orgd127ea6">memory</a>
 <ul>
-<li><a href="#org020151c">memcpy</a></li>
+<li><a href="#org0c5fabf">memcpy</a></li>
 </ul>
 </li>
-<li><a href="#org303c9f8">pipe</a>
+<li><a href="#org61840e1">pipe</a>
 <ul>
-<li><a href="#org5f2b288">named pipe</a></li>
-<li><a href="#org3610eb3">unnamed pipe</a></li>
+<li><a href="#orgd4355b4">named pipe</a></li>
+<li><a href="#org9369209">unnamed pipe</a></li>
 </ul>
 </li>
-<li><a href="#org5eafb94">memset</a></li>
-<li><a href="#org0e0369e">signa</a>
+<li><a href="#orga3fd992">memset</a></li>
+<li><a href="#orga8740d6">signa</a>
 <ul>
-<li><a href="#org1e736e9">kill</a></li>
-<li><a href="#org4856943">raise</a></li>
-<li><a href="#org5cf8964">alarm</a></li>
-<li><a href="#org8f3753a">pause</a></li>
-<li><a href="#org5a72597">signal</a></li>
+<li><a href="#orgdffb6a8">kill</a></li>
+<li><a href="#orgbcb4f5e">raise</a></li>
+<li><a href="#org3300044">alarm</a></li>
+<li><a href="#org39932cf">pause</a></li>
+<li><a href="#org8719e6a">signal</a></li>
 </ul>
 </li>
-<li><a href="#org7e5f088">shared memory</a>
+<li><a href="#org63ddff0">shared memory</a>
 <ul>
-<li><a href="#org1aaaac8">key</a></li>
-<li><a href="#org12f556e">shmget</a></li>
-<li><a href="#org256e5c2">shmat</a></li>
-<li><a href="#org9eddfb6">shmdt</a></li>
-<li><a href="#orgc11b544">shmctl</a></li>
-<li><a href="#org7c892a1">IPC manipulation</a></li>
+<li><a href="#orgec26d25">key</a></li>
+<li><a href="#org582aaac">shmget</a></li>
+<li><a href="#org9221694">shmat</a></li>
+<li><a href="#org45364ef">shmdt</a></li>
+<li><a href="#org127d99e">shmctl</a></li>
+<li><a href="#org6e38896">IPC manipulation</a></li>
 </ul>
 </li>
-<li><a href="#org0d72cca">message queue</a>
+<li><a href="#org2077ec9">message queue</a>
 <ul>
-<li><a href="#org5260535">msgget</a></li>
-<li><a href="#orge68d7b4">msgctl</a></li>
-<li><a href="#orga58a75c">msgsnd</a></li>
-<li><a href="#org292614d">msgrcv</a></li>
+<li><a href="#org618c45b">msgget</a></li>
+<li><a href="#org7213588">msgctl</a></li>
+<li><a href="#org4ed6671">msgsnd</a></li>
+<li><a href="#orge79e1f9">msgrcv</a></li>
 </ul>
 </li>
-<li><a href="#orgb97be96">semaphore</a>
+<li><a href="#orge2e3bf1">semaphore</a>
 <ul>
-<li><a href="#orgf060075">semget</a></li>
-<li><a href="#org9f0dde3">semctl</a></li>
+<li><a href="#org2336811">semget</a></li>
+<li><a href="#org39d68b7">semctl</a></li>
+</ul>
+</li>
+<li><a href="#orgcb5860a">Backlinks</a></li>
+<li><a href="#org6038034">2 Backlinks</a>
+<ul>
+<li><a href="#orgeeb26ce">pthread Programm</a></li>
+<li><a href="#org6312e70">CS</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org708967e" class="outline-2">
-<h2 id="org708967e">Makefile</h2>
-<div class="outline-text-2" id="text-org708967e">
+<p>
+<a href="file:///home/sx/Dropbox/sysconf/linux.html">linux config</a>
+</p>
+
+<div id="outline-container-org40fc9c6" class="outline-2">
+<h2 id="org40fc9c6">Makefile</h2>
+<div class="outline-text-2" id="text-org40fc9c6">
 <p>
 gcc 调用 make 来构造
 </p>
 </div>
 
-<div id="outline-container-org4610414" class="outline-3">
-<h3 id="org4610414">格式</h3>
-<div class="outline-text-3" id="text-org4610414">
+<div id="outline-container-orgfb39e8e" class="outline-3">
+<h3 id="orgfb39e8e">格式</h3>
+<div class="outline-text-3" id="text-orgfb39e8e">
 <p>
 目标 ： 依赖
 Tab 命令
 </p>
 </div>
 </div>
-<div id="outline-container-org0f62d0d" class="outline-3">
-<h3 id="org0f62d0d">1example</h3>
-<div class="outline-text-3" id="text-org0f62d0d">
+<div id="outline-container-org21a6b7b" class="outline-3">
+<h3 id="org21a6b7b">1example</h3>
+<div class="outline-text-3" id="text-org21a6b7b">
 <p>
 实列文件：add.c  head.h   main.c   maul.c  sub.c  
 直接在terminal 用gcc ：$ gcc add.c main.c sub.c -o app
@@ -366,9 +377,9 @@ $ make
 </div>
 </div>
 
-<div id="outline-container-orgdc11ddc" class="outline-3">
-<h3 id="orgdc11ddc">2修改后只编译改动后的文件</h3>
-<div class="outline-text-3" id="text-orgdc11ddc">
+<div id="outline-container-org43d3477" class="outline-3">
+<h3 id="org43d3477">2修改后只编译改动后的文件</h3>
+<div class="outline-text-3" id="text-org43d3477">
 <p>
 Makefile :
 $ touch Makefile
@@ -397,9 +408,9 @@ $ make
 </p>
 </div>
 </div>
-<div id="outline-container-org1b9898b" class="outline-3">
-<h3 id="org1b9898b">3使用自动变量</h3>
-<div class="outline-text-3" id="text-org1b9898b">
+<div id="outline-container-org0d56c2b" class="outline-3">
+<h3 id="org0d56c2b">3使用自动变量</h3>
+<div class="outline-text-3" id="text-org0d56c2b">
 <p>
 $@ :目标
 $&lt; :第一个依赖 
@@ -425,9 +436,9 @@ $ make
 </p>
 </div>
 </div>
-<div id="outline-container-org1f2cd5f" class="outline-3">
-<h3 id="org1f2cd5f">4增加可移植性</h3>
-<div class="outline-text-3" id="text-org1f2cd5f">
+<div id="outline-container-orge3ace6e" class="outline-3">
+<h3 id="orge3ace6e">4增加可移植性</h3>
+<div class="outline-text-3" id="text-orge3ace6e">
 <p>
 wildcard :查找指定目录下的指定类型文件
 src = $(wildcard ./*.c)
@@ -464,9 +475,9 @@ $ make
 </p>
 </div>
 </div>
-<div id="outline-container-orgd00c42f" class="outline-3">
-<h3 id="orgd00c42f">5清洁中间的生成的不必要保存文件</h3>
-<div class="outline-text-3" id="text-orgd00c42f">
+<div id="outline-container-orge101005" class="outline-3">
+<h3 id="orge101005">5清洁中间的生成的不必要保存文件</h3>
+<div class="outline-text-3" id="text-orge101005">
 <p>
 make 一般直接执行终结目标，但是可以直接指定make的函数
 clean : 删除不必要的文件，-f : 强制删除，不管有没有该文件，- : 前置-后，遇到错误执行，直接跳过
@@ -499,13 +510,13 @@ $ make clean
 </div>
 </div>
 
-<div id="outline-container-org0f2ae61" class="outline-2">
-<h2 id="org0f2ae61">静态库的制作</h2>
-<div class="outline-text-2" id="text-org0f2ae61">
+<div id="outline-container-org4ac892c" class="outline-2">
+<h2 id="org4ac892c">静态库的制作</h2>
+<div class="outline-text-2" id="text-org4ac892c">
 </div>
-<div id="outline-container-orgf5d5388" class="outline-3">
-<h3 id="orgf5d5388">库方</h3>
-<div class="outline-text-3" id="text-orgf5d5388">
+<div id="outline-container-org99e5a11" class="outline-3">
+<h3 id="org99e5a11">库方</h3>
+<div class="outline-text-3" id="text-org99e5a11">
 <p>
 include/head.h  lib/  src/
 将在src/中编写要实现的文件
@@ -523,9 +534,9 @@ ar : -archive 打包
 </p>
 </div>
 </div>
-<div id="outline-container-orgf51942f" class="outline-3">
-<h3 id="orgf51942f">甲方</h3>
-<div class="outline-text-3" id="text-orgf51942f">
+<div id="outline-container-org98187f2" class="outline-3">
+<h3 id="org98187f2">甲方</h3>
+<div class="outline-text-3" id="text-org98187f2">
 <p>
 根据include/head.h 的头文件编写自己的应用文件main.c
 编译main.c并链接头文件和库 
@@ -538,9 +549,9 @@ ar : -archive 打包
 </div>
 </div>
 
-<div id="outline-container-org0e5cfa8" class="outline-3">
-<h3 id="org0e5cfa8">特点</h3>
-<div class="outline-text-3" id="text-org0e5cfa8">
+<div id="outline-container-orgdb64063" class="outline-3">
+<h3 id="orgdb64063">特点</h3>
+<div class="outline-text-3" id="text-orgdb64063">
 <p>
 优点： 加载块，移植方便
 缺点 ：部署更新麻烦，引用的重复文件重复储存，浪费空间
@@ -549,9 +560,9 @@ ar : -archive 打包
 </div>
 </div>
 
-<div id="outline-container-org966676b" class="outline-2">
-<h2 id="org966676b">动态库的制作</h2>
-<div class="outline-text-2" id="text-org966676b">
+<div id="outline-container-org7650946" class="outline-2">
+<h2 id="org7650946">动态库的制作</h2>
+<div class="outline-text-2" id="text-org7650946">
 <p>
 编译    $ gcc *.c -c -fpic -I ../include
 -fpic 或者 fPIC : 特殊命令
@@ -570,9 +581,9 @@ $ gcc main.c -I ./inculde/ -L ./lib/ -lxxx -o app
 </p>
 </div>
 
-<div id="outline-container-orgdbcbcfa" class="outline-3">
-<h3 id="orgdbcbcfa">环境变量</h3>
-<div class="outline-text-3" id="text-orgdbcbcfa">
+<div id="outline-container-org66251b6" class="outline-3">
+<h3 id="org66251b6">环境变量</h3>
+<div class="outline-text-3" id="text-org66251b6">
 <p>
 临时设置   
   $ export LD<sub>LIBRARY</sub><sub>PATH</sub>=./lib
@@ -598,9 +609,9 @@ $ source /etc/profile
 </div>
 </div>
 
-<div id="outline-container-orgb6d5e4f" class="outline-3">
-<h3 id="orgb6d5e4f">修改配置文件</h3>
-<div class="outline-text-3" id="text-orgb6d5e4f">
+<div id="outline-container-orge5fc11c" class="outline-3">
+<h3 id="orge5fc11c">修改配置文件</h3>
+<div class="outline-text-3" id="text-orge5fc11c">
 <p>
 配置文件/etc/ld.so.conf
 $ sudo cat "绝对路径/lib" &gt;&gt; /etc/ld.so.conf
@@ -609,9 +620,9 @@ $ sudo ldconfig -v 激活配置
 </div>
 </div>
 
-<div id="outline-container-orgd5d495e" class="outline-3">
-<h3 id="orgd5d495e">通过函数加载</h3>
-<div class="outline-text-3" id="text-orgd5d495e">
+<div id="outline-container-org58f6506" class="outline-3">
+<h3 id="org58f6506">通过函数加载</h3>
+<div class="outline-text-3" id="text-org58f6506">
 <p>
 dlopen dlclose dlsym
 </p>
@@ -619,35 +630,35 @@ dlopen dlclose dlsym
 </div>
 </div>
 
-<div id="outline-container-orgcaffde9" class="outline-2">
-<h2 id="orgcaffde9">exit</h2>
-<div class="outline-text-2" id="text-orgcaffde9">
+<div id="outline-container-org7bf56d2" class="outline-2">
+<h2 id="org7bf56d2">exit</h2>
+<div class="outline-text-2" id="text-org7bf56d2">
 <p>
 exit(0) will also send signal 17 (SIGCHID) to its father thread;
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgde56767" class="outline-2">
-<h2 id="orgde56767">memory</h2>
-<div class="outline-text-2" id="text-orgde56767">
+<div id="outline-container-orgd127ea6" class="outline-2">
+<h2 id="orgd127ea6">memory</h2>
+<div class="outline-text-2" id="text-orgd127ea6">
 </div>
-<div id="outline-container-org020151c" class="outline-3">
-<h3 id="org020151c">memcpy</h3>
-<div class="outline-text-3" id="text-org020151c">
+<div id="outline-container-org0c5fabf" class="outline-3">
+<h3 id="org0c5fabf">memcpy</h3>
+<div class="outline-text-3" id="text-org0c5fabf">
 <p>
 memcpy(p, "niao",4);
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org303c9f8" class="outline-2">
-<h2 id="org303c9f8">pipe</h2>
-<div class="outline-text-2" id="text-org303c9f8">
+<div id="outline-container-org61840e1" class="outline-2">
+<h2 id="org61840e1">pipe</h2>
+<div class="outline-text-2" id="text-org61840e1">
 </div>
-<div id="outline-container-org5f2b288" class="outline-3">
-<h3 id="org5f2b288">named pipe</h3>
-<div class="outline-text-3" id="text-org5f2b288">
+<div id="outline-container-orgd4355b4" class="outline-3">
+<h3 id="orgd4355b4">named pipe</h3>
+<div class="outline-text-3" id="text-orgd4355b4">
 <ol class="org-ol">
 <li>In current directory:   mkfifo("./myfifo", 0777);</li>
 </ol>
@@ -674,9 +685,9 @@ can be controled by pipe variable
 </div>
 </div>
 
-<div id="outline-container-org3610eb3" class="outline-3">
-<h3 id="org3610eb3">unnamed pipe</h3>
-<div class="outline-text-3" id="text-org3610eb3">
+<div id="outline-container-org9369209" class="outline-3">
+<h3 id="org9369209">unnamed pipe</h3>
+<div class="outline-text-3" id="text-org9369209">
 <ol class="org-ol">
 <li><p>
 In one process diff threads
@@ -698,50 +709,50 @@ remeber: wirte at frist in fd[1], and then read at fd[0]
 </div>
 </div>
 
-<div id="outline-container-org5eafb94" class="outline-2">
-<h2 id="org5eafb94">memset</h2>
+<div id="outline-container-orga3fd992" class="outline-2">
+<h2 id="orga3fd992">memset</h2>
 </div>
-<div id="outline-container-org0e0369e" class="outline-2">
-<h2 id="org0e0369e">signa</h2>
-<div class="outline-text-2" id="text-org0e0369e">
+<div id="outline-container-orga8740d6" class="outline-2">
+<h2 id="orga8740d6">signa</h2>
+<div class="outline-text-2" id="text-orga8740d6">
 </div>
-<div id="outline-container-org1e736e9" class="outline-3">
-<h3 id="org1e736e9">kill</h3>
-<div class="outline-text-3" id="text-org1e736e9">
+<div id="outline-container-orgdffb6a8" class="outline-3">
+<h3 id="orgdffb6a8">kill</h3>
+<div class="outline-text-3" id="text-orgdffb6a8">
 <p>
 kill(pid, 9);
 send signal 9 to pid process
 </p>
 </div>
 </div>
-<div id="outline-container-org4856943" class="outline-3">
-<h3 id="org4856943">raise</h3>
-<div class="outline-text-3" id="text-org4856943">
+<div id="outline-container-orgbcb4f5e" class="outline-3">
+<h3 id="orgbcb4f5e">raise</h3>
+<div class="outline-text-3" id="text-orgbcb4f5e">
 <p>
 raise(9);  == kill(getpid(), 9);
 </p>
 </div>
 </div>
-<div id="outline-container-org5cf8964" class="outline-3">
-<h3 id="org5cf8964">alarm</h3>
-<div class="outline-text-3" id="text-org5cf8964">
+<div id="outline-container-org3300044" class="outline-3">
+<h3 id="org3300044">alarm</h3>
+<div class="outline-text-3" id="text-org3300044">
 <p>
 alarm(10);   wait for 10 seconds and kill itself
 send signal as 14 to itself
 </p>
 </div>
 </div>
-<div id="outline-container-org8f3753a" class="outline-3">
-<h3 id="org8f3753a">pause</h3>
-<div class="outline-text-3" id="text-org8f3753a">
+<div id="outline-container-org39932cf" class="outline-3">
+<h3 id="org39932cf">pause</h3>
+<div class="outline-text-3" id="text-org39932cf">
 <p>
 pause(); stoped for ever
 </p>
 </div>
 </div>
-<div id="outline-container-org5a72597" class="outline-3">
-<h3 id="org5a72597">signal</h3>
-<div class="outline-text-3" id="text-org5a72597">
+<div id="outline-container-org8719e6a" class="outline-3">
+<h3 id="org8719e6a">signal</h3>
+<div class="outline-text-3" id="text-org8719e6a">
 <p>
 signal(signal<sub>ID</sub>, self<sub>function</sub>); self function or SIG<sub>ING</sub> or SIG<sub>DFL</sub>
 </p>
@@ -749,13 +760,13 @@ signal(signal<sub>ID</sub>, self<sub>function</sub>); self function or SIG<sub>I
 </div>
 </div>
 
-<div id="outline-container-org7e5f088" class="outline-2">
-<h2 id="org7e5f088">shared memory</h2>
-<div class="outline-text-2" id="text-org7e5f088">
+<div id="outline-container-org63ddff0" class="outline-2">
+<h2 id="org63ddff0">shared memory</h2>
+<div class="outline-text-2" id="text-org63ddff0">
 </div>
-<div id="outline-container-org1aaaac8" class="outline-3">
-<h3 id="org1aaaac8">key</h3>
-<div class="outline-text-3" id="text-org1aaaac8">
+<div id="outline-container-orgec26d25" class="outline-3">
+<h3 id="orgec26d25">key</h3>
+<div class="outline-text-3" id="text-orgec26d25">
 <p>
 key can be 2 differ
 </p>
@@ -774,18 +785,18 @@ key can be 2 differ
 </pre>
 </div>
 </div>
-<div id="outline-container-org12f556e" class="outline-3">
-<h3 id="org12f556e">shmget</h3>
-<div class="outline-text-3" id="text-org12f556e">
+<div id="outline-container-org582aaac" class="outline-3">
+<h3 id="org582aaac">shmget</h3>
+<div class="outline-text-3" id="text-org582aaac">
 <p>
 shmid = shmget(IPC<sub>PRIVATE</sub>, 128, 0777);
 shmid = shmget(key, 128, IPC<sub>CREAT</sub> | 0777);
 </p>
 </div>
 </div>
-<div id="outline-container-org256e5c2" class="outline-3">
-<h3 id="org256e5c2">shmat</h3>
-<div class="outline-text-3" id="text-org256e5c2">
+<div id="outline-container-org9221694" class="outline-3">
+<h3 id="org9221694">shmat</h3>
+<div class="outline-text-3" id="text-org9221694">
 <p>
 char *p  = (char *) shmat(shmid, NULL, 0);
 after mapping to p : can be manipulated
@@ -795,9 +806,9 @@ printf("%s", p);
 </div>
 </div>
 
-<div id="outline-container-org9eddfb6" class="outline-3">
-<h3 id="org9eddfb6">shmdt</h3>
-<div class="outline-text-3" id="text-org9eddfb6">
+<div id="outline-container-org45364ef" class="outline-3">
+<h3 id="org45364ef">shmdt</h3>
+<div class="outline-text-3" id="text-org45364ef">
 <p>
 delete the mapping of p to shared memory 
 shmdt(p); 
@@ -807,9 +818,9 @@ segmention fault
 </div>
 </div>
 
-<div id="outline-container-orgc11b544" class="outline-3">
-<h3 id="orgc11b544">shmctl</h3>
-<div class="outline-text-3" id="text-orgc11b544">
+<div id="outline-container-org127d99e" class="outline-3">
+<h3 id="org127d99e">shmctl</h3>
+<div class="outline-text-3" id="text-org127d99e">
 <p>
 delete the created shared memory
 shmctl(shmid, IPC<sub>RMID</sub>, NULL); == iprcm -m shmid
@@ -817,9 +828,9 @@ shmctl(shmid, IPC<sub>RMID</sub>, NULL); == iprcm -m shmid
 </div>
 </div>
 
-<div id="outline-container-org7c892a1" class="outline-3">
-<h3 id="org7c892a1">IPC manipulation</h3>
-<div class="outline-text-3" id="text-org7c892a1">
+<div id="outline-container-org6e38896" class="outline-3">
+<h3 id="org6e38896">IPC manipulation</h3>
+<div class="outline-text-3" id="text-org6e38896">
 <p>
 show : ipcs -m(shared memory) -q(message queue) -s(semaphores) 
 delete : ipcrm -m shmid /-q msgid /-s semid
@@ -828,40 +839,40 @@ delete : ipcrm -m shmid /-q msgid /-s semid
 </div>
 </div>
 
-<div id="outline-container-org0d72cca" class="outline-2">
-<h2 id="org0d72cca">message queue</h2>
-<div class="outline-text-2" id="text-org0d72cca">
+<div id="outline-container-org2077ec9" class="outline-2">
+<h2 id="org2077ec9">message queue</h2>
+<div class="outline-text-2" id="text-org2077ec9">
 </div>
-<div id="outline-container-org5260535" class="outline-3">
-<h3 id="org5260535">msgget</h3>
-<div class="outline-text-3" id="text-org5260535">
+<div id="outline-container-org618c45b" class="outline-3">
+<h3 id="org618c45b">msgget</h3>
+<div class="outline-text-3" id="text-org618c45b">
 <p>
 msgid= msgget(IPC<sub>PRIVATE</sub>, 0777);
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge68d7b4" class="outline-3">
-<h3 id="orge68d7b4">msgctl</h3>
-<div class="outline-text-3" id="text-orge68d7b4">
+<div id="outline-container-org7213588" class="outline-3">
+<h3 id="org7213588">msgctl</h3>
+<div class="outline-text-3" id="text-org7213588">
 <p>
 msgctl(msgid, IPC<sub>RMID</sub>, NULL); == ipcrm -q msgid
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga58a75c" class="outline-3">
-<h3 id="orga58a75c">msgsnd</h3>
-<div class="outline-text-3" id="text-orga58a75c">
+<div id="outline-container-org4ed6671" class="outline-3">
+<h3 id="org4ed6671">msgsnd</h3>
+<div class="outline-text-3" id="text-org4ed6671">
 <p>
 msgsnd(msgid, (void *)&amp;sendbuffer, strlen(sendbuffer.message), 0);
 </p>
 </div>
 </div>
 
-<div id="outline-container-org292614d" class="outline-3">
-<h3 id="org292614d">msgrcv</h3>
-<div class="outline-text-3" id="text-org292614d">
+<div id="outline-container-orge79e1f9" class="outline-3">
+<h3 id="orge79e1f9">msgrcv</h3>
+<div class="outline-text-3" id="text-orge79e1f9">
 <p>
 receivelen = msgrcv(msgid, (void *)&amp;receiverbuffer, messagelen, 100, 0);
 </p>
@@ -869,23 +880,51 @@ receivelen = msgrcv(msgid, (void *)&amp;receiverbuffer, messagelen, 100, 0);
 </div>
 </div>
 
-<div id="outline-container-orgb97be96" class="outline-2">
-<h2 id="orgb97be96">semaphore</h2>
-<div class="outline-text-2" id="text-orgb97be96">
+<div id="outline-container-orge2e3bf1" class="outline-2">
+<h2 id="orge2e3bf1">semaphore</h2>
+<div class="outline-text-2" id="text-orge2e3bf1">
 </div>
-<div id="outline-container-orgf060075" class="outline-3">
-<h3 id="orgf060075">semget</h3>
-<div class="outline-text-3" id="text-orgf060075">
+<div id="outline-container-org2336811" class="outline-3">
+<h3 id="org2336811">semget</h3>
+<div class="outline-text-3" id="text-org2336811">
 <p>
 semid = semget(IPC<sub>PRIVATE,3</sub> ,  0777);
 </p>
 </div>
 </div>
-<div id="outline-container-org9f0dde3" class="outline-3">
-<h3 id="org9f0dde3">semctl</h3>
-<div class="outline-text-3" id="text-org9f0dde3">
+<div id="outline-container-org39d68b7" class="outline-3">
+<h3 id="org39d68b7">semctl</h3>
+<div class="outline-text-3" id="text-org39d68b7">
 <p>
 semctl(semid, 0, IPC<sub>RMID</sub>, NULL);
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb5860a" class="outline-2">
+<h2 id="orgcb5860a">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-org6038034" class="outline-2">
+<h2 id="org6038034">2 Backlinks</h2>
+<div class="outline-text-2" id="text-org6038034">
+</div>
+<div id="outline-container-orgeeb26ce" class="outline-3">
+<h3 id="orgeeb26ce"><a href="file:///home/sx/Dropbox/Projects/linux/Thread_Programme/README.html">pthread Programm</a></h3>
+<div class="outline-text-3" id="text-orgeeb26ce">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/linux_program.html">linux programmierung</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6312e70" class="outline-3">
+<h3 id="org6312e70"><a href="file:///home/sx/Dropbox/subjects/computerscience.html">CS</a></h3>
+<div class="outline-text-3" id="text-org6312e70">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/linux_program.html">linux programming org</a>
 </p>
 </div>
 </div>
@@ -893,7 +932,7 @@ semctl(semid, 0, IPC<sub>RMID</sub>, NULL);
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-22 Fr 19:59</p>
+<p class="date">Created: 2020-05-23 Sa 12:53</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

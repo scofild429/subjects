@@ -1,49 +1,31 @@
-#+TITLE: Subjects README
+#+TITLE: Subjects
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+STARTUP: content
 
 * Computer Science
-[[~/Dropbox/subjects/computerscience.html][computer science web]]
-
 [[~/Dropbox/subjects/computerscience.org][computer science org]]
 
-* AI
-[[~/Dropbox/subjects/AI.html][AI web]]
-
-[[~/Dropbox/subjects/AI.org][AI org]]
-
-
 * math
-[[https://scofild429.github.io/subjects/Math.html][Math web]]
-
 [[~/Dropbox/subjects/Math.org][Math org]]
 
 
-
 * physik
-[[https://scofild429.github.io/subjects/Physik.html][Physik web]]
-
 [[~/Dropbox/subjects/Physik.org][Physik org]]
 
 
 * ROS
-[[~/Dropbox/subjects/ROS.html][ROS]]
-
 [[~/Dropbox/subjects/ROS.org][ROS org]]
 
 
 * IPFS
-[[~/Dropbox/subjects/IPFS.html][IPFS web]]
-
 [[~/Dropbox/subjects/IPFS.org][IPFS org]]
 
 
 * leetcode
-[[~/Dropbox/Projects/leetcode/Median_of_Two_sorted_Arrays.html][leetcode web]]
-
 [[~/Dropbox/Projects/leetcode/Median_of_Two_sorted_Arrays.org][leetcode org]]
 
 
 * webdesign
-[[~/Dropbox/subjects/WebDesign.html][web design web]]
-
 [[~/Dropbox/subjects/WebDesign.org][web design org]]
 

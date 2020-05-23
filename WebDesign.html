@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-23 Sa 01:11 -->
+<!-- 2020-05-23 Sa 12:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Webdesige</title>
@@ -253,61 +253,67 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org55bd454">Web Design Envirement</a>
+<li><a href="#orge0a7ac8">Web Design Envirement</a>
 <ul>
-<li><a href="#orgb485e45">lsp-mode</a></li>
-<li><a href="#org3a8e103">lsp-java</a></li>
-<li><a href="#org8773b1b">dap-mode</a></li>
-<li><a href="#org125600a">Nginx</a>
+<li><a href="#org9b1f791">lsp-mode</a></li>
+<li><a href="#orgc7e5aa3">lsp-java</a></li>
+<li><a href="#orgbf110d2">dap-mode</a></li>
+<li><a href="#orgb47a9a9">Nginx</a>
 <ul>
-<li><a href="#orgd772439">Nginx Hitting</a></li>
-<li><a href="#org76e8844">利用Docker构建项目</a></li>
-<li><a href="#org0115101">在本地构建项目</a></li>
+<li><a href="#org727cebe">Nginx Hitting</a></li>
+<li><a href="#org6da9d5f">利用Docker构建项目</a></li>
+<li><a href="#orgd7d60b0">在本地构建项目</a></li>
 </ul>
 </li>
-<li><a href="#org63e1283">Maven</a></li>
-<li><a href="#orgd57f844">Spring</a></li>
-<li><a href="#orgb9fa48a">Spring Boot</a></li>
+<li><a href="#orgfd2383b">Maven</a></li>
+<li><a href="#org6cbab90">Spring</a></li>
+<li><a href="#org024eabe">Spring Boot</a></li>
 </ul>
 </li>
-<li><a href="#org5d3705e">project build</a></li>
-<li><a href="#org634e530">appeared Problem</a>
+<li><a href="#org96cdd38">project build</a></li>
+<li><a href="#orgf1431b0">appeared Problem</a>
 <ul>
-<li><a href="#org15cdcc8">server is not startup</a></li>
-<li><a href="#org0b4b325">can't find the main class to start project</a></li>
-<li><a href="#org0765ff4">没有对应的补全</a></li>
+<li><a href="#org89e1529">server is not startup</a></li>
+<li><a href="#org73e0860">can't find the main class to start project</a></li>
+<li><a href="#orge41923a">没有对应的补全</a></li>
 </ul>
 </li>
-<li><a href="#org93f6446">deployment with nginx in Docker</a></li>
+<li><a href="#org1fb6d65">deployment with nginx in Docker</a></li>
+<li><a href="#org12fb145">Backlinks</a></li>
+<li><a href="#orgc501db2">1 Backlinks</a>
+<ul>
+<li><a href="#org00eca47">Subjects README</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org55bd454" class="outline-2">
-<h2 id="org55bd454">Web Design Envirement</h2>
-<div class="outline-text-2" id="text-org55bd454">
+<div id="outline-container-orge0a7ac8" class="outline-2">
+<h2 id="orge0a7ac8">Web Design Envirement</h2>
+<div class="outline-text-2" id="text-orge0a7ac8">
 </div>
-<div id="outline-container-orgb485e45" class="outline-3">
-<h3 id="orgb485e45">lsp-mode</h3>
+<div id="outline-container-org9b1f791" class="outline-3">
+<h3 id="org9b1f791">lsp-mode</h3>
 </div>
-<div id="outline-container-org3a8e103" class="outline-3">
-<h3 id="org3a8e103">lsp-java</h3>
+<div id="outline-container-orgc7e5aa3" class="outline-3">
+<h3 id="orgc7e5aa3">lsp-java</h3>
 </div>
-<div id="outline-container-org8773b1b" class="outline-3">
-<h3 id="org8773b1b">dap-mode</h3>
+<div id="outline-container-orgbf110d2" class="outline-3">
+<h3 id="orgbf110d2">dap-mode</h3>
 </div>
-<div id="outline-container-org125600a" class="outline-3">
-<h3 id="org125600a">Nginx</h3>
-<div class="outline-text-3" id="text-org125600a">
+<div id="outline-container-orgb47a9a9" class="outline-3">
+<h3 id="orgb47a9a9">Nginx</h3>
+<div class="outline-text-3" id="text-orgb47a9a9">
 </div>
-<div id="outline-container-orgd772439" class="outline-4">
-<h4 id="orgd772439">Nginx Hitting</h4>
-<div class="outline-text-4" id="text-orgd772439">
+<div id="outline-container-org727cebe" class="outline-4">
+<h4 id="org727cebe">Nginx Hitting</h4>
+<div class="outline-text-4" id="text-org727cebe">
 </div>
 <ul class="org-ul">
-<li><a id="orgd907b06"></a>fire wall 80 port if necessary<br />
-<div class="outline-text-5" id="text-orgd907b06">
+<li><a id="org0153d83"></a>fire wall 80 port if necessary<br />
+<div class="outline-text-5" id="text-org0153d83">
 <pre class="example">
 add port :
 sudo firewall-cmd --add-port=80/tcp --permanent
@@ -318,8 +324,8 @@ sudo  firewall-cmd --list-all
 </pre>
 </div>
 </li>
-<li><a id="orgf334a96"></a>nginx control<br />
-<div class="outline-text-5" id="text-orgf334a96">
+<li><a id="org62187ca"></a>nginx control<br />
+<div class="outline-text-5" id="text-org62187ca">
 <pre class="example">
 sudo apt systemctl stop nginx
 nginx -s stop
@@ -329,8 +335,8 @@ nginx -s reload
 </div>
 </li>
 
-<li><a id="org2dca7f1"></a>uninstall<br />
-<div class="outline-text-5" id="text-org2dca7f1">
+<li><a id="org3ee65e2"></a>uninstall<br />
+<div class="outline-text-5" id="text-org3ee65e2">
 <p>
 sudo apt-get purge nginx nginx-common
 </p>
@@ -339,9 +345,9 @@ sudo apt-get purge nginx nginx-common
 </ul>
 </div>
 
-<div id="outline-container-org76e8844" class="outline-4">
-<h4 id="org76e8844">利用Docker构建项目</h4>
-<div class="outline-text-4" id="text-org76e8844">
+<div id="outline-container-org6da9d5f" class="outline-4">
+<h4 id="org6da9d5f">利用Docker构建项目</h4>
+<div class="outline-text-4" id="text-org6da9d5f">
 <p>
 sudo docker images
 sudo docker pull nginx
@@ -352,9 +358,9 @@ build in - &gt; local host :80
 </div>
 </div>
 
-<div id="outline-container-org0115101" class="outline-4">
-<h4 id="org0115101">在本地构建项目</h4>
-<div class="outline-text-4" id="text-org0115101">
+<div id="outline-container-orgd7d60b0" class="outline-4">
+<h4 id="orgd7d60b0">在本地构建项目</h4>
+<div class="outline-text-4" id="text-orgd7d60b0">
 <p>
 sudo apt install nginx
 </p>
@@ -370,15 +376,15 @@ nginx 的默认设置在其中一个 default 文件里。
 </div>
 </div>
 
-<div id="outline-container-org63e1283" class="outline-3">
-<h3 id="org63e1283">Maven</h3>
+<div id="outline-container-orgfd2383b" class="outline-3">
+<h3 id="orgfd2383b">Maven</h3>
 </div>
-<div id="outline-container-orgd57f844" class="outline-3">
-<h3 id="orgd57f844">Spring</h3>
+<div id="outline-container-org6cbab90" class="outline-3">
+<h3 id="org6cbab90">Spring</h3>
 </div>
-<div id="outline-container-orgb9fa48a" class="outline-3">
-<h3 id="orgb9fa48a">Spring Boot</h3>
-<div class="outline-text-3" id="text-orgb9fa48a">
+<div id="outline-container-org024eabe" class="outline-3">
+<h3 id="org024eabe">Spring Boot</h3>
+<div class="outline-text-3" id="text-org024eabe">
 <p>
 Emacs : M-x lsp-java-springboot-generate
 after build the project, it can be compiled by Maven,and run
@@ -388,9 +394,9 @@ after build the project, it can be compiled by Maven,and run
 </div>
 
 
-<div id="outline-container-org5d3705e" class="outline-2">
-<h2 id="org5d3705e">project build</h2>
-<div class="outline-text-2" id="text-org5d3705e">
+<div id="outline-container-org96cdd38" class="outline-2">
+<h2 id="org96cdd38">project build</h2>
+<div class="outline-text-2" id="text-org96cdd38">
 
 <div class="figure">
 <p><img src="../sysconf/foto/webbuild.png" alt="webbuild.png" />
@@ -402,31 +408,31 @@ after build the project, it can be compiled by Maven,and run
 
 
 
-<div id="outline-container-org634e530" class="outline-2">
-<h2 id="org634e530">appeared Problem</h2>
-<div class="outline-text-2" id="text-org634e530">
+<div id="outline-container-orgf1431b0" class="outline-2">
+<h2 id="orgf1431b0">appeared Problem</h2>
+<div class="outline-text-2" id="text-orgf1431b0">
 </div>
-<div id="outline-container-org15cdcc8" class="outline-3">
-<h3 id="org15cdcc8">server is not startup</h3>
-<div class="outline-text-3" id="text-org15cdcc8">
+<div id="outline-container-org89e1529" class="outline-3">
+<h3 id="org89e1529">server is not startup</h3>
+<div class="outline-text-3" id="text-org89e1529">
 <p>
 1, workspace 有重叠和包含，
 2, 需要重启 lsp mode
 </p>
 </div>
 </div>
-<div id="outline-container-org0b4b325" class="outline-3">
-<h3 id="org0b4b325">can't find the main class to start project</h3>
-<div class="outline-text-3" id="text-org0b4b325">
+<div id="outline-container-org73e0860" class="outline-3">
+<h3 id="org73e0860">can't find the main class to start project</h3>
+<div class="outline-text-3" id="text-org73e0860">
 <p>
 mvn compile 出现问题，大多数时候是依赖的问题
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0765ff4" class="outline-3">
-<h3 id="org0765ff4">没有对应的补全</h3>
-<div class="outline-text-3" id="text-org0765ff4">
+<div id="outline-container-orge41923a" class="outline-3">
+<h3 id="orge41923a">没有对应的补全</h3>
+<div class="outline-text-3" id="text-orge41923a">
 <p>
 mvn 依赖的version 不同会有不同的包，补全也不同
 </p>
@@ -436,9 +442,9 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 
 
 
-<div id="outline-container-org93f6446" class="outline-2">
-<h2 id="org93f6446">deployment with nginx in Docker</h2>
-<div class="outline-text-2" id="text-org93f6446">
+<div id="outline-container-org1fb6d65" class="outline-2">
+<h2 id="org1fb6d65">deployment with nginx in Docker</h2>
+<div class="outline-text-2" id="text-org1fb6d65">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -487,6 +493,25 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 </table>
 </div>
 </div>
+
+<div id="outline-container-org12fb145" class="outline-2">
+<h2 id="org12fb145">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-orgc501db2" class="outline-2">
+<h2 id="orgc501db2">1 Backlinks</h2>
+<div class="outline-text-2" id="text-orgc501db2">
+</div>
+<div id="outline-container-org00eca47" class="outline-3">
+<h3 id="org00eca47"><a href="file:///home/sx/Dropbox/subjects/README.html">Subjects README</a></h3>
+<div class="outline-text-3" id="text-org00eca47">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/WebDesign.html">web design org</a>
+</p>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
@@ -508,7 +533,7 @@ sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/u
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-23 Sa 01:11</p>
+<p class="date">Created: 2020-05-23 Sa 12:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

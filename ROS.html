@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-10 So 20:09 -->
+<!-- 2020-05-23 Sa 12:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>ROS</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -270,25 +270,32 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">ROS</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2ada163">Note</a></li>
-<li><a href="#org938f94e">通信方式</a>
+<li><a href="#orgd03517b">Note</a></li>
+<li><a href="#org01068fe">通信方式</a>
 <ul>
-<li><a href="#org2176fd2">Topic</a></li>
-<li><a href="#org5c6e445">Service</a></li>
-<li><a href="#org4cd658f">Param</a></li>
-<li><a href="#org9177e33">Action</a></li>
+<li><a href="#org790842c">Topic</a></li>
+<li><a href="#org8d725a0">Service</a></li>
+<li><a href="#orge44ead3">Param</a></li>
+<li><a href="#org22a88e3">Action</a></li>
+</ul>
+</li>
+<li><a href="#org7333671">Backlinks</a></li>
+<li><a href="#org38b975c">1 Backlinks</a>
+<ul>
+<li><a href="#org464e969">Subjects README</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2ada163" class="outline-2">
-<h2 id="org2ada163">Note</h2>
-<div class="outline-text-2" id="text-org2ada163">
+<div id="outline-container-orgd03517b" class="outline-2">
+<h2 id="orgd03517b">Note</h2>
+<div class="outline-text-2" id="text-orgd03517b">
 <p>
 catkin<sub>make</sub> 可以代替老式的rosbuild
 最简单的package,只包括CMakelist.txt和package.xml
@@ -297,13 +304,13 @@ catkin<sub>make</sub> 可以代替老式的rosbuild
 </p>
 </div>
 </div>
-<div id="outline-container-org938f94e" class="outline-2">
-<h2 id="org938f94e">通信方式</h2>
-<div class="outline-text-2" id="text-org938f94e">
+<div id="outline-container-org01068fe" class="outline-2">
+<h2 id="org01068fe">通信方式</h2>
+<div class="outline-text-2" id="text-org01068fe">
 </div>
-<div id="outline-container-org2176fd2" class="outline-3">
-<h3 id="org2176fd2">Topic</h3>
-<div class="outline-text-3" id="text-org2176fd2">
+<div id="outline-container-org790842c" class="outline-3">
+<h3 id="org790842c">Topic</h3>
+<div class="outline-text-3" id="text-org790842c">
 <p>
 异步通信
 多节点   \(\rightarrow\)   Topic(rostopic)   \(\rightarrow\)    多节点
@@ -312,9 +319,9 @@ msg对象 \(\rightarrow\)   msg类型(rosmsg)  \(\rightarrow\) msg对象
 </div>
 </div>
 
-<div id="outline-container-org5c6e445" class="outline-3">
-<h3 id="org5c6e445">Service</h3>
-<div class="outline-text-3" id="text-org5c6e445">
+<div id="outline-container-org8d725a0" class="outline-3">
+<h3 id="org8d725a0">Service</h3>
+<div class="outline-text-3" id="text-org8d725a0">
 <p>
 同步通信
 多节点    \(\rightarrow\)  Service (rosservice) \(\rightarrow\)  单服务
@@ -323,20 +330,41 @@ srv类可以嵌套msg类
 </p>
 </div>
 </div>
-<div id="outline-container-org4cd658f" class="outline-3">
-<h3 id="org4cd658f">Param</h3>
-<div class="outline-text-3" id="text-org4cd658f">
+<div id="outline-container-orge44ead3" class="outline-3">
+<h3 id="orge44ead3">Param</h3>
+<div class="outline-text-3" id="text-orge44ead3">
 <p>
 Parameter Service
 rosparam
 </p>
 </div>
 </div>
-<div id="outline-container-org9177e33" class="outline-3">
-<h3 id="org9177e33">Action</h3>
-<div class="outline-text-3" id="text-org9177e33">
+<div id="outline-container-org22a88e3" class="outline-3">
+<h3 id="org22a88e3">Action</h3>
+<div class="outline-text-3" id="text-org22a88e3">
 <p>
 action
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org7333671" class="outline-2">
+<h2 id="org7333671">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-org38b975c" class="outline-2">
+<h2 id="org38b975c">1 Backlinks</h2>
+<div class="outline-text-2" id="text-org38b975c">
+</div>
+<div id="outline-container-org464e969" class="outline-3">
+<h3 id="org464e969"><a href="file:///home/sx/Dropbox/subjects/README.html">Subjects README</a></h3>
+<div class="outline-text-3" id="text-org464e969">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/ROS.html">ROS org</a>
 </p>
 </div>
 </div>
@@ -344,7 +372,7 @@ action
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-10 So 20:09</p>
+<p class="date">Created: 2020-05-23 Sa 12:21</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

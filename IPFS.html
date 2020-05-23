@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-10 So 22:12 -->
+<!-- 2020-05-23 Sa 12:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Note of IPFS</title>
+<title>IPFS</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="sx" />
 <style type="text/css">
@@ -248,33 +248,39 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">The Note of IPFS</h1>
+<h1 class="title">IPFS</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5964b6e">install</a>
+<li><a href="#org520693d">install</a>
 <ul>
-<li><a href="#org57ad0d9">build from source</a></li>
-<li><a href="#org72bf24d">apt</a></li>
-<li><a href="#orgabd82ac">config</a></li>
-<li><a href="#org38d8d8d">start</a></li>
-<li><a href="#org18185bd">push</a></li>
+<li><a href="#orga0a4ef6">build from source</a></li>
+<li><a href="#org538232c">apt</a></li>
+<li><a href="#orgcdbd3b1">config</a></li>
+<li><a href="#org4e58b8a">start</a></li>
+<li><a href="#org8a8d6e0">push</a></li>
 </ul>
 </li>
-<li><a href="#orgcf97b8a">CORS</a></li>
-<li><a href="#orgd1a0e67">File</a></li>
+<li><a href="#org4910cd5">CORS</a></li>
+<li><a href="#org4c2a2f1">File</a></li>
+<li><a href="#org37f1a62">Backlinks</a></li>
+<li><a href="#org3da916b">1 Backlinks</a>
+<ul>
+<li><a href="#org4d67978">Subjects README</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5964b6e" class="outline-2">
-<h2 id="org5964b6e">install</h2>
-<div class="outline-text-2" id="text-org5964b6e">
+<div id="outline-container-org520693d" class="outline-2">
+<h2 id="org520693d">install</h2>
+<div class="outline-text-2" id="text-org520693d">
 </div>
-<div id="outline-container-org57ad0d9" class="outline-3">
-<h3 id="org57ad0d9">build from source</h3>
-<div class="outline-text-3" id="text-org57ad0d9">
+<div id="outline-container-orga0a4ef6" class="outline-3">
+<h3 id="orga0a4ef6">build from source</h3>
+<div class="outline-text-3" id="text-orga0a4ef6">
 <p>
 download go-ipfs and untar
 cp ipfs /usr/local/bin and sudo ./install.sh
@@ -282,20 +288,18 @@ cp ipfs /usr/local/bin and sudo ./install.sh
 </div>
 </div>
 
-
-
-<div id="outline-container-org72bf24d" class="outline-3">
-<h3 id="org72bf24d">apt</h3>
-<div class="outline-text-3" id="text-org72bf24d">
+<div id="outline-container-org538232c" class="outline-3">
+<h3 id="org538232c">apt</h3>
+<div class="outline-text-3" id="text-org538232c">
 <p>
 sudo apt install ipfs
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgabd82ac" class="outline-3">
-<h3 id="orgabd82ac">config</h3>
-<div class="outline-text-3" id="text-orgabd82ac">
+<div id="outline-container-orgcdbd3b1" class="outline-3">
+<h3 id="orgcdbd3b1">config</h3>
+<div class="outline-text-3" id="text-orgcdbd3b1">
 <p>
 ipfs init
 export EDITOR=/usr/bin/emacs
@@ -306,10 +310,9 @@ ipfs  help
 </div>
 </div>
 
-
-<div id="outline-container-org38d8d8d" class="outline-3">
-<h3 id="org38d8d8d">start</h3>
-<div class="outline-text-3" id="text-org38d8d8d">
+<div id="outline-container-org4e58b8a" class="outline-3">
+<h3 id="org4e58b8a">start</h3>
+<div class="outline-text-3" id="text-org4e58b8a">
 <pre class="example">
 
 mkdir IPFS
@@ -320,9 +323,9 @@ ipfs.io/ipfs/file_hash
 </pre>
 </div>
 </div>
-<div id="outline-container-org18185bd" class="outline-3">
-<h3 id="org18185bd">push</h3>
-<div class="outline-text-3" id="text-org18185bd">
+<div id="outline-container-org8a8d6e0" class="outline-3">
+<h3 id="org8a8d6e0">push</h3>
+<div class="outline-text-3" id="text-org8a8d6e0">
 <pre class="example">
 
 ipfs add -r . (we get all file_hash(s), and a folder_hash(IPFS))
@@ -341,9 +344,9 @@ ipfs name publish --key=IPFS folder_hash
 </div>
 </div>
 
-<div id="outline-container-orgcf97b8a" class="outline-2">
-<h2 id="orgcf97b8a">CORS</h2>
-<div class="outline-text-2" id="text-orgcf97b8a">
+<div id="outline-container-org4910cd5" class="outline-2">
+<h2 id="org4910cd5">CORS</h2>
+<div class="outline-text-2" id="text-org4910cd5">
 <pre class="example">
 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST","OPTIONS"]'
 
@@ -362,9 +365,9 @@ http://localhost:5001/webui
 </div>
 </div>
 
-<div id="outline-container-orgd1a0e67" class="outline-2">
-<h2 id="orgd1a0e67">File</h2>
-<div class="outline-text-2" id="text-orgd1a0e67">
+<div id="outline-container-org4c2a2f1" class="outline-2">
+<h2 id="org4c2a2f1">File</h2>
+<div class="outline-text-2" id="text-org4c2a2f1">
 <p>
 ipfs files mkdir /Docu
 </p>
@@ -378,10 +381,31 @@ ipfs file cp /ipfs/HASH
 </p>
 </div>
 </div>
+
+
+
+<div id="outline-container-org37f1a62" class="outline-2">
+<h2 id="org37f1a62">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-org3da916b" class="outline-2">
+<h2 id="org3da916b">1 Backlinks</h2>
+<div class="outline-text-2" id="text-org3da916b">
+</div>
+<div id="outline-container-org4d67978" class="outline-3">
+<h3 id="org4d67978"><a href="file:///home/sx/Dropbox/subjects/README.html">Subjects README</a></h3>
+<div class="outline-text-3" id="text-org4d67978">
+<p>
+<a href="file:///home/sx/Dropbox/subjects/IPFS.html">IPFS org</a>
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-10 So 22:12</p>
+<p class="date">Created: 2020-05-23 Sa 12:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
