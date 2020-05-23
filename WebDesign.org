@@ -3,58 +3,74 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
 
-
 * Web Design Envirement
 ** lsp-mode
 ** lsp-java
 ** dap-mode
-** Nginx
 
-*** Nginx Hitting
-**** fire wall 80 port if necessary
-#+BEGIN_SRC 
-  add port :
-  sudo firewall-cmd --add-port=80/tcp --permanent
-  restart firewall:
-  sudo  firewall-cmd --reload
-  check port:
-  sudo  firewall-cmd --list-all
-#+END_SRC
-**** nginx control
-#+BEGIN_SRC 
-sudo apt systemctl stop nginx
-nginx -s stop
-sudo apt systemctl start nginx
-nginx -s reload
-#+END_SRC
 
-**** uninstall
-sudo apt-get purge nginx nginx-common
-
-*** 利用Docker构建项目
-sudo docker images
-sudo docker pull nginx
-sudo docker run -d -p 80:80 nginx -> id:xxxxxxx
-sudo docker exec -it -v /....../project:/usr/share/nginx/html xxxxxxx
-build in - > local host :80  
-
-*** 在本地构建项目
-sudo apt install nginx
-
-/etc/nginx/ 是其配置文件夹，里面有很多include文件，
-nginx 的默认设置在其中一个 default 文件里。
-本机html仓库 /var/www/html
-将项目放在此文件夹下，运行对于的端口即可
-本机开机后,该文件的会被自动部署,端口可见
-
-** Maven
-** Spring
-** Spring Boot
+* Spring Boot
 Emacs : M-x lsp-java-springboot-generate
 after build the project, it can be compiled by Maven,and run
 
 
-* project build
+* mysql
+** single java file connect to mysql
+
+1.download the driver to a current to java file
+
+[[https://jar-download.com/artifacts/mysql/mysql-connector-java][official web]], and in my case 
+
+mysql-connector-java-8.0.20.jar
+
+2.add the current path to the CLASSPATH
+
+export CLASSPATH=mysql-connector-java-8.0.20.jar:.
+
+3.compile and connect
+
+** mvn project connect to mysql
+*** execute in emacs
+1. create mvn project
+2. find the plugin of mysql and add it to pom.xml
+3. programmierung 
+4. the connection can be call in the dabug of emacs
+*** execute as a jar file
+if I want to package them to a package to a jar
+[[https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven][starkoverflow hitting]]
+and this plugin to pom.xml
+#+begin_src 
+<build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>fully.qualified.MainClass</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+#+end_src
+and run with : mvn clean compile assembly:single
+
+and then mvn package
+
+can be called by jar file
+
+java -cp target/xxxx....xx.jar com.mycompany.app.App 
+
+** springboot
+just call the plugins at the start
+
+
+* project build digraph
 
 #+BEGIN_SRC  dot :file ../sysconf/foto/webbuild.png
   digraph diagramm {
@@ -102,8 +118,40 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 
 
 
-* deployment with nginx in Docker 
+* deployment
 
+** local Nginx deployment
+
+
+sudo apt install nginx
+
+/etc/nginx/ 是其配置文件夹，里面有很多include文件，
+nginx 的默认设置在其中一个 default 文件里。
+本机html仓库 /var/www/html
+将项目放在此文件夹下，运行对于的端口即可
+本机开机后,该文件的会被自动部署,端口可见
+*** fire wall 80 port if necessary
+#+BEGIN_SRC 
+  add port :
+  sudo firewall-cmd --add-port=80/tcp --permanent
+  restart firewall:
+  sudo  firewall-cmd --reload
+  check port:
+  sudo  firewall-cmd --list-all
+#+END_SRC
+*** nginx control
+#+BEGIN_SRC 
+sudo apt systemctl stop nginx
+nginx -s stop
+sudo apt systemctl start nginx
+nginx -s reload
+#+END_SRC
+
+*** uninstall
+sudo apt-get purge nginx nginx-common
+
+
+** Docker envirement deployment
 
 |--------------------------------------------+-----------------|
 | comands                                    | expains         |
@@ -117,7 +165,7 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 |--------------------------------------------+-----------------|
 
 
-[fn:nginx] 对于新到手的项目可以直接放到容器的nginx根目录（快速部署），可以在映射的
+[fn:nginx] 对于新到手的项目可以直接放到容器的nginx根目录（快速部署 /usr/share/nginx/html），可以在映射的
 本机端口进入
 
 
@@ -125,3 +173,14 @@ mvn 依赖的version 不同会有不同的包，补全也不同
 #+begin_src 
 sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/usr/share/nginx/html/ nginx
 #+end_src
+
+Beispile
+#+begin_src 
+
+sudo docker images
+sudo docker pull nginx
+sudo docker run -d -p 80:80 nginx -> id:xxxxxxx
+sudo docker exec -it -v /....../project:/usr/share/nginx/html xxxxxxx
+build in - > local host :80  
+#+end_src
+
