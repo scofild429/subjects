@@ -11,8 +11,8 @@
 for i = {1...n}, $x_{i}$ is a random variable, which belong to
 Gaussian distribution
 
-set  $$ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}
-\right) $$
+set 
+ $$ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}\right) $$
 
 
 $$ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}

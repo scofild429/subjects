@@ -3,16 +3,206 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+STARTUP: content
 
-* ML collection
-机器学习代码和课件可在此下
-https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
+* ML Bachelor  CS2
+** Verlesung 01, Product Rule, Bayes's Rule
+条件概论公式 + 全概率公式 = 贝叶斯公式
+*** sum rule :
+$$ p(x) = \sum_{y} p(X,Y) $$
+
+*** Product Rule :
+$$ p(x,y)  =  p(x|y) p(y) $$
+$$ p(y,x) = p(y|x)p(x) $$
+if x and y are independent:
+$$ p(x,y) =  p(y)p(x) = p(x) p(y) $$
+so 
+\begin{cases}
+p(x) = p(x|y) \\
+p(y) = p(y|x) 
+\end{cases}
+
+*** Bayes's Rule
+\begin{aligned}
+ P(x,y) = P(y,x) \\
+P(x|y)P(y) = P(y|x)P(x) \\
+P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
+\end{aligned}
+
+** Vorlesung 02, Kovarianz Matrix, Multi Gauss Distribute, Mahalanobis distance
+*** Kovarianz Matrix
+seeing link
+[[https://scofild429.github.io/subjects/statistik.html][Statistik web]]
+[[~/Dropbox/subjects/statistik.org][Startistik org]]
+
+*** Multi variable Gaussian distribution
+seeing the link 知乎  [[https://zhuanlan.zhihu.com/p/58987388][zhihu link]]
+
+$$
+{\displaystyle f_{\mathbf {X} }(x_{1},\ldots ,x_{k})={\frac {\exp
+\left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}})\right)}{\sqrt {(2\pi )^{k}|{\boldsymbol {\Sigma
+}}|}}}}
+$$
+
+*** Mahalanobis distance 
+
+
+
+$$ D = \sqrt{ZZ^{T}} $$
+马氏距离所使用的变换$$ Z = B^{-1}(X - \mu) $$,
+$$ ZZ^{T} = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}})\right)
+$$
+$$ \Sigma = \sum U \Lambda U^{T} $$
+$$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
+关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
+上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
+
+** Vorlesung 03 Linear Regression OLS 正规化方程, greadient decent, Sklearn
+*** OLS 正规化方程
+正则化方程的推导，高斯分布的多输入的Maxisum likelihood,在对weight和
+bias分别求表达式
+
+**** with only one variable
+
+要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
+目前认为，在后面的话，多变量和参数可以按需求访问
+
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+  testsize = 5
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x,onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  # weight = np.dot(np.dot(np.linalg.pinv(np.dot(X.T, X)), X.T), y)
+  weight = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+
+  print("OLS : the weight is{}, and the bais is {} ".format(weight[:-1], weight[-1]))
+  print("the predect of 5 ele is {}".format(np.dot(np.c_[np.arange(testsize),np.ones(testsize)], weight)))
+
+
+#+end_src
+
+#+RESULTS:
+: the X shape is (100, 2), and y shape is (100,)
+: OLS : the weight is[5.00063606], and the bais is 21.508514851485195 
+: the predect of 5 ele is [21.50851485 26.50915092 31.50978698 36.51042304 41.51105911]
+
+**** with multi variables
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+  testsize = 5
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  # ordinary  least squares (正规化方法）
+  weight = np.dot(np.dot(np.linalg.pinv(np.dot(X.T, X)), X.T), y)
+  print("OLS : the weight is{}, and the bais is {} ".format(weight[:-1], weight[-1]))
+  print("the predect of 5 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], weight)))
+
+
+#+end_src
+
+#+RESULTS:
+: the X shape is (100, 3), and y shape is (100,)
+: OLS : the weight is[1.00076928 2.00153855], and the bais is 21.339603960396232 
+: the predect of 5 ele is [21.33960396 24.34191179 27.34421962 30.34652745 33.34883528]
+
+*** greadient decent
+
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+  testsize = 5
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  reg = linear_model.LinearRegression()
+  model = reg.fit(X,y)
+  print("Sklearn: the weith is {}, and the intercept is {}".format(model.coef_[:-1] ,model.intercept_))
+  print("the predect of 3 ele is {}".format(model.predict(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)])))
+
+#+end_src
+
+#+RESULTS:
+: the X shape is (100, 3), and y shape is (100,)
+: Sklearn: the weith is [1.00035884 2.00071767], and the intercept is 21.26118811881196
+: the predect of 3 ele is [21.26118812 24.26226463 27.26334113 30.26441764 33.26549415]
+
+*** sklearn
+
+#+begin_src python :results output
+  import numpy as np
+  import random
+  from sklearn import linear_model
+  testsize = 5
+
+  x = np.array([a for a in range(100)])
+  onesx = np.ones(x.shape)
+  X = np.c_[x, 2*x, onesx]
+  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
+  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
+
+  def featureNormalize(X):
+      (m,n) = X.shape
+      X_norm = X
+      mu = np.zeros(n);
+      sigma = np.zeros(n);
+      for i in range(n):
+          mu[i] = np.mean(X[:,i])
+          sigma[i] = np.std(X[:,i])
+          X_norm[:,i] = (X_norm[:,i]-mu[i])/sigma[i]
+      return X_norm
+  def computeCost(X, y, theta):
+      return np.sum((np.dot(X,theta) -y)**2)/(2*len(y));
+
+  def gradientDescent(X, y, theta, alpha, num_iters):
+      m = len(y)
+      J_history = np.zeros(num_iters);
+      theta_len = len(theta);
+      for num_iter in range(num_iters):
+          theta = theta - (alpha/m)*np.dot(X.T,(np.dot(X,theta).reshape(-1)-y))
+          J_history[num_iter] = computeCost(X, y, theta)
+      return theta, J_history
+
+  alpha = 0.0001
+  num_iters = 400000
+  theta = np.zeros(2+1)
+  theta, J_history = gradientDescent(X, y, theta, alpha, num_iters)
+  print("Greadient decent: the weight is {}, and the intercept is {}".format(theta[:-1],theta[-1]))
+  print("the predect of 3 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], theta)))
+#+end_src
+
+#+RESULTS:
+: the X shape is (100, 3), and y shape is (100,)
+: Greadient decent: the weight is [1.00068899 2.00137798], and the intercept is 21.429262585500112
+: the predect of 3 ele is [21.42926259 24.43132956 27.43339653 30.4354635  33.43753047]
 
 
 
 * ML Zhouzhihua 
+** link
+机器学习代码和课件可在此下 [fn:xiaoxiong]
 ** precision 查准率 recall 查全率
 
-*** Descripation
 |-----+---------------+-------------------------------------------------+-------------------------------------------------|
 | TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
 | FPR |               | predict positive 测正 &  实反 actually negative | predict negative  测反 & 实反 actually negative |
@@ -28,8 +218,6 @@ $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 (\frac{\beta^{2}}{P}+\frac{1}{R})$$
 
 
-
-*** Formal Setting
 关联性属性 ： 高中低 （3,2,1）
 非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
 
@@ -38,7 +226,6 @@ $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
 
 信息熵
-
 
 $$ Ent(D)=-\sum^{y}_{k=1}p_{k}log_{2}^{p_{k}}$$
 信息熵增益
@@ -74,182 +261,21 @@ matched, so vi is its value.
 #+BEGIN_SRC 
 for 0<k<n, k-CNF and k-DNF are proper 
 
+
 #+END_SRC
 
- 
-** 贝叶斯分类
-*** 朴素贝叶斯 
+** 朴素贝叶斯 
 假设各个属性完全独立
 要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
 例的各种属性出现的条件概论， 谁大选谁。（注意样本不足引起的某属性的条
 件为零）
 
-*** 半朴素贝叶斯
-
-*** 贝叶斯网
 
 
 
 
-* ML Bachelor  CS2
-** Verlesung 01, Product Rule, Bayes's Rule
-条件概论公式 + 全概率公式 = 贝叶斯公式
-*** sum rule :
-$$ p(x) = \sum_{y} p(X,Y) $$
-
-*** Product Rule :
-$$ p(x,y)  =  p(x|y) p(y) $$
-$$ p(y,x) = p(y|x)p(x) $$
-if x and y are independent:
-$$ p(x,y) =  p(y)p(x) = p(x) p(y) $$
-so 
-\begin{cases}
-p(x) = p(x|y) \\
-p(y) = p(y|x) 
-\end{cases}
-
-*** Bayes's Rule
-\begin{aligned}
- P(x,y) = P(y,x) \\
-P(x|y)P(y) = P(y|x)P(x) \\
-P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
-\end{aligned}
-
-** Vorlesung 02, Kovarianz Matrix, Multi Gauss Distribute, Mahalanobis distance
-*** Kovarianz Matrix
-seeing link
-*** Multi variable Gaussian distribution
-seeing the link [[https://zhuanlan.zhihu.com/p/58987388][zhihu link]]
-
-$$
-{\displaystyle f_{\mathbf {X} }(x_{1},\ldots ,x_{k})={\frac {\exp
-\left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
-{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
-}})\right)}{\sqrt {(2\pi )^{k}|{\boldsymbol {\Sigma
-}}|}}}}
-$$
-
-*** Mahalanobis distance 
 
 
 
-$$ D = \sqrt{ZZ^{T}} $$
-马氏距离所使用的变换$$ Z = B^{-1}(X - \mu) $$,
-$$ ZZ^{T} = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
-{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
-}})\right)
-$$
-$$ \Sigma = \sum U \Lambda U^{T} $$
-$$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
-关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
-上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
-
-** Vorlesung 03 Linear Regression OLS 正规化方程, greadient decent, Sklearn
-*** OLS 正规化方程
-#+begin_src python :results output
-  import numpy as np
-  import random
-  from sklearn import linear_model
-
-  x = np.array([a for a in range(100)])
-  onesx = np.ones(x.shape)
-  X = np.c_[x, 2*x, onesx]
-  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
-  testsize = 5
-  print("prepera data")
-  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
-
-  # ordinary  least squares (正规化方法）
-  weight = np.dot(np.dot(np.linalg.pinv(np.dot(X.T, X)), X.T), y)
-  print("OLS : the weight is{}, and the bais is {} ".format(weight[:-1], weight[-1]))
-  print("the predect of 3 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], weight)))
-
-
-#+end_src
-
-#+RESULTS:
-: prepera data
-: the X shape is (100, 3), and y shape is (100,)
-: OLS : the weight is[1.00005041 2.00010081], and the bais is 21.587524752475453 
-: the predect of 3 ele is [21.58752475 24.58767597 27.58782718 30.5879784  33.58812961]
-
-*** greadient decent
-#+begin_src python :results output
-  import numpy as np
-  import random
-  from sklearn import linear_model
-
-  x = np.array([a for a in range(100)])
-  onesx = np.ones(x.shape)
-  X = np.c_[x, 2*x, onesx]
-  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
-  testsize = 5
-  print("prepera data")
-  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
-
-  # sklearn
-  reg = linear_model.LinearRegression()
-  model = reg.fit(X,y)
-  print("Sklearn: the weith is {}, and the intercept is {}".format(model.coef_[:-1] ,model.intercept_))
-  print("the predect of 3 ele is {}".format(model.predict(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)])))
-
-#+end_src
-
-#+RESULTS:
-: prepera data
-: the X shape is (100, 3), and y shape is (100,)
-: Sklearn: the weith is [1.00045125 2.00090249], and the intercept is 21.4483168316832
-: the predect of 3 ele is [21.44831683 24.44967057 27.4510243  30.45237804 33.45373177]
-
-*** sklearn
-
-#+begin_src python :results output
-  import numpy as np
-  import random
-  from sklearn import linear_model
-
-  x = np.array([a for a in range(100)])
-  onesx = np.ones(x.shape)
-  X = np.c_[x, 2*x, onesx]
-  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
-  testsize = 5
-  print("prepera data")
-  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
-
-  #greadient decent
-  def featureNormalize(X):
-      (m,n) = X.shape
-      X_norm = X
-      mu = np.zeros(n);
-      sigma = np.zeros(n);
-      for i in range(n):
-          mu[i] = np.mean(X[:,i])
-          sigma[i] = np.std(X[:,i])
-          X_norm[:,i] = (X_norm[:,i]-mu[i])/sigma[i]
-      return X_norm
-  def computeCost(X, y, theta):
-      return np.sum((np.dot(X,theta) -y)**2)/(2*len(y));
-
-  def gradientDescent(X, y, theta, alpha, num_iters):
-      m = len(y)
-      J_history = np.zeros(num_iters);
-      theta_len = len(theta);
-      for num_iter in range(num_iters):
-          theta = theta - (alpha/m)*np.dot(X.T,(np.dot(X,theta).reshape(-1)-y))
-          J_history[num_iter] = computeCost(X, y, theta)
-      return theta, J_history
-
-  alpha = 0.0001
-  num_iters = 400000
-  theta = np.zeros(2+1)
-  theta, J_history = gradientDescent(X, y, theta, alpha, num_iters)
-  print("Greadient decent: the weight is {}, and the intercept is {}".format(theta[:-1],theta[-1]))
-  print("the predect of 3 ele is {}".format(np.dot(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)], theta)))
-#+end_src
-
-#+RESULTS:
-: prepera data
-: the X shape is (100, 3), and y shape is (100,)
-: Greadient decent: the weight is [1.00017775 2.0003555 ], and the intercept is 21.51579385880701
-: the predect of 3 ele is [21.51579386 24.51632711 27.51686036 30.51739361 33.51792685]
+[fn:xiaoxiong]https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
 

@@ -35,6 +35,7 @@ export CLASSPATH=mysql-connector-java-8.0.20.jar:.
 2. find the plugin of mysql and add it to pom.xml
 3. programmierung 
 4. the connection can be call in the dabug of emacs
+M-x :dap-debug
 *** execute as a jar file
 if I want to package them to a package to a jar
 [[https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven][starkoverflow hitting]]
