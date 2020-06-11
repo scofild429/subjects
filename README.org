@@ -4,14 +4,40 @@
 #+STARTUP: content
 
 * Computer Science
-[[~/Dropbox/subjects/computerscience.org][computer science org]]
+
+| computer Science |
+| [[https://github.com/scofild429/CSs/blob/master/CS.org][org test]]         |
+| [[https://scofild429.github.io/CSs/CS.html][github page]]      |
+| [[https://scofild429.gitee.io/CSs/CS.html][gitee page]]       |
 
 * math
-[[~/Dropbox/subjects/Math.org][Math org]]
+
+| Math        |
+| [[https://github.com/scofild429/Maths/blob/master/Math.org][org test]]    |
+| [[https://scofild429.github.io/Maths/Math.html][github page]] |
+| [[https://scofild429.gitee.io/Maths/Math.html][gitee page]]  |
+|             |
+
 
 
 * physik
-[[~/Dropbox/subjects/Physik.org][Physik org]]
+
+| Physik      |
+| [[https://github.com/scofild429/Physiks/blob/master/Physik.org][org test]]    |
+| [[https://scofild429.github.io/Physiks/Physik.html][github page]] |
+| [[https://scofild429.gitee.io/Physiks/Physik.html][gitee page]]  |
+|             |
+
+
+
+* WebDesign
+
+| Webdesige   |
+| [[https://github.com/scofild429/WebDesigns/blob/master/WebDesign.org][org test]]    |
+| [[https://scofild429.github.io/WebDesigns/WebDesign.html][github page]] |
+| [[https://scofild429.gitee.io/WebDesigns/WebDesign.html][gitee page]]  |
+|             |
+
 
 
 * ROS
@@ -26,6 +52,4 @@
 [[~/Dropbox/Projects/leetcode/Median_of_Two_sorted_Arrays.org][leetcode org]]
 
 
-* webdesign
-[[~/Dropbox/subjects/WebDesign.org][web design org]]
 

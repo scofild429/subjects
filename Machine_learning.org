@@ -104,7 +104,7 @@ bias分别求表达式
 
   x = np.array([a for a in range(100)])
   onesx = np.ones(x.shape)
-  X = np.c_[x, 2*x, onesx]
+  X = np.c_[onesx, x, 2*x]
   y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
   print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
 
@@ -118,8 +118,8 @@ bias分别求表达式
 
 #+RESULTS:
 : the X shape is (100, 3), and y shape is (100,)
-: OLS : the weight is[1.00076928 2.00153855], and the bais is 21.339603960396232 
-: the predect of 5 ele is [21.33960396 24.34191179 27.34421962 30.34652745 33.34883528]
+: OLS : the weight is[21.35089109  0.9999964 ], and the bais is 1.999992799280042 
+: the predect of 5 ele is [ 1.9999928  24.35088029 46.70176778 69.05265527 91.40354275]
 
 *** greadient decent
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-23 Sa 12:22 -->
+<!-- 2020-06-11 Do 13:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Math</title>
@@ -245,28 +245,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -275,191 +253,45 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcf21800">Math</a>
-<ul>
-<li><a href="#org166ce41">Transfromation</a>
-<ul>
-<li><a href="#org82f35a1"><span class="done DONE">DONE</span> Fourier Transfromation</a></li>
-<li><a href="#org8147b0f">Laplace Transfromation</a></li>
-</ul>
-</li>
-<li><a href="#org27a30af">Convolution law</a></li>
-<li><a href="#org309a08f">Groupe Theorie</a></li>
-<li><a href="#org71e6c12">Godel Unvolstandige Theorie</a></li>
-</ul>
-</li>
-<li><a href="#org3011850">Backlinks</a></li>
-<li><a href="#org15fd171">1 Backlinks</a>
-<ul>
-<li><a href="#org78bc85f">Subjects README</a></li>
-</ul>
-</li>
+<li><a href="#orge0884e5">Unsorted</a></li>
+<li><a href="#org0750bbd">linear Algebra</a></li>
+<li><a href="#org16ef20c">Statistik</a></li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-orge0884e5" class="outline-2">
+<h2 id="orge0884e5">Unsorted</h2>
+<div class="outline-text-2" id="text-orge0884e5">
+<p>
+<a href="https://scofild429.github.io/subjects/unsorted.org">Unsorted</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0750bbd" class="outline-2">
+<h2 id="org0750bbd">linear Algebra</h2>
+<div class="outline-text-2" id="text-org0750bbd">
 <p>
 <a href="https://scofild429.github.io/subjects/Linear_algebra.html">LinearAlgebra web</a>
 <a href="file:///home/sx/Dropbox/subjects/Linear_algebra.html">Linear Algebra org</a>
 </p>
+</div>
+</div>
 
+<div id="outline-container-org16ef20c" class="outline-2">
+<h2 id="org16ef20c">Statistik</h2>
+<div class="outline-text-2" id="text-org16ef20c">
 <p>
 <a href="https://scofild429.github.io/subjects/statistik.html">Statistik web</a>
 <a href="file:///home/sx/Dropbox/subjects/statistik.html">Startistik org</a>
 </p>
-
-
-
-<div id="outline-container-orgcf21800" class="outline-2">
-<h2 id="orgcf21800">Math</h2>
-<div class="outline-text-2" id="text-orgcf21800">
-</div>
-<div id="outline-container-org166ce41" class="outline-3">
-<h3 id="org166ce41">Transfromation</h3>
-<div class="outline-text-3" id="text-org166ce41">
-</div>
-<div id="outline-container-org82f35a1" class="outline-4">
-<h4 id="org82f35a1"><span class="done DONE">DONE</span> Fourier Transfromation</h4>
-<div class="outline-text-4" id="text-org82f35a1">
-<p>
-periodical function \(f(t) = \sum \sin(\omega t)\) or \(f(t)=\sum
-\cos(\omega t)\).
-</p>
-
-
-<p>
-so  \(f(t) = \frac{a_{0}}{2}+\sum_{n=0}^{\infty } a_{n}\sin(n\omega
-t+\phi_n)\)
-</p>
-
-<p>
-or  \(f(t) = \frac{a_{0}}{2}+\sum_{n=0}^{\infty } a_{n}\sin(n\omega
-t) + \sum_{n=0}^{\infty } a_{n}\cos(n\omega t)\) 
-</p>
-
-<p>
-And There is series orthometric basis (1, \(\sin(n \omega_t)\), \(\cos(n
-\omega_t)\)).
-</p>
-
-
-<p>
-set \(\omega t = \theta\), we use \(e^{\theta j}= \cos\theta +
-j\sin\theta= e^{ \omega t j}\)  to multipy all terms in \(f(x)\), 
-which invokes factor \(\omega\).
-</p>
-
-<p>
-SO \(f(t) \rightarrow F(\omega) = \int_{-\infty}^{+\infty} f(t) e^{-j
-\omega t}dt\)
-and its inverse transfromation: \(F(\omega) \rightarrow f(t) = 
-\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t} d\omega\)
-</p>
-</div>
-</div>
-
-<div id="outline-container-org8147b0f" class="outline-4">
-<h4 id="org8147b0f">Laplace Transfromation</h4>
-<div class="outline-text-4" id="text-org8147b0f">
-<p>
-If \(f(x)\rightarrow \infty |_{x\rightarrow\infty}\) ,we can use \(e^{-\sigma t}\) to eliminate divergence.
-</p>
-
-<p>
-Laplace transfromation : \(f(t) \rightarrow L(w) = \int_{-\infty}^{\infty}f(t)e^{-\sigma t}e^{-j\omega t} dt\)
-</p>
-
-<p>
-or \(f(t)\rightarrow L(w) =\int_{-\infty}^{\infty}f(w)e^{-st}dt\), where \(s=\sigma + j \omega\)
-</p>
-
-<p>
-note: firstly force to convergence, then fourier transfromed.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org27a30af" class="outline-3">
-<h3 id="org27a30af">Convolution law</h3>
-<div class="outline-text-3" id="text-org27a30af">
-<p>
-segment \(f(x)\)
-\(f(x) = \int_{-\infty}^{\infty} f(t)\delta(x-t)dt\) 
-</p>
-
-<p>
-convolution
-\((g \ast f)(x) = \int_{-\infty}^{\infty}f(t)g(x-t)dt\) 
-</p>
-</div>
-</div>
-
-<div id="outline-container-org309a08f" class="outline-3">
-<h3 id="org309a08f">Groupe Theorie</h3>
-</div>
-<div id="outline-container-org71e6c12" class="outline-3">
-<h3 id="org71e6c12">Godel Unvolstandige Theorie</h3>
-<div class="outline-text-3" id="text-org71e6c12">
-\begin{align}
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \\
-\nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-\nabla \cdot \vec{\mathbf{B}} & = 0
-\end{align}
-
-
-
-
-
-
-<ol class="org-ol">
-<li>G本身和单位元称为G的平凡子集</li>
-<li>群的元素个数称为群的阶</li>
-<li>群的阶数是素数，则该群一定是循环群</li>
-<li>有限群的子集的阶数是该有限群的阶数的约数</li>
-<li>在置换群中，任何一个轮换都可以用其他的对换组合来实现</li>
-<li>在置换群中，如果一个置换能通过奇（偶）数次对换得到，那么它只能有奇
-（偶）数次对换得到</li>
-<li>在一个置换群中，可以奇置换和偶置换的个数应给相等</li>
-<li>由偶置换可以得到一个交错群（包括与单元群的置换）</li>
-<li>阿贝尔群</li>
-<li>\(\beta_1 \times H\) 元素\(\beta_1\) 左乘H的每一个元素得到的就叫: 元素
-\(\beta_1\) 关于H的左陪集</li>
-<li>右陪集亦然， 左右陪集可以不相等</li>
-<li>子群H中每个元素作用于群G,得到的左右陪集都相等，则称H为G的正规子群</li>
-<li>G本身和单位元{e}肯定都是正规子集，但是成为平凡正规子群</li>
-<li>只有群中有正规子集，这该群中肯定存在一个相应的对称</li>
-<li>阿贝尔群的子群肯定是正规子群</li>
-<li>只有当H是正规子群是，商群G/H才是一个群，否则只是一个空间</li>
-<li>单群，没有正规子群的群，是群论中的最小单元</li>
-</ol>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-org3011850" class="outline-2">
-<h2 id="org3011850">Backlinks</h2>
-</div>
-
-
-<div id="outline-container-org15fd171" class="outline-2">
-<h2 id="org15fd171">1 Backlinks</h2>
-<div class="outline-text-2" id="text-org15fd171">
-</div>
-<div id="outline-container-org78bc85f" class="outline-3">
-<h3 id="org78bc85f"><a href="file:///home/sx/Dropbox/subjects/README.html">Subjects README</a></h3>
-<div class="outline-text-3" id="text-org78bc85f">
-<p>
-<a href="file:///home/sx/Dropbox/subjects/Math.html">Math org</a>
-</p>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-23 Sa 12:22</p>
+<p class="date">Created: 2020-06-11 Do 13:34</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
