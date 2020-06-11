@@ -5,51 +5,38 @@
 
 * Computer Science
 
-| computer Science |
-| [[https://github.com/scofild429/CSs/blob/master/CS.org][org test]]         |
-| [[https://scofild429.github.io/CSs/CS.html][github page]]      |
-| [[https://scofild429.gitee.io/CSs/CS.html][gitee page]]       |
+| subjects CS |
+| [[https://github.com/scofild429/subjects/blob/master/CS.org][org test]]    |
+| [[https://scofild429.github.io/subjects/CS.html][github page]] |
+| [[https://scofild429.gitee.io/subjects/CS.html][gitee page]]  |
+|             |
+
 
 * math
 
-| Math        |
-| [[https://github.com/scofild429/Maths/blob/master/Math.org][org test]]    |
-| [[https://scofild429.github.io/Maths/Math.html][github page]] |
-| [[https://scofild429.gitee.io/Maths/Math.html][gitee page]]  |
-|             |
-
+| subjects  Math |
+| [[https://github.com/scofild429/subjects/blob/master/Math.org][org test]]       |
+| [[https://scofild429.github.io/subjects/Math.html][github page]]    |
+| [[https://scofild429.gitee.io/subjects/Math.html][gitee page]]     |
 
 
 * physik
 
-| Physik      |
-| [[https://github.com/scofild429/Physiks/blob/master/Physik.org][org test]]    |
-| [[https://scofild429.github.io/Physiks/Physik.html][github page]] |
-| [[https://scofild429.gitee.io/Physiks/Physik.html][gitee page]]  |
-|             |
-
+| subjects Physik |
+| [[https://github.com/scofild429/subjects/blob/master/Physik.org][org test]]        |
+| [[https://scofild429.github.io/subjects/Physik.html][github page]]     |
+| [[https://scofild429.gitee.io/subjects/Physik.html][gitee page]]      |
+|                 |
 
 
 * WebDesign
 
-| Webdesige   |
-| [[https://github.com/scofild429/WebDesigns/blob/master/WebDesign.org][org test]]    |
-| [[https://scofild429.github.io/WebDesigns/WebDesign.html][github page]] |
-| [[https://scofild429.gitee.io/WebDesigns/WebDesign.html][gitee page]]  |
-|             |
+| subjects WebDesign |
+| [[https://github.com/scofild429/subjects/blob/master/WebDesign.org][org test]]           |
+| [[https://scofild429.github.io/subjects/WebDesign.html][github page]]        |
+| [[https://scofild429.gitee.io/subjects/WebDesign.html][gitee page]]         |
+|                    |
 
-
-
-* ROS
-[[~/Dropbox/subjects/ROS.org][ROS org]]
-
-
-* IPFS
-[[~/Dropbox/subjects/IPFS.org][IPFS org]]
-
-
-* leetcode
-[[~/Dropbox/Projects/leetcode/Median_of_Two_sorted_Arrays.org][leetcode org]]
 
 
 
