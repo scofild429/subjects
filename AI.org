@@ -3,17 +3,17 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+startup: content
 
-** scitifical compute packages 
+* scitifical compute packages 
 [[~/Dropbox/subjects/scitifical_package.org][scitifical package]]
 
 
-** machine Learning
+* machine Learning
 [[~/Dropbox/subjects/Machine_learning.org][Machine Learning]]
 
 
-** tf2 notes
+* tf2 notes
 [[~/Dropbox/Projects/tensorflow/tf2.org][tf2]]
 
 
-** tf1 notes
+* tf1 notes
 [[~/Dropbox/Projects/tensorflow/tf1.org][tf1]]

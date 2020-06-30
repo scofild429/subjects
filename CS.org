@@ -5,25 +5,76 @@
 
 
 * AI
-[[~/Dropbox/subjects/AI.org][AI org]]
+|-------------|
+| AI          |
+| [[https://github.com/scofild429/subjects/blob/master/AI.org][org test]]    |
+| [[https://scofild429.github.io/subjects/AI.html][github page]] |
+| [[https://scofild429.gitee.io/subjects/AI.html][gitee page]]  |
+|-------------|
+
 
 
 * Algorithmus 
-[[~/Dropbox/subjects/Advanced_Algorithmus.org][Algorithmus org]]
+
+| advanced_Algorithmus |
+|----------------------|
+| [[https://github.com/scofild429/subjects/blob/master/advanced_Algorithmus.org][org test]]             |
+| [[https://scofild429.github.io/subjects/advanced_Algorithmus.html][github page]]          |
+| [[https://scofild429.gitee.io/subjects/advanced_Algorithmus.html][gitee page]]           |
+|----------------------|
+
 
 
 * computer vision
-[[~/Dropbox/subjects/computervision.org][computer version org]]
+
+
+| computervision |
+|----------------|
+| [[https://github.com/scofild429/subjects/blob/master/computervision.org][org test]]       |
+| [[https://scofild429.github.io/subjects/computervision.html][github page]]    |
+| [[https://scofild429.gitee.io/subjects/computervision.html][gitee page]]     |
+|----------------|
 
 
 * Inf III
-[[~/Dropbox/subjects/Inf.org][Information org]]
 
 
-* Inf II 
-[[~/Dropbox/subjects/InfII.org][Informatik II org]]
+| Inf         |
+|-------------|
+| [[https://github.com/scofild429/subjects/blob/master/Inf.org][org test]]    |
+| [[https://scofild429.github.io/subjects/Inf.html][github page]] |
+| [[https://scofild429.gitee.io/subjects/Inf.html][gitee page]]  |
+|-------------|
 
 
 * linux 
-[[~/Dropbox/subjects/linux_program.org][linux programming org]]
+
+| linux       |
+|-------------|
+| [[https://github.com/scofild429/sysconf/blob/master/linux.org][org test]]    |
+| [[https://scofild429.github.io/sysconf/linux.html][github page]] |
+| [[https://scofild429.gitee.io/sysconf/linux.html][gitee page]]  |
+|-------------|
+
+
+* emacs
+
+| emacs       |
+|-------------|
+| [[https://github.com/scofild429/sysconf/blob/master/emacs.org][org test]]    |
+| [[https://scofild429.github.io/sysconf/emacs.html][github page]] |
+| [[https://scofild429.gitee.io/sysconf/emacs.html][gitee page]]  |
+|-------------|
+
+
+* orgmode
+
+| orgmode     |
+|-------------|
+| [[https://github.com/scofild429/sysconf/blob/master/orgmode.org][org test]]    |
+| [[https://scofild429.github.io/sysconf/orgmode.html][github page]] |
+| [[https://scofild429.gitee.io/sysconf/orgmode.html][gitee page]]  |
+|-------------|
+
+
 
