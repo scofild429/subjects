@@ -4,7 +4,6 @@
 #+STARTUP: content
 
 * Computer Science
-
 | subjects CS |
 | [[https://github.com/scofild429/subjects/blob/master/CS.org][org test]]    |
 | [[https://scofild429.github.io/subjects/CS.html][github page]] |

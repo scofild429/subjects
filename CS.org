@@ -13,9 +13,7 @@
 |-------------|
 
 
-
 * Algorithmus 
-
 | advanced_Algorithmus |
 |----------------------|
 | [[https://github.com/scofild429/subjects/blob/master/advanced_Algorithmus.org][org test]]             |
@@ -24,10 +22,7 @@
 |----------------------|
 
 
-
 * computer vision
-
-
 | computervision |
 |----------------|
 | [[https://github.com/scofild429/subjects/blob/master/computervision.org][org test]]       |
@@ -37,8 +32,6 @@
 
 
 * Inf III
-
-
 | Inf         |
 |-------------|
 | [[https://github.com/scofild429/subjects/blob/master/Inf.org][org test]]    |
