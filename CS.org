@@ -40,34 +40,11 @@
 |-------------|
 
 
-* linux 
 
-| linux       |
-|-------------|
-| [[https://github.com/scofild429/sysconf/blob/master/linux.org][org test]]    |
-| [[https://scofild429.github.io/sysconf/linux.html][github page]] |
-| [[https://scofild429.gitee.io/sysconf/linux.html][gitee page]]  |
-|-------------|
+* Sysconf
 
-
-* emacs
-
-| emacs       |
-|-------------|
-| [[https://github.com/scofild429/sysconf/blob/master/emacs.org][org test]]    |
-| [[https://scofild429.github.io/sysconf/emacs.html][github page]] |
-| [[https://scofild429.gitee.io/sysconf/emacs.html][gitee page]]  |
-|-------------|
-
-
-* orgmode
-
-| orgmode     |
-|-------------|
-| [[https://github.com/scofild429/sysconf/blob/master/orgmode.org][org test]]    |
-| [[https://scofild429.github.io/sysconf/orgmode.html][github page]] |
-| [[https://scofild429.gitee.io/sysconf/orgmode.html][gitee page]]  |
-|-------------|
-
-
-
+| sysconf Readme |
+| [[https://github.com/scofild429/sysc/blob/master/README.org][org test]]       |
+| [[https://scofild429.github.io/sysc/README.html][github page]]    |
+| [[https://scofild429.gitee.io/sysc/README.html][gitee page]]     |
+|                |

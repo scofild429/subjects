@@ -4,7 +4,7 @@
 #+STARTUP: content
 
 * Computer Science
-| subjects CS |
+| CS          |
 | [[https://github.com/scofild429/subjects/blob/master/CS.org][org test]]    |
 | [[https://scofild429.github.io/subjects/CS.html][github page]] |
 | [[https://scofild429.gitee.io/subjects/CS.html][gitee page]]  |
@@ -13,15 +13,15 @@
 
 * math
 
-| subjects  Math |
-| [[https://github.com/scofild429/subjects/blob/master/Math.org][org test]]       |
-| [[https://scofild429.github.io/subjects/Math.html][github page]]    |
-| [[https://scofild429.gitee.io/subjects/Math.html][gitee page]]     |
+| Math        |
+| [[https://github.com/scofild429/subjects/blob/master/Math.org][org test]]    |
+| [[https://scofild429.github.io/subjects/Math.html][github page]] |
+| [[https://scofild429.gitee.io/subjects/Math.html][gitee page]]  |
 
 
 * physik
 
-| subjects Physik |
+|  Physik         |
 | [[https://github.com/scofild429/subjects/blob/master/Physik.org][org test]]        |
 | [[https://scofild429.github.io/subjects/Physik.html][github page]]     |
 | [[https://scofild429.gitee.io/subjects/Physik.html][gitee page]]      |
@@ -30,12 +30,12 @@
 
 * WebDesign
 
-| subjects WebDesign |
-|--------------------|
-| [[https://github.com/scofild429/subjects/blob/master/WebDesign.org][org test]]           |
-| [[https://scofild429.github.io/subjects/WebDesign.html][github page]]        |
-| [[https://scofild429.gitee.io/subjects/WebDesign.html][gitee page]]         |
-|                    |
+| WebDesign   |
+|-------------|
+| [[https://github.com/scofild429/subjects/blob/master/WebDesign.org][org test]]    |
+| [[https://scofild429.github.io/subjects/WebDesign.html][github page]] |
+| [[https://scofild429.gitee.io/subjects/WebDesign.html][gitee page]]  |
+|             |
 
 
 
