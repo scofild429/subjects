@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-22 Fr 22:15 -->
+<!-- 2020-07-12 So 12:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Matrix</title>
@@ -275,18 +275,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7015dc6">Matrix</a>
+<li><a href="#orga21e439">Matrix</a>
 <ul>
-<li><a href="#orge1400fe">Conjugate transpose Matrix</a></li>
-<li><a href="#org298206a">Normal Matrix</a></li>
-<li><a href="#org9789025">Unitary Matrix</a></li>
-<li><a href="#org81d98d2">orthogonal matrix</a></li>
-<li><a href="#orgb7fc1c5">Hermitian matrix</a></li>
+<li><a href="#org16f9665">Conjugate transpose Matrix</a></li>
+<li><a href="#orgcf84379">Normal Matrix</a></li>
+<li><a href="#org0dd8caa">Unitary Matrix</a></li>
+<li><a href="#orgea17a54">orthogonal matrix</a></li>
+<li><a href="#org9614e97">Hermitian matrix</a></li>
 </ul>
 </li>
-<li><a href="#org2e540de">Transform</a>
+<li><a href="#org156d5cd">Transform</a>
 <ul>
-<li><a href="#org265d85e">Jacobin matrix</a></li>
+<li><a href="#org576c950">Jacobin matrix</a></li>
+</ul>
+</li>
+<li><a href="#org94a165b">Eigenwertzerlegung</a></li>
+<li><a href="#orgcdb1f8d">Einzelwertzerlegung</a></li>
+<li><a href="#org733f842">Backlinks</a></li>
+<li><a href="#orgef13ece">1 Backlinks</a>
+<ul>
+<li><a href="#org6c9eaa6">Math</a></li>
 </ul>
 </li>
 </ul>
@@ -295,22 +303,22 @@ for the JavaScript code in this tag.
 <p>
 I love Matrix
 </p>
-<div id="outline-container-org7015dc6" class="outline-2">
-<h2 id="org7015dc6">Matrix</h2>
-<div class="outline-text-2" id="text-org7015dc6">
+<div id="outline-container-orga21e439" class="outline-2">
+<h2 id="orga21e439">Matrix</h2>
+<div class="outline-text-2" id="text-orga21e439">
 </div>
-<div id="outline-container-orge1400fe" class="outline-3">
-<h3 id="orge1400fe">Conjugate transpose Matrix</h3>
-<div class="outline-text-3" id="text-orge1400fe">
+<div id="outline-container-org16f9665" class="outline-3">
+<h3 id="org16f9665">Conjugate transpose Matrix</h3>
+<div class="outline-text-3" id="text-org16f9665">
 <p>
 \[ A^{*} = (\bar{A})^{T} = \bar{A^{T}}\]
 共轭转置矩阵, 先共轭再转置，还是先转置再共轭都可以。
 </p>
 </div>
 </div>
-<div id="outline-container-org298206a" class="outline-3">
-<h3 id="org298206a">Normal Matrix</h3>
-<div class="outline-text-3" id="text-org298206a">
+<div id="outline-container-orgcf84379" class="outline-3">
+<h3 id="orgcf84379">Normal Matrix</h3>
+<div class="outline-text-3" id="text-orgcf84379">
 <p>
 \[ A^{*}A = A A^{*}\]
 正定矩阵, 是转置和本身满足交换律
@@ -319,19 +327,19 @@ I love Matrix
 </p>
 </div>
 </div>
-<div id="outline-container-org9789025" class="outline-3">
-<h3 id="org9789025">Unitary Matrix</h3>
-<div class="outline-text-3" id="text-org9789025">
+<div id="outline-container-org0dd8caa" class="outline-3">
+<h3 id="org0dd8caa">Unitary Matrix</h3>
+<div class="outline-text-3" id="text-org0dd8caa">
 <p>
 \[ A^{*}A = A A^{*} = I \]
- 酉矩阵，是正定矩阵是转置和本身满足交换律，而且等于 I 
+ 酉矩阵，是正定矩阵, 即转置和本身满足交换律，而且等于 I 
 </p>
 </div>
 </div>
 
-<div id="outline-container-org81d98d2" class="outline-3">
-<h3 id="org81d98d2">orthogonal matrix</h3>
-<div class="outline-text-3" id="text-org81d98d2">
+<div id="outline-container-orgea17a54" class="outline-3">
+<h3 id="orgea17a54">orthogonal matrix</h3>
+<div class="outline-text-3" id="text-orgea17a54">
 <p>
 实数酉矩阵
 </p>
@@ -345,9 +353,9 @@ I love Matrix
 </div>
 </div>
 
-<div id="outline-container-orgb7fc1c5" class="outline-3">
-<h3 id="orgb7fc1c5">Hermitian matrix</h3>
-<div class="outline-text-3" id="text-orgb7fc1c5">
+<div id="outline-container-org9614e97" class="outline-3">
+<h3 id="org9614e97">Hermitian matrix</h3>
+<div class="outline-text-3" id="text-org9614e97">
 <p>
 \[ A = A^{H}\], \(a_{i,j} = \bar{a_{j,i}}\)
 共轭对称
@@ -357,13 +365,13 @@ I love Matrix
 </div>
 </div>
 
-<div id="outline-container-org2e540de" class="outline-2">
-<h2 id="org2e540de">Transform</h2>
-<div class="outline-text-2" id="text-org2e540de">
+<div id="outline-container-org156d5cd" class="outline-2">
+<h2 id="org156d5cd">Transform</h2>
+<div class="outline-text-2" id="text-org156d5cd">
 </div>
-<div id="outline-container-org265d85e" class="outline-3">
-<h3 id="org265d85e">Jacobin matrix</h3>
-<div class="outline-text-3" id="text-org265d85e">
+<div id="outline-container-org576c950" class="outline-3">
+<h3 id="org576c950">Jacobin matrix</h3>
+<div class="outline-text-3" id="text-org576c950">
 <p>
 wikipedia
 <a href="https://zh.wikipedia.org/wiki/%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5">chinese link</a>
@@ -410,10 +418,88 @@ z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
 </div>
 </div>
 </div>
+
+<div id="outline-container-org94a165b" class="outline-2">
+<h2 id="org94a165b">Eigenwertzerlegung</h2>
+<div class="outline-text-2" id="text-org94a165b">
+<p>
+对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
+要转换： A = a*a.T
+</p>
+
+
+<p>
+\[ A=UBU^T \] 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
+<span style="color: #7590db;">a</span> = np.mat([[1,2,3,4],[1,1,1,1]])
+<span style="color: #7590db;">A</span> = a*a.T
+<span style="color: #7590db;">B</span>, <span style="color: #7590db;">U</span> = np.linalg.eig(A)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvalue of A : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(B)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvalue of a :(should be equal to the following) "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(np.sqrt(B))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvactor : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(U)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcdb1f8d" class="outline-2">
+<h2 id="orgcdb1f8d">Einzelwertzerlegung</h2>
+<div class="outline-text-2" id="text-orgcdb1f8d">
+<p>
+但是对于一般矩阵，不是方阵，可以奇异值分解：
+\[ a = UBV^T , a^{t} = VBU^{T} \]
+\[ A = aa^{T} = UB^{2}U^{T}\]
+\[ A^{'}=a^{T}a=VB^{2}V^{T}\]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
+<span style="color: #7590db;">a</span> = np.mat([[1,2,3,4],[1,1,1,1]])
+<span style="color: #7590db;">U</span>, <span style="color: #7590db;">B</span>, <span style="color: #7590db;">Vt</span> = np.linalg.svd(a)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"left eigenvalue : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(U)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvactor of a : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(B)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"right eigenvalue : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(Vt)
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-org733f842" class="outline-2">
+<h2 id="org733f842">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-orgef13ece" class="outline-2">
+<h2 id="orgef13ece">1 Backlinks</h2>
+<div class="outline-text-2" id="text-orgef13ece">
+</div>
+<div id="outline-container-org6c9eaa6" class="outline-3">
+<h3 id="org6c9eaa6"><a href="file:///home/sx/Dropbox/subjects/Math.html">Math</a></h3>
+<div class="outline-text-3" id="text-org6c9eaa6">
+<p>
+<a href="https://scofild429.github.io/subjects/Linear_algebra.html">LinearAlgebra web</a> <a href="file:///home/sx/Dropbox/subjects/Linear_algebra.html">Linear Algebra org</a>
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-22 Fr 22:15</p>
+<p class="date">Created: 2020-07-12 So 12:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

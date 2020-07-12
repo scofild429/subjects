@@ -73,3 +73,71 @@ z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
 $$
 其雅可比行列式为 r2 sin θ，由于 dV = dx dy dz，如果做变数变换的话其体
 积元(Volume element)，dV，会变成：dV = r2 sin θ dr dθ dφ。
+
+* Eigenwertzerlegung 
+
+对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
+要转换： A = a*a.T
+
+
+$$ A=UBU^T $$ 
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  A = a*a.T
+  B, U = np.linalg.eig(A)
+  print("eigenvalue of A : ")
+  print(B)
+  print("eigenvalue of a :(should be equal to the following) ")
+  print(np.sqrt(B))
+  print("eigenvactor : ")
+  print(U)
+
+#+end_src
+
+#+RESULTS:
+: eigenvalue of A : 
+: [33.40121947  0.59878053]
+: eigenvalue of a : 
+: [5.77937881 0.77380911]
+: eigenvactor : 
+: [[ 0.94673755 -0.32200622]
+:  [ 0.32200622  0.94673755]]
+
+* Einzelwertzerlegung
+
+但是对于一般矩阵，不是方阵，可以奇异值分解：
+$$ a = UBV^T , a^{t} = VBU^{T} $$
+$$ A = aa^{T} = UB^{2}U^{T}$$
+$$ A^{'}=a^{T}a=VB^{2}V^{T}$$
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  U, B, Vt = np.linalg.svd(a)
+  print("left eigenvalue : ")
+  print(U)
+  print("eigenvactor of a : ")
+  print(B)
+  print("right eigenvalue : ")
+  print(Vt)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+left eigenvalue : 
+[[-0.94673755 -0.32200622]
+ [-0.32200622  0.94673755]]
+eigenvactor of a : 
+[5.77937881 0.77380911]
+right eigenvalue : 
+[[-0.21952944 -0.38334247 -0.5471555  -0.71096853]
+ [ 0.80734554  0.3912142  -0.02491713 -0.44104847]
+ [-0.40008743  0.25463292  0.69099646 -0.54554195]
+ [-0.37407225  0.79697056 -0.47172438  0.04882607]]
+#+end_example
+
+
+
+
