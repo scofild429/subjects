@@ -2,38 +2,71 @@
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+STARTUP: content
+* Math for ML
+** Bayes's Rule
 
-* ML Bachelor  CS2
-** Verlesung 01, Product Rule, Bayes's Rule
-条件概论公式 + 全概率公式 = 贝叶斯公式
-*** sum rule :
 $$ p(x) = \sum_{y} p(X,Y) $$
 
-*** Product Rule :
+if x and y are independent:
+$$ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) $$ 
+
+条件概论公式 + 全概率公式 = 贝叶斯公式
+$$ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}$$
+#+begin_src 
++
+#+end_src
+
 $$ p(x,y)  =  p(x|y) p(y) $$
 $$ p(y,x) = p(y|x)p(x) $$
-if x and y are independent:
-$$ p(x,y) =  p(y)p(x) = p(x) p(y) $$
-so 
-\begin{cases}
-p(x) = p(x|y) \\
-p(y) = p(y|x) 
-\end{cases}
+#+begin_src 
+=
+#+end_src
+$$ P(y|x) = \frac{ P(x,y)}{P(x)}$$
 
-*** Bayes's Rule
-\begin{aligned}
- P(x,y) = P(y,x) \\
-P(x|y)P(y) = P(y|x)P(x) \\
-P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\\
-\end{aligned}
+条件概率 = 联合概率/边缘概率
 
-** Vorlesung 02, Kovarianz Matrix, Multi Gauss Distribute, Mahalanobis distance
-*** Kovarianz Matrix
-seeing link
-[[https://scofild429.github.io/subjects/statistik.html][Statistik web]]
-[[~/Dropbox/subjects/statistik.org][Startistik org]]
+先验概率和后验概率都是条件概率，但是条件已知是先验
 
-*** Multi variable Gaussian distribution
+
+** Kovarianz Matrix
+seeing link : [[https://scofild429.github.io/subjects/statistik.html][Statistik web]]
+org link : [[~/Dropbox/subjects/statistik.org][Startistik org]]
+
+for i = {1...n}, $x_{i}$ is a random variable, which belong to
+Gaussian distribution
+
+set 
+ $$ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}\right) $$
+
+
+$$ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
+\\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) $$
+co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
+
+\begin{equation}
+\Sigma = 
+  \left(
+  \begin{array}{c}
+          x_{1}-\bar{x}_{1} \\
+          x_{2}-\bar{x}_{2} \\
+          x_{3}-\bar{x}_{3} \\
+          ..                \\
+          x_{n}-\bar{x}_{n} 
+ \end{array}
+ \right)
+   \left(
+  \begin{array}{ccccc}
+          x_{1}-\bar{x}_{1} &
+          x_{2}-\bar{x}_{2} &
+          x_{3}-\bar{x}_{3} &
+          ..                &
+          x_{n}-\bar{x}_{n} 
+  \end{array}
+  \right)
+\end{equation}
+对角线上是对应元素的方差，其他是相对于两个元素的协方差
+
+** Multi variable Gaussian distribution
 seeing the link 知乎  [[https://zhuanlan.zhihu.com/p/58987388][zhihu link]]
 
 $$
@@ -44,9 +77,21 @@ $$
 }}|}}}}
 $$
 
-*** Mahalanobis distance 
+#+begin_src python
 
+def gaussian(x,mean,cov):
+    dim = np.shape(cov)[0] #维度
+    #之所以加入单位矩阵是为了防止行列式为0的情况
+    covdet = np.linalg.det(cov+np.eye(dim)*0.01) #协方差矩阵的行列式
+    covinv = np.linalg.inv(cov+np.eye(dim)*0.01) #协方差矩阵的逆
+    xdiff = x - mean
+    #概率密度
+    prob = 1.0/np.power(2*np.pi,1.0*dim/2)/np.sqrt(np.abs(covdet))*np.exp(-1.0/2*np.dot(np.dot(xdiff,covinv),xdiff))
+    return prob
 
+#+end_src
+
+** Mahalanobis distance 
 
 $$ D = \sqrt{ZZ^{T}} $$
 马氏距离所使用的变换$$ Z = B^{-1}(X - \mu) $$,
@@ -59,15 +104,38 @@ $$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
 关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
 上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
 
-** Vorlesung 03 Linear Regression OLS 正规化方程, greadient decent, Sklearn
-*** OLS 正规化方程
-正则化方程的推导，高斯分布的多输入的Maxisum likelihood,在对weight和
-bias分别求表达式
+** precision 查准率 recall 查全率
 
-**** with only one variable
+|-----+---------------+-------------------------------------------------+-------------------------------------------------|
+| TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
+| FPR |               | predict positive 测正 &  实反 actually negative | predict negative  测反 & 实反 actually negative |
+|-----+---------------+-------------------------------------------------+-------------------------------------------------|
+|     |               | precision 查准 P                                |                                                 |
 
-要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
+R-P Couve : R P
+ROC couve : FPR TPR
+
+$$ F_{1} = \frac{1}{2} \cdot (\frac{1}{P}+\frac{1}{R})$$
+$$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
+(\frac{\beta^{2}}{P}+\frac{1}{R})$$
+
+关联性属性 ： 高中低 （3,2,1）
+非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
+
+
+
+
+* Algorithms
+** OLS 正规化方程
+#+begin_src 
+正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求
+得对weight和bias值 : 
+但是要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
 目前认为，在后面的话，多变量和参数可以按需求访问
+#+end_src
+
+   $$\theta = (X^{T}X)^{-1}X^{T}y $$
+
 
 #+begin_src python :results output
   import numpy as np
@@ -95,7 +163,10 @@ bias分别求表达式
 : OLS : the weight is[5.00063606], and the bais is 21.508514851485195 
 : the predect of 5 ele is [21.50851485 26.50915092 31.50978698 36.51042304 41.51105911]
 
-**** with multi variables
+#+begin_src 
+也可以是对变量 with multi variables
+#+end_src
+
 #+begin_src python :results output
   import numpy as np
   import random
@@ -121,9 +192,71 @@ bias分别求表达式
 : OLS : the weight is[21.35089109  0.9999964 ], and the bais is 1.999992799280042 
 : the predect of 5 ele is [ 1.9999928  24.35088029 46.70176778 69.05265527 91.40354275]
 
-*** greadient decent
+
+** 朴素贝叶斯 
+假设各个属性完全独立
+要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
+例的各种属性出现的条件概论， 谁大选谁。（注意样本不足引起的某属性的条
+件为零）
+
+
+
+** Decision List
+
+(f1,v1),(f2,v2)....(fr,vr)
+fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
+true. and each term can be viewed as if else extended. if fi is
+matched, so vi is its value.
+
+#+BEGIN_SRC 
+for 0<k<n, k-CNF and k-DNF are proper 
+
+
+#+END_SRC
+
+
+** Decision tree
+*** 方法描述和变量
+在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
+
+信息熵
+$$ Ent(D)=-\sum^{y}_{k=1}p_{k}log_{2}^{p_{k}}$$
+
+信息熵增益
+$$ Gain(D,a) = Ent(D)-\sum^{V}_{v=1}\frac{|D^{v}|}{|D|}Ent(D^{v}) $$
+
+吉尼系数
+$$ Gini(D) = \sum^{|y|}_{k=1}\sum_{k^{'}\not = k} p_{k}p_{k^{'}} = 1- \sum^{|y|}_{k=1}p_{k}^{2}$$
+
+*** 预剪枝和后剪枝
+在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
+集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
+
+后剪枝是在这个树完成后，用验证集去检验每一个内节点，从下到上，如果去掉
+该划分有更小的信息熵，则废除该划分。
+
+*** 属性有连续值和缺失值
+连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
+遍历所有离散值，找到最大信息增益的离散值，作二分。
+
+缺失值，取出该属性的非缺失子集，再配以相应的比率计算信息增益，处理和以
+前一样。如果选出的划分属性有缺失值，则给划分不作用到缺失样本，复制到每
+个划分子集
+*** 多变量决策
+每个划分属性是多个属性（变量）的线性组合
+
+
+** Random Forest
+
+** gradient decent
+当数据点很多是，正则化方法计算量将非常大，此时较多使用梯度下降
+
+#+begin_src 
+sklearn API
+#+end_src
 
 #+begin_src python :results output
+
   import numpy as np
   import random
   from sklearn import linear_model
@@ -135,32 +268,14 @@ bias分别求表达式
   y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
   print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
 
+  # Sklearn API
   reg = linear_model.LinearRegression()
   model = reg.fit(X,y)
   print("Sklearn: the weith is {}, and the intercept is {}".format(model.coef_[:-1] ,model.intercept_))
   print("the predect of 3 ele is {}".format(model.predict(np.c_[np.arange(testsize), np.arange(testsize),np.ones(testsize)])))
 
-#+end_src
 
-#+RESULTS:
-: the X shape is (100, 3), and y shape is (100,)
-: Sklearn: the weith is [1.00035884 2.00071767], and the intercept is 21.26118811881196
-: the predect of 3 ele is [21.26118812 24.26226463 27.26334113 30.26441764 33.26549415]
-
-*** sklearn
-
-#+begin_src python :results output
-  import numpy as np
-  import random
-  from sklearn import linear_model
-  testsize = 5
-
-  x = np.array([a for a in range(100)])
-  onesx = np.ones(x.shape)
-  X = np.c_[x, 2*x, onesx]
-  y = np.array([a*5 + 20 + random.randint(0,3) for a in range(100)])
-  print("the X shape is {}, and y shape is {}".format(X.shape, y.shape))
-
+  # manual 
   def featureNormalize(X):
       (m,n) = X.shape
       X_norm = X
@@ -193,89 +308,121 @@ bias分别求表达式
 
 #+RESULTS:
 : the X shape is (100, 3), and y shape is (100,)
-: Greadient decent: the weight is [1.00068899 2.00137798], and the intercept is 21.429262585500112
-: the predect of 3 ele is [21.42926259 24.43132956 27.43339653 30.4354635  33.43753047]
+: Sklearn: the weith is [0.99925113 1.99850225], and the intercept is 21.64534653465344
+: the predect of 3 ele is [21.64534653 24.64309991 27.64085329 30.63860666 33.63636004]
+: Greadient decent: the weight is [0.99925367 1.99850734], and the intercept is 21.64450170230179
+: the predect of 3 ele is [21.6445017  24.64226272 27.64002374 30.63778475 33.63554577]
 
 
 
-* ML Zhouzhihua 
+** linear regression
+
+** Support Vector Machine
+
+** logical regression
+
+** Neural network
+
+** Conversational neural Network
+
+** linear Discriminate Analysis(Fisher)
+*** 算法简介
+输入为j=0，1类样本，每类分别 $N_{j}$ 个样本
+$\mu_j = \frac{1}{N_{j}} \sum x$ $x \in N_{j}$
+$\Sigma_{j} = \sum(x-\mu_{j})(x-\mu_{j})^{T}$, $x \in N_{j}$
+
+$argmax(J) = \frac{\omega^{T} (\mu_0-\mu_1)(\mu_0-\mu_1)^T
+\omega}{\omega^T(\Sigma_0+\Sigma_1)\omega } =  \frac{\omega^{T} S_{b}
+\omega}{\omega^T S_{w} \omega }$
+
+
+
+
+
+** Principe Component Analysis
+
+** K-Means
+*** 算法介绍
+输入样本集 D: $x_{1}, x_{1}, x_{2},,,x_{m}$
+聚类数 k, 
+最大迭代数 N,
+期望输出: $C_{1}, C_{2},,,C_{k}$
+
+随机初始化k个聚类中心，并作不同类别的标记
+for i= 1,2,..N:
+    初始化所有C
+    计算每个点到每个中心的距离，并被最小距离的聚类中心标记
+    对于所有相同标记的聚类更新中心，再重复上一步骤，直到没有变化为止
+    
+*** code
+
+#+begin_src python :results output
+  import random
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  b = []
+  for i in range(100):
+      a = np.array(list([(20,50),(30,10),(60,30)]))
+      for j in range(a.shape[0]):
+          for k in range(a.shape[1]):
+              a[j][k] += random.randint(0,30)
+              b.append(a[j])
+
+  b = np.array(b)
+  plt.plot(b[:,0], b[:,1], 'ro')
+  plt.title("toy data")
+  plt.show()
+
+
+  # sklearn API
+  from sklearn.cluster import KMeans
+  y_pred = KMeans(n_clusters=3, random_state=9).fit_predict(b)
+  plt.scatter(b[:, 0], b[:, 1], c=y_pred)
+  plt.title("toy data with sklearn API")
+  plt.show()
+
+  # manual
+  def findClosestCentroids(X, centroids):
+      distance = np.zeros((len(X),len(centroids)))
+      for i in range(len(X)):
+          for j in range(len(centroids)):
+              distance[i,j] = np.linalg.norm(X[i,:]-centroids[j,:])
+      return np.argmin(distance,axis=1)
+
+  def computeCentroids(X, idx, K):
+      centroids = np.zeros((K,X.shape[1]))
+      for i in range(K):
+          centroids[i,:] = np.mean(X[idx == i],axis = 0)
+      return centroids
+
+
+  def runkMeans(X,K,max_iters):
+      indexs = np.random.choice(np.array(range(len(X))), K,replace=False)
+      centroids = X[indexs]
+      for max_iter in range(max_iters):
+          idx = findClosestCentroids(X, centroids)
+          centroids = computeCentroids(X, idx, K)
+          colors = ['','','']
+          for i in range(K):
+              plt.scatter(X[idx==i, 0], X[idx==i, 1])
+          plt.scatter(centroids[:, 0], centroids[:, 1], c='r')
+          plt.title("toy data with manual {} time".format(max_iter))
+          plt.show()
+  K = 3
+  max_iters = 3
+  runkMeans(b,K,max_iters)
+
+#+end_src
+
+#+RESULTS:
+
+
+** EM algorithms
+
 ** link
 机器学习代码和课件可在此下 [fn:xiaoxiong]
-** precision 查准率 recall 查全率
-
-|-----+---------------+-------------------------------------------------+-------------------------------------------------|
-| TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
-| FPR |               | predict positive 测正 &  实反 actually negative | predict negative  测反 & 实反 actually negative |
-|-----+---------------+-------------------------------------------------+-------------------------------------------------|
-|     |               | precision 查准 P                                |                                                 |
-
-R-P Couve : R P
-ROC couve : FPR TPR
-
-
-$$ F_{1} = \frac{1}{2} \cdot (\frac{1}{P}+\frac{1}{R})$$
-$$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
-(\frac{\beta^{2}}{P}+\frac{1}{R})$$
-
-
-关联性属性 ： 高中低 （3,2,1）
-非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
-
-** decision tree
-*** 方法描述和变量
-在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
-
-信息熵
-
-$$ Ent(D)=-\sum^{y}_{k=1}p_{k}log_{2}^{p_{k}}$$
-信息熵增益
-
-$$ Gain(D,a) = Ent(D)-\sum^{V}_{v=1}\frac{|D^{v}|}{|D|}Ent(D^{v}) $$
-吉尼系数
-$$ Gini(D) = \sum^{|y|}_{k=1}\sum_{k^{'}\not = k} p_{k}p_{k^{'}} = 1- \sum^{|y|}_{k=1}p_{k}^{2}$$
-
-*** 预剪枝和后剪枝
-在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
-集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
-
-后剪枝是在这个树完成后，用验证集去检验每一个内节点，从下到上，如果去掉
-该划分有更小的信息熵，则废除该划分。
-
-*** 属性有连续值和缺失值
-连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
-遍历所有离散值，找到最大信息增益的离散值，作二分。
-
-缺失值，取出该属性的非缺失子集，再配以相应的比率计算信息增益，处理和以
-前一样。如果选出的划分属性有缺失值，则给划分不作用到缺失样本，复制到每
-个划分子集
-*** 多变量决策
-每个划分属性是多个属性（变量）的线性组合
-
-** Decision List
-
-(f1,v1),(f2,v2)....(fr,vr)
-fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
-true. and each term can be viewed as if else extended. if fi is
-matched, so vi is its value.
-
-#+BEGIN_SRC 
-for 0<k<n, k-CNF and k-DNF are proper 
-
-
-#+END_SRC
-
-** 朴素贝叶斯 
-假设各个属性完全独立
-要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
-例的各种属性出现的条件概论， 谁大选谁。（注意样本不足引起的某属性的条
-件为零）
-
-
-
-
-
 
 
 
 [fn:xiaoxiong]https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
-
