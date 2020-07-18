@@ -5,28 +5,33 @@
 * Math for ML
 ** Bayes's Rule
 
-$$ p(x) = \sum_{y} p(X,Y) $$
-
 if x and y are independent:
 $$ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) $$ 
 
-条件概论公式 + 全概率公式 = 贝叶斯公式
-$$ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}$$
 #+begin_src 
-+
-#+end_src
-
-$$ p(x,y)  =  p(x|y) p(y) $$
-$$ p(y,x) = p(y|x)p(x) $$
-#+begin_src 
-=
+条件概率：
+条件概率 = 联合概率/边缘概率
+先验概率和后验概率都是条件概率，但是条件已知是先验
 #+end_src
 $$ P(y|x) = \frac{ P(x,y)}{P(x)}$$
+#+begin_src 
+全概率公式
+#+end_src
+$$ p(y) = \sum_{i=1}^{n} p(y,x_{i}) $$
+#+begin_src 
+贝叶斯公式
+#+end_src
+$$ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}$$
 
-条件概率 = 联合概率/边缘概率
+#+begin_src 
+贝叶斯公式 + 全概率公式 + 条件概率 
+#+end_src
 
-先验概率和后验概率都是条件概率，但是条件已知是先验
-
+\begin{eqnarray*}
+P(A|B) &= \frac{P(B|A)P(A)}{P(B)} \\
+       &= \frac{P(B|A)P(A)}{\sum_{i=1}^{n} p(B,A_{i})} \\
+       &= \frac{P(B|A)P(A)}{\sum_{i=1}^{n} P(B|A_{i})P(A)} \\
+\end{eqnarray*}
 
 ** Kovarianz Matrix
 seeing link : [[https://scofild429.github.io/subjects/statistik.html][Statistik web]]

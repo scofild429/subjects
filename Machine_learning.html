@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-17 Fr 00:31 -->
+<!-- 2020-07-17 Fr 13:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -275,103 +275,102 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4dd512b">Math for ML</a>
+<li><a href="#org68ce392">Math for ML</a>
 <ul>
-<li><a href="#org72c7fea">Bayes's Rule</a></li>
-<li><a href="#orgec438e6">Kovarianz Matrix</a></li>
-<li><a href="#orgc4aa8b3">Multi variable Gaussian distribution</a></li>
-<li><a href="#orgfd4ff24">Mahalanobis distance</a></li>
-<li><a href="#orgf84748a">precision 查准率 recall 查全率</a></li>
+<li><a href="#orgce651c4">Bayes's Rule</a></li>
+<li><a href="#orga2b3645">Kovarianz Matrix</a></li>
+<li><a href="#org23b8277">Multi variable Gaussian distribution</a></li>
+<li><a href="#org6d7abfe">Mahalanobis distance</a></li>
+<li><a href="#org88b63a4">precision 查准率 recall 查全率</a></li>
 </ul>
 </li>
-<li><a href="#orgccfb525">Algorithms</a>
+<li><a href="#orgbc762dd">Algorithms</a>
 <ul>
-<li><a href="#org63b707e">OLS 正规化方程</a></li>
-<li><a href="#orgc03ee6f">朴素贝叶斯</a></li>
-<li><a href="#org3bef8ce">Decision List</a></li>
-<li><a href="#orgdff9466">Decision tree</a>
+<li><a href="#org173e6fa">OLS 正规化方程</a></li>
+<li><a href="#orgacf6d8c">朴素贝叶斯</a></li>
+<li><a href="#orgd718606">Decision List</a></li>
+<li><a href="#org75dbb50">Decision tree</a>
 <ul>
-<li><a href="#orgdaa48db">方法描述和变量</a></li>
-<li><a href="#org6805291">预剪枝和后剪枝</a></li>
-<li><a href="#org3c493e0">属性有连续值和缺失值</a></li>
-<li><a href="#orgcc44d9e">多变量决策</a></li>
+<li><a href="#org308ed4b">方法描述和变量</a></li>
+<li><a href="#org32fbcc5">预剪枝和后剪枝</a></li>
+<li><a href="#org6a7e8b7">属性有连续值和缺失值</a></li>
+<li><a href="#org3e9ae0d">多变量决策</a></li>
 </ul>
 </li>
-<li><a href="#orgc1c08d8">Random Forest</a></li>
-<li><a href="#org2ad3f4d">gradient decent</a></li>
-<li><a href="#orgfab9572">linear regression</a></li>
-<li><a href="#org094b40f">Support Vector Machine</a></li>
-<li><a href="#org7be53a6">logical regression</a></li>
-<li><a href="#orgfba16a8">Neural network</a></li>
-<li><a href="#org9244559">Conversational neural Network</a></li>
-<li><a href="#org01864d4">linear Discriminate Analysis(Fisher)</a>
+<li><a href="#org9ce32bf">Random Forest</a></li>
+<li><a href="#org164d293">gradient decent</a></li>
+<li><a href="#orgfeb1ded">linear regression</a></li>
+<li><a href="#orgbfb065c">Support Vector Machine</a></li>
+<li><a href="#org09d902d">logical regression</a></li>
+<li><a href="#orgcd61b62">Neural network</a></li>
+<li><a href="#org5282f0c">Conversational neural Network</a></li>
+<li><a href="#org7d1a034">linear Discriminate Analysis(Fisher)</a>
 <ul>
-<li><a href="#org166a11f">算法简介</a></li>
+<li><a href="#orgb881391">算法简介</a></li>
 </ul>
 </li>
-<li><a href="#orge37e9d4">Principe Component Analysis</a></li>
-<li><a href="#org9f2fa41">K-Means</a>
+<li><a href="#org18e7e62">Principe Component Analysis</a></li>
+<li><a href="#orgc6a85c1">K-Means</a>
 <ul>
-<li><a href="#orgc6d33d9">算法介绍</a></li>
-<li><a href="#org91b2b71">code</a></li>
+<li><a href="#org4cb0568">算法介绍</a></li>
+<li><a href="#org107dc5f">code</a></li>
 </ul>
 </li>
-<li><a href="#org9cb622f">EM algorithms</a></li>
-<li><a href="#org353caeb">link</a></li>
+<li><a href="#org4f46173">EM algorithms</a></li>
+<li><a href="#orgf39a3de">link</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4dd512b" class="outline-2">
-<h2 id="org4dd512b">Math for ML</h2>
-<div class="outline-text-2" id="text-org4dd512b">
+<div id="outline-container-org68ce392" class="outline-2">
+<h2 id="org68ce392">Math for ML</h2>
+<div class="outline-text-2" id="text-org68ce392">
 </div>
-<div id="outline-container-org72c7fea" class="outline-3">
-<h3 id="org72c7fea">Bayes's Rule</h3>
-<div class="outline-text-3" id="text-org72c7fea">
-<p>
-\[ p(x) = \sum_{y} p(X,Y) \]
-</p>
-
+<div id="outline-container-orgce651c4" class="outline-3">
+<h3 id="orgce651c4">Bayes's Rule</h3>
+<div class="outline-text-3" id="text-orgce651c4">
 <p>
 if x and y are independent:
 \[ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) \] 
 </p>
 
-<p>
-条件概论公式 + 全概率公式 = 贝叶斯公式
-\[ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\]
-</p>
 <pre class="example">
-+
-</pre>
-
-<p>
-\[ p(x,y)  =  p(x|y) p(y) \]
-\[ p(y,x) = p(y|x)p(x) \]
-</p>
-<pre class="example">
-=
+条件概率：
+条件概率 = 联合概率/边缘概率
+先验概率和后验概率都是条件概率，但是条件已知是先验
 </pre>
 <p>
 \[ P(y|x) = \frac{ P(x,y)}{P(x)}\]
 </p>
-
+<pre class="example">
+全概率公式
+</pre>
 <p>
-条件概率 = 联合概率/边缘概率
+\[ p(y) = \sum_{i=1}^{n} p(y,x_{i}) \]
+</p>
+<pre class="example">
+贝叶斯公式
+</pre>
+<p>
+\[ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\]
 </p>
 
-<p>
-先验概率和后验概率都是条件概率，但是条件已知是先验
-</p>
+<pre class="example">
+贝叶斯公式 + 全概率公式 + 条件概率 
+</pre>
+
+\begin{eqnarray*}
+P(A|B) &= \frac{P(B|A)P(A)}{P(B)} \\
+       &= \frac{P(B|A)P(A)}{\sum_{i=1}^{n} p(B,A_{i})} \\
+       &= \frac{P(B|A)P(A)}{\sum_{i=1}^{n} P(B|A_{i})P(A)} \\
+\end{eqnarray*}
 </div>
 </div>
 
-
-<div id="outline-container-orgec438e6" class="outline-3">
-<h3 id="orgec438e6">Kovarianz Matrix</h3>
-<div class="outline-text-3" id="text-orgec438e6">
+<div id="outline-container-orga2b3645" class="outline-3">
+<h3 id="orga2b3645">Kovarianz Matrix</h3>
+<div class="outline-text-3" id="text-orga2b3645">
 <p>
 seeing link : <a href="https://scofild429.github.io/subjects/statistik.html">Statistik web</a>
 org link : <a href="file:///home/sx/Dropbox/subjects/statistik.html">Startistik org</a>
@@ -421,9 +420,9 @@ co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
 </div>
 </div>
 
-<div id="outline-container-orgc4aa8b3" class="outline-3">
-<h3 id="orgc4aa8b3">Multi variable Gaussian distribution</h3>
-<div class="outline-text-3" id="text-orgc4aa8b3">
+<div id="outline-container-org23b8277" class="outline-3">
+<h3 id="org23b8277">Multi variable Gaussian distribution</h3>
+<div class="outline-text-3" id="text-org23b8277">
 <p>
 seeing the link 知乎  <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 </p>
@@ -455,9 +454,9 @@ seeing the link 知乎  <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu li
 </div>
 </div>
 
-<div id="outline-container-orgfd4ff24" class="outline-3">
-<h3 id="orgfd4ff24">Mahalanobis distance</h3>
-<div class="outline-text-3" id="text-orgfd4ff24">
+<div id="outline-container-org6d7abfe" class="outline-3">
+<h3 id="org6d7abfe">Mahalanobis distance</h3>
+<div class="outline-text-3" id="text-org6d7abfe">
 <p>
 \[ D = \sqrt{ZZ^{T}} \]
 马氏距离所使用的变换\[ Z = B^{-1}(X - \mu) \],
@@ -473,9 +472,9 @@ seeing the link 知乎  <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu li
 </div>
 </div>
 
-<div id="outline-container-orgf84748a" class="outline-3">
-<h3 id="orgf84748a">precision 查准率 recall 查全率</h3>
-<div class="outline-text-3" id="text-orgf84748a">
+<div id="outline-container-org88b63a4" class="outline-3">
+<h3 id="org88b63a4">precision 查准率 recall 查全率</h3>
+<div class="outline-text-3" id="text-org88b63a4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -535,13 +534,13 @@ ROC couve : FPR TPR
 
 
 
-<div id="outline-container-orgccfb525" class="outline-2">
-<h2 id="orgccfb525">Algorithms</h2>
-<div class="outline-text-2" id="text-orgccfb525">
+<div id="outline-container-orgbc762dd" class="outline-2">
+<h2 id="orgbc762dd">Algorithms</h2>
+<div class="outline-text-2" id="text-orgbc762dd">
 </div>
-<div id="outline-container-org63b707e" class="outline-3">
-<h3 id="org63b707e">OLS 正规化方程</h3>
-<div class="outline-text-3" id="text-org63b707e">
+<div id="outline-container-org173e6fa" class="outline-3">
+<h3 id="org173e6fa">OLS 正规化方程</h3>
+<div class="outline-text-3" id="text-org173e6fa">
 <pre class="example">
 正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求
 得对weight和bias值 : 
@@ -604,9 +603,9 @@ ROC couve : FPR TPR
 </div>
 
 
-<div id="outline-container-orgc03ee6f" class="outline-3">
-<h3 id="orgc03ee6f">朴素贝叶斯</h3>
-<div class="outline-text-3" id="text-orgc03ee6f">
+<div id="outline-container-orgacf6d8c" class="outline-3">
+<h3 id="orgacf6d8c">朴素贝叶斯</h3>
+<div class="outline-text-3" id="text-orgacf6d8c">
 <p>
 假设各个属性完全独立
 要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
@@ -618,9 +617,9 @@ ROC couve : FPR TPR
 
 
 
-<div id="outline-container-org3bef8ce" class="outline-3">
-<h3 id="org3bef8ce">Decision List</h3>
-<div class="outline-text-3" id="text-org3bef8ce">
+<div id="outline-container-orgd718606" class="outline-3">
+<h3 id="orgd718606">Decision List</h3>
+<div class="outline-text-3" id="text-orgd718606">
 <p>
 (f1,v1),(f2,v2)&#x2026;.(fr,vr)
 fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
@@ -637,13 +636,13 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 
 
-<div id="outline-container-orgdff9466" class="outline-3">
-<h3 id="orgdff9466">Decision tree</h3>
-<div class="outline-text-3" id="text-orgdff9466">
+<div id="outline-container-org75dbb50" class="outline-3">
+<h3 id="org75dbb50">Decision tree</h3>
+<div class="outline-text-3" id="text-org75dbb50">
 </div>
-<div id="outline-container-orgdaa48db" class="outline-4">
-<h4 id="orgdaa48db">方法描述和变量</h4>
-<div class="outline-text-4" id="text-orgdaa48db">
+<div id="outline-container-org308ed4b" class="outline-4">
+<h4 id="org308ed4b">方法描述和变量</h4>
+<div class="outline-text-4" id="text-org308ed4b">
 <p>
 在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
 </p>
@@ -665,9 +664,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-<div id="outline-container-org6805291" class="outline-4">
-<h4 id="org6805291">预剪枝和后剪枝</h4>
-<div class="outline-text-4" id="text-org6805291">
+<div id="outline-container-org32fbcc5" class="outline-4">
+<h4 id="org32fbcc5">预剪枝和后剪枝</h4>
+<div class="outline-text-4" id="text-org32fbcc5">
 <p>
 在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
 集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
@@ -680,9 +679,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-<div id="outline-container-org3c493e0" class="outline-4">
-<h4 id="org3c493e0">属性有连续值和缺失值</h4>
-<div class="outline-text-4" id="text-org3c493e0">
+<div id="outline-container-org6a7e8b7" class="outline-4">
+<h4 id="org6a7e8b7">属性有连续值和缺失值</h4>
+<div class="outline-text-4" id="text-org6a7e8b7">
 <p>
 连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
 遍历所有离散值，找到最大信息增益的离散值，作二分。
@@ -695,9 +694,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </p>
 </div>
 </div>
-<div id="outline-container-orgcc44d9e" class="outline-4">
-<h4 id="orgcc44d9e">多变量决策</h4>
-<div class="outline-text-4" id="text-orgcc44d9e">
+<div id="outline-container-org3e9ae0d" class="outline-4">
+<h4 id="org3e9ae0d">多变量决策</h4>
+<div class="outline-text-4" id="text-org3e9ae0d">
 <p>
 每个划分属性是多个属性（变量）的线性组合
 </p>
@@ -706,13 +705,13 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 
 
-<div id="outline-container-orgc1c08d8" class="outline-3">
-<h3 id="orgc1c08d8">Random Forest</h3>
+<div id="outline-container-org9ce32bf" class="outline-3">
+<h3 id="org9ce32bf">Random Forest</h3>
 </div>
 
-<div id="outline-container-org2ad3f4d" class="outline-3">
-<h3 id="org2ad3f4d">gradient decent</h3>
-<div class="outline-text-3" id="text-org2ad3f4d">
+<div id="outline-container-org164d293" class="outline-3">
+<h3 id="org164d293">gradient decent</h3>
+<div class="outline-text-3" id="text-org164d293">
 <p>
 当数据点很多是，正则化方法计算量将非常大，此时较多使用梯度下降
 </p>
@@ -777,33 +776,33 @@ sklearn API
 
 
 
-<div id="outline-container-orgfab9572" class="outline-3">
-<h3 id="orgfab9572">linear regression</h3>
+<div id="outline-container-orgfeb1ded" class="outline-3">
+<h3 id="orgfeb1ded">linear regression</h3>
 </div>
 
-<div id="outline-container-org094b40f" class="outline-3">
-<h3 id="org094b40f">Support Vector Machine</h3>
+<div id="outline-container-orgbfb065c" class="outline-3">
+<h3 id="orgbfb065c">Support Vector Machine</h3>
 </div>
 
-<div id="outline-container-org7be53a6" class="outline-3">
-<h3 id="org7be53a6">logical regression</h3>
+<div id="outline-container-org09d902d" class="outline-3">
+<h3 id="org09d902d">logical regression</h3>
 </div>
 
-<div id="outline-container-orgfba16a8" class="outline-3">
-<h3 id="orgfba16a8">Neural network</h3>
+<div id="outline-container-orgcd61b62" class="outline-3">
+<h3 id="orgcd61b62">Neural network</h3>
 </div>
 
-<div id="outline-container-org9244559" class="outline-3">
-<h3 id="org9244559">Conversational neural Network</h3>
+<div id="outline-container-org5282f0c" class="outline-3">
+<h3 id="org5282f0c">Conversational neural Network</h3>
 </div>
 
-<div id="outline-container-org01864d4" class="outline-3">
-<h3 id="org01864d4">linear Discriminate Analysis(Fisher)</h3>
-<div class="outline-text-3" id="text-org01864d4">
+<div id="outline-container-org7d1a034" class="outline-3">
+<h3 id="org7d1a034">linear Discriminate Analysis(Fisher)</h3>
+<div class="outline-text-3" id="text-org7d1a034">
 </div>
-<div id="outline-container-org166a11f" class="outline-4">
-<h4 id="org166a11f">算法简介</h4>
-<div class="outline-text-4" id="text-org166a11f">
+<div id="outline-container-orgb881391" class="outline-4">
+<h4 id="orgb881391">算法简介</h4>
+<div class="outline-text-4" id="text-orgb881391">
 <p>
 输入为j=0，1类样本，每类分别 \(N_{j}\) 个样本
 \(\mu_j = \frac{1}{N_{j}} \sum x\) \(x \in N_{j}\)
@@ -823,17 +822,17 @@ sklearn API
 
 
 
-<div id="outline-container-orge37e9d4" class="outline-3">
-<h3 id="orge37e9d4">Principe Component Analysis</h3>
+<div id="outline-container-org18e7e62" class="outline-3">
+<h3 id="org18e7e62">Principe Component Analysis</h3>
 </div>
 
-<div id="outline-container-org9f2fa41" class="outline-3">
-<h3 id="org9f2fa41">K-Means</h3>
-<div class="outline-text-3" id="text-org9f2fa41">
+<div id="outline-container-orgc6a85c1" class="outline-3">
+<h3 id="orgc6a85c1">K-Means</h3>
+<div class="outline-text-3" id="text-orgc6a85c1">
 </div>
-<div id="outline-container-orgc6d33d9" class="outline-4">
-<h4 id="orgc6d33d9">算法介绍</h4>
-<div class="outline-text-4" id="text-orgc6d33d9">
+<div id="outline-container-org4cb0568" class="outline-4">
+<h4 id="org4cb0568">算法介绍</h4>
+<div class="outline-text-4" id="text-org4cb0568">
 <p>
 输入样本集 D: \(x_{1}, x_{1}, x_{2},,,x_{m}\)
 聚类数 k, 
@@ -851,9 +850,9 @@ for i= 1,2,..N:
 </div>
 </div>
 
-<div id="outline-container-org91b2b71" class="outline-4">
-<h4 id="org91b2b71">code</h4>
-<div class="outline-text-4" id="text-org91b2b71">
+<div id="outline-container-org107dc5f" class="outline-4">
+<h4 id="org107dc5f">code</h4>
+<div class="outline-text-4" id="text-org107dc5f">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> random
 <span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
@@ -918,13 +917,13 @@ runkMeans(b,K,max_iters)
 </div>
 
 
-<div id="outline-container-org9cb622f" class="outline-3">
-<h3 id="org9cb622f">EM algorithms</h3>
+<div id="outline-container-org4f46173" class="outline-3">
+<h3 id="org4f46173">EM algorithms</h3>
 </div>
 
-<div id="outline-container-org353caeb" class="outline-3">
-<h3 id="org353caeb">link</h3>
-<div class="outline-text-3" id="text-org353caeb">
+<div id="outline-container-orgf39a3de" class="outline-3">
+<h3 id="orgf39a3de">link</h3>
+<div class="outline-text-3" id="text-orgf39a3de">
 <p>
 机器学习代码和课件可在此下 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
@@ -944,7 +943,7 @@ runkMeans(b,K,max_iters)
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-07-17 Fr 00:31</p>
+<p class="date">Created: 2020-07-17 Fr 13:37</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
