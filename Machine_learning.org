@@ -1,7 +1,7 @@
 #+TITLE: Machine Learning
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+STARTUP:  overview
+#+STARTUP:  content
 * Math for ML
 ** Bayes's Rule
 if x and y are independent:
@@ -485,8 +485,6 @@ this L satisfied the KKT condition, and can be solved.
 | violate the margin | a = C | \epsilon > 0 |            |
 | misclassified      |       | \epsilon > 1 | C = \infty |
 
-** logical regression
-
 ** Neural network
 *** Backpropagation
 **** 感知机
@@ -524,7 +522,6 @@ y)\sigma(1-\sigma)$
 \mathcal{L}}{\partial w}$ 中的w就是相应层的权重，由最后的
 L逐步回推到w。
 
-
 ** Conversational neural Network
 
 ** linear Discriminate Analysis
@@ -537,7 +534,24 @@ $argmax(J) = \frac{\omega^{T} (\mu_0-\mu_1)(\mu_0-\mu_1)^T
 \omega}{\omega^T(\Sigma_0+\Sigma_1)\omega } =  \frac{\omega^{T} S_{b}
 \omega}{\omega^T S_{w} \omega }$
 *** Fisher's linear discriminant with Kernel method
+$$ J(w) = \frac{(m_{2}-m_{1})^{2}}{s_{1}^{2} + s_{2}^{2}} = 
+  \frac{w^{T}(m_{2}-m_{1})^{T}(m_{2}-m_{1}) w}{ w^{T}(s_{1}^{2} +
+  s_{2}^{2})w}$$
 
+$$ w = \sum^{L}_{k=1} \alpha_{k} \phi(x_{k}) $$
+
+$$ m = \frac{1}{L_{i}} \sum^{Li}_{n=1}\phi(x_{n}^{i})$$
+
+$$ w^{T} m_{i} = \alpha^{T}M_{i}$$
+
+$$ M_{i} = \frac{1}{L_{i}}\sum^{L}_{k=1}\sum^{L_{i}}_{n=1}
+k(x_{k},x_{n}^{i})$$
+
+Numerator:$$w^{t}S_{B}w = \alpha^{T}M\alpha$$
+Denominator:
+$$ w^{T}S_{w}w = \alpha^{T} N \alpha$$
+$$ N = \sum_{i=1,2}K_{i}(I-1/L)K_{i}^{T} $$
+$$ (K_{i})_{n,m} = k(x_{n}, x_{m}^{i})$$
 
 *** Probabilistic Generative Model
 用贝叶斯定理求出每个可能的概率，再取最大的值
@@ -558,9 +572,14 @@ $$P(C_{k}|x) = \frac{P(x|C_{k})P(C_{k})}{\sum_{j} P(x|C_{j})P(C_{j})}$$
 即可以用 Softmax funtion 来求解
 
 *** Probabilistic Discriminant Model
-和 generative model 一样求解，同样也有二分和多分类，但是该类问题设为
-logical regression
+Better predictive performance if assumptions about class-conditional
+distributions not correct.
 
+和 generative model 一样求解，同样也有二分和多分类，但是该类问题设为
+logical regression, See logical regression
+
+** logistic regression
+用 logical sigmoid function 来作二分类判断，检验概率是否过半
 
 ** Principe Component Analysis
 ** K-Means
