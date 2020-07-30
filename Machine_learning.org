@@ -1,10 +1,9 @@
-#+TITLE: Machine Learning 
+#+TITLE: Machine Learning
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+STARTUP: content
+#+STARTUP:  overview
 * Math for ML
 ** Bayes's Rule
-
 if x and y are independent:
 $$ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) $$ 
 
@@ -21,6 +20,9 @@ $$ p(y) = \sum_{i=1}^{n} p(y,x_{i}) $$
 #+begin_src 
 贝叶斯公式
 #+end_src
+
+$$ P(AB)=P(BA) $$
+$$ P(y|x)P(x) = P(x|y)P(y)$$
 $$ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}$$
 
 #+begin_src 
@@ -43,9 +45,9 @@ Gaussian distribution
 set 
  $$ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}\right) $$
 
-
 $$ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
 \\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) $$
+
 co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
 
 \begin{equation}
@@ -59,7 +61,7 @@ co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
           x_{n}-\bar{x}_{n} 
  \end{array}
  \right)
-   \left(
+  \left(
   \begin{array}{ccccc}
           x_{1}-\bar{x}_{1} &
           x_{2}-\bar{x}_{2} &
@@ -70,6 +72,38 @@ co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
   \right)
 \end{equation}
 对角线上是对应元素的方差，其他是相对于两个元素的协方差
+
+** Regularization
+$$ Loss = \frac{1}{2}\sum^{N}_{i=1}(y_{i}-w^{t}\phi(x_{i}))^{2}+\frac{\lambda}{2}\sum^{M}_{j=1}|w_{j}|^{q} $$
+
+|--------------------------------------------+---------------------------------------------------------|
+| N                                          | example number                                          |
+| M                                          | Eigenschaften Number, Diemension number                 |
+| L0                                         | 控制网络中的非零权重                                    |
+| L1                                         | 网络中的所有元素的绝对值之和,促使网络生成更多的稀疏矩阵 |
+| L2                                         | 网络中的所有元素平方和,促使网络生成小比重的权值         |
+| w                                          | w_{1}, w_{2}                                            |
+| q=1                                        | l1 regularization                                       |
+| q=2                                        | l2 regularization                                       |
+| \lambda                                    | learning rate                                           |
+| \sum^{N}_{i=1}(y_{i}-w^{t}\phi(x_{i}))^{2} | 依据w的同心圆                                           |
+| \sum^{M}_{j=1}w_{j}^{q}                    | q=1, 菱形， q=2, 圆形                                   |
+|                                            |                                                         |
+|                                            |                                                         |
+
+Loss 要最小，part1 刚好和 part2 相接，l1会在坐标轴上，所以如果有较小分
+量，会被直接设为0
+
+** Error Bias-Variance-trade-off
+#+begin_src
+Error = Bias + Variance + noise
+#+end_src
+
+|----------+------+----------+--------------------------+---|
+| Bias     | 偏差 | 欠拟合   | 发挥，观测等主观因素影响 |   |
+| Variance | 方差 | 过过拟合 | 稳定性，模型的构建决定   |   |
+| noise    | 噪音 |          | 统难度                   |   |
+|----------+------+----------+--------------------------+---|
 
 ** Multi variable Gaussian distribution
 seeing the link 知乎  [[https://zhuanlan.zhihu.com/p/58987388][zhihu link]]
@@ -98,18 +132,36 @@ def gaussian(x,mean,cov):
 
 ** Mahalanobis distance 
 
-$$ D = \sqrt{ZZ^{T}} $$
-马氏距离所使用的变换$$ Z = B^{-1}(X - \mu) $$,
-$$ ZZ^{T} = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+$$ \Delta = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
 {T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
 }})\right)
 $$
 $$ \Sigma = \sum U \Lambda U^{T} $$
 $$ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} $$
+
+$$ \Delta = -{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}}) = -{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }  U \Lambda^{-1} U^{T}({\mathbf {x} }-{\boldsymbol {\mu
+}})
+$$
+马氏距离所使用的变换 : $$ Z = U^{T}(X - \mu) $$,
+
+
+$$ D = \sqrt{ZZ^{T}} $$
 关于新的坐标，U 是变换的旋转，$\Lambda$ 是基底的延伸，$(x-\mu)$ 是在其
 上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
 
-** precision 查准率 recall 查全率
+** K-fold Cross Validation
+|---------+---------------------------------------------|
+| N       | total examples                              |
+| K       | number of sub-fold                          |
+| m       | number of each sub-fold                     |
+| big K   | small bias, with over fitting, big variance |
+| small K | big bias, without fitting, low variance     |
+|---------+---------------------------------------------|
+
+** precision  recall
 
 |-----+---------------+-------------------------------------------------+-------------------------------------------------|
 | TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
@@ -129,17 +181,96 @@ $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 
 
 
+* activation function
+** no activation
+输出为实数空间或某个区间， 连续变化。直接有输出值和真实值比较
+** Sigmoid
+$$ Sigmoid(x) = \frac{1}{1+e^{-x}}$$
+
+导数：$$ \sigma'(x) = \sigma(x)(1-\sigma(x))$$
+
+** ReLU
+$$ Relu(x) = 
+\begin{cases}
+x&  x >=0 \\
+0&  x < 0
+\end{cases}$$
+
+$$ Relu(x) = max(0,x)$$
+
+** LeakyReLU
+
+$$ LeakyReLU(x) = 
+\begin{cases}
+x& x >=0 \\
+px& x <0, 0<p<<1
+\end{cases}$$
+
+** Tanh
+$$ tanh(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$$
+$$ tanh(x) = 2.sigmoid(2x)-1$$
+导数：$$\tanh'(x) = 1- \tanh^{2}(x)$$
+
+** MSE
+$$ \mathcal{L} = MSE(y, o) =
+\frac{1}{d_{out}}\sum_{i=1}^{d_{out}}(y_{i}-o^{i})^{2}$$
+导数 ：$$ \frac{\partial \mathcal{L}}{\partial o_{i}}= (o_{i}-y_{i})$$
+
+** inf entropy 
+$$ H(p) = -\sum_{i}P(i)\log_{2}^{P_{i}}$$
+** softmax
+$$ p_{z_{i}} = \frac{e^{z_{i}}}{\sum_{j}e^{z_{j}}}$$
+所有种类的概率之和为1
+导数:
+$$ \frac{ \partial p_{z_{i}}}{\partial z_{j}} = 
+\begin{cases}
+p_{i}(1-p_{j}) &  if i =j \\
+-p_{i}p_{j}    & if \neq j
+\end{cases}$$
+
+** cross entropy
+在计算交叉熵时， 一般是和 softmax 函数一起使用的
+$$ H(p||q) = -\sum_{i} p(i) \log_{2}^{q_{i}}$$
+$$H(p||q) = H(p) + D_{KL}(p||q)$$
+
+for One-hot coding
+$$ H(p||q) = D_{KL}(p||q) = \sum_{i}y_{i}log(\frac{y_{j}}{o_{j}}) = 
+1 \cdot \log\frac{1}{o_{i}} + \sum_{j!=i}0 \cdot \log \frac{0}{o_{j}}
+= -\log o_{i}$$
+o_i 为1 时，预测正确，交叉熵为0。
+导数：
+$$ \mathcal{L} = -\sum_{k}y_{k}\log(p_{k})$$
+$$\begin{aligned}
+ \frac{\partial \mathcal{L}}{\partial z_{i}} & =
+-\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial z_{i}} \\
+&= -\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial p_{k}} \cdot
+\frac{\partial p_{k}}{\partial z_{i}} \\
+&= -\sum_{k} y_{k} \frac{1}{\partial p_{k}} \cdot
+\frac{\partial p_{k}}{\partial z_{i}} \\
+\end{aligned}
+$$
+
+用上面 softmax 的导数结果，分为k=i 和k!=i两种情况
+$$ \frac{\partial \mathcal{L}}{z_{i}}=p_{i}-y_{i}$$
 
 * Algorithms
-** OLS 正规化方程
-#+begin_src 
-正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求
-得对weight和bias值 : 
-但是要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
-目前认为，在后面的话，多变量和参数可以按需求访问
-#+end_src
+** Ordinary Least Squares(OLS)
+*** 正规化方程
+正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求得对weight和bias值 : 
 
-   $$\theta = (X^{T}X)^{-1}X^{T}y $$
+但是要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
+
+目前认为，在后面的话，多变量和参数可以按需求访问
+
+Loss function:
+$$ J = \frac{1}{2m}\sum(h_{\theta}(x_{i})-y_{i})^{2}$$
+$$ \sigma = \frac{1}{2m}(X \theta -y)^{T} (X \theta -y)$$
+对$\theta$ 求导，并令其为0，
+$$\theta = (X^{T}X)^{-1}X^{T}y $$
+但是要求$X^{T}X$ 必须可逆。
+
+*** 正则化正规化方程
+$$w = (\Phi^{T}\Phi + \lambda I)^{-1} \Phi^{T}y $$
 
 
 #+begin_src python :results output
@@ -197,14 +328,11 @@ $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 : OLS : the weight is[21.35089109  0.9999964 ], and the bais is 1.999992799280042 
 : the predect of 5 ele is [ 1.9999928  24.35088029 46.70176778 69.05265527 91.40354275]
 
-
 ** 朴素贝叶斯 
 假设各个属性完全独立
 要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
 例的各种属性出现的条件概论， 谁大选谁。（注意样本不足引起的某属性的条
 件为零）
-
-
 
 ** Decision List
 
@@ -218,7 +346,6 @@ for 0<k<n, k-CNF and k-DNF are proper
 
 
 #+END_SRC
-
 
 ** Decision tree
 *** 方法描述和变量
@@ -250,8 +377,14 @@ $$ Gini(D) = \sum^{|y|}_{k=1}\sum_{k^{'}\not = k} p_{k}p_{k^{'}} = 1- \sum^{|y|}
 *** 多变量决策
 每个划分属性是多个属性（变量）的线性组合
 
-
 ** Random Forest
+Random Forest = Decision Tree + Bagging
+
+|------------------+---------------+--------------------------|
+| More Tree        | Bias remained | Variance reduce to limit |
+| More deeper      | Bias reduce   |                          |
+| More Eigenschaft | Bias reduce   |                          |
+|------------------+---------------+--------------------------|
 
 ** gradient decent
 当数据点很多是，正则化方法计算量将非常大，此时较多使用梯度下降
@@ -318,20 +451,84 @@ sklearn API
 : Greadient decent: the weight is [0.99925367 1.99850734], and the intercept is 21.64450170230179
 : the predect of 3 ele is [21.6445017  24.64226272 27.64002374 30.63778475 33.63554577]
 
-
-
 ** linear regression
 
 ** Support Vector Machine
+*** without soft margin
+对于点的划分，由decision theory:
+$$\vec{w}\vec{u} +c \ge 0$$
+距此线一个单位对点标注
+$$\vec{w}{x_{+}}+b \ge 1$$
+then y = 
+$$\vec{w}{x_{-}}+b \le 1$$
+then y = -1
+So,
+$$y(\vec{w}x+b) -1 \ge 0$$
+最大化标+点和标-点的距离：
+$$D_{max} = (x_{+}-x_{1})\frac{\vec{w}}{||w||} = \frac{2}{||w||}$$
+等价于最小化$\frac{1}{2}||w||^{2}$, 再加上约束条件
+$$L= \frac{1}{2}||w||^{2} -\sum
+\alpha_{i}[y_{i}(\vec{w}\vec{x}+b)-1]$$
+设L对w和b的偏导为0，$\vec{w} = \sum \alpha_{i}x_{i}y_{i}$,$\sum
+\alpha_{i}y_{i}=0$.
+再代回L，$$L=\sum \alpha_{i} - \frac{1}{2} \sum \sum \alpha_{i}
+\alpha_{j} y_{i} y_{j}(x_{i}x_{j})$$
+
+*** with soft margin
+对于不能绝对线性分割的，可以允许某些点进入空白分割区域（从-1到1的区域）
+| slack variable                              | \epsilon | t_n y(x_n) \ge 1-\epsilon_n | \epsilon > 0      |
+| Controls trade-off between slack and margin | C        | C= \infty, if misclassified    | C \sum \epsilon_n |
+
+this L satisfied the KKT condition, and can be solved.
+| good classified    | a = 0 | \epsilon = 0 | C = 0      |
+| on the margin      | a < C | \epsilon = 0 |            |
+| violate the margin | a = C | \epsilon > 0 |            |
+| misclassified      |       | \epsilon > 1 | C = \infty |
 
 ** logical regression
 
 ** Neural network
+*** Backpropagation
+**** 感知机
+对x的向后更正，$x^{'}= x - \eta \cdot \frac{dy}{dx}$.
+对于感知机的传递功能，$y = w^{T}x + b$.
+由于感知机没有激活函数，所以直接对$$\mathcal{L} = \frac{1}{n}
+\sum^{n}_{i=1}(w\cdot x^{i} +b -y^{i})^{2}$$.
+$$ \frac{\partial \mathcal{L}}{\partial w} = \frac{2}{n}
+\sum^{n}_{i=1}(wx^{i}+b-y^{i})x^{i}$$
+$$ \frac{\partial \mathcal{L}}{\partial b}= \frac{2}{n}\sum^{n}_{i=1}(wx^{i}+b -y^{i})$$
+
+**** 多层神经网络
+
+而对于多层神经网络，$z = w^{T}x + b$, $\frac{\partial z}{\partial w} =x$,  $\frac{\partial z}{\partial b} = 1$.
+每层之间具有激活函数, $\sigma(z) = \frac{1}{1-e^{-z}}$,$\frac{\partial \sigma(x)}{\partial x} = \sigma (1-\sigma)$.
+损失函数, $\mathcal{L} = \frac{1}{2}(\sigma - y^{i})^{2}$, $$\frac{\partial \mathcal{L}}{\partial \sigma} = (\sigma -y^{i})$$
+
+
+$$\frac{\partial \mathcal{L}}{\partial w} = \frac{\partial
+\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
+\frac{\partial z}{\partial w}$$
+
+
+$\frac{\partial \mathcal{L}}{\partial w} = (\sigma -
+y)\sigma(1-\sigma) \cdot x$
+
+$$\frac{\partial \mathcal{L}}{\partial b} = \frac{\partial
+\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
+\frac{\partial z}{\partial b}$$
+
+$\frac{\partial  \mathcal{L}}{\partial b} = (\sigma -
+y)\sigma(1-\sigma)$
+
+如果对于多层神经网络，则需要逐层计算，其中$\frac{\partial
+\mathcal{L}}{\partial w}$ 中的w就是相应层的权重，由最后的
+L逐步回推到w。
+
 
 ** Conversational neural Network
 
-** linear Discriminate Analysis(Fisher)
-*** 算法简介
+** linear Discriminate Analysis
+*** Fisher's linear discriminant
 输入为j=0，1类样本，每类分别 $N_{j}$ 个样本
 $\mu_j = \frac{1}{N_{j}} \sum x$ $x \in N_{j}$
 $\Sigma_{j} = \sum(x-\mu_{j})(x-\mu_{j})^{T}$, $x \in N_{j}$
@@ -339,15 +536,34 @@ $\Sigma_{j} = \sum(x-\mu_{j})(x-\mu_{j})^{T}$, $x \in N_{j}$
 $argmax(J) = \frac{\omega^{T} (\mu_0-\mu_1)(\mu_0-\mu_1)^T
 \omega}{\omega^T(\Sigma_0+\Sigma_1)\omega } =  \frac{\omega^{T} S_{b}
 \omega}{\omega^T S_{w} \omega }$
+*** Fisher's linear discriminant with Kernel method
 
 
+*** Probabilistic Generative Model
+用贝叶斯定理求出每个可能的概率，再取最大的值
+#+begin_src 
+one two class case
+#+end_src
+$$ P(C_{1}|x) = \frac{P(C_{1}|x)P(C_{1})}{P(C_{1}|x)P(C_{1}) +
+P(C_{2}|x)P(C_{2})} = \frac{1}{1+exp(log
+\frac{P(C_{1}|x)P(C_{1})}{P(C_{2}|x)P(C_{2})} )}$$
+即可以 Logistic sigmoid 函数求解
 
+#+begin_src 
+multi class case
+#+end_src
+
+$$P(C_{k}|x) = \frac{P(x|C_{k})P(C_{k})}{\sum_{j} P(x|C_{j})P(C_{j})}$$
+
+即可以用 Softmax funtion 来求解
+
+*** Probabilistic Discriminant Model
+和 generative model 一样求解，同样也有二分和多分类，但是该类问题设为
+logical regression
 
 
 ** Principe Component Analysis
-
 ** K-Means
-*** 算法介绍
 输入样本集 D: $x_{1}, x_{1}, x_{2},,,x_{m}$
 聚类数 k, 
 最大迭代数 N,
@@ -359,7 +575,6 @@ for i= 1,2,..N:
     计算每个点到每个中心的距离，并被最小距离的聚类中心标记
     对于所有相同标记的聚类更新中心，再重复上一步骤，直到没有变化为止
     
-*** code
 
 #+begin_src python :results output
   import random
@@ -422,10 +637,10 @@ for i= 1,2,..N:
 
 #+RESULTS:
 
-
 ** EM algorithms
 
-** link
+
+* link
 机器学习代码和课件可在此下 [fn:xiaoxiong]
 
 

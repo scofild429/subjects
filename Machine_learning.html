@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-17 Fr 13:37 -->
+<!-- 2020-07-30 Do 16:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Machine Learning</title>
@@ -275,61 +275,89 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org68ce392">Math for ML</a>
+<li><a href="#orgb3a78e4">Math for ML</a>
 <ul>
-<li><a href="#orgce651c4">Bayes's Rule</a></li>
-<li><a href="#orga2b3645">Kovarianz Matrix</a></li>
-<li><a href="#org23b8277">Multi variable Gaussian distribution</a></li>
-<li><a href="#org6d7abfe">Mahalanobis distance</a></li>
-<li><a href="#org88b63a4">precision 查准率 recall 查全率</a></li>
+<li><a href="#org8423677">Bayes's Rule</a></li>
+<li><a href="#org7240acf">Kovarianz Matrix</a></li>
+<li><a href="#org0f78767">Regularization</a></li>
+<li><a href="#org3b796c4">Error Bias-Variance-trade-off</a></li>
+<li><a href="#org279b2ab">Multi variable Gaussian distribution</a></li>
+<li><a href="#orgc823038">Mahalanobis distance</a></li>
+<li><a href="#org0836f87">K-fold Cross Validation</a></li>
+<li><a href="#org0f03e87">precision  recall</a></li>
 </ul>
 </li>
-<li><a href="#orgbc762dd">Algorithms</a>
+<li><a href="#orgf0144c1">activation function</a>
 <ul>
-<li><a href="#org173e6fa">OLS 正规化方程</a></li>
-<li><a href="#orgacf6d8c">朴素贝叶斯</a></li>
-<li><a href="#orgd718606">Decision List</a></li>
-<li><a href="#org75dbb50">Decision tree</a>
-<ul>
-<li><a href="#org308ed4b">方法描述和变量</a></li>
-<li><a href="#org32fbcc5">预剪枝和后剪枝</a></li>
-<li><a href="#org6a7e8b7">属性有连续值和缺失值</a></li>
-<li><a href="#org3e9ae0d">多变量决策</a></li>
+<li><a href="#org78a4b41">no activation</a></li>
+<li><a href="#org616fb89">Sigmoid</a></li>
+<li><a href="#org0ea09d2">ReLU</a></li>
+<li><a href="#orgbf1ebb4">LeakyReLU</a></li>
+<li><a href="#org5024fb7">Tanh</a></li>
+<li><a href="#orgf02730e">MSE</a></li>
+<li><a href="#orgc854ccf">inf entropy</a></li>
+<li><a href="#org39a33d3">softmax</a></li>
+<li><a href="#orgb7163f7">cross entropy</a></li>
 </ul>
 </li>
-<li><a href="#org9ce32bf">Random Forest</a></li>
-<li><a href="#org164d293">gradient decent</a></li>
-<li><a href="#orgfeb1ded">linear regression</a></li>
-<li><a href="#orgbfb065c">Support Vector Machine</a></li>
-<li><a href="#org09d902d">logical regression</a></li>
-<li><a href="#orgcd61b62">Neural network</a></li>
-<li><a href="#org5282f0c">Conversational neural Network</a></li>
-<li><a href="#org7d1a034">linear Discriminate Analysis(Fisher)</a>
+<li><a href="#orgd8145ea">Algorithms</a>
 <ul>
-<li><a href="#orgb881391">算法简介</a></li>
-</ul>
-</li>
-<li><a href="#org18e7e62">Principe Component Analysis</a></li>
-<li><a href="#orgc6a85c1">K-Means</a>
+<li><a href="#org719b53e">Ordinary Least Squares(OLS)</a>
 <ul>
-<li><a href="#org4cb0568">算法介绍</a></li>
-<li><a href="#org107dc5f">code</a></li>
+<li><a href="#org55595b1">正规化方程</a></li>
+<li><a href="#org575ceb2">正则化正规化方程</a></li>
 </ul>
 </li>
-<li><a href="#org4f46173">EM algorithms</a></li>
-<li><a href="#orgf39a3de">link</a></li>
+<li><a href="#org741a1e2">朴素贝叶斯</a></li>
+<li><a href="#org4980cd3">Decision List</a></li>
+<li><a href="#org6c3a51f">Decision tree</a>
+<ul>
+<li><a href="#orgb0f266d">方法描述和变量</a></li>
+<li><a href="#orgc877c06">预剪枝和后剪枝</a></li>
+<li><a href="#org78fe55d">属性有连续值和缺失值</a></li>
+<li><a href="#org625ee1f">多变量决策</a></li>
 </ul>
 </li>
+<li><a href="#orgcadc70f">Random Forest</a></li>
+<li><a href="#orga8c8a08">gradient decent</a></li>
+<li><a href="#org0802dc0">linear regression</a></li>
+<li><a href="#org26b6269">Support Vector Machine</a>
+<ul>
+<li><a href="#org11d3649">without soft margin</a></li>
+<li><a href="#orgc98d3e1">with soft margin</a></li>
+</ul>
+</li>
+<li><a href="#org147489c">logical regression</a></li>
+<li><a href="#orgfc560f2">Neural network</a>
+<ul>
+<li><a href="#org845a0f8">Backpropagation</a></li>
+</ul>
+</li>
+<li><a href="#orgb336a21">Conversational neural Network</a></li>
+<li><a href="#org1b1ce24">linear Discriminate Analysis</a>
+<ul>
+<li><a href="#orgc56e35c">Fisher's linear discriminant</a></li>
+<li><a href="#org0480d7f">Fisher's linear discriminant with Kernel method</a></li>
+<li><a href="#org5fc8927">Probabilistic Generative Model</a></li>
+<li><a href="#org94a097b">Probabilistic Discriminant Model</a></li>
+</ul>
+</li>
+<li><a href="#orgfb64c5e">Principe Component Analysis</a></li>
+<li><a href="#org8ed9b99">K-Means</a></li>
+<li><a href="#orgfdaafaa">EM algorithms</a></li>
+</ul>
+</li>
+<li><a href="#org8285e12">link</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org68ce392" class="outline-2">
-<h2 id="org68ce392">Math for ML</h2>
-<div class="outline-text-2" id="text-org68ce392">
+<div id="outline-container-orgb3a78e4" class="outline-2">
+<h2 id="orgb3a78e4">Math for ML</h2>
+<div class="outline-text-2" id="text-orgb3a78e4">
 </div>
-<div id="outline-container-orgce651c4" class="outline-3">
-<h3 id="orgce651c4">Bayes's Rule</h3>
-<div class="outline-text-3" id="text-orgce651c4">
+<div id="outline-container-org8423677" class="outline-3">
+<h3 id="org8423677">Bayes's Rule</h3>
+<div class="outline-text-3" id="text-org8423677">
 <p>
 if x and y are independent:
 \[ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) \] 
@@ -352,7 +380,10 @@ if x and y are independent:
 <pre class="example">
 贝叶斯公式
 </pre>
+
 <p>
+\[ P(AB)=P(BA) \]
+\[ P(y|x)P(x) = P(x|y)P(y)\]
 \[ P(y|x) = \frac{ P(x|y) P(y)}{P(x)}\]
 </p>
 
@@ -368,9 +399,9 @@ P(A|B) &= \frac{P(B|A)P(A)}{P(B)} \\
 </div>
 </div>
 
-<div id="outline-container-orga2b3645" class="outline-3">
-<h3 id="orga2b3645">Kovarianz Matrix</h3>
-<div class="outline-text-3" id="text-orga2b3645">
+<div id="outline-container-org7240acf" class="outline-3">
+<h3 id="org7240acf">Kovarianz Matrix</h3>
+<div class="outline-text-3" id="text-org7240acf">
 <p>
 seeing link : <a href="https://scofild429.github.io/subjects/statistik.html">Statistik web</a>
 org link : <a href="file:///home/sx/Dropbox/subjects/statistik.html">Startistik org</a>
@@ -386,10 +417,12 @@ set
  \[ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}\right) \]
 </p>
 
-
 <p>
 \[ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
 \\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) \]
+</p>
+
+<p>
 co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
 </p>
 
@@ -404,7 +437,7 @@ co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
           x_{n}-\bar{x}_{n} 
  \end{array}
  \right)
-   \left(
+  \left(
   \begin{array}{ccccc}
           x_{1}-\bar{x}_{1} &
           x_{2}-\bar{x}_{2} &
@@ -420,9 +453,149 @@ co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
 </div>
 </div>
 
-<div id="outline-container-org23b8277" class="outline-3">
-<h3 id="org23b8277">Multi variable Gaussian distribution</h3>
-<div class="outline-text-3" id="text-org23b8277">
+<div id="outline-container-org0f78767" class="outline-3">
+<h3 id="org0f78767">Regularization</h3>
+<div class="outline-text-3" id="text-org0f78767">
+<p>
+\[ Loss = \frac{1}{2}\sum^{N}_{i=1}(y_{i}-w^{t}\phi(x_{i}))^{2}+\frac{\lambda}{2}\sum^{M}_{j=1}|w_{j}|^{q} \]
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">N</td>
+<td class="org-left">example number</td>
+</tr>
+
+<tr>
+<td class="org-left">M</td>
+<td class="org-left">Eigenschaften Number, Diemension number</td>
+</tr>
+
+<tr>
+<td class="org-left">L0</td>
+<td class="org-left">控制网络中的非零权重</td>
+</tr>
+
+<tr>
+<td class="org-left">L1</td>
+<td class="org-left">网络中的所有元素的绝对值之和,促使网络生成更多的稀疏矩阵</td>
+</tr>
+
+<tr>
+<td class="org-left">L2</td>
+<td class="org-left">网络中的所有元素平方和,促使网络生成小比重的权值</td>
+</tr>
+
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">w<sub>1</sub>, w<sub>2</sub></td>
+</tr>
+
+<tr>
+<td class="org-left">q=1</td>
+<td class="org-left">l1 regularization</td>
+</tr>
+
+<tr>
+<td class="org-left">q=2</td>
+<td class="org-left">l2 regularization</td>
+</tr>
+
+<tr>
+<td class="org-left">&lambda;</td>
+<td class="org-left">learning rate</td>
+</tr>
+
+<tr>
+<td class="org-left">&sum;<sup>N</sup><sub>i=1</sub>(y<sub>i</sub>-w<sup>t</sup>&phi;(x<sub>i</sub>))<sup>2</sup></td>
+<td class="org-left">依据w的同心圆</td>
+</tr>
+
+<tr>
+<td class="org-left">&sum;<sup>M</sup><sub>j=1</sub>w<sub>j</sub><sup>q</sup></td>
+<td class="org-left">q=1, 菱形， q=2, 圆形</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Loss 要最小，part1 刚好和 part2 相接，l1会在坐标轴上，所以如果有较小分
+量，会被直接设为0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3b796c4" class="outline-3">
+<h3 id="org3b796c4">Error Bias-Variance-trade-off</h3>
+<div class="outline-text-3" id="text-org3b796c4">
+<pre class="example">
+Error = Bias + Variance + noise
+</pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bias</td>
+<td class="org-left">偏差</td>
+<td class="org-left">欠拟合</td>
+<td class="org-left">发挥，观测等主观因素影响</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">Variance</td>
+<td class="org-left">方差</td>
+<td class="org-left">过过拟合</td>
+<td class="org-left">稳定性，模型的构建决定</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">noise</td>
+<td class="org-left">噪音</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">统难度</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org279b2ab" class="outline-3">
+<h3 id="org279b2ab">Multi variable Gaussian distribution</h3>
+<div class="outline-text-3" id="text-org279b2ab">
 <p>
 seeing the link 知乎  <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu link</a>
 </p>
@@ -454,27 +627,81 @@ seeing the link 知乎  <a href="https://zhuanlan.zhihu.com/p/58987388">zhihu li
 </div>
 </div>
 
-<div id="outline-container-org6d7abfe" class="outline-3">
-<h3 id="org6d7abfe">Mahalanobis distance</h3>
-<div class="outline-text-3" id="text-org6d7abfe">
+<div id="outline-container-orgc823038" class="outline-3">
+<h3 id="orgc823038">Mahalanobis distance</h3>
+<div class="outline-text-3" id="text-orgc823038">
 <p>
-\[ D = \sqrt{ZZ^{T}} \]
-马氏距离所使用的变换\[ Z = B^{-1}(X - \mu) \],
-\[ ZZ^{T} = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+\[ \Delta = \left(-{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
 {T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
 }})\right)
 \]
 \[ \Sigma = \sum U \Lambda U^{T} \]
 \[ \Sigma^{-1} = \sum U \Lambda^{-1} U^{T} \]
+</p>
+
+<p>
+\[ \Delta = -{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }{\boldsymbol {\Sigma }}^{-1}({\mathbf {x} }-{\boldsymbol {\mu
+}}) = -{\frac {1}{2}}({\mathbf {x} }-{\boldsymbol {\mu }})^{\mathrm
+{T} }  U \Lambda^{-1} U^{T}({\mathbf {x} }-{\boldsymbol {\mu
+}})
+\]
+马氏距离所使用的变换 : \[ Z = U^{T}(X - \mu) \],
+</p>
+
+
+<p>
+\[ D = \sqrt{ZZ^{T}} \]
 关于新的坐标，U 是变换的旋转，\(\Lambda\) 是基底的延伸，\((x-\mu)\) 是在其
 上的投影，此后，在新坐标上，即为多变量，标准，不相关高斯分布
 </p>
 </div>
 </div>
 
-<div id="outline-container-org88b63a4" class="outline-3">
-<h3 id="org88b63a4">precision 查准率 recall 查全率</h3>
-<div class="outline-text-3" id="text-org88b63a4">
+<div id="outline-container-org0836f87" class="outline-3">
+<h3 id="org0836f87">K-fold Cross Validation</h3>
+<div class="outline-text-3" id="text-org0836f87">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">N</td>
+<td class="org-left">total examples</td>
+</tr>
+
+<tr>
+<td class="org-left">K</td>
+<td class="org-left">number of sub-fold</td>
+</tr>
+
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">number of each sub-fold</td>
+</tr>
+
+<tr>
+<td class="org-left">big K</td>
+<td class="org-left">small bias, with over fitting, big variance</td>
+</tr>
+
+<tr>
+<td class="org-left">small K</td>
+<td class="org-left">big bias, without fitting, low variance</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0f03e87" class="outline-3">
+<h3 id="org0f03e87">precision  recall</h3>
+<div class="outline-text-3" id="text-org0f03e87">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -533,23 +760,182 @@ ROC couve : FPR TPR
 
 
 
-
-<div id="outline-container-orgbc762dd" class="outline-2">
-<h2 id="orgbc762dd">Algorithms</h2>
-<div class="outline-text-2" id="text-orgbc762dd">
+<div id="outline-container-orgf0144c1" class="outline-2">
+<h2 id="orgf0144c1">activation function</h2>
+<div class="outline-text-2" id="text-orgf0144c1">
 </div>
-<div id="outline-container-org173e6fa" class="outline-3">
-<h3 id="org173e6fa">OLS 正规化方程</h3>
-<div class="outline-text-3" id="text-org173e6fa">
-<pre class="example">
-正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求
-得对weight和bias值 : 
-但是要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
-目前认为，在后面的话，多变量和参数可以按需求访问
-</pre>
+<div id="outline-container-org78a4b41" class="outline-3">
+<h3 id="org78a4b41">no activation</h3>
+<div class="outline-text-3" id="text-org78a4b41">
+<p>
+输出为实数空间或某个区间， 连续变化。直接有输出值和真实值比较
+</p>
+</div>
+</div>
+<div id="outline-container-org616fb89" class="outline-3">
+<h3 id="org616fb89">Sigmoid</h3>
+<div class="outline-text-3" id="text-org616fb89">
+<p>
+\[ Sigmoid(x) = \frac{1}{1+e^{-x}}\]
+</p>
 
 <p>
+导数：\[ \sigma'(x) = \sigma(x)(1-\sigma(x))\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0ea09d2" class="outline-3">
+<h3 id="org0ea09d2">ReLU</h3>
+<div class="outline-text-3" id="text-org0ea09d2">
+<p>
+\[ Relu(x) = 
+\begin{cases}
+x&  x >=0 \\
+0&  x < 0
+\end{cases}\]
+</p>
+
+<p>
+\[ Relu(x) = max(0,x)\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbf1ebb4" class="outline-3">
+<h3 id="orgbf1ebb4">LeakyReLU</h3>
+<div class="outline-text-3" id="text-orgbf1ebb4">
+<p>
+\[ LeakyReLU(x) = 
+\begin{cases}
+x& x >=0 \\
+px& x <0, 0<p<<1
+\end{cases}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5024fb7" class="outline-3">
+<h3 id="org5024fb7">Tanh</h3>
+<div class="outline-text-3" id="text-org5024fb7">
+<p>
+\[ tanh(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}\]
+\[ tanh(x) = 2.sigmoid(2x)-1\]
+导数：\[\tanh'(x) = 1- \tanh^{2}(x)\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf02730e" class="outline-3">
+<h3 id="orgf02730e">MSE</h3>
+<div class="outline-text-3" id="text-orgf02730e">
+<p>
+\[ \mathcal{L} = MSE(y, o) =
+\frac{1}{d_{out}}\sum_{i=1}^{d_{out}}(y_{i}-o^{i})^{2}\]
+导数 ：\[ \frac{\partial \mathcal{L}}{\partial o_{i}}= (o_{i}-y_{i})\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc854ccf" class="outline-3">
+<h3 id="orgc854ccf">inf entropy</h3>
+<div class="outline-text-3" id="text-orgc854ccf">
+<p>
+\[ H(p) = -\sum_{i}P(i)\log_{2}^{P_{i}}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org39a33d3" class="outline-3">
+<h3 id="org39a33d3">softmax</h3>
+<div class="outline-text-3" id="text-org39a33d3">
+<p>
+\[ p_{z_{i}} = \frac{e^{z_{i}}}{\sum_{j}e^{z_{j}}}\]
+所有种类的概率之和为1
+导数:
+\[ \frac{ \partial p_{z_{i}}}{\partial z_{j}} = 
+\begin{cases}
+p_{i}(1-p_{j}) &  if i =j \\
+-p_{i}p_{j}    & if \neq j
+\end{cases}\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb7163f7" class="outline-3">
+<h3 id="orgb7163f7">cross entropy</h3>
+<div class="outline-text-3" id="text-orgb7163f7">
+<p>
+在计算交叉熵时， 一般是和 softmax 函数一起使用的
+\[ H(p||q) = -\sum_{i} p(i) \log_{2}^{q_{i}}\]
+\[H(p||q) = H(p) + D_{KL}(p||q)\]
+</p>
+
+<p>
+for One-hot coding
+\[ H(p||q) = D_{KL}(p||q) = \sum_{i}y_{i}log(\frac{y_{j}}{o_{j}}) = 
+1 \cdot \log\frac{1}{o_{i}} + \sum_{j!=i}0 \cdot \log \frac{0}{o_{j}}
+= -\log o_{i}\]
+o<sub>i</sub> 为1 时，预测正确，交叉熵为0。
+导数：
+\[ \mathcal{L} = -\sum_{k}y_{k}\log(p_{k})\]
+\[\begin{aligned}
+ \frac{\partial \mathcal{L}}{\partial z_{i}} & =
+-\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial z_{i}} \\
+&= -\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial p_{k}} \cdot
+\frac{\partial p_{k}}{\partial z_{i}} \\
+&= -\sum_{k} y_{k} \frac{1}{\partial p_{k}} \cdot
+\frac{\partial p_{k}}{\partial z_{i}} \\
+\end{aligned}
+\]
+</p>
+
+<p>
+用上面 softmax 的导数结果，分为k=i 和k!=i两种情况
+\[ \frac{\partial \mathcal{L}}{z_{i}}=p_{i}-y_{i}\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8145ea" class="outline-2">
+<h2 id="orgd8145ea">Algorithms</h2>
+<div class="outline-text-2" id="text-orgd8145ea">
+</div>
+<div id="outline-container-org719b53e" class="outline-3">
+<h3 id="org719b53e">Ordinary Least Squares(OLS)</h3>
+<div class="outline-text-3" id="text-org719b53e">
+</div>
+<div id="outline-container-org55595b1" class="outline-4">
+<h4 id="org55595b1">正规化方程</h4>
+<div class="outline-text-4" id="text-org55595b1">
+<p>
+正则化方程的推导，用高斯分布的多变量分布的Maxisum likelihood,能一起求得对weight和bias值 : 
+</p>
+
+<p>
+但是要添加一列1到 train 和 test，至于在前面还是后面有点怪异。
+</p>
+
+<p>
+目前认为，在后面的话，多变量和参数可以按需求访问
+</p>
+
+<p>
+Loss function:
+\[ J = \frac{1}{2m}\sum(h_{\theta}(x_{i})-y_{i})^{2}\]
+\[ \sigma = \frac{1}{2m}(X \theta -y)^{T} (X \theta -y)\]
+对\(\theta\) 求导，并令其为0，
 \[\theta = (X^{T}X)^{-1}X^{T}y \]
+但是要求\(X^{T}X\) 必须可逆。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org575ceb2" class="outline-4">
+<h4 id="org575ceb2">正则化正规化方程</h4>
+<div class="outline-text-4" id="text-org575ceb2">
+<p>
+\[w = (\Phi^{T}\Phi + \lambda I)^{-1} \Phi^{T}y \]
 </p>
 
 
@@ -601,11 +987,11 @@ ROC couve : FPR TPR
 </div>
 </div>
 </div>
+</div>
 
-
-<div id="outline-container-orgacf6d8c" class="outline-3">
-<h3 id="orgacf6d8c">朴素贝叶斯</h3>
-<div class="outline-text-3" id="text-orgacf6d8c">
+<div id="outline-container-org741a1e2" class="outline-3">
+<h3 id="org741a1e2">朴素贝叶斯</h3>
+<div class="outline-text-3" id="text-org741a1e2">
 <p>
 假设各个属性完全独立
 要判断某示例的分类，分别计算出该示例在每个分类中的概论乘以该类别中该示
@@ -615,11 +1001,9 @@ ROC couve : FPR TPR
 </div>
 </div>
 
-
-
-<div id="outline-container-orgd718606" class="outline-3">
-<h3 id="orgd718606">Decision List</h3>
-<div class="outline-text-3" id="text-orgd718606">
+<div id="outline-container-org4980cd3" class="outline-3">
+<h3 id="org4980cd3">Decision List</h3>
+<div class="outline-text-3" id="text-org4980cd3">
 <p>
 (f1,v1),(f2,v2)&#x2026;.(fr,vr)
 fi is a term in CNF, vi belongs {0,1}, and the last term fr is always
@@ -635,14 +1019,13 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-
-<div id="outline-container-org75dbb50" class="outline-3">
-<h3 id="org75dbb50">Decision tree</h3>
-<div class="outline-text-3" id="text-org75dbb50">
+<div id="outline-container-org6c3a51f" class="outline-3">
+<h3 id="org6c3a51f">Decision tree</h3>
+<div class="outline-text-3" id="text-org6c3a51f">
 </div>
-<div id="outline-container-org308ed4b" class="outline-4">
-<h4 id="org308ed4b">方法描述和变量</h4>
-<div class="outline-text-4" id="text-org308ed4b">
+<div id="outline-container-orgb0f266d" class="outline-4">
+<h4 id="orgb0f266d">方法描述和变量</h4>
+<div class="outline-text-4" id="text-orgb0f266d">
 <p>
 在训练集内以最大信息增益来确定划分属性，在各个子区内再重复剩下的属性
 </p>
@@ -664,9 +1047,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-<div id="outline-container-org32fbcc5" class="outline-4">
-<h4 id="org32fbcc5">预剪枝和后剪枝</h4>
-<div class="outline-text-4" id="text-org32fbcc5">
+<div id="outline-container-orgc877c06" class="outline-4">
+<h4 id="orgc877c06">预剪枝和后剪枝</h4>
+<div class="outline-text-4" id="text-orgc877c06">
 <p>
 在利用训练集的最大信息增益确定划分属性后，用验证集来检验划分，如果验证
 集的信息熵增加，（泛化结果不好)否定此次划分，设为叶节点
@@ -679,9 +1062,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
-<div id="outline-container-org6a7e8b7" class="outline-4">
-<h4 id="org6a7e8b7">属性有连续值和缺失值</h4>
-<div class="outline-text-4" id="text-org6a7e8b7">
+<div id="outline-container-org78fe55d" class="outline-4">
+<h4 id="org78fe55d">属性有连续值和缺失值</h4>
+<div class="outline-text-4" id="text-org78fe55d">
 <p>
 连续值离散化：排列该属性的所有取值n个，在n-1个区间中去中间值为离散值，
 遍历所有离散值，找到最大信息增益的离散值，作二分。
@@ -694,9 +1077,9 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </p>
 </div>
 </div>
-<div id="outline-container-org3e9ae0d" class="outline-4">
-<h4 id="org3e9ae0d">多变量决策</h4>
-<div class="outline-text-4" id="text-org3e9ae0d">
+<div id="outline-container-org625ee1f" class="outline-4">
+<h4 id="org625ee1f">多变量决策</h4>
+<div class="outline-text-4" id="text-org625ee1f">
 <p>
 每个划分属性是多个属性（变量）的线性组合
 </p>
@@ -704,14 +1087,49 @@ for 0&lt;k&lt;n, k-CNF and k-DNF are proper
 </div>
 </div>
 
+<div id="outline-container-orgcadc70f" class="outline-3">
+<h3 id="orgcadc70f">Random Forest</h3>
+<div class="outline-text-3" id="text-orgcadc70f">
+<p>
+Random Forest = Decision Tree + Bagging
+</p>
 
-<div id="outline-container-org9ce32bf" class="outline-3">
-<h3 id="org9ce32bf">Random Forest</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">More Tree</td>
+<td class="org-left">Bias remained</td>
+<td class="org-left">Variance reduce to limit</td>
+</tr>
+
+<tr>
+<td class="org-left">More deeper</td>
+<td class="org-left">Bias reduce</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">More Eigenschaft</td>
+<td class="org-left">Bias reduce</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
-<div id="outline-container-org164d293" class="outline-3">
-<h3 id="org164d293">gradient decent</h3>
-<div class="outline-text-3" id="text-org164d293">
+<div id="outline-container-orga8c8a08" class="outline-3">
+<h3 id="orga8c8a08">gradient decent</h3>
+<div class="outline-text-3" id="text-orga8c8a08">
 <p>
 当数据点很多是，正则化方法计算量将非常大，此时较多使用梯度下降
 </p>
@@ -774,35 +1192,206 @@ sklearn API
 </div>
 </div>
 
-
-
-<div id="outline-container-orgfeb1ded" class="outline-3">
-<h3 id="orgfeb1ded">linear regression</h3>
+<div id="outline-container-org0802dc0" class="outline-3">
+<h3 id="org0802dc0">linear regression</h3>
 </div>
 
-<div id="outline-container-orgbfb065c" class="outline-3">
-<h3 id="orgbfb065c">Support Vector Machine</h3>
+<div id="outline-container-org26b6269" class="outline-3">
+<h3 id="org26b6269">Support Vector Machine</h3>
+<div class="outline-text-3" id="text-org26b6269">
+</div>
+<div id="outline-container-org11d3649" class="outline-4">
+<h4 id="org11d3649">without soft margin</h4>
+<div class="outline-text-4" id="text-org11d3649">
+<p>
+对于点的划分，由decision theory:
+\[\vec{w}\vec{u} +c \ge 0\]
+距此线一个单位对点标注
+\[\vec{w}{x_{+}}+b \ge 1\]
+then y = 
+\[\vec{w}{x_{-}}+b \le 1\]
+then y = -1
+So,
+\[y(\vec{w}x+b) -1 \ge 0\]
+最大化标+点和标-点的距离：
+\[D_{max} = (x_{+}-x_{1})\frac{\vec{w}}{||w||} = \frac{2}{||w||}\]
+等价于最小化\(\frac{1}{2}||w||^{2}\), 再加上约束条件
+\[L= \frac{1}{2}||w||^{2} -\sum
+\alpha_{i}[y_{i}(\vec{w}\vec{x}+b)-1]\]
+设L对w和b的偏导为0，\(\vec{w} = \sum \alpha_{i}x_{i}y_{i}\),\(\sum
+\alpha_{i}y_{i}=0\).
+再代回L，\[L=\sum \alpha_{i} - \frac{1}{2} \sum \sum \alpha_{i}
+\alpha_{j} y_{i} y_{j}(x_{i}x_{j})\]
+</p>
+</div>
 </div>
 
-<div id="outline-container-org09d902d" class="outline-3">
-<h3 id="org09d902d">logical regression</h3>
+<div id="outline-container-orgc98d3e1" class="outline-4">
+<h4 id="orgc98d3e1">with soft margin</h4>
+<div class="outline-text-4" id="text-orgc98d3e1">
+<p>
+对于不能绝对线性分割的，可以允许某些点进入空白分割区域（从-1到1的区域）
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">slack variable</td>
+<td class="org-left">&epsilon;</td>
+<td class="org-left">t<sub>n</sub> y(x<sub>n</sub>) &ge; 1-&epsilon;<sub>n</sub></td>
+<td class="org-left">&epsilon; &gt; 0</td>
+</tr>
+
+<tr>
+<td class="org-left">Controls trade-off between slack and margin</td>
+<td class="org-left">C</td>
+<td class="org-left">C= &infin;, if misclassified</td>
+<td class="org-left">C &sum; &epsilon;<sub>n</sub></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+this L satisfied the KKT condition, and can be solved.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">good classified</td>
+<td class="org-left">a = 0</td>
+<td class="org-left">&epsilon; = 0</td>
+<td class="org-left">C = 0</td>
+</tr>
+
+<tr>
+<td class="org-left">on the margin</td>
+<td class="org-left">a &lt; C</td>
+<td class="org-left">&epsilon; = 0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">violate the margin</td>
+<td class="org-left">a = C</td>
+<td class="org-left">&epsilon; &gt; 0</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">misclassified</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&epsilon; &gt; 1</td>
+<td class="org-left">C = &infin;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgcd61b62" class="outline-3">
-<h3 id="orgcd61b62">Neural network</h3>
+<div id="outline-container-org147489c" class="outline-3">
+<h3 id="org147489c">logical regression</h3>
 </div>
 
-<div id="outline-container-org5282f0c" class="outline-3">
-<h3 id="org5282f0c">Conversational neural Network</h3>
+<div id="outline-container-orgfc560f2" class="outline-3">
+<h3 id="orgfc560f2">Neural network</h3>
+<div class="outline-text-3" id="text-orgfc560f2">
+</div>
+<div id="outline-container-org845a0f8" class="outline-4">
+<h4 id="org845a0f8">Backpropagation</h4>
+<div class="outline-text-4" id="text-org845a0f8">
+</div>
+<ul class="org-ul">
+<li><a id="orgffec27e"></a>感知机<br />
+<div class="outline-text-5" id="text-orgffec27e">
+<p>
+对x的向后更正，\(x^{'}= x - \eta \cdot \frac{dy}{dx}\).
+对于感知机的传递功能，\(y = w^{T}x + b\).
+由于感知机没有激活函数，所以直接对\[\mathcal{L} = \frac{1}{n}
+\sum^{n}_{i=1}(w\cdot x^{i} +b -y^{i})^{2}\].
+\[ \frac{\partial \mathcal{L}}{\partial w} = \frac{2}{n}
+\sum^{n}_{i=1}(wx^{i}+b-y^{i})x^{i}\]
+\[ \frac{\partial \mathcal{L}}{\partial b}= \frac{2}{n}\sum^{n}_{i=1}(wx^{i}+b -y^{i})\]
+</p>
+</div>
+</li>
+
+<li><a id="orga93c506"></a>多层神经网络<br />
+<div class="outline-text-5" id="text-orga93c506">
+<p>
+而对于多层神经网络，\(z = w^{T}x + b\), \(\frac{\partial z}{\partial w} =x\),  \(\frac{\partial z}{\partial b} = 1\).
+每层之间具有激活函数, \(\sigma(z) = \frac{1}{1-e^{-z}}\),\(\frac{\partial \sigma(x)}{\partial x} = \sigma (1-\sigma)\).
+损失函数, \(\mathcal{L} = \frac{1}{2}(\sigma - y^{i})^{2}\), \[\frac{\partial \mathcal{L}}{\partial \sigma} = (\sigma -y^{i})\]
+</p>
+
+
+<p>
+\[\frac{\partial \mathcal{L}}{\partial w} = \frac{\partial
+\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
+\frac{\partial z}{\partial w}\]
+</p>
+
+
+<p>
+\(\frac{\partial \mathcal{L}}{\partial w} = (\sigma -
+y)\sigma(1-\sigma) \cdot x\)
+</p>
+
+<p>
+\[\frac{\partial \mathcal{L}}{\partial b} = \frac{\partial
+\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
+\frac{\partial z}{\partial b}\]
+</p>
+
+<p>
+\(\frac{\partial  \mathcal{L}}{\partial b} = (\sigma -
+y)\sigma(1-\sigma)\)
+</p>
+
+<p>
+如果对于多层神经网络，则需要逐层计算，其中\(\frac{\partial
+\mathcal{L}}{\partial w}\) 中的w就是相应层的权重，由最后的
+L逐步回推到w。
+</p>
+</div>
+</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-org7d1a034" class="outline-3">
-<h3 id="org7d1a034">linear Discriminate Analysis(Fisher)</h3>
-<div class="outline-text-3" id="text-org7d1a034">
+
+<div id="outline-container-orgb336a21" class="outline-3">
+<h3 id="orgb336a21">Conversational neural Network</h3>
 </div>
-<div id="outline-container-orgb881391" class="outline-4">
-<h4 id="orgb881391">算法简介</h4>
-<div class="outline-text-4" id="text-orgb881391">
+
+<div id="outline-container-org1b1ce24" class="outline-3">
+<h3 id="org1b1ce24">linear Discriminate Analysis</h3>
+<div class="outline-text-3" id="text-org1b1ce24">
+</div>
+<div id="outline-container-orgc56e35c" class="outline-4">
+<h4 id="orgc56e35c">Fisher's linear discriminant</h4>
+<div class="outline-text-4" id="text-orgc56e35c">
 <p>
 输入为j=0，1类样本，每类分别 \(N_{j}\) 个样本
 \(\mu_j = \frac{1}{N_{j}} \sum x\) \(x \in N_{j}\)
@@ -816,23 +1405,59 @@ sklearn API
 </p>
 </div>
 </div>
+<div id="outline-container-org0480d7f" class="outline-4">
+<h4 id="org0480d7f">Fisher's linear discriminant with Kernel method</h4>
 </div>
 
 
+<div id="outline-container-org5fc8927" class="outline-4">
+<h4 id="org5fc8927">Probabilistic Generative Model</h4>
+<div class="outline-text-4" id="text-org5fc8927">
+<p>
+用贝叶斯定理求出每个可能的概率，再取最大的值
+</p>
+<pre class="example">
+one two class case
+</pre>
+<p>
+\[ P(C_{1}|x) = \frac{P(C_{1}|x)P(C_{1})}{P(C_{1}|x)P(C_{1}) +
+P(C_{2}|x)P(C_{2})} = \frac{1}{1+exp(log
+\frac{P(C_{1}|x)P(C_{1})}{P(C_{2}|x)P(C_{2})} )}\]
+即可以 Logistic sigmoid 函数求解
+</p>
 
+<pre class="example">
+multi class case
+</pre>
 
+<p>
+\[P(C_{k}|x) = \frac{P(x|C_{k})P(C_{k})}{\sum_{j} P(x|C_{j})P(C_{j})}\]
+</p>
 
-<div id="outline-container-org18e7e62" class="outline-3">
-<h3 id="org18e7e62">Principe Component Analysis</h3>
+<p>
+即可以用 Softmax funtion 来求解
+</p>
+</div>
 </div>
 
-<div id="outline-container-orgc6a85c1" class="outline-3">
-<h3 id="orgc6a85c1">K-Means</h3>
-<div class="outline-text-3" id="text-orgc6a85c1">
+<div id="outline-container-org94a097b" class="outline-4">
+<h4 id="org94a097b">Probabilistic Discriminant Model</h4>
+<div class="outline-text-4" id="text-org94a097b">
+<p>
+和 generative model 一样求解，同样也有二分和多分类，但是该类问题设为
+logical regression
+</p>
 </div>
-<div id="outline-container-org4cb0568" class="outline-4">
-<h4 id="org4cb0568">算法介绍</h4>
-<div class="outline-text-4" id="text-org4cb0568">
+</div>
+</div>
+
+
+<div id="outline-container-orgfb64c5e" class="outline-3">
+<h3 id="orgfb64c5e">Principe Component Analysis</h3>
+</div>
+<div id="outline-container-org8ed9b99" class="outline-3">
+<h3 id="org8ed9b99">K-Means</h3>
+<div class="outline-text-3" id="text-org8ed9b99">
 <p>
 输入样本集 D: \(x_{1}, x_{1}, x_{2},,,x_{m}\)
 聚类数 k, 
@@ -847,12 +1472,8 @@ for i= 1,2,..N:
     计算每个点到每个中心的距离，并被最小距离的聚类中心标记
     对于所有相同标记的聚类更新中心，再重复上一步骤，直到没有变化为止
 </p>
-</div>
-</div>
 
-<div id="outline-container-org107dc5f" class="outline-4">
-<h4 id="org107dc5f">code</h4>
-<div class="outline-text-4" id="text-org107dc5f">
+
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> random
 <span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
@@ -914,20 +1535,19 @@ runkMeans(b,K,max_iters)
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgfdaafaa" class="outline-3">
+<h3 id="orgfdaafaa">EM algorithms</h3>
+</div>
 </div>
 
 
-<div id="outline-container-org4f46173" class="outline-3">
-<h3 id="org4f46173">EM algorithms</h3>
-</div>
-
-<div id="outline-container-orgf39a3de" class="outline-3">
-<h3 id="orgf39a3de">link</h3>
-<div class="outline-text-3" id="text-orgf39a3de">
+<div id="outline-container-org8285e12" class="outline-2">
+<h2 id="org8285e12">link</h2>
+<div class="outline-text-2" id="text-org8285e12">
 <p>
 机器学习代码和课件可在此下 <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
-</div>
 </div>
 </div>
 <div id="footnotes">
@@ -943,7 +1563,7 @@ runkMeans(b,K,max_iters)
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: sx</p>
-<p class="date">Created: 2020-07-17 Fr 13:37</p>
+<p class="date">Created: 2020-07-30 Do 16:44</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

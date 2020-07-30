@@ -2,7 +2,6 @@
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+STARTUP: content
-
 tensorflow2手册的相关代码
 * Check GPU
 #+BEGIN_SRC python :results output :session checkoutgpu 
@@ -118,7 +117,6 @@ x = tf.pad(x,[[0,2]]) []内是padding 填充的方案，每个[]表示一个维�
 
 
 
-
 ** advance manipulation
 *** tf.minimum
 tf.minimum(x, a) 最小a
@@ -171,117 +169,7 @@ ax.contour3D(x.numpy(), y.numpy(), z.numpy(), 50)
 
 #+end_src
 
-
-* activation function
-** no activation
-输出为实数空间或某个区间， 连续变化。直接有输出值和真实值比较
-** Sigmoid
-$$ Sigmoid(x) = \frac{1}{1+e^{-x}}$$
-
-导数：$$ \sigma'(x) = \sigma(x)(1-\sigma(x))$$
-
-** ReLU
-$$ Relu(x) = 
-\begin{cases}
-x&  x >=0 \\
-0&  x < 0
-\end{cases}$$
-
-$$ Relu(x) = max(0,x)$$
-
-** LeakyReLU
-
-$$ LeakyReLU(x) = 
-\begin{cases}
-x& x >=0 \\
-px& x <0, 0<p<<1
-\end{cases}$$
-
-** Tanh
-$$ tanh(x) = \frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$$
-$$ tanh(x) = 2.sigmoid(2x)-1$$
-导数：$$\tanh'(x) = 1- \tanh^{2}(x)$$
-
-** MSE
-$$ \mathcal{L} = MSE(y, o) =
-\frac{1}{d_{out}}\sum_{i=1}^{d_{out}}(y_{i}-o^{i})^{2}$$
-导数 ：$$ \frac{\partial \mathcal{L}}{\partial o_{i}}= (o_{i}-y_{i})$$
-
-** inf entropy 
-$$ H(p) = -\sum_{i}P(i)\log_{2}^{P_{i}}$$
-** softmax
-$$ p_{z_{i}} = \frac{e^{z_{i}}}{\sum_{j}e^{z_{j}}}$$
-所有种类的概率之和为1
-导数:
-$$ \frac{ \partial p_{z_{i}}}{\partial z_{j}} = 
-\begin{cases}
-p_{i}(1-p_{j}) &  if i =j \\
--p_{i}p_{j}    & if \neq j
-\end{cases}$$
-
-** cross entropy
-在计算交叉熵时， 一般是和 softmax 函数一起使用的
-$$ H(p||q) = -\sum_{i} p(i) \log_{2}^{q_{i}}$$
-$$H(p||q) = H(p) + D_{KL}(p||q)$$
-
-for One-hot coding
-$$ H(p||q) = D_{KL}(p||q) = \sum_{i}y_{i}log(\frac{y_{j}}{o_{j}}) = 
-1 \cdot \log\frac{1}{o_{i}} + \sum_{j!=i}0 \cdot \log \frac{0}{o_{j}}
-= -\log o_{i}$$
-o_i 为1 时，预测正确，交叉熵为0。
-导数：
-$$ \mathcal{L} = -\sum_{k}y_{k}\log(p_{k})$$
-$$\begin{aligned}
- \frac{\partial \mathcal{L}}{\partial z_{i}} & =
--\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial z_{i}} \\
-&= -\sum_{k} y_{k} \frac{\partial \log(p_{k})}{\partial p_{k}} \cdot
-\frac{\partial p_{k}}{\partial z_{i}} \\
-&= -\sum_{k} y_{k} \frac{1}{\partial p_{k}} \cdot
-\frac{\partial p_{k}}{\partial z_{i}} \\
-\end{aligned}
-$$
-
-用上面 softmax 的导数结果，分为k=i 和k!=i两种情况
-$$ \frac{\partial \mathcal{L}}{z_{i}}=p_{i}-y_{i}$$
-
-* Backpropagation
-
-** 感知机
-对x的向后更正，$x^{'}= x - \eta \cdot \frac{dy}{dx}$.
-对于感知机的传递功能，$y = w^{T}x + b$.
-由于感知机没有激活函数，所以直接对$$\mathcal{L} = \frac{1}{n}
-\sum^{n}_{i=1}(w\cdot x^{i} +b -y^{i})^{2}$$.
-$$ \frac{\partial \mathcal{L}}{\partial w} = \frac{2}{n}
-\sum^{n}_{i=1}(wx^{i}+b-y^{i})x^{i}$$
-$$ \frac{\partial \mathcal{L}}{\partial b}= \frac{2}{n}\sum^{n}_{i=1}(wx^{i}+b -y^{i})$$
-
-** 多层神经网络
-
-而对于多层神经网络，$z = w^{T}x + b$, $\frac{\partial z}{\partial w} =x$,  $\frac{\partial z}{\partial b} = 1$.
-每层之间具有激活函数, $\sigma(z) = \frac{1}{1-e^{-z}}$,$\frac{\partial \sigma(x)}{\partial x} = \sigma (1-\sigma)$.
-损失函数, $\mathcal{L} = \frac{1}{2}(\sigma - y^{i})^{2}$, $$\frac{\partial \mathcal{L}}{\partial \sigma} = (\sigma -y^{i})$$
-
-
-$$\frac{\partial \mathcal{L}}{\partial w} = \frac{\partial
-\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
-\frac{\partial z}{\partial w}$$
-
-
-$\frac{\partial \mathcal{L}}{\partial w} = (\sigma -
-y)\sigma(1-\sigma) \cdot x$
-
-$$\frac{\partial \mathcal{L}}{\partial b} = \frac{\partial
-\mathcal{L}}{\partial \sigma} \cdot \frac{\partial \sigma }{\partial z} \cdot
-\frac{\partial z}{\partial b}$$
-
-$\frac{\partial  \mathcal{L}}{\partial b} = (\sigma -
-y)\sigma(1-\sigma)$
-
-如果对于多层神经网络，则需要逐层计算，其中$\frac{\partial
-\mathcal{L}}{\partial w}$ 中的w就是相应层的权重，由最后的
-L逐步回推到w。
-
-* chapter 01
+* chapter 01 code
 
 一个很简单的例子，用tf来求某个函数的导数
 #+BEGIN_SRC python :results output
@@ -690,16 +578,6 @@ network = tf.saved_model.load('model-savedmodel')
 自定义网络层类，继承Layer
 自定义网络类，继承Model
 
-* regularation
-** L0
-控制网络中的非零权重
-
-** L1
-网络中的所有元素的绝对值之和
-促使网络生成更多的稀疏矩阵
-** L2
-网络中的所有元素平方和
-促使网络生成小比重的权值
 * Dropout
 tf.nn.dropout(x, rate = 0.5)
 model.add(layers.Dropout(rate=0.5))
@@ -715,5 +593,5 @@ tf.image.random_flip_up_down(x)
 先放大，再剪裁
 tf.image.resize(x,[244,244])
 tf.image.random_crop(x,[224,224,3])
-* convolution neural network
+
 

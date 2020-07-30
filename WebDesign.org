@@ -1,10 +1,8 @@
 #+TITLE: Webdesige
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+startup: context
-	   	   
-* AWS WordPress EC2 Route53 
-
+#+startup: overview
+*  WordPress Web development in AWS
 ** 构建后台
 没事不要执行该代码
 #+begin_src 
@@ -28,28 +26,24 @@ sudo cp -r wordpress/* /var/www/html/
 cd /var/www/html/
 sudo chown www-data:www-data -R /var/www/html/
 sudo rm index.html 
-#+end_src
-Now go to the IP address, when need database, do so
-#+begin_src 
+## Now go to the IP webseit, when need database, do so
 sudo mysql -u root -p
 Enter
-#+end_src
-#+begin_src 
+##  create database wordpress;
 create database wordpress;
 create user "wpadmin"@"%" identified by "wpadminpw";
 grant all privileges on wordpress.* to "wpadmin"@"%";
 exit;
 #+end_src
-pass the database , username and password
-set username and password for wordpress
-到此，可以用IP 地址访问前端后后台了
-
+back to the IP webseit,
+pass the database , username and password,
+set username and password for wordpress,
+到此，可以用IP 地址访问前端和后台了
 ** 解析域名
 route53, 用域名创建NS
 A-IPV4,名称为空， 值为IP
 CNAME，名称www, 值为域名
-再将A 和CNAME 放到namecheap, 域名的DNS管理中
-
+再将A 和CNAME 放到namecheap的域名的DNS管理中
 ** ssl
 #+begin_src 
 sudo a2enmod ssl
@@ -74,73 +68,69 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 - 发布后，将页面设为菜单就能访问
 
 
-* Web Design Envirement
+* Web Design Envirement in Emacs
 ** lsp-mode
 ** lsp-java
 ** dap-mode
 
-* Spring Boot
-Emacs : M-x lsp-java-springboot-generate
-after build the project, it can be compiled by Maven,and run
+** Spring Boot
+ Emacs : M-x lsp-java-springboot-generate
+ after build the project, it can be compiled by Maven,and run
 
-* project build digraph
+** project build digraph
 
-#+BEGIN_SRC  dot :file ../sysconf/foto/webbuild.png
-  digraph diagramm {
-          Emacs  [shape=box,color=red]
-          LspJavaSpringInitizer [shape=box,color=red]
-          Config [shape=box,color=red]
-          dapDebug [shape=box,color=red]
-	    Programmierung [shape=box,color=red]
+ #+BEGIN_SRC  dot :file ../sysconf/foto/webbuild.png
+   digraph diagramm {
+           Emacs  [shape=box,color=red]
+           LspJavaSpringInitizer [shape=box,color=red]
+           Config [shape=box,color=red]
+           dapDebug [shape=box,color=red]
+	     Programmierung [shape=box,color=red]
 
-          Terminal ->  Maven建包;
-          Maven建包 -> Maven加依赖pom;
-          Maven加依赖pom -> OpenEmacsFile;
-          OpenEmacsFile ->   Programmierung;
-          Programmierung -> MavenCompile;
-          MavenCompile -> MavenPackage;
-          MavenCompile -> dapDebug[label = "也可./mvnx"];
-          MavenPackage -> 执行jar包;
-          MavenPackage -> dapDebug;
-          执行jar包 -> dapDebug;
+           Terminal ->  Maven建包;
+           Maven建包 -> Maven加依赖pom;
+           Maven加依赖pom -> OpenEmacsFile;
+           OpenEmacsFile ->   Programmierung;
+           Programmierung -> MavenCompile;
+           MavenCompile -> MavenPackage;
+           MavenCompile -> dapDebug[label = "也可./mvnx"];
+           MavenPackage -> 执行jar包;
+           MavenPackage -> dapDebug;
+           执行jar包 -> dapDebug;
 
-          Emacs -> LspJavaSpringInitizer;
-          LspJavaSpringInitizer -> Config;
-          Config -> Programmierung;
-          Programmierung -> dapDebug;
-          dapDebug -> Webbroser;
+           Emacs -> LspJavaSpringInitizer;
+           LspJavaSpringInitizer -> Config;
+           Config -> Programmierung;
+           Programmierung -> dapDebug;
+           dapDebug -> Webbroser;
 
-  }
-#+END_SRC
+   }
+ #+END_SRC
 
-#+RESULTS:
-[[file:../sysconf/foto/webbuild.png]]
+ #+RESULTS:
+ [[file:../sysconf/foto/webbuild.png]]
 
+** appeared Problem
+*** server is not startup
+ 1, workspace 有重叠和包含，
+ 2, 需要重启 lsp mode
+*** can't find the main class to start project
+ mvn compile 出现问题，大多数时候是依赖的问题
 
-
-* appeared Problem
-** server is not startup
-1, workspace 有重叠和包含，
-2, 需要重启 lsp mode
-** can't find the main class to start project
-mvn compile 出现问题，大多数时候是依赖的问题
-
-** 没有对应的补全
-mvn 依赖的version 不同会有不同的包，补全也不同
+*** 没有对应的补全
+ mvn 依赖的version 不同会有不同的包，补全也不同
 
 
-* deployment
-
+* deployment with Nginx or Docker
 ** local Nginx deployment
+*** settings
+    sudo apt install nginx
 
-
-sudo apt install nginx
-
-/etc/nginx/ 是其配置文件夹，里面有很多include文件，
-nginx 的默认设置在其中一个 default 文件里。
-本机html仓库 /var/www/html
-将项目放在此文件夹下，运行对于的端口即可
-本机开机后,该文件的会被自动部署,端口可见
+    /etc/nginx/ 是其配置文件夹，里面有很多include文件，
+    nginx 的默认设置在其中一个 default 文件里。
+    本机html仓库 /var/www/html
+    将项目放在此文件夹下，运行对于的端口即可
+    本机开机后,该文件的会被自动部署,端口可见
 *** fire wall 80 port if necessary
 #+BEGIN_SRC 
   add port :
@@ -159,11 +149,9 @@ nginx -s reload
 #+END_SRC
 
 *** uninstall
-sudo apt-get purge nginx nginx-common
-
+    sudo apt-get purge nginx nginx-common
 
 ** Docker envirement deployment
-
 |--------------------------------------------+-----------------|
 | comands                                    | expains         |
 |--------------------------------------------+-----------------|
@@ -175,10 +163,8 @@ sudo apt-get purge nginx nginx-common
 | docker kill -s KILL xxxxxx                 | 关闭            |
 |--------------------------------------------+-----------------|
 
-
 [fn:nginx] 对于新到手的项目可以直接放到容器的nginx根目录（快速部署 /usr/share/nginx/html），可以在映射的
 本机端口进入
-
 
 [fn:docker-v] to my case:
 #+begin_src 
@@ -194,26 +180,6 @@ sudo docker run -d -p 80:80 nginx -> id:xxxxxxx
 sudo docker exec -it -v /....../project:/usr/share/nginx/html xxxxxxx
 build in - > local host :80  
 #+end_src
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 * Maven
@@ -246,7 +212,7 @@ package and Execute
 - mvn package
 and now this jar file can be called
 - java -cp target/xxxx....xx.jar com.mycompany.app.App 
-** customize archetype
+** customize locally archetype
 to the local repository
 #+begin_src sh
   cd ~/.m2/repository/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/
@@ -257,7 +223,7 @@ open the jar file, and change the pom.xml
 
 
 * Spring
-** xml
+** xml方式
 *** IOC & DI
 bean 创建普通类 ：拿到IOC权力后，可有3种DI
 - Set注入 利用set方法
@@ -277,7 +243,7 @@ bean也可以创建配置类，方法一样，但是该类的实现配置依赖�
 class 1 -> Bean 1
 Bean 1 + pointcut(expression,within,args) + class 2 -> Bean 2
 
-** 注解 
+** 注解方式
 *** 申明 
 Service  Repository Component Controller Transaction
 
@@ -288,14 +254,15 @@ Autowire (类型)
 *** AOP 
 Aspect, 同样3种
 
-** 配置类
+** 配置类方式
+
 
 * SpingMVC
 * Spring Boot
 Emacs : M-x lsp-java-springboot-generate
 after build the project, it can be compiled by Maven,and run
 
-* mysql
+* MySQL
 ** 事务隔离
 1 可同时访问修改   脏读
 2 隔离访问        不可重返读
