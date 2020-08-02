@@ -78,14 +78,13 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 
 ** project build digraph
 
- #+BEGIN_SRC  
+ #+BEGIN_SRC 
    digraph diagramm {
            Emacs  [shape=box,color=red]
            LspJavaSpringInitizer [shape=box,color=red]
            Config [shape=box,color=red]
            dapDebug [shape=box,color=red]
-	     Programmierung [shape=box,color=red]
-
+           Programmierung [shape=box,color=red]
            Terminal ->  Maven建包;
            Maven建包 -> Maven加依赖pom;
            Maven加依赖pom -> OpenEmacsFile;
@@ -96,13 +95,11 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
            MavenPackage -> 执行jar包;
            MavenPackage -> dapDebug;
            执行jar包 -> dapDebug;
-
            Emacs -> LspJavaSpringInitizer;
            LspJavaSpringInitizer -> Config;
            Config -> Programmierung;
            Programmierung -> dapDebug;
            dapDebug -> Webbroser;
-
    }
  #+END_SRC
 
