@@ -114,7 +114,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
  https://github.com/scofild429/sysc/blob/master/foto/webbuild.png
 #+end_src
 
-[[https://github.com/scofild429/sysc/blob/master/foto/webbuild.png][foto/webbuild.png]]
+[[https://github.com/scofild429/sysc/blob/master/foto/webbuild.png][webbuild.png]]
 
 ** appeared Problem
 *** server is not startup
@@ -125,7 +125,6 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 
 *** 没有对应的补全
  mvn 依赖的version 不同会有不同的包，补全也不同
-
 
 * Maven
 ** package all the dependencies together as a jar 
@@ -164,7 +163,6 @@ to the local repository
 #+end_src
 open the jar file, and change the pom.xml
 
- 
 * Spring
 ** xml方式
 *** IOC & DI
