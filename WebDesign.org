@@ -67,7 +67,6 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 - 创建页面，先只写标题，保存后改别名，slug 为xxx
 - 发布后，将页面设为菜单就能访问
 
-
 * Web Design Envirement in Emacs
 ** lsp-mode
 ** lsp-java
@@ -79,7 +78,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 
 ** project build digraph
 
- #+BEGIN_SRC  
+ #+BEGIN_SRC   dot :file ../sysconf/foto/webbuild.png
    digraph diagramm {
            Emacs  [shape=box,color=red]
            LspJavaSpringInitizer [shape=box,color=red]
@@ -115,7 +114,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
  https://github.com/scofild429/sysc/blob/master/foto/webbuild.png
 #+end_src
 
-[[ https://github.com/scofild429/sysc/blob/master/foto/webbuild.png]]
+[[https://github.com/scofild429/sysc/blob/master/foto/webbuild.png][foto/webbuild.png]]
 
 ** appeared Problem
 *** server is not startup
@@ -126,7 +125,6 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 
 *** 没有对应的补全
  mvn 依赖的version 不同会有不同的包，补全也不同
-
 
 
 * Maven
@@ -167,8 +165,6 @@ to the local repository
 open the jar file, and change the pom.xml
 
  
-
-
 * Spring
 ** xml方式
 *** IOC & DI
@@ -202,7 +198,6 @@ Autowire (类型)
 Aspect, 同样3种
 
 ** 配置类方式
-
 
 * SpingMVC
 * Spring Boot
@@ -331,39 +326,6 @@ SqlSessionFactory
 ** lsp-mode
 ** lsp-java
 ** dap-mode
-* project build digraph
-
-#+BEGIN_SRC  dot :file ../sysconf/foto/webbuild.png
-  digraph diagramm {
-          Emacs  [shape=box,color=red]
-          LspJavaSpringInitizer [shape=box,color=red]
-          Config [shape=box,color=red]
-          dapDebug [shape=box,color=red]
-	    Programmierung [shape=box,color=red]
-
-          Terminal ->  Maven建包;
-          Maven建包 -> Maven加依赖pom;
-          Maven加依赖pom -> OpenEmacsFile;
-          OpenEmacsFile ->   Programmierung;
-          Programmierung -> MavenCompile;
-          MavenCompile -> MavenPackage;
-          MavenCompile -> dapDebug[label = "也可./mvnx"];
-          MavenPackage -> 执行jar包;
-          MavenPackage -> dapDebug;
-          执行jar包 -> dapDebug;
-
-          Emacs -> LspJavaSpringInitizer;
-          LspJavaSpringInitizer -> Config;
-          Config -> Programmierung;
-          Programmierung -> dapDebug;
-          dapDebug -> Webbroser;
-
-  }
-#+END_SRC
-
-#+RESULTS:
-[[file:../sysconf/foto/webbuild.png]]
-
 * appeared Problem
 ** server is not startup
 1, workspace 有重叠和包含，
