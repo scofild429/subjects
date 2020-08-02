@@ -77,8 +77,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
  after build the project, it can be compiled by Maven,and run
 
 ** project build digraph
-
- #+BEGIN_SRC 
+ #+BEGIN_src
    digraph diagramm {
            Emacs  [shape=box,color=red]
            LspJavaSpringInitizer [shape=box,color=red]
@@ -101,7 +100,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
            Programmierung -> dapDebug;
            dapDebug -> Webbroser;
    }
- #+END_SRC
+ #+END_src
 
 #+begin_src 
 1 add the to the above SRC begin:  dot :file ../sysconf/foto/webbuild.png
