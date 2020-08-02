@@ -624,7 +624,6 @@ $$Cove[x] = E[(Wz + u + \epsilon)(Wz + u + \epsilon)^{T}]
 
 $$ x \sim N(u, Cov[x])$$
 
-
 ** K-Means
 输入样本集 D: $x_{1}, x_{1}, x_{2},,,x_{m}$
 聚类数 k, 

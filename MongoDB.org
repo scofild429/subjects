@@ -1,7 +1,10 @@
-#+TITLE: MongoDB
+#+TITLE:  MongoDB
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+startup: content
+#+startup: overview
+
+* open the mongodb service
+
 
 |-------------+-----------|
 | commonds    | functions |
@@ -23,10 +26,6 @@
 |             |           |
 
 
-
-
-
-* open the mongodb service
 #+begin_src sh :dir /sudo::
 sudo systemctl start mongod
 #+end_src
@@ -76,11 +75,6 @@ sudo systemctl start mongod
   db.posts.drop();
   db.dropDatabase();
 #+end_src
-
-
-
-*** 
-
 
 * backup and restore
 mongo xiaoma  : can just get in xiaoma database
