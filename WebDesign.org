@@ -78,7 +78,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 
 ** project build digraph
 
- #+BEGIN_SRC   dot :file ../sysconf/foto/webbuild.png
+ #+BEGIN_SRC  
    digraph diagramm {
            Emacs  [shape=box,color=red]
            LspJavaSpringInitizer [shape=box,color=red]
@@ -110,8 +110,7 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 1 add the to the above SRC begin:  dot :file ../sysconf/foto/webbuild.png
 2 delete the output :  [[file:../sysconf/foto/webbuild.png]]
 3 push the sysc repository, because the foto is located in it
-4 add the link from sysc repository
- https://github.com/scofild429/sysc/blob/master/foto/webbuild.png
+4 add the link from sysc repository  https://github.com/scofild429/sysc/blob/master/foto/webbuild.png
 #+end_src
 
 [[https://github.com/scofild429/sysc/blob/master/foto/webbuild.png][webbuild.png]]
