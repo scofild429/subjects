@@ -20,6 +20,8 @@
 
 [[https://scofild429.io/subjects/Linear_algebra.html][linear algebra]]
 
+[[https://scofild429.io/subjects/JQuery.html][JQuery]]
+
 [[https://scofild429.io/subjects/linux_program.html][linux]]
 
 [[https://scofild429.io/subjects/Machine_learning.html][Machine learning]]
