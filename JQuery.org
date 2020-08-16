@@ -1,0 +1,24 @@
+
+* JQuery选择器
+
+|---------------------------+---------------+-------------|
+| elements chooser          | class chooser | id  chooser |
+| $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
+|                           |               |             |
+
+
+* CSS 选择器
+
+|------------------+---------------+-------------|
+| elements chooser | class chooser | id  chooser |
+| p, div, h2       | .test         | #test       |
+|                  |               |             |
+
+* operation function
+
+| toggle | fade   | slide  | animate    | stop     | clain       |
+| text   | html   | val    | attr       | append   | prepend     |
+| after  | before | remove | empty      | addclass | removeclass |
+| css    | width  | height | perent     | childen  | siblings    |
+| load   | get    | post   | noConflict |          |             |
+

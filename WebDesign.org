@@ -305,6 +305,10 @@ SqlSessionFactory
 ** 注解开发
 
 * redis
+  1. without password : redis-cli 
+  2. with password    : redis-cli -h localhost -p 6379 -a 123456
+  PING -> PONG
+
 * Shiro
 * Nginx
 * Servlet
@@ -357,6 +361,8 @@ nginx -s stop
 sudo apt systemctl start nginx
 nginx -s reload
 #+END_SRC
+
+#+RESULTS:
 
 *** uninstall
 sudo apt-get purge nginx nginx-common
