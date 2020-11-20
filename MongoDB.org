@@ -5,7 +5,6 @@
 
 * open the mongodb service
 
-
 |-------------+-----------|
 | commonds    | functions |
 |-------------+-----------|
@@ -30,13 +29,9 @@
 sudo systemctl start mongod
 #+end_src
 
-
-
-
-
 * operation
+** create database, collections, and drops
 
-** create database, collections, and drops 
 :admin  at the first step, we must login into one  database
 
 #+begin_src mongo  :db admin
@@ -47,7 +42,6 @@ sudo systemctl start mongod
   db.posts.drop();
   db.dropDatabase();
 #+end_src
-
 
 ** create database, collections, and documents
 
@@ -77,9 +71,11 @@ sudo systemctl start mongod
 #+end_src
 
 * backup and restore
+
 mongo xiaoma  : can just get in xiaoma database
 
 ** 01, create documents
+
 #+begin_src mongo :db admin
   use xiaoma;
   db.createCollection("posts");
@@ -104,8 +100,8 @@ mongo xiaoma  : can just get in xiaoma database
 
 #+end_src
 
-
 ** 02, dump
+
 #+begin_src sh
   cd ~/Desktop/
   mkdir mongobk
@@ -114,9 +110,8 @@ mongo xiaoma  : can just get in xiaoma database
 
 #+end_src
 
-
-
 ** 03, delete documents
+
 #+begin_src mongo :db admin
   use xiaoma;
   db.posts.remove({});
@@ -124,23 +119,19 @@ mongo xiaoma  : can just get in xiaoma database
   exit;
 #+end_src
 
-
-
 ** 04, restore
+
 #+begin_src sh
 cd ~/Desktop/mongobk
 mongorestore --drop
 #+end_src
 
-
 ** 05, check
+
 #+begin_src mongo :db admin
   use xiaoma;
   db.posts.find();
   db.posts.drop();
   db.dropDatabase();
 #+end_src
-
-
-
 

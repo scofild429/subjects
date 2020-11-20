@@ -2,13 +2,98 @@
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+STARTUP: content
-tensorflow2手册的相关代码
-* Check GPU
-#+BEGIN_SRC python :results output :session checkoutgpu 
-import tensorflow as tf
-if (tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)==True):
-    print("using gpu")
+
+* Install and Check GPU
+** install 
+1. nouveau to backlist: add following to /etc/modprobe.d/blacklist.conf
+   blacklist nouveau
+   options nouveau modeset=0
+
+2. sudo update-initramfs -u   
+   
+3. sudo apt update
+   ubuntu-drivers devices
+   sudo apt install nvidia-drivers-418-server
+   sudo add-repository ppa:nilarimogard/webupd8
+   sudo apt-get update
+   sudo apt install prime-indicator
+   sudo reboot
+
+   then I will be able to check :   nvidia-smi
+
+
+4. CUDA
+   go to [[https://developer.nvidia.com/cuda-toolkit-archive]]
+   select CUDA Toolkit 10.1 update 2 to install
+   unmark the Drivers in  CUDA installation
+
+
+5. emacs ~/.bashrc
+   export PATH="/usr/local/cuda-10.1/bin:$PATH"
+   export LD_LIBRARY_PATH="/usr/lcoal/cuda-10.1/lib64:$LD_LIBRARY_PATH"
+   source ~/.bashrc
+
+6. check CUDA
+   cd /usr/local/cuda-10.1/samples/1_Utilities/deviceQuery
+   sudo make
+   ./deviceQuery
+
+   OK if Result = PASS
+   or nvcc -V
+   
+6. cuDNN
+   go to [[https://developer.nvidia.com/rdp/cudnn-download]]
+   at least select 7.6.1 for CUDA 10.1
+   sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+   sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/
+   sudo chmod a+r /usr/local/cuda/include/cudnn.h 
+
+7. sudo apt remove nvidia-*
+   reboot
+
+8. download the nvidia driver source file  at
+   [[https://www.nvidia.com/Download/index.aspx?lang=en-us]]
+
+9. cd ~/Downloads
+   chmod +x ~/Downloads/NVIDIA-Linux-x86_64-450.80.02.run
+   sudo ./NVI...
+
+10. sudo apt install python3-pip
+    sudo apt install ipython3
+    pip3 install pip
+    pip3 install tensorflow-gpu
+    ipython3
+    import tensorflow as tf
+    print(tf.test.is_gpu_available())
+
+** check
+
+#+BEGIN_SRC ipython :results output
+  import tensorflow as tf
+  if (tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)==True):
+      print("using gpu")
 #+END_SRC
+
+#+RESULTS:
+: WARNING:tensorflow:From <ipython-input-3-77a0022b7707>:2: is_gpu_available (from tensorflow.python.framework.test_util) is deprecated and will be removed in a future version.
+: Instructions for updating:
+: Use `tf.config.list_physical_devices('GPU')` instead.
+: using gpu
+
+#+begin_src ipython :results output
+  import sys
+  print(sys.version)
+#+end_src
+
+#+RESULTS:
+: 3.6.9 (default, Oct  8 2020, 12:12:24) 
+: [GCC 8.4.0]
+
+
+
+
+
+
 
 * Tensorflow foundation
 ** 数值类型 
@@ -17,18 +102,18 @@ if (tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)=
 | Scalar |    0 | []      | []                    | acc                  |
 | Vector |    1 | [n,]    | [1.0]                 | bias (b)             |
 | Matrix |    2 | [n, m]  | [[1,2],[3,4]]         | weight (W)           |
-| Tensor |   >2 | [n,m,p] | [[[1],[1]],[[2],[2]]] | input ( [n, h, w, 3] |
+| Tensor |   >=3 | [n,m,p] | [[[1],[1]],[[2],[2]]] | input ( [n, h, w, 3] |
 |--------+------+---------+-----------------------+----------------------|
 
 #+begin_src python
 
 a = tf.constant(example)
-tf.constant() 功能类似于tf.convert_to_tensor()
+tf.constant()  # 功能类似于tf.convert_to_tensor()
 b = tf.constant('Hello Deep learning')
 c = tf.constant(True)
 dtype=tf.int16, int32, int64,tf.float16, tf.float32, tf.float64
 tf.cast(a, tf.float64)
-tf.Variable(a)可以添加a的可训练属性
+tf.Variable(a)    #可以添加a的可训练属性
 tf.zeros([n,m])  tf.zeros_like(a)  == tf.zeros(a.shape)
 tf.ones([n,m])   tf.ones_like(a)   == tf.ones(a.shape)
 tf.fill([2,2],10)
@@ -37,6 +122,9 @@ tf.random.uniform(shape, minval=0,maxval=10,dtype=tf.float32)
 tf.range(10) == tf.range(0,10, delta = 2)
 
 #+end_src
+
+#+RESULTS:
+
 ** Reference(,) and Segment(:)
 #+begin_src python
 x = tf.random.normal([4,32,32,3])
@@ -111,7 +199,6 @@ cor = tf.reduce_sum(out)
 #+begin_src 
 x = tf.pad(x,[[0,2]]) []内是padding 填充的方案，每个[]表示一个维度
 #+end_src
-
 
 
 

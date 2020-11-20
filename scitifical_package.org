@@ -26,7 +26,7 @@
 
 * matplotlib.plot
 ** two linear plot 
-#+begin_src python
+#+begin_src ipython :results output
   import numpy as np
   import random
   from matplotlib import pyplot as plt
@@ -40,10 +40,9 @@
 #+end_src
 
 #+RESULTS:
-: None
 
 ** simplest linear plot
-#+BEGIN_SRC python
+#+BEGIN_SRC ipython :results output
   import matplotlib.pyplot as plt
   plt.plot([1,2,3,4])
   plt.ylabel('some numbers')
@@ -51,8 +50,11 @@
 
 
 #+END_SRC
+
+#+RESULTS:
+
 ** simplest point plot
-#+BEGIN_SRC python
+#+BEGIN_SRC ipython :results output
   import matplotlib.pyplot as plt
   plt.plot([1,2,3,4], [1,4,9,16], 'ro')
   plt.axis([0, 6, 0, 20])
@@ -62,10 +64,9 @@
 #+END_SRC
 
 #+RESULTS:
-: None
 
 ** simplest function plot
-#+BEGIN_SRC python
+#+BEGIN_SRC ipython :results output
   import numpy as np
   import matplotlib.pyplot as plt
 
@@ -79,7 +80,7 @@
 
 #+END_SRC
 ** simplest subplot
-#+BEGIN_SRC python
+#+BEGIN_SRC  ipython :results output
   import numpy as np
   import matplotlib.pyplot as plt
 
@@ -100,7 +101,7 @@
 
 #+END_SRC
 ** histogram plot with cusomised legend
-#+BEGIN_SRC python
+#+BEGIN_SRC  ipython :results output
   import numpy as np
   import matplotlib.pyplot as plt
 
@@ -125,7 +126,7 @@
 
 #+END_SRC
 ** histogram plot 
-#+BEGIN_SRC python
+#+BEGIN_SRC  ipython :results output
   import numpy as np
   import matplotlib.pyplot as plt
 
@@ -150,7 +151,7 @@
 
 #+END_SRC
 ** histogram y axis with log index
-#+BEGIN_SRC python
+#+BEGIN_SRC  ipython :results output
 
   import numpy as np
   import matplotlib.pyplot as plt
@@ -209,7 +210,7 @@
 
 #+END_SRC
 ** a example of mean standrad deviation plotting 
-#+BEGIN_SRC python
+#+BEGIN_SRC  ipython :results output
   import matplotlib.pyplot as plt;
   import numpy as np
   import scipy.stats
@@ -248,3 +249,6 @@
   plt.show()
 
 #+END_SRC
+
+
+

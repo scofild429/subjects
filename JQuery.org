@@ -3,14 +3,12 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 #+STARTUP: content
 
-
 * JQuery选择器
 
 |---------------------------+---------------+-------------|
 | elements chooser          | class chooser | id  chooser |
 | $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
 |                           |               |             |
-
 
 * CSS 选择器
 

@@ -5,11 +5,14 @@
 [[~/Dropbox/sysconf/linux.org][linux config]]
 
 * Makefile
+
 gcc 调用 make 来构造
 
 ** 格式
+
 目标 ： 依赖
 Tab 命令
+
 ** 1example
 
 实列文件：add.c  head.h   main.c   maul.c  sub.c  
@@ -24,6 +27,7 @@ app: main.c add.c sub.c mul.c
 $ make
 
 ** 2修改后只编译改动后的文件
+
 Makefile :
 $ touch Makefile
 #+BEGIN_SRC  txt
@@ -45,7 +49,9 @@ mul.o: mul.c
 #+END_SRC
 $ make
 所有源文件的修改过，即时间戳晚于生成的目标文件，则重新编译
+
 ** 3使用自动变量
+
 $@ :目标
 $< :第一个依赖 
 $^ :所有依赖
@@ -64,7 +70,9 @@ $(target):$(obj)
 
 #+END_SRC
 $ make
+
 ** 4增加可移植性
+
 wildcard :查找指定目录下的指定类型文件
 src = $(wildcard ./*.c)
 将当前目录下所有的.c 找到，并赋给src
@@ -90,7 +98,9 @@ $(target):$(obj)
 #+END_SRC
 $ make
 此文件在别的目录下也能使用
+
 ** 5清洁中间的生成的不必要保存文件
+
 make 一般直接执行终结目标，但是可以直接指定make的函数
 clean : 删除不必要的文件，-f : 强制删除，不管有没有该文件，- : 前置-后，遇到错误执行，直接跳过
 
@@ -116,7 +126,8 @@ $ make
 $ make clean
 
 * 静态库的制作
-** 库方 
+** 库方
+
 include/head.h  lib/  src/
 将在src/中编写要实现的文件
 并编译这些文件             $ gcc *.c -c -I ../include/
@@ -128,7 +139,9 @@ ar : -archive 打包
 
 最后将生成的libtest.a放到上级目录lib中，
 可以将lib和include目录发送给甲方
+
 ** 甲方
+
 根据include/head.h 的头文件编写自己的应用文件main.c
 编译main.c并链接头文件和库 
   $ gcc main.c -I  ./include/ -L ./lib/ -ltest -o app
@@ -138,10 +151,12 @@ ar : -archive 打包
 -o: 指点生成的应用名
 
 ** 特点
+
 优点： 加载块，移植方便
 缺点 ：部署更新麻烦，引用的重复文件重复储存，浪费空间
 
 * 动态库的制作
+
 编译    $ gcc *.c -c -fpic -I ../include
 -fpic 或者 fPIC : 特殊命令
 打包    $ gcc -shared *.o -o libxxx.so
@@ -154,6 +169,7 @@ $ gcc main.c -I ./inculde/ -L ./lib/ -lxxx -o app
 到可以用环境变量或者配置文件
 
 ** 环境变量
+
 临时设置   
   $ export LD_LIBRARY_PATH=./lib
 或者新增   
@@ -170,21 +186,27 @@ $ sudo cat "LD_LIBRARY_PATH=./lib:LD_LIBRARY_PATH" >> /etc/profile
 $ source /etc/profile
 
 ** 修改配置文件
+
 配置文件/etc/ld.so.conf
 $ sudo cat "绝对路径/lib" >> /etc/ld.so.conf
 $ sudo ldconfig -v 激活配置
 
 ** 通过函数加载
+
 dlopen dlclose dlsym
 
 * exit
+
 exit(0) will also send signal 17 (SIGCHID) to its father thread;
 
 * memory
 ** memcpy
+
 memcpy(p, "niao",4);
+
 * pipe
 ** named pipe
+
 1. In current directory:   mkfifo("./myfifo", 0777);
 with mkfifo creat a file, so that other unrelated process can commu  
 
@@ -196,8 +218,9 @@ change the pipe variable.
 3. In other process :   fd = open("./myfifo",O_RDONLY);
 open the file, and : while(process_inter == 0);
 can be controled by pipe variable 
- 
+
 ** unnamed pipe
+
 1. In one process diff threads
    creat place for pipe : int fd[2]; one for main thread, one for new thread
    creat pipe : int ret = pipe(fd);
@@ -207,24 +230,34 @@ can be controled by pipe variable
    after finish : write(fd[1], &process_inter, 1); let new pthread run
    
    remeber: wirte at frist in fd[1], and then read at fd[0]
-   
+
 * memset
 * signa
 ** kill
+
 kill(pid, 9);
 send signal 9 to pid process
+
 ** raise
+
 raise(9);  == kill(getpid(), 9);
+
 ** alarm
+
 alarm(10);   wait for 10 seconds and kill itself
 send signal as 14 to itself
+
 ** pause
+
 pause(); stoped for ever
+
 ** signal
+
 signal(signal_ID, self_function); self function or SIG_ING or SIG_DFL
 
 * shared memory
 ** key
+
 key can be 2 differ
 #+BEGIN_SRC 
 
@@ -239,44 +272,59 @@ key can be 2 differ
   printf("create key for server success \n");
 
 #+END_SRC
-** shmget 
+
+** shmget
+
   shmid = shmget(IPC_PRIVATE, 128, 0777);
   shmid = shmget(key, 128, IPC_CREAT | 0777);
+
 ** shmat
+
 char *p  = (char *) shmat(shmid, NULL, 0);
 after mapping to p : can be manipulated
 scanf("%s", p);
 printf("%s", p);
 
 ** shmdt
+
 delete the mapping of p to shared memory 
 shmdt(p); 
 after that, the manipulation of p is not allowed, and well be
 segmention fault
 
 ** shmctl
+
 delete the created shared memory
 shmctl(shmid, IPC_RMID, NULL); == iprcm -m shmid
 
 ** IPC manipulation
+
 show : ipcs -m(shared memory) -q(message queue) -s(semaphores) 
 delete : ipcrm -m shmid /-q msgid /-s semid
 
 * message queue
 ** msgget
+
 msgid= msgget(IPC_PRIVATE, 0777);
 
 ** msgctl
+
 msgctl(msgid, IPC_RMID, NULL); == ipcrm -q msgid
 
 ** msgsnd
+
 msgsnd(msgid, (void *)&sendbuffer, strlen(sendbuffer.message), 0);
 
-** msgrcv 
+** msgrcv
+
 receivelen = msgrcv(msgid, (void *)&receiverbuffer, messagelen, 100, 0);
 
 * semaphore
 ** semget
+
 semid = semget(IPC_PRIVATE,3 ,  0777);
+
 ** semctl
+
 semctl(semid, 0, IPC_RMID, NULL);
+

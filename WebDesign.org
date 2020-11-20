@@ -95,9 +95,6 @@ server {
 
 #+end_src
   
-  
-  
-
 * WordPress Web development in AWS
 ** 构建后台
 没事不要执行该代码
@@ -217,6 +214,8 @@ scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
 *** 没有对应的补全
  mvn 依赖的version 不同会有不同的包，补全也不同
 
+* Vue
+id 选择器的名字不能是数字
 * Maven
 ** package all the dependencies together as a jar 
 if I want to package them to a package to a jar
@@ -455,7 +454,6 @@ SqlSessionFactory
 * JQary
 * IDEA
 * AJAX
-
 * Session und Cookie
 1. Browser send request to server with name, password...
 2. if the authentication is passed, server generate a SessionID,
@@ -632,10 +630,12 @@ nginx 的默认设置在其中一个 default 文件里。
 *** fire wall 80 port if necessary
 #+BEGIN_SRC 
   add port :
+sudo apt install firewalld
   sudo firewall-cmd --add-port=80/tcp --permanent
-  restart firewall:
+  sudo firewall-cmd --remove-port=80/tcp --permanent
+   restart firewall:
   sudo  firewall-cmd --reload
-  check port:
+   check port:
   sudo  firewall-cmd --list-all
 #+END_SRC
 *** nginx control

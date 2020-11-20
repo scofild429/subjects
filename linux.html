@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-08-18 Di 11:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Linux</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sx" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Linux</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge0d50c8">Install</a>
+<ul>
+<li><a href="#org78b1665">系统盘恢复</a></li>
+<li><a href="#orgb2c8215">写入系统</a></li>
+<li><a href="#org8960569">安装</a></li>
+<li><a href="#org259833f">Update nvidia drivers for linux</a></li>
+</ul>
+</li>
+<li><a href="#org7225ab2">System configuration collection</a>
+<ul>
+<li><a href="#orgdb0afdf">open fire wall  for port</a></li>
+<li><a href="#orgf023913">Shutdown Keyboard default</a></li>
+<li><a href="#org66cc49a">autostart</a></li>
+<li><a href="#orgd67f69b">exchange Control Key and Caps Key</a></li>
+<li><a href="#orgfe5574a">right key no response</a></li>
+<li><a href="#orga00e623">hotkey</a>
+<ul>
+<li><a href="#org890c8b0">switch window</a></li>
+<li><a href="#org94fa16e">sign out</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9a0cc03">commands</a>
+<ul>
+<li><a href="#orge93d35e">file management</a></li>
+<li><a href="#org0733de1">directory operation</a></li>
+<li><a href="#org29d246d">find uninstall and remove software</a></li>
+<li><a href="#org7ae87e2">su password config</a></li>
+<li><a href="#orge748a83">get IP address</a></li>
+<li><a href="#orgd130669">grep sort</a></li>
+<li><a href="#org172976d">soft link</a></li>
+<li><a href="#orgbcb45f9">hard link</a></li>
+<li><a href="#orgf8bddb6">cd to program with which</a></li>
+<li><a href="#org2c19b32">awk</a></li>
+</ul>
+</li>
+<li><a href="#org1df16bb">Useful Software</a>
+<ul>
+<li><a href="#org05d7061">fcitx for sougou</a></li>
+<li><a href="#orgfb23e63">eog</a></li>
+<li><a href="#orgd202106">Okular</a></li>
+<li><a href="#org048294f">xournal</a></li>
+<li><a href="#org31fd482">evince</a></li>
+<li><a href="#org8f6a8cb">stardict</a></li>
+<li><a href="#org6b0133c">kmplayer</a></li>
+<li><a href="#org66d022a">simplescreenrecorder</a></li>
+<li><a href="#orgfc6aeae">Cvim</a></li>
+<li><a href="#org7cacba6">hotopea</a></li>
+<li><a href="#org237e833">manual png create png</a></li>
+<li><a href="#org422a86d">gpg for secret</a></li>
+<li><a href="#org880e14d">ranger</a></li>
+<li><a href="#orge0c5e9f">pdftk</a></li>
+<li><a href="#org4d8255e">Linux connect to Android</a></li>
+<li><a href="#orgce1077f">docker</a></li>
+<li><a href="#org86badc6">gs</a></li>
+<li><a href="#org491afd2">mpv player</a></li>
+<li><a href="#org41c4242">mellplayer</a></li>
+</ul>
+</li>
+<li><a href="#org2d0e64f">System control</a>
+<ul>
+<li><a href="#org0bc860d">system backup</a></li>
+<li><a href="#org257506b">system performance</a></li>
+</ul>
+</li>
+<li><a href="#orge453d47">chinese config</a>
+<ul>
+<li><a href="#org0f367a3">emacs chinese input</a></li>
+<li><a href="#org5b9d33f">chinese output pdf</a></li>
+</ul>
+</li>
+<li><a href="#orgb740768">Backlinks</a></li>
+<li><a href="#orgd8bc975">1 Backlinks</a>
+<ul>
+<li><a href="#orgb75412a">Linux Programming</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge0d50c8" class="outline-2">
+<h2 id="orge0d50c8">Install</h2>
+<div class="outline-text-2" id="text-orge0d50c8">
+</div>
+<div id="outline-container-org78b1665" class="outline-3">
+<h3 id="org78b1665">系统盘恢复</h3>
+<div class="outline-text-3" id="text-org78b1665">
+<pre class="example">
+1. WIN+R diskpart
+2. select disk (Disk)
+3. clean
+4. new add 
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb2c8215" class="outline-3">
+<h3 id="orgb2c8215">写入系统</h3>
+<div class="outline-text-3" id="text-orgb2c8215">
+<ol class="org-ol">
+<li>下载ubuntu</li>
+<li>下载USBwriter并安装</li>
+<li>写入系</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org8960569" class="outline-3">
+<h3 id="org8960569">安装</h3>
+<div class="outline-text-3" id="text-org8960569">
+<pre class="example">
+my computer : F12
+</pre>
+</div>
+</div>
+<div id="outline-container-org259833f" class="outline-3">
+<h3 id="org259833f">Update nvidia drivers for linux</h3>
+<div class="outline-text-3" id="text-org259833f">
+<pre class="example">
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update 
+ubuntu-drivers devices
+sudo apt-get --reinstall install nvidia-430
+    1.  will be asked for password
+    2.  reboot
+    3.  select Enroll MOK -&gt; continue -&gt; Yes -&gt; Roboot
+nvidia-sim
+watch -n 1 nvidia-smi
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7225ab2" class="outline-2">
+<h2 id="org7225ab2">System configuration collection</h2>
+<div class="outline-text-2" id="text-org7225ab2">
+</div>
+<div id="outline-container-orgdb0afdf" class="outline-3">
+<h3 id="orgdb0afdf">open fire wall  for port</h3>
+<div class="outline-text-3" id="text-orgdb0afdf">
+<p>
+add port :
+sudo firewall-cmd &#x2013;add-port=80/tcp &#x2013;permanent
+restart firewall:
+sudo  firewall-cmd &#x2013;reload
+check port:
+sudo  firewall-cmd &#x2013;list-all
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf023913" class="outline-3">
+<h3 id="orgf023913">Shutdown Keyboard default</h3>
+<div class="outline-text-3" id="text-orgf023913">
+<pre class="example">
+
+1. $ xinput list 
+   Find the Touchpad and its NAME and ID
+2. $ xinput set-prop 'NAME' 'Device Enabled' 0
+   to close the Touchpad
+3. but with following can be named as tpOn and tpOff in ./bashrc
+alias tpOff="xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 0"
+alias tpOn="xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 1"
+4. Close Touchpad default in boost system
+   the following in ~/.config/autostart/xinput.desktop
+</pre>
+
+<pre class="example">
+[Desktop Entry]
+Type=Application
+Exec=xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 0
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[zh_CN]=touchpad enable
+Name=touchpad enable
+</pre>
+</div>
+</div>
+<div id="outline-container-org66cc49a" class="outline-3">
+<h3 id="org66cc49a">autostart</h3>
+<div class="outline-text-3" id="text-org66cc49a">
+<p>
+Thunderbird
+</p>
+<pre class="example">
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/thunderbird
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=thunderbird
+Name=thunderbird
+Comment[en_US]=thunderbird
+Comment=thunderbird
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd67f69b" class="outline-3">
+<h3 id="orgd67f69b">exchange Control Key and Caps Key</h3>
+<div class="outline-text-3" id="text-orgd67f69b">
+<p>
+在/etc/default/keyboard文件中添加:
+</p>
+<pre class="example">
+XKBOPTIONS="ctrl:nocaps
+</pre>
+<p>
+or
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">setxkbmap -option ctrl:nocaps
+</pre>
+</div>
+<p>
+setting for 右键没反应
+$ sudo add-apt-repository universe
+$ sudo apt install gnome-tweak-tool
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe5574a" class="outline-3">
+<h3 id="orgfe5574a">right key no response</h3>
+<div class="outline-text-3" id="text-orgfe5574a">
+<pre class="example">
+gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga00e623" class="outline-3">
+<h3 id="orga00e623">hotkey</h3>
+<div class="outline-text-3" id="text-orga00e623">
+</div>
+<div id="outline-container-org890c8b0" class="outline-4">
+<h4 id="org890c8b0">switch window</h4>
+<div class="outline-text-4" id="text-org890c8b0">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Switch application</td>
+<td class="org-left">Alt + Tab</td>
+</tr>
+
+<tr>
+<td class="org-left">Switch window of an application</td>
+<td class="org-left">Alt + Spc</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org94fa16e" class="outline-4">
+<h4 id="org94fa16e">sign out</h4>
+<div class="outline-text-4" id="text-org94fa16e">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Alt Ctrl Del</td>
+<td class="org-left">退出用户</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9a0cc03" class="outline-2">
+<h2 id="org9a0cc03">commands</h2>
+<div class="outline-text-2" id="text-org9a0cc03">
+</div>
+<div id="outline-container-orge93d35e" class="outline-3">
+<h3 id="orge93d35e">file management</h3>
+<div class="outline-text-3" id="text-orge93d35e">
+<p>
+在~内找filename的文件
+find ~ -name filename
+</p>
+
+<p>
+找到.bash<sub>history内带有</sub>"install"的内容
+grep -n  "install" .bash<sub>history</sub>
+</p>
+
+<p>
+copy 110.txt to 111.txt
+echo | cat 110.txt &gt; 111.txt
+</p>
+
+
+<p>
+&gt; 擦除再写
+&gt;&gt; 追加写入
+</p>
+
+<p>
+读取.sdsv<sub>history的不重复内容</sub>，再写入到.sdsv
+echo | sort -n .sdsv<sub>history</sub> |uniq &gt; .sdsv
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0733de1" class="outline-3">
+<h3 id="org0733de1">directory operation</h3>
+<div class="outline-text-3" id="text-org0733de1">
+<pre class="example">
+tree -L 2
+alias open='nautilus'
+open .
+</pre>
+</div>
+</div>
+<div id="outline-container-org29d246d" class="outline-3">
+<h3 id="org29d246d">find uninstall and remove software</h3>
+<div class="outline-text-3" id="text-org29d246d">
+<pre class="example">
+sudo apt list --installed | grep software
+whereis software
+sudo apt-get --purge remove software
+sudo apt-get autoremove
+</pre>
+</div>
+</div>
+<div id="outline-container-org7ae87e2" class="outline-3">
+<h3 id="org7ae87e2">su password config</h3>
+<div class="outline-text-3" id="text-org7ae87e2">
+<p>
+sudo passwd :to configure the password of root user
+</p>
+</div>
+</div>
+<div id="outline-container-orge748a83" class="outline-3">
+<h3 id="orge748a83">get IP address</h3>
+<div class="outline-text-3" id="text-orge748a83">
+<p>
+curl ifconfig.me
+</p>
+</div>
+</div>
+<div id="outline-container-orgd130669" class="outline-3">
+<h3 id="orgd130669">grep sort</h3>
+<div class="outline-text-3" id="text-orgd130669">
+<p>
+grep -n "xxx" ./test.txt
+sort (&#x2013;reverse -t " " -k 3 ) test.csv
+</p>
+</div>
+</div>
+<div id="outline-container-org172976d" class="outline-3">
+<h3 id="org172976d">soft link</h3>
+<div class="outline-text-3" id="text-org172976d">
+<p>
+ln -s filename linkname // 快捷方式
+filename加上绝对路径，linkname被移动后，仍能访问访问文件
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbcb45f9" class="outline-3">
+<h3 id="orgbcb45f9">hard link</h3>
+<div class="outline-text-3" id="text-orgbcb45f9">
+<p>
+ln filename linkname   //硬链接
+不占用磁盘空间，重复连接到文件的inode点。
+可以在不同地方通过硬连接对文件进行操作
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf8bddb6" class="outline-3">
+<h3 id="orgf8bddb6">cd to program with which</h3>
+<div class="outline-text-3" id="text-orgf8bddb6">
+<p>
+cd $(dirname $(which cling))
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c19b32" class="outline-3">
+<h3 id="org2c19b32">awk</h3>
+<div class="outline-text-3" id="text-org2c19b32">
+<p>
+delete the repeat : awk '!a[$0]++' file.txt
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1df16bb" class="outline-2">
+<h2 id="org1df16bb">Useful Software</h2>
+<div class="outline-text-2" id="text-org1df16bb">
+</div>
+<div id="outline-container-org05d7061" class="outline-3">
+<h3 id="org05d7061">fcitx for sougou</h3>
+<div class="outline-text-3" id="text-org05d7061">
+<pre class="example">
+1. sudo apt install fcitx
+download sougou
+2. sudo apt  --fix-broken install(after download)
+3. export LC_CTYPE=zh_CN.UTF-8 (for Emacs)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfb23e63" class="outline-3">
+<h3 id="orgfb23e63">eog</h3>
+<div class="outline-text-3" id="text-orgfb23e63">
+<pre class="example">
+eog xxx.png to view png with bluit in software eog
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd202106" class="outline-3">
+<h3 id="orgd202106">Okular</h3>
+<div class="outline-text-3" id="text-orgd202106">
+<pre class="example">
+sudo apt-get install okular
+F2 to constimizer
+F7 mode view
+C-gg to the page
+C-n page down
+C-p page up
+M-n scroll down
+M-p scroll up
+C-b C-b add Annoation, 1 to note
+SPC-b add bookmark
+SPC-SPC rename bookmark
+SPC-n bookmark down
+SPC-p bookmark up
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org048294f" class="outline-3">
+<h3 id="org048294f">xournal</h3>
+<div class="outline-text-3" id="text-org048294f">
+<pre class="example">
+sudo apt install xournal
+</pre>
+</div>
+</div>
+<div id="outline-container-org31fd482" class="outline-3">
+<h3 id="org31fd482">evince</h3>
+<div class="outline-text-3" id="text-org31fd482">
+<pre class="example">
+evince xxx.pdf to view pdf file
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org8f6a8cb" class="outline-3">
+<h3 id="org8f6a8cb">stardict</h3>
+<div class="outline-text-3" id="text-org8f6a8cb">
+<pre class="example">
+1 stardict 
+2 sdcv
+3 very useful  http://download.huzheng.org/
+
+In GUI open with stardict
+In terminal open with sdcv
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org6b0133c" class="outline-3">
+<h3 id="org6b0133c">kmplayer</h3>
+<div class="outline-text-3" id="text-org6b0133c">
+<p>
+sudo apt install kmplayer
+</p>
+</div>
+</div>
+<div id="outline-container-org66d022a" class="outline-3">
+<h3 id="org66d022a">simplescreenrecorder</h3>
+<div class="outline-text-3" id="text-org66d022a">
+<pre class="example">
+
+sudo apt install simplescreenrecorder
+alias ssr='simplescreenrecorder'
+$ ssr
+Ctrl + Shift + Alt + V start or pause 
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgfc6aeae" class="outline-3">
+<h3 id="orgfc6aeae">Cvim</h3>
+<div class="outline-text-3" id="text-orgfc6aeae">
+<pre class="example">
+C-j moive to left 
+C-k moive to right
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org7cacba6" class="outline-3">
+<h3 id="org7cacba6">hotopea</h3>
+<div class="outline-text-3" id="text-org7cacba6">
+<p>
+登陆photopea网站后，新建并上传图片
+设置白色背景：图像 -&gt; 调整 -&gt; 色阶  点击下面的白色 后点击要处理的图片区域
+去背景 ： 魔术棒 ， 点击去连续， 再直接delete
+</p>
+</div>
+</div>
+<div id="outline-container-org237e833" class="outline-3">
+<h3 id="org237e833">manual png create png</h3>
+<div class="outline-text-3" id="text-org237e833">
+<p>
+after edit a file.dot
+</p>
+
+<p>
+dot -Tpng -O file.dot
+</p>
+</div>
+</div>
+
+<div id="outline-container-org422a86d" class="outline-3">
+<h3 id="org422a86d">gpg for secret</h3>
+<div class="outline-text-3" id="text-org422a86d">
+<pre class="example">
+gpg --list-secret-keys
+gpg -r user -e xxx.file
+gpg -d xxx.file.gpg
+after change xxx.file :gpg --verify xxx.file.gpg
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org880e14d" class="outline-3">
+<h3 id="org880e14d">ranger</h3>
+<div class="outline-text-3" id="text-org880e14d">
+<p>
+apt install
+</p>
+</div>
+</div>
+<div id="outline-container-orge0c5e9f" class="outline-3">
+<h3 id="orge0c5e9f">pdftk</h3>
+<div class="outline-text-3" id="text-orge0c5e9f">
+<p>
+<a href="http://www.pdflabs.com/docs/install-pdftk/">official web link</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">合并</td>
+<td class="org-left">pdftk 1.pdf 2.pdf 3.pdf output 123.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">多个不同页面合并</td>
+<td class="org-left">pdftk A=1.pdf B=2.pdf C=pdf cat A1-2 B2-3 C3 output abc.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">旋转第一页</td>
+<td class="org-left">pdftk in.pdf cat 1E 2-end output out.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">加密（128位）</td>
+<td class="org-left">pdftk a.pdf output b.pdf owner<sub>pw</sub> pass</td>
+</tr>
+
+<tr>
+<td class="org-left">加访问密码</td>
+<td class="org-left">pdftk a.pdf output b.pdf user<sub>pw</sub> pass</td>
+</tr>
+
+<tr>
+<td class="org-left">解密</td>
+<td class="org-left">pdftk a.pdf input<sub>pw</sub> pass output b.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">解压</td>
+<td class="org-left">pdftk a.pdf output b.pdf uncompress</td>
+</tr>
+
+<tr>
+<td class="org-left">压缩</td>
+<td class="org-left">pdftk a.pdf output b.pdf compress</td>
+</tr>
+
+<tr>
+<td class="org-left">修复</td>
+<td class="org-left">pdftk a.pdf output b.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">切割</td>
+<td class="org-left">pdftk a.pdf cat 1-end output b.pdf</td>
+</tr>
+
+<tr>
+<td class="org-left">分解成单页</td>
+<td class="org-left">pdftk a.pdf burst</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4d8255e" class="outline-3">
+<h3 id="org4d8255e">Linux connect to Android</h3>
+<div class="outline-text-3" id="text-org4d8255e">
+<pre class="example">
+kedconnect on linux
+kedconnect on android
+with  the same internet connection can be found each other, and communication
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgce1077f" class="outline-3">
+<h3 id="orgce1077f">docker</h3>
+<div class="outline-text-3" id="text-orgce1077f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">comands</th>
+<th scope="col" class="org-left">expains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">docker images</td>
+<td class="org-left">查看容器</td>
+</tr>
+
+<tr>
+<td class="org-left">docker pull nginx</td>
+<td class="org-left">新增</td>
+</tr>
+
+<tr>
+<td class="org-left">docker run -d -p 80:80 nginx</td>
+<td class="org-left">开始，id， 后台</td>
+</tr>
+
+<tr>
+<td class="org-left">docker exec -it xxxxxx bash</td>
+<td class="org-left">前台进入，</td>
+</tr>
+
+<tr>
+<td class="org-left">docker commit xxxxxx newname</td>
+<td class="org-left">生成新容器</td>
+</tr>
+
+<tr>
+<td class="org-left">docker kill -s KILL xxxxxx</td>
+<td class="org-left">关闭</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org86badc6" class="outline-3">
+<h3 id="org86badc6">gs</h3>
+<div class="outline-text-3" id="text-org86badc6">
+<p>
+remove active content from pdf 
+gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=CV.pdf -dBATCH CV.pdf
+</p>
+</div>
+</div>
+<div id="outline-container-org491afd2" class="outline-3">
+<h3 id="org491afd2">mpv player</h3>
+<div class="outline-text-3" id="text-org491afd2">
+<p>
+sudo apt install mpv
+</p>
+
+<p>
+mpv.conf
+</p>
+<pre class="example">
+no-osd-bar # 去掉白色进度条
+save-position-on-quit # 关闭时记住文件播放位置
+no-border # 去掉边框
+
+# 解码-字幕
+vo=opengl:gamma-auto:icc-profile-auto
+hwdec=auto
+autofit-larger=92%
+playcache=8192
+lang=zh,chi
+video-sync=display-resample
+
+sub-codepage=enca:zh:utf8
+sub-auto=fuzzy
+sub-text-font-size=40
+sub-text-shadow-offset=0
+sub-text-color="#ffffffff"
+sub-text-font="STZhongsong"
+sub-codepage=utf8:gb18030
+
+screenshot-template=mpv-screenshot-%f-%p
+screenshot-format=png
+
+osd-font="STZhongsong"
+osd-font-size=36
+
+--script=/Users/yourname/.config/mpv/autoload.lua
+
+</pre>
+
+<p>
+autoload.lua
+</p>
+<pre class="example">
+-- This script automatically loads playlist entries before and after the
+-- the currently played file. It does so by scanning the directory a file is
+-- located in when starting playback. It sorts the directory entries
+-- alphabetically, and adds entries before and after the current file to
+-- the internal playlist. (It stops if the it would add an already existing
+-- playlist entry at the same position - this makes it "stable".)
+-- Add at most 5000 * 2 files when starting a file (before + after).
+MAXENTRIES = 5000
+
+function Set (t)
+    local set = {}
+    for _, v in pairs(t) do set[v] = true end
+    return set
+end
+
+EXTENSIONS = Set {
+    'mkv', 'avi', 'mp4', 'ogv', 'webm', 'rmvb', 'flv', 'wmv', 'mpeg', 'mpg', 'm4v', '3gp',
+    'mp3', 'wav', 'ogv', 'flac', 'm4a', 'wma',
+}
+
+mputils = require 'mp.utils'
+
+function add_files_at(index, files)
+    index = index - 1
+    local oldcount = mp.get_property_number("playlist-count", 1)
+    for i = 1, #files do
+	mp.commandv("loadfile", files[i], "append")
+	mp.commandv("playlist-move", oldcount + i - 1, index + i - 1)
+    end
+end
+
+function get_extension(path)
+    match = string.match(path, "%.([^%.]+)$" )
+    if match == nil then
+	return "nomatch"
+    else
+	return match
+    end
+end
+
+table.filter = function(t, iter)
+    for i = #t, 1, -1 do
+	if not iter(t[i]) then
+	    table.remove(t, i)
+	end
+    end
+end
+
+function find_and_add_entries()
+    local path = mp.get_property("path", "")
+    local dir, filename = mputils.split_path(path)
+    if #dir == 0 then
+	return
+    end
+    local pl_count = mp.get_property_number("playlist-count", 1)
+    if (pl_count &gt; 1 and autoload == nil) or
+       (pl_count == 1 and EXTENSIONS[string.lower(get_extension(filename))] == nil) then
+	return
+    else
+	autoload = true
+    end
+
+    local files = mputils.readdir(dir, "files")
+    if files == nil then
+	return
+    end
+    table.filter(files, function (v, k)
+	local ext = get_extension(v)
+	if ext == nil then
+	    return false
+	end
+	return EXTENSIONS[string.lower(ext)]
+    end)
+    table.sort(files, function (a, b)
+	local len = string.len(a) - string.len(b)
+	if len ~= 0 then -- case for ordering filename ending with such as X.Y.Z
+	    local ext = string.len(get_extension(a)) + 1
+	    return string.sub(a, 1, -ext) &lt; string.sub(b, 1, -ext)
+	end
+	return string.lower(a) &lt; string.lower(b)
+    end)
+
+    if dir == "." then
+	dir = ""
+    end
+
+    local pl = mp.get_property_native("playlist", {})
+    local pl_current = mp.get_property_number("playlist-pos", 0) + 1
+    -- Find the current pl entry (dir+"/"+filename) in the sorted dir list
+    local current
+    for i = 1, #files do
+	if files[i] == filename then
+	    current = i
+	    break
+	end
+    end
+    if current == nil then
+	return
+    end
+
+    local append = {[-1] = {}, [1] = {}}
+    for direction = -1, 1, 2 do -- 2 iterations, with direction = -1 and +1
+	for i = 1, MAXENTRIES do
+	    local file = files[current + i * direction]
+	    local pl_e = pl[pl_current + i * direction]
+	    if file == nil or file[1] == "." then
+		break
+	    end
+
+	    local filepath = dir .. file
+	    if pl_e then
+		-- If there's a playlist entry, and it's the same file, stop.
+		if pl_e.filename == filepath then
+		    break
+		end
+	    end
+
+	    if direction == -1 then
+		if pl_current == 1 then -- never add additional entries in the middle
+		    mp.msg.info("Prepending " .. file)
+		    table.insert(append[-1], 1, filepath)
+		end
+	    else
+		mp.msg.info("Adding " .. file)
+		table.insert(append[1], filepath)
+	    end
+	end
+    end
+
+    add_files_at(pl_current + 1, append[1])
+    add_files_at(pl_current, append[-1])
+end
+
+mp.register_event("start-file", find_and_add_entries)
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org41c4242" class="outline-3">
+<h3 id="org41c4242">mellplayer</h3>
+<div class="outline-text-3" id="text-org41c4242">
+<p>
+sudo apt-get install libmpv-dev mpv
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d0e64f" class="outline-2">
+<h2 id="org2d0e64f">System control</h2>
+<div class="outline-text-2" id="text-org2d0e64f">
+</div>
+<div id="outline-container-org0bc860d" class="outline-3">
+<h3 id="org0bc860d">system backup</h3>
+<div class="outline-text-3" id="text-org0bc860d">
+<p>
+mount rsync
+</p>
+
+<p>
+查看系统的磁盘 :lsblk
+再将磁盘(也可以是某个分区)挂载到某个点 :
+</p>
+
+<p>
+该磁盘可以是正在使用的磁盘或者分区  
+</p>
+<pre class="example">
+ mount /dev/disk /media/Linux
+sudo mount /dev/sda1 /media/Backup
+
+rsync -aAXv --delete --exclude=media target backup/LinuxBackUp20200316
+my opera 
+
+rsync -aAXv /home/sx/ /media/sx/A672BA1B72B9EFE3/linuxbackup/home/
+
+</pre>
+<p>
+如果要恢复，重复上面的过程，再将target backup 交换
+</p>
+</div>
+</div>
+
+<div id="outline-container-org257506b" class="outline-3">
+<h3 id="org257506b">system performance</h3>
+<div class="outline-text-3" id="text-org257506b">
+<ol class="org-ol">
+<li>dependence</li>
+</ol>
+<p>
+sudo apt-get install gir1.2-gtop-2.0 gir1.2-networkmanager-1.0
+gir1.2-clutter-1.0
+</p>
+
+<ol class="org-ol">
+<li>Ubuntu Software</li>
+</ol>
+<p>
+search for : system moniter extension
+</p>
+
+<ol class="org-ol">
+<li>install and configure performance</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge453d47" class="outline-2">
+<h2 id="orge453d47">chinese config</h2>
+<div class="outline-text-2" id="text-orge453d47">
+</div>
+<div id="outline-container-org0f367a3" class="outline-3">
+<h3 id="org0f367a3">emacs chinese input</h3>
+<div class="outline-text-3" id="text-org0f367a3">
+<p>
+sudo apt install fcitx
+download sougou for linux
+sudo dpkg -i sougou&#x2026;&#x2026;
+fcitx set global
+restart configuration to add sougou chinese
+</p>
+
+
+<p>
+$ local -a |grep zh
+sudo apt-get -y install language-pack-zh-hans
+$ local -a |grep zh 
+to see zh is installed
+</p>
+
+<p>
+export LC<sub>CTYPE</sub>=zh<sub>CN.UTF</sub>-8
+to language configuration and auto install drivers to zh<sub>CN.UTF</sub>-8
+so in emacs can input sougou, here we go
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5b9d33f" class="outline-3">
+<h3 id="org5b9d33f">chinese output pdf</h3>
+<div class="outline-text-3" id="text-org5b9d33f">
+<p>
+for a orgmode file with 汉字
+pandoc xxxx.org -o xxxx.pdf
+pandoc xxxx.org -o xxxx.pdf &#x2013;pdf-engine=xelatex
+如果没有汉字支持
+</p>
+<pre class="example">
+fc-list -f "%{family}\n"  :lang=zh
+pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
+</pre>
+<p>
+找到支持的格式，再指明
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb740768" class="outline-2">
+<h2 id="orgb740768">Backlinks</h2>
+</div>
+
+
+<div id="outline-container-orgd8bc975" class="outline-2">
+<h2 id="orgd8bc975">1 Backlinks</h2>
+<div class="outline-text-2" id="text-orgd8bc975">
+</div>
+<div id="outline-container-orgb75412a" class="outline-3">
+<h3 id="orgb75412a"><a href="file:///home/sx/Dropbox/subjects/linux_program.html">Linux Programming</a></h3>
+<div class="outline-text-3" id="text-orgb75412a">
+<p>
+<a href="file:///home/sx/Dropbox/sysconf/linux.html">linux config</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sx</p>
+<p class="date">Created: 2020-08-18 Di 11:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

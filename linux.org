@@ -1,0 +1,562 @@
+#+TITLE: Linux
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup: content
+
+* Install 
+** 系统盘恢复
+#+BEGIN_SRC 
+1. WIN+R diskpart
+2. select disk (Disk)
+3. clean
+4. new add 
+#+END_SRC
+** 写入系统
+
+1. 下载ubuntu 
+2. 下载USBwriter并安装
+3. 写入系
+
+** 安装
+#+BEGIN_SRC
+my computer : F12
+#+END_SRC
+** Update nvidia drivers for linux
+#+BEGIN_SRC 
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update 
+ubuntu-drivers devices
+sudo apt-get --reinstall install nvidia-430
+    1.  will be asked for password
+    2.  reboot
+    3.  select Enroll MOK -> continue -> Yes -> Roboot
+nvidia-sim
+watch -n 1 nvidia-smi
+#+END_SRC
+
+** chinese 
+export LC_CTYPE=zh_CN.UTF-8
+sudo apt-get -y install language-pack-zh-hans
+* System configuration collection
+** open fire wall  for port
+  add port :
+  sudo firewall-cmd --add-port=80/tcp --permanent
+  restart firewall:
+  sudo  firewall-cmd --reload
+  check port:
+  sudo  firewall-cmd --list-all
+
+** Shutdown Keyboard default
+#+BEGIN_SRC 
+
+1. $ xinput list 
+   Find the Touchpad and its NAME and ID
+2. $ xinput set-prop 'NAME' 'Device Enabled' 0
+   to close the Touchpad
+3. but with following can be named as tpOn and tpOff in ./bashrc
+alias tpOff="xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 0"
+alias tpOn="xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 1"
+4. Close Touchpad default in boost system
+   the following in ~/.config/autostart/xinput.desktop
+#+END_SRC
+
+#+BEGIN_SRC 
+[Desktop Entry]
+Type=Application
+Exec=xinput set-prop 'SYNA1D31:00 06CB:CD48 Touchpad' 'Device Enabled' 0
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[zh_CN]=touchpad enable
+Name=touchpad enable
+#+END_SRC
+** autostart
+Thunderbird
+#+begin_src 
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/thunderbird
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=thunderbird
+Name=thunderbird
+Comment[en_US]=thunderbird
+Comment=thunderbird
+
+#+end_src
+** exchange Control Key and Caps Key
+
+在/etc/default/keyboard文件中添加:
+#+BEGIN_SRC 
+XKBOPTIONS="ctrl:nocaps
+#+END_SRC
+or
+#+BEGIN_SRC shell
+setxkbmap -option ctrl:nocaps
+#+END_SRC
+setting for 右键没反应
+$ sudo add-apt-repository universe
+$ sudo apt install gnome-tweak-tool
+
+** right key no response
+#+BEGIN_SRC 
+gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
+#+END_SRC
+
+** hotkey
+
+|---------------------------------+-----------|
+| Switch application              | Alt + Tab |
+| Switch window of an application | Alt + Spc |
+|                                 |           |
+|---------------------------------+-----------|
+
+|--------------+----------|
+| Alt Ctrl Del | 退出用户 |
+
+** clear caches
+put this in .bashrc under root file
+#+begin_src sh
+alias freemem="sync; echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared' "
+#+end_src
+* commands
+** file management
+
+在~内找filename的文件
+find ~ -name filename
+
+找到.bash_history内带有"install"的内容
+grep -n  "install" .bash_history
+
+copy 110.txt to 111.txt
+echo | cat 110.txt > 111.txt
+
+
+> 擦除再写
+>> 追加写入
+
+读取.sdsv_history的不重复内容，再写入到.sdsv
+echo | sort -n .sdsv_history |uniq > .sdsv
+
+** directory operation
+#+BEGIN_SRC 
+tree -L 2
+alias open='nautilus'
+open .
+#+END_SRC
+** find uninstall and remove software
+#+BEGIN_SRC 
+sudo apt list --installed | grep software
+whereis software
+sudo apt-get --purge remove software
+sudo apt-get autoremove
+#+END_SRC
+** su password config
+sudo passwd :to configure the password of root user
+** get IP address
+curl ifconfig.me
+** grep sort
+grep -n "xxx" ./test.txt
+sort (--reverse -t " " -k 3 ) test.csv
+** soft link 
+ln -s filename linkname // 快捷方式
+filename加上绝对路径，linkname被移动后，仍能访问访问文件
+
+** hard link
+ln filename linkname   //硬链接
+不占用磁盘空间，重复连接到文件的inode点。
+可以在不同地方通过硬连接对文件进行操作
+
+** cd to program with which
+cd $(dirname $(which cling))
+
+** awk 
+ delete the repeat : awk '!a[$0]++' file.txt
+
+* Useful Software
+** fcitx for sougou
+#+BEGIN_SRC 
+1. sudo apt install fcitx
+download sougou
+2. sudo apt  --fix-broken install(after download)
+3. export LC_CTYPE=zh_CN.UTF-8 (for Emacs)
+#+END_SRC
+
+** eog
+#+BEGIN_SRC 
+eog xxx.png to view png with bluit in software eog
+#+END_SRC
+** Okular
+#+BEGIN_SRC 
+sudo apt-get install okular
+F2 to constimizer
+F7 mode view
+C-gg to the page
+C-n page down
+C-p page up
+M-n scroll down
+M-p scroll up
+C-b C-b add Annoation, 1 to note
+SPC-b add bookmark
+SPC-SPC rename bookmark
+SPC-n bookmark down
+SPC-p bookmark up
+
+#+END_SRC
+** xournal
+#+BEGIN_SRC  
+sudo apt install xournal
+#+END_SRC
+** evince
+#+BEGIN_SRC 
+evince xxx.pdf to view pdf file
+
+#+END_SRC
+** stardict
+#+BEGIN_SRC 
+1 stardict 
+2 sdcv
+3 very useful  http://download.huzheng.org/
+
+In GUI open with stardict
+In terminal open with sdcv
+
+#+END_SRC
+** kmplayer
+sudo apt install kmplayer
+** simplescreenrecorder
+#+BEGIN_SRC 
+
+sudo apt install simplescreenrecorder
+alias ssr='simplescreenrecorder'
+$ ssr
+Ctrl + Shift + Alt + V start or pause 
+
+#+END_SRC
+** Cvim
+#+BEGIN_SRC 
+C-j moive to left 
+C-k moive to right
+
+#+END_SRC
+** hotopea
+登陆photopea网站后，新建并上传图片
+设置白色背景：图像 -> 调整 -> 色阶  点击下面的白色 后点击要处理的图片区域
+去背景 ： 魔术棒 ， 点击去连续， 再直接delete
+** manual png create png
+
+after edit a file.dot
+
+dot -Tpng -O file.dot
+
+** gpg for secret
+
+#+BEGIN_SRC 
+gpg --list-secret-keys
+gpg -r user -e xxx.file
+gpg -d xxx.file.gpg
+after change xxx.file :gpg --verify xxx.file.gpg
+
+#+END_SRC
+
+** ranger
+apt install
+** pdftk
+
+[[http://www.pdflabs.com/docs/install-pdftk/][official web link]]
+
+|------------------+-------------------------------------------------------------|
+| 合并             | pdftk 1.pdf 2.pdf 3.pdf output 123.pdf                      |
+| 多个不同页面合并 | pdftk A=1.pdf B=2.pdf C=pdf cat A1-2 B2-3 C3 output abc.pdf |
+| 旋转第一页       | pdftk in.pdf cat 1E 2-end output out.pdf                    |
+| 加密（128位）    | pdftk a.pdf output b.pdf owner_pw pass                      |
+| 加访问密码       | pdftk a.pdf output b.pdf user_pw pass                       |
+| 解密             | pdftk a.pdf input_pw pass output b.pdf                      |
+| 解压             | pdftk a.pdf output b.pdf uncompress                         |
+| 压缩             | pdftk a.pdf output b.pdf compress                           |
+| 修复             | pdftk a.pdf output b.pdf                                    |
+| 切割             | pdftk a.pdf cat 1-end output b.pdf                          |
+| 分解成单页       | pdftk a.pdf burst                                           |
+|------------------+-------------------------------------------------------------|
+
+** Linux connect to Android
+#+begin_src 
+kedconnect on linux
+kedconnect on android
+with  the same internet connection can be found each other, and communication
+
+#+end_src
+
+#+begin_src 
+The file can be found in Download folder of each devices
+#+end_src
+
+** docker
+
+
+|------------------------------+-----------------|
+| comands                      | expains         |
+|------------------------------+-----------------|
+| docker images                | 查看容器        |
+| docker pull nginx            | 新增            |
+| docker run -d -p 80:80 nginx | 开始，id， 后台 |
+| docker exec -it xxxxxx bash  | 前台进入，      |
+| docker commit xxxxxx newname | 生成新容器      |
+| docker kill -s KILL xxxxxx   | 关闭            |
+|------------------------------+-----------------|
+
+** gs
+remove active content from pdf 
+gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=CV.pdf -dBATCH CV.pdf
+** mpv player
+sudo apt install mpv
+
+mpv.conf
+#+begin_src 
+no-osd-bar # 去掉白色进度条
+save-position-on-quit # 关闭时记住文件播放位置
+no-border # 去掉边框
+
+# 解码-字幕
+vo=opengl:gamma-auto:icc-profile-auto
+hwdec=auto
+autofit-larger=92%
+playcache=8192
+lang=zh,chi
+video-sync=display-resample
+
+sub-codepage=enca:zh:utf8
+sub-auto=fuzzy
+sub-text-font-size=40
+sub-text-shadow-offset=0
+sub-text-color="#ffffffff"
+sub-text-font="STZhongsong"
+sub-codepage=utf8:gb18030
+
+screenshot-template=mpv-screenshot-%f-%p
+screenshot-format=png
+
+osd-font="STZhongsong"
+osd-font-size=36
+
+--script=/Users/yourname/.config/mpv/autoload.lua
+
+#+end_src
+
+autoload.lua
+#+begin_src 
+-- This script automatically loads playlist entries before and after the
+-- the currently played file. It does so by scanning the directory a file is
+-- located in when starting playback. It sorts the directory entries
+-- alphabetically, and adds entries before and after the current file to
+-- the internal playlist. (It stops if the it would add an already existing
+-- playlist entry at the same position - this makes it "stable".)
+-- Add at most 5000 * 2 files when starting a file (before + after).
+MAXENTRIES = 5000
+
+function Set (t)
+    local set = {}
+    for _, v in pairs(t) do set[v] = true end
+    return set
+end
+
+EXTENSIONS = Set {
+    'mkv', 'avi', 'mp4', 'ogv', 'webm', 'rmvb', 'flv', 'wmv', 'mpeg', 'mpg', 'm4v', '3gp',
+    'mp3', 'wav', 'ogv', 'flac', 'm4a', 'wma',
+}
+
+mputils = require 'mp.utils'
+
+function add_files_at(index, files)
+    index = index - 1
+    local oldcount = mp.get_property_number("playlist-count", 1)
+    for i = 1, #files do
+        mp.commandv("loadfile", files[i], "append")
+        mp.commandv("playlist-move", oldcount + i - 1, index + i - 1)
+    end
+end
+
+function get_extension(path)
+    match = string.match(path, "%.([^%.]+)$" )
+    if match == nil then
+        return "nomatch"
+    else
+        return match
+    end
+end
+
+table.filter = function(t, iter)
+    for i = #t, 1, -1 do
+        if not iter(t[i]) then
+            table.remove(t, i)
+        end
+    end
+end
+
+function find_and_add_entries()
+    local path = mp.get_property("path", "")
+    local dir, filename = mputils.split_path(path)
+    if #dir == 0 then
+        return
+    end
+    local pl_count = mp.get_property_number("playlist-count", 1)
+    if (pl_count > 1 and autoload == nil) or
+       (pl_count == 1 and EXTENSIONS[string.lower(get_extension(filename))] == nil) then
+        return
+    else
+        autoload = true
+    end
+
+    local files = mputils.readdir(dir, "files")
+    if files == nil then
+        return
+    end
+    table.filter(files, function (v, k)
+        local ext = get_extension(v)
+        if ext == nil then
+            return false
+        end
+        return EXTENSIONS[string.lower(ext)]
+    end)
+    table.sort(files, function (a, b)
+        local len = string.len(a) - string.len(b)
+        if len ~= 0 then -- case for ordering filename ending with such as X.Y.Z
+            local ext = string.len(get_extension(a)) + 1
+            return string.sub(a, 1, -ext) < string.sub(b, 1, -ext)
+        end
+        return string.lower(a) < string.lower(b)
+    end)
+
+    if dir == "." then
+        dir = ""
+    end
+
+    local pl = mp.get_property_native("playlist", {})
+    local pl_current = mp.get_property_number("playlist-pos", 0) + 1
+    -- Find the current pl entry (dir+"/"+filename) in the sorted dir list
+    local current
+    for i = 1, #files do
+        if files[i] == filename then
+            current = i
+            break
+        end
+    end
+    if current == nil then
+        return
+    end
+
+    local append = {[-1] = {}, [1] = {}}
+    for direction = -1, 1, 2 do -- 2 iterations, with direction = -1 and +1
+        for i = 1, MAXENTRIES do
+            local file = files[current + i * direction]
+            local pl_e = pl[pl_current + i * direction]
+            if file == nil or file[1] == "." then
+                break
+            end
+
+            local filepath = dir .. file
+            if pl_e then
+                -- If there's a playlist entry, and it's the same file, stop.
+                if pl_e.filename == filepath then
+                    break
+                end
+            end
+
+            if direction == -1 then
+                if pl_current == 1 then -- never add additional entries in the middle
+                    mp.msg.info("Prepending " .. file)
+                    table.insert(append[-1], 1, filepath)
+                end
+            else
+                mp.msg.info("Adding " .. file)
+                table.insert(append[1], filepath)
+            end
+        end
+    end
+
+    add_files_at(pl_current + 1, append[1])
+    add_files_at(pl_current, append[-1])
+end
+
+mp.register_event("start-file", find_and_add_entries)
+
+#+end_src
+
+** mellplayer
+sudo apt-get install libmpv-dev mpv
+
+** thunderbird
+#+begin_src 
+Alt to open the menubar,
+Ansicht Anpassen to setting ungelesen
+#+end_src
+
+* System control
+** system backup
+mount rsync
+
+查看系统的磁盘 :lsblk
+再将磁盘(也可以是某个分区)挂载到某个点 :
+
+该磁盘可以是正在使用的磁盘或者分区  
+#+BEGIN_SRC 
+ mount /dev/disk /media/Linux
+sudo mount /dev/sda1 /media/Backup
+
+rsync -aAXv --delete --exclude=media target backup/LinuxBackUp20200316
+my opera 
+
+rsync -aAXv /home/sx/ /media/sx/A672BA1B72B9EFE3/linuxbackup/home/
+
+#+END_SRC
+如果要恢复，重复上面的过程，再将target backup 交换
+
+** system performance
+1. dependence
+sudo apt-get install gir1.2-gtop-2.0 gir1.2-networkmanager-1.0
+gir1.2-clutter-1.0
+
+2. Ubuntu Software 
+search for : system moniter extension
+
+3. install and configure performance
+
+* chinese config
+** emacs chinese input
+sudo apt install fcitx
+download sougou for linux
+sudo dpkg -i sougou......
+fcitx set global
+restart configuration to add sougou chinese
+
+
+$ local -a |grep zh
+sudo apt-get -y install language-pack-zh-hans
+$ local -a |grep zh 
+to see zh is installed
+
+export LC_CTYPE=zh_CN.UTF-8
+to language configuration and auto install drivers to zh_CN.UTF-8
+so in emacs can input sougou, here we go
+
+** chinese output pdf
+for a orgmode file with 汉字
+pandoc xxxx.org -o xxxx.pdf
+pandoc xxxx.org -o xxxx.pdf --pdf-engine=xelatex
+如果没有汉字支持
+#+BEGIN_SRC 
+fc-list -f "%{family}\n"  :lang=zh
+pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
+#+END_SRC
+找到支持的格式，再指明
+
+
+
+* hardware
+** memery
+#+begin_src 
+寻址能力 = 2^地址总线宽度
+处理能力 = 2^数据总线宽度
+数据总线宽度受制于计算机位数
+#+end_src
