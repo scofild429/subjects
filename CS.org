@@ -283,7 +283,6 @@ SAT <- 3SAT <- 3 Farbarkeit
             <- Vertex Set
             Pa
 
-
 * Algotithm
 ** Komplexitätstheorie
 *** Maximum Sequence Problem Beispile

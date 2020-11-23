@@ -1104,8 +1104,7 @@ display the name is Xiang, and the age is 21
 
 #+END_SRC
 * blockchain
-** model from youtube
-*** part1
+** part1
 
 #+BEGIN_SRC python
   import hashlib
@@ -1176,7 +1175,7 @@ display the name is Xiang, and the age is 21
 
 
 #+END_SRC
-*** part2
+** part2
 #+BEGIN_SRC python
   import hashlib
   import json
@@ -1260,7 +1259,7 @@ display the name is Xiang, and the age is 21
 
 
 #+END_SRC
-*** part3
+** part3
 #+BEGIN_SRC python
   import hashlib
   import json
@@ -1388,7 +1387,7 @@ display the name is Xiang, and the age is 21
 
 
 #+END_SRC
-*** part4 (has error)
+** part4 (has error)
 #+BEGIN_SRC python
   import hashlib
   import json
@@ -1911,7 +1910,6 @@ $$ \frac{d(out_{ij})}{d(x_{ij})}  = 3(2+4)/4 = 4.5$$
   plt.show()
 
 #+END_SRC
-
 
 ** pandas 
 *** plot.scatter()
@@ -3591,7 +3589,6 @@ to fix it, apt the driver 418-driver from apt again
 
 
 
-
 ** Tensorflow foundation
 *** 数值类型 
 |--------+------+---------+-----------------------+----------------------|
@@ -4205,6 +4202,97 @@ tf.image.random_crop(x,[224,224,3])
 
 * Machine Learning
 ** Math for ML
+*** Matrix
+**** Conjugate transpose Matrix
+$$ A^{*} = (\bar{A})^{T} = \bar{A^{T}}$$
+共轭转置矩阵, 先共轭再转置，还是先转置再共轭都可以。
+**** Normal Matrix
+$$ A^{*}A = A A^{*}$$
+正定矩阵, 是转置和本身满足交换律
+$$ A = URDU^{-1} $$
+可酉变换
+**** Unitary Matrix
+$$ A^{*}A = A A^{*} = I $$
+ 酉矩阵，是正定矩阵, 即转置和本身满足交换律，而且等于 I 
+
+**** orthogonal matrix
+实数酉矩阵
+
+$$
+{\displaystyle Q^{T}=Q^{-1}\Leftrightarrow Q^{T}Q=QQ^{T}=I}
+$$
+得该矩阵的转置矩阵为其逆矩阵
+
+**** Hermitian matrix
+$$ A = A^{H}$$, $a_{i,j} = \bar{a_{j,i}}$
+共轭对称
+埃尔米特矩阵，厄米特矩阵，厄米矩阵,所有元素对称出共轭
+*** Eigenwertzerlegung eigende decompostion
+
+对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
+要转换： A = a*a.T
+
+
+$$ A=UBU^T $$ 
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  A = a*a.T
+  B, U = np.linalg.eig(A)
+  print("eigenvalue of A : ")
+  print(B)
+  print("eigenvalue of a :(should be equal to the following) ")
+  print(np.sqrt(B))
+  print("eigenvactor : ")
+  print(U)
+
+#+end_src
+
+#+RESULTS:
+: eigenvalue of A : 
+: [33.40121947  0.59878053]
+: eigenvalue of a : 
+: [5.77937881 0.77380911]
+: eigenvactor : 
+: [[ 0.94673755 -0.32200622]
+:  [ 0.32200622  0.94673755]]
+
+*** SVD Singular value decompostion
+
+但是对于一般矩阵，不是方阵，可以奇异值分解：
+$$ a = UBV^T , a^{t} = VBU^{T} $$
+$$ A = aa^{T} = UB^{2}U^{T}$$
+$$ A^{'}=a^{T}a=VB^{2}V^{T}$$
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  U, B, Vt = np.linalg.svd(a)
+  print("left eigenvalue : ")
+  print(U)
+  print("eigenvactor of a : ")
+  print(B)
+  print("right eigenvalue : ")
+  print(Vt)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+left eigenvalue : 
+[[-0.94673755 -0.32200622]
+ [-0.32200622  0.94673755]]
+eigenvactor of a : 
+[5.77937881 0.77380911]
+right eigenvalue : 
+[[-0.21952944 -0.38334247 -0.5471555  -0.71096853]
+ [ 0.80734554  0.3912142  -0.02491713 -0.44104847]
+ [-0.40008743  0.25463292  0.69099646 -0.54554195]
+ [-0.37407225  0.79697056 -0.47172438  0.04882607]]
+#+end_example
+
+
+
 *** Bayes's Rule
 if x and y are independent:
 $$ p(x,y) =  p(y)p(x) = p(x) p(y) = p(y,x) $$ 
@@ -4361,7 +4449,30 @@ $$ D = \sqrt{ZZ^{T}} $$
 | small K | big bias, without fitting, low variance     |
 |---------+---------------------------------------------|
 
-*** precision recall
+*** confusion matrix prediciton & accuary
+|------------------+---------------+----------------|
+|                  | Actually Ture | Actually False |
+| predict Positive | TP            | FP             |
+| predict Negative | FN            | TN             |
+
+**** Sensitivity
+namely, Ture Positive Rate, y axes of ROC
+
+$$ Sensitivity = \frac{TP}{TP+FN} $$
+**** 1 -  Sensitivity
+namely, false Position, x axes of ROC
+
+$$ 1 -  Sensitivity = \frac{FP}{FP + TN} $$
+
+**** ROC Receivert Operator Characteristic
+under the acceptable  x (1 -  Sensitivity) , we want the best  y (Sensitivity).
+from side to side is all classifed to Positive to all classifed to negative
+
+**** AUC Area under the Curve
+je mehr Fachsgebiet, desto besser for the Method,
+we use this target to choice our Method
+
+**** precision
 
 |-----+---------------+-------------------------------------------------+-------------------------------------------------|
 | TPR | recall 查全 R | predict positive 测正 &  实正 actually positive | predict negative 测反 & 实正  actually positive |
@@ -4378,6 +4489,45 @@ $$ F_{\beta} = \frac{1}{\beta^{2}} \cdot
 
 关联性属性 ： 高中低 （3,2,1）
 非关联性属性： 猪狗羊 （(1,0,0), (0,1,0),(0,0,1)）
+
+*** Jacobin matrix 
+
+
+for $$ Y_{m} = f(X_{n}), Y =(y_{1}, y_{2}, y_{3}....y_{m}), X = (x_{1}
+,x_{2}....x_{n}) $$
+$$ d_{Y} = J d_{x}$$,
+$$
+{\displaystyle \mathbf {J} ={\begin{bmatrix}{\dfrac {\partial \mathbf
+{f} }{\partial x_{1}}}&\cdots &{\dfrac {\partial \mathbf {f}
+}{\partial x_{n}}}\end{bmatrix}}={\begin{bmatrix}{\dfrac {\partial
+f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial
+x_{n}}}\\\vdots &\ddots &\vdots \\{\dfrac {\partial f_{m}}{\partial
+x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial
+x_{n}}}\end{bmatrix}}} 
+$$
+由球坐标系到直角坐标系的转化由 F: ℝ+ × [0, π] × [0, 2π) → ℝ3 函数给出，
+其分量为：
+$$
+{\displaystyle {\begin{aligned}x&=r\sin \theta \cos \varphi
+;\\y&=r\sin \theta \sin \varphi ;\\z&=r\cos \theta
+.\end{aligned}}}
+$$
+此坐标变换的雅可比矩阵是
+$$
+{\displaystyle \mathbf {J} _{\mathbf {F} }(r,\theta ,\varphi
+)={\begin{bmatrix}{\dfrac {\partial x}{\partial r}}&{\dfrac {\partial
+x}{\partial \theta }}&{\dfrac {\partial x}{\partial \varphi
+}}\\[1em]{\dfrac {\partial y}{\partial r}}&{\dfrac {\partial
+y}{\partial \theta }}&{\dfrac {\partial y}{\partial \varphi
+}}\\[1em]{\dfrac {\partial z}{\partial r}}&{\dfrac {\partial
+z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
+}}\end{bmatrix}}={\begin{bmatrix}\sin \theta \cos \varphi &r\cos
+\theta \cos \varphi &-r\sin \theta \sin \varphi \\\sin \theta \sin
+\varphi &r\cos \theta \sin \varphi &r\sin \theta \cos \varphi \\\cos
+\theta &-r\sin \theta &0\end{bmatrix}}.}
+$$
+其雅可比行列式为 r2 sin θ，由于 dV = dx dy dz，如果做变数变换的话其体
+积元(Volume element)，dV，会变成：dV = r2 sin θ dr dθ dφ。
 
 *** Gini
 吉尼系数
