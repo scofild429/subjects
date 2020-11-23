@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mo 19:55 -->
+<!-- 2020-11-23 Mo 20:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lisp</title>
@@ -234,45 +234,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5dcf710">command</a>
+<li><a href="#org9c8b2b7">command</a>
 <ul>
-<li><a href="#org683ba31">execute</a></li>
+<li><a href="#org754a857">execute</a></li>
 </ul>
 </li>
-<li><a href="#org63f0a86">List</a></li>
-<li><a href="#org0e08d0f">Evaluation</a></li>
-<li><a href="#org8786b38">Buffer</a></li>
-<li><a href="#orgb471765">let</a></li>
-<li><a href="#org8fffccd">Special Form</a>
+<li><a href="#orgea760a9">List</a></li>
+<li><a href="#org0297660">Evaluation</a></li>
+<li><a href="#orgf18ef61">Buffer</a></li>
+<li><a href="#orgf339f32">let</a></li>
+<li><a href="#org8adb4cd">Special Form</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orga5268cf">defun</a></li>
-<li><a href="#org35f9e62">let</a></li>
-<li><a href="#org8d0915f">if</a></li>
-<li><a href="#orga554c05">if-then</a></li>
-<li><a href="#orga66d87e">save-excursion</a></li>
+<li><a href="#org7728d84">defun</a></li>
+<li><a href="#org102328c">let</a></li>
+<li><a href="#org6dbfb4b">if</a></li>
+<li><a href="#orgd3696f4">if-then</a></li>
+<li><a href="#org1f96fd5">save-excursion</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org39b4df8">code</a></li>
-<li><a href="#orga446589">Emacs lisp programm</a>
+<li><a href="#org673cd8b">code</a></li>
+<li><a href="#org3b42b9d">Emacs lisp programm</a>
 <ul>
-<li><a href="#org9360232">file management</a></li>
+<li><a href="#orgdd33fb3">file management</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5dcf710" class="outline-2">
-<h2 id="org5dcf710">command</h2>
-<div class="outline-text-2" id="text-org5dcf710">
+<div id="outline-container-org9c8b2b7" class="outline-2">
+<h2 id="org9c8b2b7">command</h2>
+<div class="outline-text-2" id="text-org9c8b2b7">
 </div>
-<div id="outline-container-org683ba31" class="outline-3">
-<h3 id="org683ba31">execute</h3>
-<div class="outline-text-3" id="text-org683ba31">
+<div id="outline-container-org754a857" class="outline-3">
+<h3 id="org754a857">execute</h3>
+<div class="outline-text-3" id="text-org754a857">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -312,9 +312,9 @@
 </div>
 </div>
 
-<div id="outline-container-org63f0a86" class="outline-2">
-<h2 id="org63f0a86">List</h2>
-<div class="outline-text-2" id="text-org63f0a86">
+<div id="outline-container-orgea760a9" class="outline-2">
+<h2 id="orgea760a9">List</h2>
+<div class="outline-text-2" id="text-orgea760a9">
 <div class="org-src-container">
 <pre class="src src-elisp">(concat <span style="color: #2d9574;">"abd"</span> <span style="color: #2d9574;">"def"</span>)
 (+ 34 9)
@@ -340,9 +340,9 @@
 </div>
 </div>
 
-<div id="outline-container-org0e08d0f" class="outline-2">
-<h2 id="org0e08d0f">Evaluation</h2>
-<div class="outline-text-2" id="text-org0e08d0f">
+<div id="outline-container-org0297660" class="outline-2">
+<h2 id="org0297660">Evaluation</h2>
+<div class="outline-text-2" id="text-org0297660">
 <p>
 #+BEGIN<sub>SRC</sub> elisp
 </p>
@@ -356,9 +356,9 @@
 </div>
 </div>
 
-<div id="outline-container-org8786b38" class="outline-2">
-<h2 id="org8786b38">Buffer</h2>
-<div class="outline-text-2" id="text-org8786b38">
+<div id="outline-container-orgf18ef61" class="outline-2">
+<h2 id="orgf18ef61">Buffer</h2>
+<div class="outline-text-2" id="text-orgf18ef61">
 <div class="org-src-container">
 <pre class="src src-elisp">(buffer-name)
 
@@ -391,22 +391,22 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb471765" class="outline-2">
-<h2 id="orgb471765">let</h2>
-<div class="outline-text-2" id="text-orgb471765">
+<div id="outline-container-orgf339f32" class="outline-2">
+<h2 id="orgf339f32">let</h2>
+<div class="outline-text-2" id="text-orgf339f32">
 <p>
 (let ((one "the first")))
 (let ((two 'the-second)))
 </p>
 </div>
 </div>
-<div id="outline-container-org8fffccd" class="outline-2">
-<h2 id="org8fffccd">Special Form</h2>
-<div class="outline-text-2" id="text-org8fffccd">
+<div id="outline-container-org8adb4cd" class="outline-2">
+<h2 id="org8adb4cd">Special Form</h2>
+<div class="outline-text-2" id="text-org8adb4cd">
 </div>
-<div id="outline-container-orga5268cf" class="outline-4">
-<h4 id="orga5268cf">defun</h4>
-<div class="outline-text-4" id="text-orga5268cf">
+<div id="outline-container-org7728d84" class="outline-4">
+<h4 id="org7728d84">defun</h4>
+<div class="outline-text-4" id="text-org7728d84">
 <p>
 (defun name-of-function (argument-list)
   "documentation&#x2026;"
@@ -414,9 +414,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org35f9e62" class="outline-4">
-<h4 id="org35f9e62">let</h4>
-<div class="outline-text-4" id="text-org35f9e62">
+<div id="outline-container-org102328c" class="outline-4">
+<h4 id="org102328c">let</h4>
+<div class="outline-text-4" id="text-org102328c">
 <p>
 (let ((zebra "stripes")
       (tiger "fierce"))
@@ -425,18 +425,18 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org8d0915f" class="outline-4">
-<h4 id="org8d0915f">if</h4>
-<div class="outline-text-4" id="text-org8d0915f">
+<div id="outline-container-org6dbfb4b" class="outline-4">
+<h4 id="org6dbfb4b">if</h4>
+<div class="outline-text-4" id="text-org6dbfb4b">
 <p>
 (if true-or-false-test
     action-to-carry-out-if-the-test-returns-true)
 </p>
 </div>
 </div>
-<div id="outline-container-orga554c05" class="outline-4">
-<h4 id="orga554c05">if-then</h4>
-<div class="outline-text-4" id="text-orga554c05">
+<div id="outline-container-orgd3696f4" class="outline-4">
+<h4 id="orgd3696f4">if-then</h4>
+<div class="outline-text-4" id="text-orgd3696f4">
 <p>
 (if true-or-false-test
     action-to-carry-out-if-the-test-returns-true
@@ -456,9 +456,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orga66d87e" class="outline-4">
-<h4 id="orga66d87e">save-excursion</h4>
-<div class="outline-text-4" id="text-orga66d87e">
+<div id="outline-container-org1f96fd5" class="outline-4">
+<h4 id="org1f96fd5">save-excursion</h4>
+<div class="outline-text-4" id="text-org1f96fd5">
 <p>
 (message "We are %d characters into this buffer."
 	 (save-excursion
@@ -468,9 +468,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org39b4df8" class="outline-2">
-<h2 id="org39b4df8">code</h2>
-<div class="outline-text-2" id="text-org39b4df8">
+<div id="outline-container-org673cd8b" class="outline-2">
+<h2 id="org673cd8b">code</h2>
+<div class="outline-text-2" id="text-org673cd8b">
 <p>
 char count
 </p>
@@ -490,13 +490,13 @@ char count
 </div>
 </div>
 
-<div id="outline-container-orga446589" class="outline-2">
-<h2 id="orga446589">Emacs lisp programm</h2>
-<div class="outline-text-2" id="text-orga446589">
+<div id="outline-container-org3b42b9d" class="outline-2">
+<h2 id="org3b42b9d">Emacs lisp programm</h2>
+<div class="outline-text-2" id="text-org3b42b9d">
 </div>
-<div id="outline-container-org9360232" class="outline-3">
-<h3 id="org9360232">file management</h3>
-<div class="outline-text-3" id="text-org9360232">
+<div id="outline-container-orgdd33fb3" class="outline-3">
+<h3 id="orgdd33fb3">file management</h3>
+<div class="outline-text-3" id="text-orgdd33fb3">
 <p>
 read file :: insert-file-contents
  and copy file :: write-region
@@ -532,7 +532,7 @@ read file :: insert-file-contents
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-11-23 Mo 19:55</p>
+<p class="date">Created: 2020-11-23 Mo 20:47</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-11 Fr 15:08 -->
+<!-- 2020-11-23 Mo 20:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="sx" />
+<meta name="author" content="silin" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -193,57 +193,38 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -275,80 +256,82 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5a3d670">Program</a>
+<li><a href="#org7c9efcf">Program</a>
 <ul>
-<li><a href="#org505bbec">int converse to 8, 16 Base and char with ASCII</a></li>
-<li><a href="#org98b5594">Primzahl</a></li>
-<li><a href="#org92a1d8c">atoi &amp; itoa</a></li>
+<li><a href="#orgc3e6033">int converse to 8, 16 Base and char with ASCII</a></li>
+<li><a href="#org1e3e1f5">Primzahl</a></li>
+<li><a href="#org1282771">atoi &amp; itoa</a></li>
 </ul>
 </li>
-<li><a href="#orgcdca5a7">Point&amp;array</a>
+<li><a href="#org21d6820">Point&amp;array</a>
 <ul>
-<li><a href="#org60b97b5">pointer and array description</a></li>
-<li><a href="#orge85f0d8">Beispile</a></li>
-<li><a href="#orga18f703">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</a></li>
-<li><a href="#org0232756">Summary</a></li>
-<li><a href="#orgcfefe74">2 Order Point</a>
+<li><a href="#orgcaa8189">pointer and array description</a></li>
+<li><a href="#org2f8490a">Beispile</a></li>
+<li><a href="#orga3e0bf9">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</a></li>
+<li><a href="#orga657d94">Summary</a></li>
+<li><a href="#org338d8b9">2 Order Point</a>
 <ul>
-<li><a href="#orgfe7b74f">Assignment to int *</a></li>
-<li><a href="#orgcf28666">Dichotomy</a></li>
-<li><a href="#org39a0e6f">1D array and 1D Point array [] &gt; * &gt; +</a></li>
+<li><a href="#orge6c5c84">Assignment to int *</a></li>
+<li><a href="#orgb2f1d9b">Dichotomy</a></li>
+<li><a href="#orga363b77">1D array and 1D Point array [] &gt; * &gt; +</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge6a3cd5">Polymorphism</a>
+<li><a href="#orga74802d">Polymorphism</a>
 <ul>
-<li><a href="#orgfed3f55">C++ 先基后子</a></li>
-<li><a href="#orgff92564">Python 可基可子</a></li>
-<li><a href="#org0e4fe24">Java 先子后基，还必须子实列指向基类型</a></li>
+<li><a href="#orgbde6ede">C++ 先基后子</a></li>
+<li><a href="#org3d3f498">Python 可基可子</a></li>
+<li><a href="#org40c7069">Java 先子后基，还必须子实列指向基类型</a></li>
 </ul>
 </li>
-<li><a href="#orgba39a80">Scanf</a>
+<li><a href="#org648b7da">Scanf</a>
 <ul>
-<li><a href="#org908874b">input matching for multi input Scanf()</a></li>
-<li><a href="#orgbf7e73d">清空每次输入的所有缓存</a></li>
-<li><a href="#org0aa535b">Scanf(%{*}{width}type)</a></li>
-<li><a href="#orgea719d6">each time only reserive 3 agruments</a></li>
-<li><a href="#org43b89fc">special requirements</a></li>
+<li><a href="#org3499b9f">input matching for multi input Scanf()</a></li>
+<li><a href="#org52d5823">清空每次输入的所有缓存</a></li>
+<li><a href="#org9d48997">Scanf(%{*}{width}type)</a></li>
+<li><a href="#org95026bd">each time only reserive 3 agruments</a></li>
+<li><a href="#org9b83949">special requirements</a></li>
 </ul>
 </li>
-<li><a href="#orge0b904a">Notes</a>
+<li><a href="#org57744f0">Notes</a>
 <ul>
-<li><a href="#orgcf7ac6f">pass the agruments to program</a></li>
-<li><a href="#org56c1a7f">malloc for 2 diamesion</a></li>
-<li><a href="#org66f2007">pass 2 diamesion array to function</a></li>
-<li><a href="#org659c014">char for string</a></li>
-<li><a href="#org7ad2b9e">Headfile</a></li>
-<li><a href="#org4e4628c">reference</a></li>
-<li><a href="#org5d5631e">class</a></li>
-<li><a href="#orgca83e1b">const</a></li>
-<li><a href="#orgd9e606b">static</a></li>
-<li><a href="#org01b8b26">GDB</a></li>
+<li><a href="#org8111cb9">pass the agruments to program</a></li>
+<li><a href="#org4587bb7">malloc for 2 diamesion</a></li>
+<li><a href="#orgb14d31b">pass 2 diamesion array to function</a></li>
+<li><a href="#orgc37096a">char for string</a></li>
+<li><a href="#orge5e217b">Headfile</a></li>
+<li><a href="#orgebf3850">reference</a></li>
+<li><a href="#org3d86e94">class</a></li>
+<li><a href="#orgc20c89f">const</a></li>
+<li><a href="#org220f360">static</a></li>
+<li><a href="#org4731680">GDB</a></li>
 </ul>
 </li>
-<li><a href="#org10cfc9e">Compile</a>
+<li><a href="#org3727cb4">Compile</a>
 <ul>
-<li><a href="#org308eb3d">Makefile</a></li>
-<li><a href="#org9c24b0f">Terminal Compile</a></li>
-<li><a href="#orgc91115c">Emacs Compile</a></li>
-<li><a href="#org195e5b0">Orgmode Compile</a></li>
+<li><a href="#orga2b62e0">Makefile</a></li>
+<li><a href="#orgffdf478">Terminal Compile</a></li>
+<li><a href="#org53baa51">Emacs Compile</a></li>
+<li><a href="#orgb778bdc">Orgmode Compile</a></li>
+</ul>
+</li>
+<li><a href="#orgdc18a12">GDB</a>
+<ul>
+<li><a href="#orgc3888d2">command</a></li>
+<li><a href="#org5c3401a">Problems</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-<a href="file:///home/sx/Dropbox/Projects/linux/Thread_Programme/README.html">pthread program</a>
-</p>
-
-<div id="outline-container-org5a3d670" class="outline-2">
-<h2 id="org5a3d670">Program</h2>
-<div class="outline-text-2" id="text-org5a3d670">
+<div id="outline-container-org7c9efcf" class="outline-2">
+<h2 id="org7c9efcf">Program</h2>
+<div class="outline-text-2" id="text-org7c9efcf">
 </div>
-<div id="outline-container-org505bbec" class="outline-3">
-<h3 id="org505bbec">int converse to 8, 16 Base and char with ASCII</h3>
-<div class="outline-text-3" id="text-org505bbec">
+<div id="outline-container-orgc3e6033" class="outline-3">
+<h3 id="orgc3e6033">int converse to 8, 16 Base and char with ASCII</h3>
+<div class="outline-text-3" id="text-orgc3e6033">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>( )
@@ -366,9 +349,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org98b5594" class="outline-3">
-<h3 id="org98b5594">Primzahl</h3>
-<div class="outline-text-3" id="text-org98b5594">
+<div id="outline-container-org1e3e1f5" class="outline-3">
+<h3 id="org1e3e1f5">Primzahl</h3>
+<div class="outline-text-3" id="text-org1e3e1f5">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #bc6ec5;">#include</span><span style="color: #2d9574;">&lt;stdio.h&gt;</span> 
 <span style="color: #bc6ec5;">#include</span><span style="color: #2d9574;">"math.h"</span>
@@ -397,9 +380,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org92a1d8c" class="outline-3">
-<h3 id="org92a1d8c">atoi &amp; itoa</h3>
-<div class="outline-text-3" id="text-org92a1d8c">
+<div id="outline-container-org1282771" class="outline-3">
+<h3 id="org1282771">atoi &amp; itoa</h3>
+<div class="outline-text-3" id="text-org1282771">
 <p>
 atoi, 如有非数字字符，就为0
 itoa , 非ASCII标准函数库，看collection.
@@ -433,13 +416,13 @@ itoa , 非ASCII标准函数库，看collection.
 </div>
 </div>
 
-<div id="outline-container-orgcdca5a7" class="outline-2">
-<h2 id="orgcdca5a7">Point&amp;array</h2>
-<div class="outline-text-2" id="text-orgcdca5a7">
+<div id="outline-container-org21d6820" class="outline-2">
+<h2 id="org21d6820">Point&amp;array</h2>
+<div class="outline-text-2" id="text-org21d6820">
 </div>
-<div id="outline-container-org60b97b5" class="outline-3">
-<h3 id="org60b97b5">pointer and array description</h3>
-<div class="outline-text-3" id="text-org60b97b5">
+<div id="outline-container-orgcaa8189" class="outline-3">
+<h3 id="orgcaa8189">pointer and array description</h3>
+<div class="outline-text-3" id="text-orgcaa8189">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -514,7 +497,7 @@ itoa , 非ASCII标准函数库，看collection.
 </pre>
 </div>
 
-<pre class="example">
+<pre class="example" id="orgd0622ae">
 Print this hallo!
 for value
 1
@@ -544,9 +527,9 @@ abcdef
 </div>
 </div>
 
-<div id="outline-container-orge85f0d8" class="outline-3">
-<h3 id="orge85f0d8">Beispile</h3>
-<div class="outline-text-3" id="text-orge85f0d8">
+<div id="outline-container-org2f8490a" class="outline-3">
+<h3 id="org2f8490a">Beispile</h3>
+<div class="outline-text-3" id="text-org2f8490a">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>
@@ -579,9 +562,9 @@ abcdef
 </div>
 </div>
 
-<div id="outline-container-orga18f703" class="outline-3">
-<h3 id="orga18f703">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</h3>
-<div class="outline-text-3" id="text-orga18f703">
+<div id="outline-container-orga3e0bf9" class="outline-3">
+<h3 id="orga3e0bf9">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</h3>
+<div class="outline-text-3" id="text-orga3e0bf9">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
@@ -700,9 +683,9 @@ c[1][2] is 6
 </div>
 </div>
 
-<div id="outline-container-org0232756" class="outline-3">
-<h3 id="org0232756">Summary</h3>
-<div class="outline-text-3" id="text-org0232756">
+<div id="outline-container-orga657d94" class="outline-3">
+<h3 id="orga657d94">Summary</h3>
+<div class="outline-text-3" id="text-orga657d94">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -841,13 +824,13 @@ c[1][2] is 6
 </div>
 </div>
 
-<div id="outline-container-orgcfefe74" class="outline-3">
-<h3 id="orgcfefe74">2 Order Point</h3>
-<div class="outline-text-3" id="text-orgcfefe74">
+<div id="outline-container-org338d8b9" class="outline-3">
+<h3 id="org338d8b9">2 Order Point</h3>
+<div class="outline-text-3" id="text-org338d8b9">
 </div>
-<div id="outline-container-orgfe7b74f" class="outline-4">
-<h4 id="orgfe7b74f">Assignment to int *</h4>
-<div class="outline-text-4" id="text-orgfe7b74f">
+<div id="outline-container-orge6c5c84" class="outline-4">
+<h4 id="orge6c5c84">Assignment to int *</h4>
+<div class="outline-text-4" id="text-orge6c5c84">
 <p>
 For 2 order Point **a, we have assigned (*a, a, &amp;a) to int * separately.
 </p>
@@ -896,9 +879,9 @@ For 2 order Point **a, we have assigned (*a, a, &amp;a) to int * separately.
 </div>
 </div>
 
-<div id="outline-container-orgcf28666" class="outline-4">
-<h4 id="orgcf28666">Dichotomy</h4>
-<div class="outline-text-4" id="text-orgcf28666">
+<div id="outline-container-orgb2f1d9b" class="outline-4">
+<h4 id="orgb2f1d9b">Dichotomy</h4>
+<div class="outline-text-4" id="text-orgb2f1d9b">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">dich</span>(<span style="color: #ce537a; font-weight: bold;">int</span> ** <span style="color: #7590db;">p</span>, <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">start</span>, <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">end</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">x</span>){
@@ -947,9 +930,9 @@ For 2 order Point **a, we have assigned (*a, a, &amp;a) to int * separately.
 </div>
 </div>
 
-<div id="outline-container-org39a0e6f" class="outline-4">
-<h4 id="org39a0e6f">1D array and 1D Point array [] &gt; * &gt; +</h4>
-<div class="outline-text-4" id="text-org39a0e6f">
+<div id="outline-container-orga363b77" class="outline-4">
+<h4 id="orga363b77">1D array and 1D Point array [] &gt; * &gt; +</h4>
+<div class="outline-text-4" id="text-orga363b77">
 <p>
 *(p+1)== p[1]  and *p+1 == (*p)+1 
 </p>
@@ -1064,16 +1047,16 @@ For 2 order Point **a, we have assigned (*a, a, &amp;a) to int * separately.
 </div>
 </div>
 
-<div id="outline-container-orge6a3cd5" class="outline-2">
-<h2 id="orge6a3cd5">Polymorphism</h2>
-<div class="outline-text-2" id="text-orge6a3cd5">
+<div id="outline-container-orga74802d" class="outline-2">
+<h2 id="orga74802d">Polymorphism</h2>
+<div class="outline-text-2" id="text-orga74802d">
 <p>
 多态可以在面向对象的三种语言中实现，C++, Java, Python
 </p>
 </div>
-<div id="outline-container-orgfed3f55" class="outline-3">
-<h3 id="orgfed3f55">C++ 先基后子</h3>
-<div class="outline-text-3" id="text-orgfed3f55">
+<div id="outline-container-orgbde6ede" class="outline-3">
+<h3 id="orgbde6ede">C++ 先基后子</h3>
+<div class="outline-text-3" id="text-orgbde6ede">
 <p>
 需要借助虚函数来实现对相应多态函数的调用，在函数前加上virtual
 </p>
@@ -1110,36 +1093,36 @@ p-&gt;run();
 </div>
 </div>
 
-<div id="outline-container-orgff92564" class="outline-3">
-<h3 id="orgff92564">Python 可基可子</h3>
-<div class="outline-text-3" id="text-orgff92564">
+<div id="outline-container-org3d3f498" class="outline-3">
+<h3 id="org3d3f498">Python 可基可子</h3>
+<div class="outline-text-3" id="text-org3d3f498">
 <div class="org-src-container">
-<pre class="src src-python">  <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>(<span style="color: #4f97d7;">object</span>):
-      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+<pre class="src src-python"><span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>(<span style="color: #4f97d7;">object</span>):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
           <span style="color: #4f97d7; font-weight: bold;">self</span>.name =<span style="color: #2d9574;">'Animal name'</span>
-      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
           <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">'Animal is running'</span>)
 
-  <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Dog</span>(Animal):
-      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+<span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Dog</span>(Animal):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
           <span style="color: #4f97d7; font-weight: bold;">self</span>.name =<span style="color: #2d9574;">'Dog name'</span>
-      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
           <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">'Dog is running'</span>)
 
-  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Polymorphism, all Class or instance will be checked the best passing</span>
-  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mothode or character</span>
-  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run_twice</span>(a):
-      a.run()
-  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">name</span>(b):
-      <span style="color: #4f97d7; font-weight: bold;">print</span>(b.name)
+<span style="background-color: #292e34;"> </span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Polymorphism, all Class or instance will be checked the best passing</span>
+<span style="background-color: #292e34;"> </span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mothode or character</span>
+<span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run_twice</span>(a):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> a.run()
+<span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">name</span>(b):
+<span style="background-color: #292e34;"> </span>   <span style="background-color: #292e34;"> </span> <span style="color: #4f97d7; font-weight: bold;">print</span>(b.name)
 
-  <span style="color: #7590db;">ani</span> = Animal()
-  ani.name
-  ani.run()
+<span style="background-color: #292e34;"> </span> <span style="color: #7590db;">ani</span> = Animal()
+<span style="background-color: #292e34;"> </span> ani.name
+<span style="background-color: #292e34;"> </span> ani.run()
 
-  <span style="color: #7590db;">ani</span> = Dog()
-  ani.name
-  ani.run()
+<span style="background-color: #292e34;"> </span> <span style="color: #7590db;">ani</span> = Dog()
+<span style="background-color: #292e34;"> </span> ani.name
+<span style="background-color: #292e34;"> </span> ani.run()
 <span style="color: #2aa1ae; background-color: #292e34;">## </span><span style="color: #2aa1ae; background-color: #292e34;">ani &#21487;&#20197;&#20808;&#26377;&#22522;&#31867;&#23454;&#29616;&#20877;&#22810;&#24577;&#26144;&#23556;&#21040;&#23376;&#31867;&#65292;&#20063;&#21487;&#20197;&#21453;&#21521;&#23454;&#29616;</span>
 
 
@@ -1148,14 +1131,14 @@ p-&gt;run();
 </div>
 </div>
 
-<div id="outline-container-org0e4fe24" class="outline-3">
-<h3 id="org0e4fe24">Java 先子后基，还必须子实列指向基类型</h3>
-<div class="outline-text-3" id="text-org0e4fe24">
+<div id="outline-container-org40c7069" class="outline-3">
+<h3 id="org40c7069">Java 先子后基，还必须子实列指向基类型</h3>
+<div class="outline-text-3" id="text-org40c7069">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
     <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">dim1</span>;
     <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">dim2</span>;
-    <span style="color: #bc6ec5; font-weight: bold;">Figure</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+    Figure(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
         <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#26377;&#21442;&#30340;&#26500;&#36896;&#26041;&#27861;</span>
         <span style="color: #4f97d7; font-weight: bold;">this</span>.dim1 = d1;
         <span style="color: #4f97d7; font-weight: bold;">this</span>.dim2 = d2;
@@ -1168,7 +1151,7 @@ p-&gt;run();
 }
 
 <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Rectangle</span> <span style="color: #4f97d7; font-weight: bold;">extends</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
-    <span style="color: #bc6ec5; font-weight: bold;">Rectangle</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+    Rectangle(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
         <span style="color: #4f97d7; font-weight: bold;">super</span>(d1, d2);
     }
     <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #bc6ec5; font-weight: bold;">area</span>() {
@@ -1178,7 +1161,7 @@ p-&gt;run();
 }
 
 <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Triangle</span> <span style="color: #4f97d7; font-weight: bold;">extends</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
-    <span style="color: #bc6ec5; font-weight: bold;">Triangle</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+    Triangle(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
         <span style="color: #4f97d7; font-weight: bold;">super</span>(d1, d2);
     }
     <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #bc6ec5; font-weight: bold;">area</span>() {
@@ -1211,13 +1194,13 @@ p-&gt;run();
 </div>
 </div>
 
-<div id="outline-container-orgba39a80" class="outline-2">
-<h2 id="orgba39a80">Scanf</h2>
-<div class="outline-text-2" id="text-orgba39a80">
+<div id="outline-container-org648b7da" class="outline-2">
+<h2 id="org648b7da">Scanf</h2>
+<div class="outline-text-2" id="text-org648b7da">
 </div>
-<div id="outline-container-org908874b" class="outline-3">
-<h3 id="org908874b">input matching for multi input Scanf()</h3>
-<div class="outline-text-3" id="text-org908874b">
+<div id="outline-container-org3499b9f" class="outline-3">
+<h3 id="org3499b9f">input matching for multi input Scanf()</h3>
+<div class="outline-text-3" id="text-org3499b9f">
 <p>
 可以直接从控制台接受8， 10， 16 进制的数
 只有当控制字符串以格式控制符(%d、%c、%f) 开头时，键入的input才会忽略换行符,
@@ -1225,17 +1208,17 @@ p-&gt;run();
 </p>
 </div>
 </div>
-<div id="outline-container-orgbf7e73d" class="outline-3">
-<h3 id="orgbf7e73d">清空每次输入的所有缓存</h3>
-<div class="outline-text-3" id="text-orgbf7e73d">
+<div id="outline-container-org52d5823" class="outline-3">
+<h3 id="org52d5823">清空每次输入的所有缓存</h3>
+<div class="outline-text-3" id="text-org52d5823">
 <p>
 scanf("%*[^\n]"); scanf("%*c");
 </p>
 </div>
 </div>
-<div id="outline-container-org0aa535b" class="outline-3">
-<h3 id="org0aa535b">Scanf(%{*}{width}type)</h3>
-<div class="outline-text-3" id="text-org0aa535b">
+<div id="outline-container-org9d48997" class="outline-3">
+<h3 id="org9d48997">Scanf(%{*}{width}type)</h3>
+<div class="outline-text-3" id="text-org9d48997">
 <p>
 其中，{ } 表示可有可无。各个部分的具体含义是：
 type表示读取什么类型的数据，例如 %d、%s、%[a-z]、%[^\n] 等；type 必须有。
@@ -1244,9 +1227,9 @@ width表示最大读取宽度，可有可无。
 </p>
 </div>
 </div>
-<div id="outline-container-orgea719d6" class="outline-3">
-<h3 id="orgea719d6">each time only reserive 3 agruments</h3>
-<div class="outline-text-3" id="text-orgea719d6">
+<div id="outline-container-org95026bd" class="outline-3">
+<h3 id="org95026bd">each time only reserive 3 agruments</h3>
+<div class="outline-text-3" id="text-org95026bd">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>
@@ -1280,9 +1263,9 @@ width表示最大读取宽度，可有可无。
 </div>
 </div>
 
-<div id="outline-container-org43b89fc" class="outline-3">
-<h3 id="org43b89fc">special requirements</h3>
-<div class="outline-text-3" id="text-org43b89fc">
+<div id="outline-container-org9b83949" class="outline-3">
+<h3 id="org9b83949">special requirements</h3>
+<div class="outline-text-3" id="text-org9b83949">
 <ul class="org-ul">
 <li>Each time ask default 3 agreements, less is ok, the more will be ignored.</li>
 <li>scanf("%s", a); can't deal with more agreements.
@@ -1301,13 +1284,13 @@ of agreements.</li>
 </div>
 </div>
 
-<div id="outline-container-orge0b904a" class="outline-2">
-<h2 id="orge0b904a">Notes</h2>
-<div class="outline-text-2" id="text-orge0b904a">
+<div id="outline-container-org57744f0" class="outline-2">
+<h2 id="org57744f0">Notes</h2>
+<div class="outline-text-2" id="text-org57744f0">
 </div>
-<div id="outline-container-orgcf7ac6f" class="outline-3">
-<h3 id="orgcf7ac6f">pass the agruments to program</h3>
-<div class="outline-text-3" id="text-orgcf7ac6f">
+<div id="outline-container-org8111cb9" class="outline-3">
+<h3 id="org8111cb9">pass the agruments to program</h3>
+<div class="outline-text-3" id="text-org8111cb9">
 <pre class="example">
 在src block 中提前定义:var a = 3
 javac test.java &amp;&amp;  echo 1 |java test 可以将1向StdInt传入
@@ -1315,9 +1298,9 @@ gcc test.c &amp;&amp; echo 1 | ./a.out 可以将1向scanf("%d", &amp;a)传入的
 </pre>
 </div>
 </div>
-<div id="outline-container-org56c1a7f" class="outline-3">
-<h3 id="org56c1a7f">malloc for 2 diamesion</h3>
-<div class="outline-text-3" id="text-org56c1a7f">
+<div id="outline-container-org4587bb7" class="outline-3">
+<h3 id="org4587bb7">malloc for 2 diamesion</h3>
+<div class="outline-text-3" id="text-org4587bb7">
 <p>
 char <b>* commands;
 commands = (char *</b>)malloc(NUMOFCOM * sizeof(char *));
@@ -1326,18 +1309,18 @@ for (int n = 0; n &lt; NUMOFCOM; n++)
 </p>
 </div>
 </div>
-<div id="outline-container-org66f2007" class="outline-3">
-<h3 id="org66f2007">pass 2 diamesion array to function</h3>
-<div class="outline-text-3" id="text-org66f2007">
+<div id="outline-container-orgb14d31b" class="outline-3">
+<h3 id="orgb14d31b">pass 2 diamesion array to function</h3>
+<div class="outline-text-3" id="text-orgb14d31b">
 <p>
 Even in function the index if out of the boundary of array, will be no
 error hit, and only return the valid index boundary.
 </p>
 </div>
 </div>
-<div id="outline-container-org659c014" class="outline-3">
-<h3 id="org659c014">char for string</h3>
-<div class="outline-text-3" id="text-org659c014">
+<div id="outline-container-orgc37096a" class="outline-3">
+<h3 id="orgc37096a">char for string</h3>
+<div class="outline-text-3" id="text-orgc37096a">
 <p>
 char can define string with point (char *str) or with array(char
 str[]). but char *str cann't be changed anymore.
@@ -1345,9 +1328,9 @@ str[]). but char *str cann't be changed anymore.
 </div>
 </div>
 
-<div id="outline-container-org7ad2b9e" class="outline-3">
-<h3 id="org7ad2b9e">Headfile</h3>
-<div class="outline-text-3" id="text-org7ad2b9e">
+<div id="outline-container-orge5e217b" class="outline-3">
+<h3 id="orge5e217b">Headfile</h3>
+<div class="outline-text-3" id="text-orge5e217b">
 <pre class="example">
 
 old C(xx.h) add c at first and sub .h &gt; C++
@@ -1355,9 +1338,9 @@ old C++ (xxx.h) aub .h &gt; C++
 </pre>
 </div>
 </div>
-<div id="outline-container-org4e4628c" class="outline-3">
-<h3 id="org4e4628c">reference</h3>
-<div class="outline-text-3" id="text-org4e4628c">
+<div id="outline-container-orgebf3850" class="outline-3">
+<h3 id="orgebf3850">reference</h3>
+<div class="outline-text-3" id="text-orgebf3850">
 <pre class="example">
 
 1. 如果在函数体中修改了形参的数据，那么实参的数据也会被修改，从而拥有“在
@@ -1374,9 +1357,9 @@ old C++ (xxx.h) aub .h &gt; C++
 </div>
 </div>
 
-<div id="outline-container-org5d5631e" class="outline-3">
-<h3 id="org5d5631e">class</h3>
-<div class="outline-text-3" id="text-org5d5631e">
+<div id="outline-container-org3d86e94" class="outline-3">
+<h3 id="org3d86e94">class</h3>
+<div class="outline-text-3" id="text-org3d86e94">
 <pre class="example">
 
 1. 基类中的 protected 成员可以在派生类中使用，而基类中的 private 成员不能
@@ -1396,9 +1379,9 @@ old C++ (xxx.h) aub .h &gt; C++
 </div>
 </div>
 
-<div id="outline-container-orgca83e1b" class="outline-3">
-<h3 id="orgca83e1b">const</h3>
-<div class="outline-text-3" id="text-orgca83e1b">
+<div id="outline-container-orgc20c89f" class="outline-3">
+<h3 id="orgc20c89f">const</h3>
+<div class="outline-text-3" id="text-orgc20c89f">
 <pre class="example">
 
 const 的作用在C++中和宏很像#defind
@@ -1410,9 +1393,9 @@ const 的作用在C++中和宏很像#defind
 </pre>
 </div>
 </div>
-<div id="outline-container-orgd9e606b" class="outline-3">
-<h3 id="orgd9e606b">static</h3>
-<div class="outline-text-3" id="text-orgd9e606b">
+<div id="outline-container-org220f360" class="outline-3">
+<h3 id="org220f360">static</h3>
+<div class="outline-text-3" id="text-org220f360">
 <pre class="example">
 
 statis 变量， 函数，全部对象可以共用，访问，无this指针。不能调用普通变量和函数类
@@ -1420,9 +1403,9 @@ static 多被用来计数，可以在外部被改
 </pre>
 </div>
 </div>
-<div id="outline-container-org01b8b26" class="outline-3">
-<h3 id="org01b8b26">GDB</h3>
-<div class="outline-text-3" id="text-org01b8b26">
+<div id="outline-container-org4731680" class="outline-3">
+<h3 id="org4731680">GDB</h3>
+<div class="outline-text-3" id="text-org4731680">
 <p>
 GDB debug
 can be done in terminal or in Emacs, recommend later one
@@ -1489,12 +1472,6 @@ n
 </tbody>
 </table>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-</table>
-
-
 
 
 <div class="org-src-container">
@@ -1507,34 +1484,34 @@ printf(<span style="color: #2d9574;">"%d"</span>,a);
 </div>
 </div>
 </div>
-<div id="outline-container-org10cfc9e" class="outline-2">
-<h2 id="org10cfc9e">Compile</h2>
-<div class="outline-text-2" id="text-org10cfc9e">
+<div id="outline-container-org3727cb4" class="outline-2">
+<h2 id="org3727cb4">Compile</h2>
+<div class="outline-text-2" id="text-org3727cb4">
 <p>
 There are four different kinds of Methods to compile a source file.
 </p>
 </div>
-<div id="outline-container-org308eb3d" class="outline-3">
-<h3 id="org308eb3d">Makefile</h3>
-<div class="outline-text-3" id="text-org308eb3d">
+<div id="outline-container-orga2b62e0" class="outline-3">
+<h3 id="orga2b62e0">Makefile</h3>
+<div class="outline-text-3" id="text-orga2b62e0">
 <p>
 There is a folder called Makefile, into this folder, and call
 "make" in terminal, don't forget "make clean" to clean it.
 </p>
 </div>
 </div>
-<div id="outline-container-org9c24b0f" class="outline-3">
-<h3 id="org9c24b0f">Terminal Compile</h3>
-<div class="outline-text-3" id="text-org9c24b0f">
+<div id="outline-container-orgffdf478" class="outline-3">
+<h3 id="orgffdf478">Terminal Compile</h3>
+<div class="outline-text-3" id="text-orgffdf478">
 <p>
 In pthread<sub>and</sub><sub>pid</sub> folder with terminal with "g++/gcc file.c -o file",
 and then "./file" to call it
 </p>
 </div>
 </div>
-<div id="outline-container-orgc91115c" class="outline-3">
-<h3 id="orgc91115c">Emacs Compile</h3>
-<div class="outline-text-3" id="text-orgc91115c">
+<div id="outline-container-org53baa51" class="outline-3">
+<h3 id="org53baa51">Emacs Compile</h3>
+<div class="outline-text-3" id="text-org53baa51">
 <p>
 Also in pthread<sub>and</sub><sub>pid</sub> folder, open the resource code with Emacs,
 and then M-x compile(C-z k)
@@ -1543,9 +1520,9 @@ call it in minibuffer with :
 </p>
 </div>
 </div>
-<div id="outline-container-org195e5b0" class="outline-3">
-<h3 id="org195e5b0">Orgmode Compile</h3>
-<div class="outline-text-3" id="text-org195e5b0">
+<div id="outline-container-orgb778bdc" class="outline-3">
+<h3 id="orgb778bdc">Orgmode Compile</h3>
+<div class="outline-text-3" id="text-orgb778bdc">
 <div class="org-src-container">
 <pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
 <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()
@@ -1559,11 +1536,126 @@ printf(<span style="color: #2d9574;">"nihao"</span>);
 </div>
 </div>
 </div>
+
+
+<div id="outline-container-orgdc18a12" class="outline-2">
+<h2 id="orgdc18a12">GDB</h2>
+<div class="outline-text-2" id="text-orgdc18a12">
+</div>
+<div id="outline-container-orgc3888d2" class="outline-3">
+<h3 id="orgc3888d2">command</h3>
+<div class="outline-text-3" id="text-orgc3888d2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">b</td>
+<td class="org-left">u</td>
+<td class="org-left">c</td>
+<td class="org-left">n</td>
+<td class="org-left">l</td>
+<td class="org-left">j</td>
+<td class="org-left">p</td>
+<td class="org-left">q</td>
+<td class="org-left">fi</td>
+<td class="org-left">return</td>
+</tr>
+
+<tr>
+<td class="org-left">run</td>
+<td class="org-left">break</td>
+<td class="org-left">until</td>
+<td class="org-left">continue</td>
+<td class="org-left">next</td>
+<td class="org-left">list</td>
+<td class="org-left">jump</td>
+<td class="org-left">print</td>
+<td class="org-left">quit</td>
+<td class="org-left">finish</td>
+<td class="org-left">return</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">clear</td>
+<td class="org-left">delete</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org5c3401a" class="outline-3">
+<h3 id="org5c3401a">Problems</h3>
+<div class="outline-text-3" id="text-org5c3401a">
+<p>
+in emacs, if scanf, the in put can not be given in
+gdb buffer. if it comes to scanf, go to the I/O buffer,
+and input the value , go back to gdb buffer, just next
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: sx</p>
-<p class="date">Created: 2020-09-11 Fr 15:08</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: silin</p>
+<p class="date">Created: 2020-11-23 Mo 20:50</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

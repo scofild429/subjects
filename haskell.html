@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mo 20:15 -->
+<!-- 2020-11-23 Mo 20:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Haskell</title>
@@ -256,49 +256,49 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6bf5b57">commands</a>
+<li><a href="#orgd3654ec">commands</a>
 <ul>
-<li><a href="#orgf5a8718">in file.hs</a></li>
-<li><a href="#org76a86c1">C-c C-c call in src</a></li>
-<li><a href="#org1ae1721">send to haskell/org-src-block</a></li>
+<li><a href="#org5389421">in file.hs</a></li>
+<li><a href="#org03f9e3a">C-c C-c call in src</a></li>
+<li><a href="#org09780f9">send to haskell/org-src-block</a></li>
 </ul>
 </li>
-<li><a href="#org124a94d">Functional Programm</a>
+<li><a href="#org181d995">Functional Programm</a>
 <ul>
-<li><a href="#org5802e26">Grundlage</a></li>
-<li><a href="#orgd7221e5">Pattern Matching</a></li>
-<li><a href="#orge59e058">Alternativen</a></li>
-<li><a href="#orgf130484">Recursion</a></li>
-<li><a href="#org91e6ab1">Type conversion1</a></li>
-<li><a href="#orgf968dea">Factorial</a></li>
-<li><a href="#org025bfdc">Stern Brocot Floge</a></li>
+<li><a href="#org17b0620">Grundlage</a></li>
+<li><a href="#org1f68291">Pattern Matching</a></li>
+<li><a href="#orge0e9598">Alternativen</a></li>
+<li><a href="#orga4b6e99">Recursion</a></li>
+<li><a href="#orge66aa05">Type conversion1</a></li>
+<li><a href="#org8473008">Factorial</a></li>
+<li><a href="#org8c49b4b">Stern Brocot Floge</a></li>
 </ul>
 </li>
-<li><a href="#orga8dd6bb">List</a>
+<li><a href="#orgac1894a">List</a>
 <ul>
-<li><a href="#org6cc2e20">List  add</a></li>
+<li><a href="#orgf61c07f">List  add</a></li>
 </ul>
 </li>
-<li><a href="#org9a0a73d">Symbol</a></li>
+<li><a href="#org9960d3b">Symbol</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6bf5b57" class="outline-2">
-<h2 id="org6bf5b57">commands</h2>
-<div class="outline-text-2" id="text-org6bf5b57">
+<div id="outline-container-orgd3654ec" class="outline-2">
+<h2 id="orgd3654ec">commands</h2>
+<div class="outline-text-2" id="text-orgd3654ec">
 </div>
-<div id="outline-container-orgf5a8718" class="outline-3">
-<h3 id="orgf5a8718">in file.hs</h3>
-<div class="outline-text-3" id="text-orgf5a8718">
+<div id="outline-container-org5389421" class="outline-3">
+<h3 id="org5389421">in file.hs</h3>
+<div class="outline-text-3" id="text-org5389421">
 <p>
 C-c C-l  to execute file.hs and go to interactive environment 
 Seeing ./black.hs
 </p>
 </div>
 </div>
-<div id="outline-container-org76a86c1" class="outline-3">
-<h3 id="org76a86c1">C-c C-c call in src</h3>
-<div class="outline-text-3" id="text-org76a86c1">
+<div id="outline-container-org03f9e3a" class="outline-3">
+<h3 id="org03f9e3a">C-c C-c call in src</h3>
+<div class="outline-text-3" id="text-org03f9e3a">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #bc6ec5;">#+begin_src haskell  :results value :eval (inferior-haskell-start-process)</span>
   log2 <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Float</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Float</span>
@@ -324,9 +324,9 @@ Seeing Literatur Programm Grundlage
 </p>
 </div>
 </div>
-<div id="outline-container-org1ae1721" class="outline-3">
-<h3 id="org1ae1721">send to haskell/org-src-block</h3>
-<div class="outline-text-3" id="text-org1ae1721">
+<div id="outline-container-org09780f9" class="outline-3">
+<h3 id="org09780f9">send to haskell/org-src-block</h3>
+<div class="outline-text-3" id="text-org09780f9">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #bc6ec5;">#+begin_src haskell  :results value :eval (inferior-haskell-start-process)</span>
   log2 <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Float</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Float</span>
@@ -363,13 +363,13 @@ Seeing Literatur Programm Alternativen
 </div>
 </div>
 </div>
-<div id="outline-container-org124a94d" class="outline-2">
-<h2 id="org124a94d">Functional Programm</h2>
-<div class="outline-text-2" id="text-org124a94d">
+<div id="outline-container-org181d995" class="outline-2">
+<h2 id="org181d995">Functional Programm</h2>
+<div class="outline-text-2" id="text-org181d995">
 </div>
-<div id="outline-container-org5802e26" class="outline-3">
-<h3 id="org5802e26">Grundlage</h3>
-<div class="outline-text-3" id="text-org5802e26">
+<div id="outline-container-org17b0620" class="outline-3">
+<h3 id="org17b0620">Grundlage</h3>
+<div class="outline-text-3" id="text-org17b0620">
 <p>
 basic function call
 </p>
@@ -408,9 +408,9 @@ e
 </div>
 </div>
 
-<div id="outline-container-orgd7221e5" class="outline-3">
-<h3 id="orgd7221e5">Pattern Matching</h3>
-<div class="outline-text-3" id="text-orgd7221e5">
+<div id="outline-container-org1f68291" class="outline-3">
+<h3 id="org1f68291">Pattern Matching</h3>
+<div class="outline-text-3" id="text-org1f68291">
 <p>
 one of the calling must match one case of pattern
 </p>
@@ -469,9 +469,9 @@ so long the indentation is correct, so works
 </div>
 </div>
 
-<div id="outline-container-orge59e058" class="outline-3">
-<h3 id="orge59e058">Alternativen</h3>
-<div class="outline-text-3" id="text-orge59e058">
+<div id="outline-container-orge0e9598" class="outline-3">
+<h3 id="orge0e9598">Alternativen</h3>
+<div class="outline-text-3" id="text-orge0e9598">
 <p>
 if else then
 </p>
@@ -484,9 +484,9 @@ if else then
 </div>
 </div>
 
-<div id="outline-container-orgf130484" class="outline-3">
-<h3 id="orgf130484">Recursion</h3>
-<div class="outline-text-3" id="text-orgf130484">
+<div id="outline-container-orga4b6e99" class="outline-3">
+<h3 id="orga4b6e99">Recursion</h3>
+<div class="outline-text-3" id="text-orga4b6e99">
 <p>
 easy fib
 </p>
@@ -567,9 +567,9 @@ n <span style="color: #bc6ec5; font-weight: bold;">&lt;##&gt;</span> a
 </div>
 </div>
 
-<div id="outline-container-org91e6ab1" class="outline-3">
-<h3 id="org91e6ab1">Type conversion1</h3>
-<div class="outline-text-3" id="text-org91e6ab1">
+<div id="outline-container-orge66aa05" class="outline-3">
+<h3 id="orge66aa05">Type conversion1</h3>
+<div class="outline-text-3" id="text-orge66aa05">
 <p>
 Guides
 </p>
@@ -596,9 +596,9 @@ vielleichtdreifach Bool Bool -&gt; Integer
 </div>
 </div>
 
-<div id="outline-container-orgf968dea" class="outline-3">
-<h3 id="orgf968dea">Factorial</h3>
-<div class="outline-text-3" id="text-orgf968dea">
+<div id="outline-container-org8473008" class="outline-3">
+<h3 id="org8473008">Factorial</h3>
+<div class="outline-text-3" id="text-org8473008">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">fac</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
 <span style="color: #bc6ec5; font-weight: bold;">fac</span> n
@@ -609,9 +609,9 @@ vielleichtdreifach Bool Bool -&gt; Integer
 </div>
 </div>
 
-<div id="outline-container-org025bfdc" class="outline-3">
-<h3 id="org025bfdc">Stern Brocot Floge</h3>
-<div class="outline-text-3" id="text-org025bfdc">
+<div id="outline-container-org8c49b4b" class="outline-3">
+<h3 id="org8c49b4b">Stern Brocot Floge</h3>
+<div class="outline-text-3" id="text-org8c49b4b">
 <p>
 \(\\s_{0} = 0 \\ s_{1} = 1 \\ s_{2n} = s_{n} \\ s_{2n+1} = s_{n} + s_{n+1}\)
 </p>
@@ -641,16 +641,16 @@ vielleichtdreifach Bool Bool -&gt; Integer
 </div>
 </div>
 </div>
-<div id="outline-container-orga8dd6bb" class="outline-2">
-<h2 id="orga8dd6bb">List</h2>
-<div class="outline-text-2" id="text-orga8dd6bb">
+<div id="outline-container-orgac1894a" class="outline-2">
+<h2 id="orgac1894a">List</h2>
+<div class="outline-text-2" id="text-orgac1894a">
 <p>
 字符串就是单一字符的列表
 </p>
 </div>
-<div id="outline-container-org6cc2e20" class="outline-3">
-<h3 id="org6cc2e20">List  add</h3>
-<div class="outline-text-3" id="text-org6cc2e20">
+<div id="outline-container-orgf61c07f" class="outline-3">
+<h3 id="orgf61c07f">List  add</h3>
+<div class="outline-text-3" id="text-orgf61c07f">
 <p>
 in prelude
 </p>
@@ -662,9 +662,9 @@ in prelude
 </div>
 </div>
 </div>
-<div id="outline-container-org9a0a73d" class="outline-2">
-<h2 id="org9a0a73d">Symbol</h2>
-<div class="outline-text-2" id="text-org9a0a73d">
+<div id="outline-container-org9960d3b" class="outline-2">
+<h2 id="org9960d3b">Symbol</h2>
+<div class="outline-text-2" id="text-org9960d3b">
 <p>
 需要时刻谨记是用  .  来做函数组合的，$ 是用来降低函数执行优先级的。
 </p>
@@ -673,7 +673,7 @@ in prelude
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-11-23 Mo 20:15</p>
+<p class="date">Created: 2020-11-23 Mo 20:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

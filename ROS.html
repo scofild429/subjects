@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-23 Sa 12:21 -->
+<!-- 2020-11-23 Mo 20:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ROS</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="sx" />
+<meta name="author" content="silin" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -193,57 +193,38 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -275,27 +256,21 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd03517b">Note</a></li>
-<li><a href="#org01068fe">通信方式</a>
+<li><a href="#orgbb08e5c">Note</a></li>
+<li><a href="#org9d45bcf">通信方式</a>
 <ul>
-<li><a href="#org790842c">Topic</a></li>
-<li><a href="#org8d725a0">Service</a></li>
-<li><a href="#orge44ead3">Param</a></li>
-<li><a href="#org22a88e3">Action</a></li>
-</ul>
-</li>
-<li><a href="#org7333671">Backlinks</a></li>
-<li><a href="#org38b975c">1 Backlinks</a>
-<ul>
-<li><a href="#org464e969">Subjects README</a></li>
+<li><a href="#org97b73e9">Topic</a></li>
+<li><a href="#org4db67ec">Service</a></li>
+<li><a href="#org4eb5ad1">Param</a></li>
+<li><a href="#orga620e1b">Action</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd03517b" class="outline-2">
-<h2 id="orgd03517b">Note</h2>
-<div class="outline-text-2" id="text-orgd03517b">
+<div id="outline-container-orgbb08e5c" class="outline-2">
+<h2 id="orgbb08e5c">Note</h2>
+<div class="outline-text-2" id="text-orgbb08e5c">
 <p>
 catkin<sub>make</sub> 可以代替老式的rosbuild
 最简单的package,只包括CMakelist.txt和package.xml
@@ -304,13 +279,13 @@ catkin<sub>make</sub> 可以代替老式的rosbuild
 </p>
 </div>
 </div>
-<div id="outline-container-org01068fe" class="outline-2">
-<h2 id="org01068fe">通信方式</h2>
-<div class="outline-text-2" id="text-org01068fe">
+<div id="outline-container-org9d45bcf" class="outline-2">
+<h2 id="org9d45bcf">通信方式</h2>
+<div class="outline-text-2" id="text-org9d45bcf">
 </div>
-<div id="outline-container-org790842c" class="outline-3">
-<h3 id="org790842c">Topic</h3>
-<div class="outline-text-3" id="text-org790842c">
+<div id="outline-container-org97b73e9" class="outline-3">
+<h3 id="org97b73e9">Topic</h3>
+<div class="outline-text-3" id="text-org97b73e9">
 <p>
 异步通信
 多节点   \(\rightarrow\)   Topic(rostopic)   \(\rightarrow\)    多节点
@@ -319,9 +294,9 @@ msg对象 \(\rightarrow\)   msg类型(rosmsg)  \(\rightarrow\) msg对象
 </div>
 </div>
 
-<div id="outline-container-org8d725a0" class="outline-3">
-<h3 id="org8d725a0">Service</h3>
-<div class="outline-text-3" id="text-org8d725a0">
+<div id="outline-container-org4db67ec" class="outline-3">
+<h3 id="org4db67ec">Service</h3>
+<div class="outline-text-3" id="text-org4db67ec">
 <p>
 同步通信
 多节点    \(\rightarrow\)  Service (rosservice) \(\rightarrow\)  单服务
@@ -330,50 +305,29 @@ srv类可以嵌套msg类
 </p>
 </div>
 </div>
-<div id="outline-container-orge44ead3" class="outline-3">
-<h3 id="orge44ead3">Param</h3>
-<div class="outline-text-3" id="text-orge44ead3">
+<div id="outline-container-org4eb5ad1" class="outline-3">
+<h3 id="org4eb5ad1">Param</h3>
+<div class="outline-text-3" id="text-org4eb5ad1">
 <p>
 Parameter Service
 rosparam
 </p>
 </div>
 </div>
-<div id="outline-container-org22a88e3" class="outline-3">
-<h3 id="org22a88e3">Action</h3>
-<div class="outline-text-3" id="text-org22a88e3">
+<div id="outline-container-orga620e1b" class="outline-3">
+<h3 id="orga620e1b">Action</h3>
+<div class="outline-text-3" id="text-orga620e1b">
 <p>
 action
 </p>
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org7333671" class="outline-2">
-<h2 id="org7333671">Backlinks</h2>
-</div>
-
-
-<div id="outline-container-org38b975c" class="outline-2">
-<h2 id="org38b975c">1 Backlinks</h2>
-<div class="outline-text-2" id="text-org38b975c">
-</div>
-<div id="outline-container-org464e969" class="outline-3">
-<h3 id="org464e969"><a href="file:///home/sx/Dropbox/subjects/README.html">Subjects README</a></h3>
-<div class="outline-text-3" id="text-org464e969">
-<p>
-<a href="file:///home/sx/Dropbox/subjects/ROS.html">ROS org</a>
-</p>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: sx</p>
-<p class="date">Created: 2020-05-23 Sa 12:21</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: silin</p>
+<p class="date">Created: 2020-11-23 Mo 20:45</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

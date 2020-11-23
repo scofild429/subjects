@@ -2,10 +2,9 @@
 #+OPTIONS: num:nil
 #+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
 #+startup: content
-
 * Advanced Math Methode
 ** Transfromation
-*** DONE Fourier Transfromation
+*** Fourier Transfromation
 
 periodical function $f(t) = \sum \sin(\omega t)$ or $f(t)=\sum
 \cos(\omega t)$.
@@ -123,7 +122,6 @@ co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
   \right)
 \end{equation}
 对角线上是对应元素的方差，其他是相对于两个元素的协方差
-
 
 
 * Matrix
