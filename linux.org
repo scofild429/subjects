@@ -1,6 +1,6 @@
 #+TITLE: Linux
 #+OPTIONS: num:nil
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
 #+startup: content
 
 * Install 
@@ -37,6 +37,7 @@ watch -n 1 nvidia-smi
 ** chinese 
 export LC_CTYPE=zh_CN.UTF-8
 sudo apt-get -y install language-pack-zh-hans
+此应用压制中英文的同步变化, 尽量避免使用中文
 * System configuration collection
 ** open fire wall  for port
   add port :
@@ -106,6 +107,19 @@ gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
 
 ** hotkey
 
+| C-M- t | terminal             |
+| C-M- p | thunderbird          |
+| C-M- e | emacs                |
+| C-M- f | firefox              |
+| C-M- j | emacs windows switch |
+| C-M- t | terminal             |
+| C-M- w | emacs worterbuch     |
+| C-M- t | terminal             |
+| C-M- t | terminal             |
+|        |                      |
+
+
+
 |---------------------------------+-----------|
 | Switch application              | Alt + Tab |
 | Switch window of an application | Alt + Spc |
@@ -114,6 +128,8 @@ gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
 
 |--------------+----------|
 | Alt Ctrl Del | 退出用户 |
+
+in Einstellung, the executable command can be used in command for customized hotkey
 
 ** clear caches
 put this in .bashrc under root file
@@ -492,6 +508,74 @@ Alt to open the menubar,
 Ansicht Anpassen to setting ungelesen
 #+end_src
 
+** EverSync
+Eversync sync all bookmarks between chrome and firefox with G Konten
+** IPFS
+*** build from source
+download go-ipfs and untar
+cp ipfs /usr/local/bin and sudo ./install.sh
+
+*** apt 
+sudo apt install ipfs
+
+*** config
+ipfs init
+export EDITOR=/usr/bin/emacs
+ipfs config edit
+ipfs id
+ipfs  help
+
+*** start
+#+begin_src 
+
+mkdir IPFS
+echo "balabalu" > hallo.org
+ipfs add hallo.org  :get file_hash
+ipfs cat file_hash
+ipfs.io/ipfs/file_hash
+#+end_src
+*** push
+
+#+begin_src 
+
+ipfs add -r . (we get all file_hash(s), and a folder_hash(IPFS))
+ipfs name publish folder_hash  (: to IDHASH)
+
+in Webborser: ipfs.io/ipns/IDHASH
+
+
+ipfs name resolve IDHASH : to HASH_file
+
+特殊加密，暂时不用
+ipfs key gen --type=rsa --size=2048 IPFS
+ipfs name publish --key=IPFS folder_hash
+#+end_src
+
+*** CORS
+
+#+BEGIN_SRC 
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST","OPTIONS"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Allow-Headers '["Authorization"]'
+
+ipfs config --json API.HTTPHeaders.Access-Control-Expose-Headers '["Location"]'
+
+
+http://localhost:5001/webui
+
+#+END_SRC
+
+*** File
+ipfs files mkdir /Docu
+
+ipfs files ls /Docu
+
+ipfs file cp /ipfs/HASH
+
 * System control
 ** system backup
 mount rsync
@@ -551,8 +635,6 @@ pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
 #+END_SRC
 找到支持的格式，再指明
 
-
-
 * hardware
 ** memery
 #+begin_src 
@@ -560,3 +642,483 @@ pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
 处理能力 = 2^数据总线宽度
 数据总线宽度受制于计算机位数
 #+end_src
+
+* Makefile
+
+gcc 调用 make 来构造
+
+** 格式
+
+目标 ： 依赖
+Tab 命令
+
+** 1example
+
+实列文件：add.c  head.h   main.c   maul.c  sub.c  
+直接在terminal 用gcc ：$ gcc add.c main.c sub.c -o app
+
+Makefile :
+$ touch Makefile
+#+BEGIN_SRC  txt
+app: main.c add.c sub.c mul.c
+    gcc main.c add.c sub.c mul.c 
+#+END_SRC
+$ make
+
+** 2修改后只编译改动后的文件
+
+Makefile :
+$ touch Makefile
+#+BEGIN_SRC  txt
+app: main.o add.o sub.o mul.o
+    gcc main.o add.o sub.o mul.o -o app
+
+main.o: main.c
+    gcc -c main.c -o main.o
+
+add.o: add.c
+    gcc -c add.c -o add.o
+
+sub.o: sub.c
+    gcc -c sub.c -o sub.o
+
+mul.o: mul.c
+    gcc -c mul.c -o mul.o
+
+#+END_SRC
+$ make
+所有源文件的修改过，即时间戳晚于生成的目标文件，则重新编译
+
+** 3使用自动变量
+
+$@ :目标
+$< :第一个依赖 
+$^ :所有依赖
+Makefile :
+$ touch Makefile
+
+#+BEGIN_SRC  txt
+obj =   main.o add.o sub.o mul.o
+target = app
+
+$(target):$(obj)
+    gcc $(obj) -o $(target)  // gcc $^ -o $@
+    
+%.o:%.c
+    gcc -c $< -o $@
+
+#+END_SRC
+$ make
+
+** 4增加可移植性
+
+wildcard :查找指定目录下的指定类型文件
+src = $(wildcard ./*.c)
+将当前目录下所有的.c 找到，并赋给src
+
+patsubst :匹配替换
+obj = $(patsubst %.c, %.o, $(src))
+将src中的所有.c替换为.o
+
+Makefile :
+$ touch Makefile
+
+#+BEGIN_SRC  txt
+src = $(wildcard ./*.c)
+obj = $(patsubst %.c, %.o $(src))
+target = app
+
+$(target):$(obj)
+    gcc $^ -o $@
+    
+%.o:%.c
+    gcc -c $< -o $@
+
+#+END_SRC
+$ make
+此文件在别的目录下也能使用
+
+** 5清洁中间的生成的不必要保存文件
+
+make 一般直接执行终结目标，但是可以直接指定make的函数
+clean : 删除不必要的文件，-f : 强制删除，不管有没有该文件，- : 前置-后，遇到错误执行，直接跳过
+
+#+BEGIN_SRC  txt
+src = $(wildcard ./*.c)
+obj = $(patsubst %.c, %.o $(src))
+target = app
+
+$(target):$(obj)
+    gcc $^ -o $@
+    
+%.o:%.c
+    gcc -c $< -o $@
+
+clean:
+    rm $(obj) $(target)
+    rm $(obj) $(target) -f
+    -rm $(obj) $(target) -f
+
+#+END_SRC
+
+$ make
+$ make clean
+
+* link
+** 静态库的制作
+*** 库方
+
+include/head.h  lib/  src/
+将在src/中编写要实现的文件
+并编译这些文件             $ gcc *.c -c -I ../include/
+-I :链接头文件
+再将这些编译后的打包       $ ar rcs libtest.a *.o
+ar : -archive 打包
+检测 : nm libtest.a
+前缀lib 和后缀.a 不能更改，实际名字是test
+
+最后将生成的libtest.a放到上级目录lib中，
+可以将lib和include目录发送给甲方
+
+*** 甲方
+
+根据include/head.h 的头文件编写自己的应用文件main.c
+编译main.c并链接头文件和库 
+  $ gcc main.c -I  ./include/ -L ./lib/ -ltest -o app
+-I : 连接头文件
+-L : 链接库
+-ltest : 链接库文件，去头lib 去尾.a
+-o: 指点生成的应用名
+
+*** 特点
+
+优点： 加载块，移植方便
+缺点 ：部署更新麻烦，引用的重复文件重复储存，浪费空间
+
+** 动态库的制作
+
+编译    $ gcc *.c -c -fpic -I ../include
+-fpic 或者 fPIC : 特殊命令
+打包    $ gcc -shared *.o -o libxxx.so
+头lib 尾.so 
+
+使用和静态库相似， 根据头文件编写应用文件main.c
+$ gcc main.c -I ./inculde/ -L ./lib/ -lxxx -o app
+
+对于linux生成的文件都是elf格式，并由ld-libc.so动态加载,需要让app能别找
+到可以用环境变量或者配置文件
+
+*** 环境变量
+
+临时设置   
+  $ export LD_LIBRARY_PATH=./lib
+或者新增   
+  $ export LD_LIBRARY_PATH=./lib:LD_LIBRARY_PATH
+
+临时设置可以使用相对路径，
+
+永久设置 用户
+$ cat " LD_LIBRARY_PATH=./lib:LD_LIBRARY_PATH" >> ~/.bashrc
+$ source ~./bashrc
+
+永久设置 系统
+$ sudo cat "LD_LIBRARY_PATH=./lib:LD_LIBRARY_PATH" >> /etc/profile
+$ source /etc/profile
+
+*** 修改配置文件
+
+配置文件/etc/ld.so.conf
+$ sudo cat "绝对路径/lib" >> /etc/ld.so.conf
+$ sudo ldconfig -v 激活配置
+
+*** 通过函数加载
+
+dlopen dlclose dlsym
+
+* BetreibenSystem
+** exit
+
+exit(0) will also send signal 17 (SIGCHID) to its father thread;
+
+** named pipe
+
+1. In current directory:   mkfifo("./myfifo", 0777);
+with mkfifo creat a file, so that other unrelated process can commu  
+
+2. In one process : fd = open("./myfifo", O_WRONGLY);
+open the file,  and :
+write(fd, &process_inter,1);
+change the pipe variable.
+
+3. In other process :   fd = open("./myfifo",O_RDONLY);
+open the file, and : while(process_inter == 0);
+can be controled by pipe variable 
+
+** unnamed pipe
+
+1. In one process diff threads
+   creat place for pipe : int fd[2]; one for main thread, one for new thread
+   creat pipe : int ret = pipe(fd);
+   
+   in new thread : read(fd[0], &process_inter 1); if nothing to read, sleep
+   in main thread do its stuff, 
+   after finish : write(fd[1], &process_inter, 1); let new pthread run
+   
+   remeber: wirte at frist in fd[1], and then read at fd[0]
+
+** memcpy
+
+memcpy(p, "niao",4);
+
+** kill
+
+kill(pid, 9);
+send signal 9 to pid process
+
+** raise
+
+raise(9);  == kill(getpid(), 9);
+
+** alarm
+
+alarm(10);   wait for 10 seconds and kill itself
+send signal as 14 to itself
+
+** pause
+
+pause(); stoped for ever
+
+** signal
+
+signal(signal_ID, self_function); self function or SIG_ING or SIG_DFL
+
+** key
+
+key can be 2 differ
+#+BEGIN_SRC 
+
+1. For father and son process : IPC_PRIVATE : 
+2. For unrelated process : self_def key
+  int key;
+  key = ftok("./a.c", 'a');
+  if (key < 0) {
+    printf("create key for server failed \n");
+    return -1;
+  }
+  printf("create key for server success \n");
+
+#+END_SRC
+
+** shmget
+
+  shmid = shmget(IPC_PRIVATE, 128, 0777);
+  shmid = shmget(key, 128, IPC_CREAT | 0777);
+
+** shmat
+
+char *p  = (char *) shmat(shmid, NULL, 0);
+after mapping to p : can be manipulated
+scanf("%s", p);
+printf("%s", p);
+
+** shmdt
+
+delete the mapping of p to shared memory 
+shmdt(p); 
+after that, the manipulation of p is not allowed, and well be
+segmention fault
+
+** shmctl
+
+delete the created shared memory
+shmctl(shmid, IPC_RMID, NULL); == iprcm -m shmid
+
+** IPC manipulation
+
+show : ipcs -m(shared memory) -q(message queue) -s(semaphores) 
+delete : ipcrm -m shmid /-q msgid /-s semid
+
+** msgget
+
+msgid= msgget(IPC_PRIVATE, 0777);
+
+** msgctl
+
+msgctl(msgid, IPC_RMID, NULL); == ipcrm -q msgid
+
+** msgsnd
+
+msgsnd(msgid, (void *)&sendbuffer, strlen(sendbuffer.message), 0);
+
+** msgrcv
+
+receivelen = msgrcv(msgid, (void *)&receiverbuffer, messagelen, 100, 0);
+
+** semget
+
+semid = semget(IPC_PRIVATE,3 ,  0777);
+
+** semctl
+
+semctl(semid, 0, IPC_RMID, NULL);
+
+* Git
+** tips
+Raw 文件
+** Git installation in Linux
+#+BEGIN_SRC 
+1. sudo apt install git
+
+2. local configuration
+#+begin_src sh
+   git  config --global user.name "username1"
+   git  config --global user.email "email1"
+#+end_src
+   git  config --list
+
+3. in local terminal
+#+begin_src sh
+   ssh-keygen -t rsa -C "email2"
+#+end_src
+and then just all enter as default
+   warming: email1 == email2
+
+#+END_SRC
+** Webconfig
+#+BEGIN_SRC 
+1. go to Fold Docu1, and in terminal git init to create local  repository
+2. apply github count with:
+   Email: email3
+   Username: username3
+   Password:xxxx
+3. in setting add ssh key from local document: ./ssh/id_rsa.pub
+4. create web repository with name Docu2
+   Warming: Docu1 == Docu2
+#+END_SRC
+** Connection
+#+BEGIN_SRC 
+
+1. in local computer Docu1, create our files and prepare to push to
+   Github
+2. git add && git commit -m ""
+3. git remote add origin HTTPS/SSH(of the created web repository)
+   warming: with  HTTPS will be ask the Username:username3 and
+   password:xxxx every time for the push, but SSH note
+4. git push -u origin master
+5. username3 and xxxx if necessary
+6. later push it only use git push origin master
+#+END_SRC
+** Magit Commit "C-x g" in E** Github on Windows
+#+BEGIN_SRC 
+1.  download git(scm) for windows
+2. copy package to somewhere to install
+3. choose the install path and editor
+4. create a NEW Repository and copy its ADDRESS
+create a file, .ssh and
+ssh-keygen -t rsa -C "your_email@example.com"
+and the id_rsa.pub into Github(New SSH key)
+5. to Desktop, git init
+6. create file, git add, git commit
+7. git remote and NAMe ADDRESS
+8. git push NAMe master
+#+END_SRC
+** Merge with aother branch
+
+#+BEGIN_SRC 
+after pull, git checkout dev
+git push -u name dev 
+
+#+END_SRC
+** Gitcommond
+*** 创建mybranch分支
+
+git branch mybrauch
+git checkout mybrauch
+create .gitignore
+git add -A
+git reset xxx.tex
+git status
+git commit -m "commit"
+git add -A 
+git commit -m "mybrauch"
+git push -u origin mybrauch
+
+*** merge mybranch分支到master分支
+git checkout master
+git pull origin master
+git branch --merged
+git merge mybrauch
+git push origin master
+
+*** 删除mybranch分支
+git branch --merged
+git branch -d mybrauch
+git branch -a 
+git push origin --delete mybrauch
+
+** commands
+
+add 添加索引  
+
+编辑当前文件后，想恢复，且未添加索引(未 add) ：  git checkout --file
+编辑当前文件后，想恢复，但已添加索引(已 add) ：  git reset HEAD file 再 git checkout --file
+编辑当前文件后，想查变动，且未添加索引(未 add) ： git diff
+编辑当前文件后，想查变动，但已添加索引(已 add) ： git diff --cached
+编辑当前文件后，已提交(已 add),想撤出索引 ：    git rm --cached  file
+
+编辑后，强制回到最近一次添加索引的版本：        git reset --hard HEAD
+编辑后，强制回到最近倒数第二次添加索引的版本：   git reset --hard HEAD~
+编辑后，强制回到最近倒数第n次添加索引的版本：    git reset --hard HEAD~n
+
+如果将HEAD换成对应的ID， 也可以回到之前相应的版本。 但是如果想再回去，
+又没有记住之前的ID， 可以用，       git reflog 查询.
+
+
+
+commit 添加提交
+和上次commit提交融合，不产生新的提交记录：  git commit --amend
+
+
+branch 新分支
+创建新的分支： git branch development
+带着全部家当去新的分支： git checkout development
+
+merge 融合分支
+如果此时只有development分支改变，可以直接回到master, 把development分支
+merge 过来   git merge development
+
+
+** Magit
+#+BEGIN_SRC 
+C-x g  : open the git buffer
+S or s : to stage
+C      : to commit 
+C-c C-c : to finish commit
+P and p to push
+#+END_SRC
+** github conflict with local git
+#+BEGIN_SRC 
+delete from github
+1. delete in github seit
+2. git pull origin master
+3. edit anyhow and push
+#+END_SRC
+
+#+BEGIN_SRC 
+delete from local git
+git rm -r  target
+git add *
+git commit -m "commit"
+git push origin master
+
+#+END_SRC
+
+** new system merge
+#+BEGIN_SRC 
+sudo apt install git
+config 3646
+add ssh-key
+git clone
+git push
+
+#+END_SRC

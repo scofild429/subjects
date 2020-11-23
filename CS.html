@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-02 Do 00:32 -->
+<!-- 2020-11-23 Mo 20:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CS</title>
+<title>Informatik</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="sx" />
+<meta name="author" content="silin" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -193,242 +193,978 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">CS</h1>
+<h1 class="title">Informatik</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7bae91c">AI</a></li>
-<li><a href="#org74daadc">Algorithmus</a></li>
-<li><a href="#org9f54ba2">computer vision</a></li>
-<li><a href="#org8c82de3">Inf III</a></li>
-<li><a href="#org67eb78e">Sysconf</a></li>
+<li><a href="#org7bb5eb3">Functional Programm of Haskell</a>
+<ul>
+<li><a href="#org63fc6fa">Grundlage</a></li>
+<li><a href="#org41762f1">Pattern Matching</a></li>
+<li><a href="#org6945a6e">Alternativen</a></li>
+<li><a href="#orgd063c6d">Recursion</a></li>
+<li><a href="#org6226075">type conversion</a></li>
+<li><a href="#org4a58c71">Factorial</a></li>
+<li><a href="#org0522d00">Stern Brocot Floge</a></li>
+</ul>
+</li>
+<li><a href="#org46b673a">Schaltnetze</a></li>
+<li><a href="#orge220dcc">Hash</a></li>
+<li><a href="#org143870b">P &amp; NP</a>
+<ul>
+<li><a href="#orgcc4c64d">def</a></li>
+<li><a href="#org49ded63">NP</a></li>
+</ul>
+</li>
+<li><a href="#orga4c2f58">Algotithm</a>
+<ul>
+<li><a href="#org49b314f">Komplexitätstheorie</a>
+<ul>
+<li><a href="#org05e6963">Maximum Sequence Problem Beispile</a></li>
+<li><a href="#orgb2c2416">Landau Symbols</a></li>
+<li><a href="#org9fbff7d">Master Theorem</a></li>
+</ul>
+</li>
+<li><a href="#org33617a4">Tree Theorem</a>
+<ul>
+<li><a href="#orga2269cb">Vorgänger(u)</a></li>
+<li><a href="#org51f7d6b">Nachfolger(v)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga38bf86">Advanced Algorithms</a>
+<ul>
+<li><a href="#orga096c28">Master theorem</a></li>
+<li><a href="#orgf8a3153">Maximum increasing Subsequence</a>
+<ul>
+<li><a href="#orgba36c56">LCS C++</a></li>
+<li><a href="#orgcbc5709">LCS python</a></li>
+<li><a href="#orgaeafffc">Dynamic program C++</a></li>
+<li><a href="#orgbd148f3">Dynamic Program Python</a></li>
+<li><a href="#orgb600bcf">O(nlogn) method C++</a></li>
+<li><a href="#orgb9a51ec">O(nlogn) method Python</a></li>
+</ul>
+</li>
+<li><a href="#orgc1149dc">maximum submatrix</a>
+<ul>
+<li><a href="#org82f5562">Brute force solution Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
+<div id="outline-container-org7bb5eb3" class="outline-2">
+<h2 id="org7bb5eb3">Functional Programm of Haskell</h2>
+<div class="outline-text-2" id="text-org7bb5eb3">
+</div>
+<div id="outline-container-org63fc6fa" class="outline-3">
+<h3 id="org63fc6fa">Grundlage</h3>
+<div class="outline-text-3" id="text-org63fc6fa">
+<p>
+basic function call
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">  log2 <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Float</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Float</span>
+  log2 <span style="color: #7590db;">=</span> logBase 2
+<span style="color: #bc6ec5; font-weight: bold;">log2</span> 43
+
+</pre>
+</div>
+
+<p>
+implication
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">
+  (<span style="color: #7590db;">==&gt;</span>)<span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span>
+  a <span style="color: #7590db;">==&gt;</span> b <span style="color: #7590db;">=</span> not a <span style="color: #7590db;">||</span> not b
+<span style="color: #ce537a; font-weight: bold;">Flase</span> <span style="color: #bc6ec5; font-weight: bold;">==&gt;</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+<span style="color: #ce537a; font-weight: bold;">False</span><span style="color: #bc6ec5; font-weight: bold;">==&gt;</span> <span style="color: #ce537a; font-weight: bold;">False</span>
+<span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #bc6ec5; font-weight: bold;">==&gt;</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+
+</pre>
+</div>
+
+<p>
+&#x2013;euler numbers
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">
+  e<span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Float</span>
+    e <span style="color: #7590db;">=</span> exp 1
+e 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org41762f1" class="outline-3">
+<h3 id="org41762f1">Pattern Matching</h3>
+<div class="outline-text-3" id="text-org41762f1">
+<p>
+one of the calling must match one case of pattern
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">False</span> <span style="color: #ce537a; font-weight: bold;">False</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">False</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">False</span> <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">False</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
 
 
-<div id="outline-container-org7bae91c" class="outline-2">
-<h2 id="org7bae91c">AI</h2>
-<div class="outline-text-2" id="text-org7bae91c">
+<span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-haskell">
+(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #4f97d7; font-weight: bold;">_</span> <span style="color: #4f97d7; font-weight: bold;">_</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">False</span>
+
+(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">False</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-haskell">(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span>
+  (<span style="color: #7590db;">&lt;#&gt;</span>) <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+
+</pre>
+</div>
+
+<p>
+case : this can only be executed in a .hs file,
+ in orgmode can NOT be imported, I don't know what is going on
+ in Terminal can NOT also
+</p>
+
+<p>
+Here I made above mistake, this is no sense.
+so long the indentation is correct, so works
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span>
+(<span style="color: #bc6ec5; font-weight: bold;">&lt;#&gt;</span>) a b
+  <span style="color: #7590db;">|</span> a <span style="color: #7590db;">==</span> b <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">False</span>
+  <span style="color: #7590db;">|</span> otherwise <span style="color: #7590db;">=</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6945a6e" class="outline-3">
+<h3 id="org6945a6e">Alternativen</h3>
+<div class="outline-text-3" id="text-org6945a6e">
+<p>
+if else then
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">absolute</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Int</span>
+<span style="color: #bc6ec5; font-weight: bold;">absolute</span> x <span style="color: #7590db;">=</span> <span style="color: #4f97d7; font-weight: bold;">if</span> x <span style="color: #7590db;">&lt;</span> 0 <span style="color: #4f97d7; font-weight: bold;">then</span> <span style="color: #7590db;">-</span>x <span style="color: #4f97d7; font-weight: bold;">else</span> x
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd063c6d" class="outline-3">
+<h3 id="orgd063c6d">Recursion</h3>
+<div class="outline-text-3" id="text-orgd063c6d">
+<p>
+easy fib
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">heronA</span> <span style="color: #7590db;">::</span>(<span style="color: #ce537a; font-weight: bold;">Int</span>, <span style="color: #ce537a; font-weight: bold;">Double</span>) <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span>
+<span style="color: #bc6ec5; font-weight: bold;">heronA</span> (n,a)
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">&gt;</span> 0     <span style="color: #7590db;">=</span> (heronA(n<span style="color: #7590db;">-</span>1,a) <span style="color: #7590db;">+</span> a<span style="color: #7590db;">/</span>heronA(n<span style="color: #7590db;">-</span>1, a))<span style="color: #7590db;">/</span>2
+  <span style="color: #7590db;">|</span> otherwise <span style="color: #7590db;">=</span> a
+
+<span style="color: #bc6ec5; font-weight: bold;">absolute</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Int</span>
+<span style="color: #bc6ec5; font-weight: bold;">absolute</span> x <span style="color: #7590db;">=</span> <span style="color: #4f97d7; font-weight: bold;">if</span> x <span style="color: #7590db;">&lt;</span> 0 <span style="color: #4f97d7; font-weight: bold;">then</span> <span style="color: #7590db;">-</span>x <span style="color: #4f97d7; font-weight: bold;">else</span> x
+
+<span style="color: #bc6ec5; font-weight: bold;">heronB</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span>
+<span style="color: #bc6ec5; font-weight: bold;">heronB</span> n a
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">&gt;</span> 0     <span style="color: #7590db;">=</span> (heronB (n<span style="color: #7590db;">-</span>1) a <span style="color: #7590db;">+</span> a<span style="color: #7590db;">/</span>heronB(n<span style="color: #7590db;">-</span>1) a)<span style="color: #7590db;">/</span>2
+  <span style="color: #7590db;">|</span> otherwise <span style="color: #7590db;">=</span> a
+
+</pre>
+</div>
+
+
+<p>
+where 
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">heronC</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span>
+<span style="color: #bc6ec5; font-weight: bold;">heronC</span> n a
+  <span style="color: #7590db;">|</span>n <span style="color: #7590db;">&gt;</span> 0      <span style="color: #7590db;">=</span> (x <span style="color: #7590db;">+</span> a<span style="color: #7590db;">/</span>x)<span style="color: #7590db;">/</span>2
+  <span style="color: #7590db;">|</span>otherwise  <span style="color: #7590db;">=</span> a
+  <span style="color: #4f97d7; font-weight: bold;">where</span> x <span style="color: #7590db;">=</span> heronC (n<span style="color: #7590db;">-</span>1) a
+</pre>
+</div>
+
+<p>
+fib &amp; where
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">fibA</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fibA</span> n
+  <span style="color: #7590db;">|</span>n <span style="color: #7590db;">==</span> 0    <span style="color: #7590db;">=</span> 0
+  <span style="color: #7590db;">|</span>n <span style="color: #7590db;">==</span> 1    <span style="color: #7590db;">=</span> 1
+  <span style="color: #7590db;">|</span>otherwise <span style="color: #7590db;">=</span> x <span style="color: #7590db;">+</span>y
+  <span style="color: #4f97d7; font-weight: bold;">where</span>
+    x <span style="color: #7590db;">=</span> fibA (n<span style="color: #7590db;">-</span>1)
+    y <span style="color: #7590db;">=</span> fibA (n<span style="color: #7590db;">-</span>2)
+
+</pre>
+</div>
+
+<p>
+fib &amp; where &amp; pattern matching
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">fibB</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fibB</span> 0 <span style="color: #7590db;">=</span> 0
+<span style="color: #bc6ec5; font-weight: bold;">fibB</span> 1 <span style="color: #7590db;">=</span> 1
+<span style="color: #bc6ec5; font-weight: bold;">fibB</span> n <span style="color: #7590db;">=</span> fibB (n<span style="color: #7590db;">-</span>1) <span style="color: #7590db;">+</span> fibB (n<span style="color: #7590db;">-</span>2)
+
+
+<span style="color: #bc6ec5; font-weight: bold;">fibC</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fibC</span> 0 <span style="color: #7590db;">=</span> 0
+<span style="color: #bc6ec5; font-weight: bold;">fibC</span> 1 <span style="color: #7590db;">=</span> 1
+<span style="color: #bc6ec5; font-weight: bold;">fibC</span> n
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">&lt;</span> 0      <span style="color: #7590db;">=</span> error <span style="color: #2d9574;">"illegal arguement"</span>
+  <span style="color: #7590db;">|</span> otherwise  <span style="color: #7590db;">=</span> fibB (n<span style="color: #7590db;">-</span>1) <span style="color: #7590db;">+</span> fibB (n<span style="color: #7590db;">-</span>2)
+
+
+(<span style="color: #bc6ec5; font-weight: bold;">&lt;##&gt;</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Int</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Double</span>
+0 <span style="color: #7590db;">&lt;##&gt;</span> a   <span style="color: #7590db;">=</span> a
+n <span style="color: #bc6ec5; font-weight: bold;">&lt;##&gt;</span> a  
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">&gt;</span> 0  <span style="color: #7590db;">=</span> (x <span style="color: #7590db;">+</span> a<span style="color: #7590db;">/</span>x)<span style="color: #7590db;">/</span>2
+  <span style="color: #7590db;">|</span> otherwise  <span style="color: #7590db;">=</span> error <span style="color: #2d9574;">"illegal arguement"</span>
+  <span style="color: #4f97d7; font-weight: bold;">where</span> x <span style="color: #7590db;">=</span> (n<span style="color: #7590db;">-</span>1) <span style="color: #7590db;">&lt;##&gt;</span> a
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6226075" class="outline-3">
+<h3 id="org6226075">type conversion</h3>
+<div class="outline-text-3" id="text-org6226075">
+<p>
+Guides
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">vielleichtdreifach</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Bool</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">vielleichtdreifach</span> verdreifach nochmal n
+  <span style="color: #7590db;">|</span> verdreifach <span style="color: #7590db;">&amp;&amp;</span> nochmal <span style="color: #7590db;">=</span> maldrei ( maldrei n)
+  <span style="color: #7590db;">|</span> verdreifach            <span style="color: #7590db;">=</span> maldrei n
+  <span style="color: #7590db;">|</span> otherwise              <span style="color: #7590db;">=</span> n
+  <span style="color: #4f97d7; font-weight: bold;">where</span> maldrei n <span style="color: #7590db;">=</span> 3<span style="color: #7590db;">*</span>n 
+
+<span style="color: #bc6ec5; font-weight: bold;">dreifach</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">dreifach</span> <span style="color: #7590db;">=</span> vielleichtdreifach <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">False</span> 
+
+<span style="color: #bc6ec5; font-weight: bold;">neudreifach</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">neudreifach</span> <span style="color: #7590db;">=</span> vielleichtdreifach <span style="color: #ce537a; font-weight: bold;">True</span> <span style="color: #ce537a; font-weight: bold;">True</span>
+
+</pre>
+</div>
+<p>
+vielleichtdreifach Bool Bool -&gt; Integer
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4a58c71" class="outline-3">
+<h3 id="org4a58c71">Factorial</h3>
+<div class="outline-text-3" id="text-org4a58c71">
+<div class="org-src-container">
+<pre class="src src-haskell"><span style="color: #bc6ec5; font-weight: bold;">fac</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">fac</span> n
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">==</span> 0  <span style="color: #7590db;">=</span> 1
+  <span style="color: #7590db;">|</span> otherwise <span style="color: #7590db;">=</span> fac (n<span style="color: #7590db;">-</span>1) <span style="color: #7590db;">*</span> n
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0522d00" class="outline-3">
+<h3 id="org0522d00">Stern Brocot Floge</h3>
+<div class="outline-text-3" id="text-org0522d00">
+<p>
+\(\\s_{0} = 0 \\ s_{1} = 1 \\ s_{2n} = s_{n} \\ s_{2n+1} = s_{n} + s_{n+1}\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">(<span style="color: #bc6ec5; font-weight: bold;">*/*</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+(<span style="color: #bc6ec5; font-weight: bold;">*/*</span>) <span style="color: #7590db;">=</span> div
+
+(<span style="color: #bc6ec5; font-weight: bold;">*%*</span>) <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+(<span style="color: #bc6ec5; font-weight: bold;">*%*</span>) <span style="color: #7590db;">=</span> rem
+
+<span style="color: #bc6ec5; font-weight: bold;">sternBrocot</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">sternBrocot</span> n
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">==</span> 0      <span style="color: #7590db;">=</span> 0
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">==</span> 1      <span style="color: #7590db;">=</span> 1
+  <span style="color: #7590db;">|</span> n <span style="color: #7590db;">*%*</span> 2 <span style="color: #7590db;">==</span> 0 <span style="color: #7590db;">=</span> sternBrocot half
+  <span style="color: #7590db;">|</span> otherwise    <span style="color: #7590db;">=</span> sternBrocot half <span style="color: #7590db;">+</span> sternBrocot (half <span style="color: #7590db;">+</span> 1)
+  <span style="color: #4f97d7; font-weight: bold;">where</span> half <span style="color: #7590db;">=</span> n <span style="color: #7590db;">*/*</span> 2
+
+<span style="color: #bc6ec5; font-weight: bold;">suche</span> <span style="color: #7590db;">::</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span> <span style="color: #7590db;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Integer</span>
+<span style="color: #bc6ec5; font-weight: bold;">suche</span> suchziel postionziel
+  <span style="color: #7590db;">|</span> sternBrocot postionziel <span style="color: #7590db;">&gt;</span> suchziel <span style="color: #7590db;">=</span> postionziel
+  <span style="color: #7590db;">|</span> otherwise                          <span style="color: #7590db;">=</span> suche suchziel (postionziel <span style="color: #7590db;">+</span>1)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46b673a" class="outline-2">
+<h2 id="org46b673a">Schaltnetze</h2>
+</div>
+<div id="outline-container-orge220dcc" class="outline-2">
+<h2 id="orge220dcc">Hash</h2>
+<div class="outline-text-2" id="text-orge220dcc">
+<p>
+Verlastungsfaktor  \[ &alpha; = \frac{n}{m} ]\
+n : elementen
+m : Hash Blukets
+</p>
+
+<p>
+For Kollision
+Offenes Hash :  mit verkertete List
+Universumes Hash : mit ein hash famliy function
+Geschlossens Hash : die weiter hash bluket besiten
+verdoppelungsstrategie : verkleinen order vergrossen die Hash Blukets
+</p>
+</div>
+</div>
+
+<div id="outline-container-org143870b" class="outline-2">
+<h2 id="org143870b">P &amp; NP</h2>
+<div class="outline-text-2" id="text-org143870b">
+</div>
+<div id="outline-container-orgcc4c64d" class="outline-3">
+<h3 id="orgcc4c64d">def</h3>
+<div class="outline-text-3" id="text-orgcc4c64d">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
 <col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left">AI</td>
+<td class="org-left">P problem</td>
+<td class="org-left">{L</td>
+<td class="org-left">Es gibt ein Polynom p(n) und eine p(n)-Zeitbeschrankte DTM m mit L=L(m)}</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="https://github.com/scofild429/subjects/blob/master/AI.org">org test</a></td>
+<td class="org-left">NP problem</td>
+<td class="org-left">{L</td>
+<td class="org-left">Es gibt ein Polynom p(n) und eine p(n)-Zeitbeschrankte NTM m mit L=L(m)}</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="https://scofild429.github.io/subjects/AI.html">github page</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.gitee.io/subjects/AI.html">gitee page</a></td>
+<td class="org-left">ExpTime problem</td>
+<td class="org-left">{L</td>
+<td class="org-left">Es gibt ein Polynom p(n) und eine 2<sup>p</sup>(n)-Zeitbeschrankte DTM m mit L=L(m)}</td>
 </tr>
 </tbody>
 </table>
+
+<p>
+Rudction
+Many-one-Rudction : alle  P Problem konnen auf one Problem reduzieren.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49ded63" class="outline-3">
+<h3 id="org49ded63">NP</h3>
+<div class="outline-text-3" id="text-org49ded63">
+<p>
+SAT &lt;- 3SAT &lt;- 3 Farbarkeit
+            &lt;- Clique
+            &lt;- Independent Set
+            &lt;- Vertex Set
+            Pa
+</p>
+</div>
 </div>
 </div>
 
 
-<div id="outline-container-org74daadc" class="outline-2">
-<h2 id="org74daadc">Algorithmus</h2>
-<div class="outline-text-2" id="text-org74daadc">
+<div id="outline-container-orga4c2f58" class="outline-2">
+<h2 id="orga4c2f58">Algotithm</h2>
+<div class="outline-text-2" id="text-orga4c2f58">
+</div>
+<div id="outline-container-org49b314f" class="outline-3">
+<h3 id="org49b314f">Komplexitätstheorie</h3>
+<div class="outline-text-3" id="text-org49b314f">
+</div>
+<div id="outline-container-org05e6963" class="outline-4">
+<h4 id="org05e6963">Maximum Sequence Problem Beispile</h4>
+<div class="outline-text-4" id="text-org05e6963">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
 <col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">advanced<sub>Algorithmus</sub></th>
+<th scope="col" class="org-left">A1.</th>
+<th scope="col" class="org-left">\(O(n^3)\)</th>
+<th scope="col" class="org-left">Erschöpfende Suche/ Brute-Force-Suche/ Exhaustive Search</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><a href="https://github.com/scofild429/subjects/blob/master/advanced_Algorithmus.org">org test</a></td>
+<td class="org-left">A2.</td>
+<td class="org-left">\(O(n^2)\)</td>
+<td class="org-left">Zwischen Prozessen mehr anwenden</td>
 </tr>
-
+</tbody>
+<tbody>
 <tr>
-<td class="org-left"><a href="https://scofild429.github.io/subjects/advanced_Algorithmus.html">github page</a></td>
+<td class="org-left">A3.</td>
+<td class="org-left">\(O(n \log n)\)</td>
+<td class="org-left">Rekursive</td>
 </tr>
-
+</tbody>
+<tbody>
 <tr>
-<td class="org-left"><a href="https://scofild429.gitee.io/subjects/advanced_Algorithmus.html">gitee page</a></td>
+<td class="org-left">A4.</td>
+<td class="org-left">\(O(n)\)</td>
+<td class="org-left">Max Maxsuffix</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
+<div id="outline-container-orgb2c2416" class="outline-4">
+<h4 id="orgb2c2416">Landau Symbols</h4>
+<div class="outline-text-4" id="text-orgb2c2416">
+<p>
+\[ f = O(g) \leftrightarrow g = \Omega(f) \leftrightarrow \lim_{x \to
+\infty} Sup|\frac{f(x)}{g(x)}| < \infty \]
+</p>
 
-<div id="outline-container-org9f54ba2" class="outline-2">
-<h2 id="org9f54ba2">computer vision</h2>
-<div class="outline-text-2" id="text-org9f54ba2">
+<p>
+\[ f = \Omega(g) \leftrightarrow g = O(f) \leftrightarrow \lim_{x \to
+\infty} Inf|\frac{f(x)}{g(x)}| > 0 \]
+</p>
+
+<p>
+\[ f = \Theta(g) \leftrightarrow g = \Theta(f) \leftrightarrow 0< \lim_{x \to
+\infty} Inf|\frac{f(x)}{g(x)}| < \lim_{x \to \infty} Sup|\frac{f(x)}{g(x)}| < \infty \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fbff7d" class="outline-4">
+<h4 id="org9fbff7d">Master Theorem</h4>
+<div class="outline-text-4" id="text-org9fbff7d">
+<p>
+In a Recursive process, we can form this,  \[ T_n = a \cdot T(\frac{n}{b}) + f(n) \],
+for  \(a \geq 1\), \(b \geq 1\). T 代表递归符号,   a: 每次递归成几个部分,
+n/b: 递归后每个部分的问题规模,  f(n): 递归后将所有部分融合的步骤, 作如
+下变换：
+</p>
+
+<p>
+\[ n^d = f(n) = O(n^{\log_b^a-\epsilon}) \\
+   n^d = f(n)  \ge n^{\log_b^a-\epsilon} \\
+   d \ge \log_b^a - \epsilon \\
+   d \ge \log_b^a
+\]
+如果\(\log_b^b\) 在减去一个存在的 &epsilon; 后仍然大于d, 则 ：\(T_n = \Theta (n^{\log_b^a})\).
+</p>
+
+
+<p>
+\[
+  n^d = f(n) = \Theta (n^{\log_b^a}) \\
+  n^d = f(n)  = n^{\log_b^a} \\
+  d = \log_b^a
+\]
+如果$log<sub>b</sub><sup>a</sup> 恒等于 d, 则： \(T_n = \Theta (n^{\log_b^a} \cdot \lg^n)\)
+</p>
+
+
+<p>
+\[
+   n^d = f(n) = \Omega(n^{\log_b^a+\epsilon}) \\
+   n^d = f(n)  \le n^{\log_b^a+\epsilon} \\
+   d \le \log_b^a +\epsilon \\
+   d \le \log_b^a
+\]
+如果\(\log_b^b\) 在加上一个存在的 &epsilon; 后仍然小于d, 则 ：\(T_n = \Theta (f(n))\).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org33617a4" class="outline-3">
+<h3 id="org33617a4">Tree Theorem</h3>
+<div class="outline-text-3" id="text-org33617a4">
+</div>
+<div id="outline-container-orga2269cb" class="outline-4">
+<h4 id="orga2269cb">Vorgänger(u)</h4>
+<div class="outline-text-4" id="text-orga2269cb">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
 <col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">computervision</th>
+<th scope="col" class="org-left">if least(root) = u</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">no Vorgänger</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><a href="https://github.com/scofild429/subjects/blob/master/computervision.org">org test</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.github.io/subjects/computervision.html">github page</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.gitee.io/subjects/computervision.html">gitee page</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-
-<div id="outline-container-org8c82de3" class="outline-2">
-<h2 id="org8c82de3">Inf III</h2>
-<div class="outline-text-2" id="text-org8c82de3">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Inf</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><a href="https://github.com/scofild429/subjects/blob/master/Inf.org">org test</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.github.io/subjects/Inf.html">github page</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.gitee.io/subjects/Inf.html">gitee page</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-
-
-<div id="outline-container-org67eb78e" class="outline-2">
-<h2 id="org67eb78e">Sysconf</h2>
-<div class="outline-text-2" id="text-org67eb78e">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">sysconf Readme</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://github.com/scofild429/sysc/blob/master/README.org">org test</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.github.io/sysc/README.html">github page</a></td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="https://scofild429.gitee.io/sysc/README.html">gitee page</a></td>
-</tr>
-
-<tr>
+<td class="org-left">if u.L exits</td>
 <td class="org-left">&#xa0;</td>
+<td class="org-left">greatest(u.L)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">if u.L not exits</td>
+<td class="org-left">u is right child</td>
+<td class="org-left">father node</td>
+</tr>
+
+<tr>
+<td class="org-left">if u.L not exits</td>
+<td class="org-left">u is left child</td>
+<td class="org-left">(grand)father which has right child</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+
+<div id="outline-container-org51f7d6b" class="outline-4">
+<h4 id="org51f7d6b">Nachfolger(v)</h4>
+<div class="outline-text-4" id="text-org51f7d6b">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">if greatest(root) = v</th>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">no Nachfolger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">if v.R exits</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">least(u.L)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">if v.R not exits</td>
+<td class="org-left">v is left child</td>
+<td class="org-left">father node</td>
+</tr>
+
+<tr>
+<td class="org-left">if v.R not exits</td>
+<td class="org-left">v is right child</td>
+<td class="org-left">(grand)father which has left child</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga38bf86" class="outline-2">
+<h2 id="orga38bf86">Advanced Algorithms</h2>
+<div class="outline-text-2" id="text-orga38bf86">
+</div>
+<div id="outline-container-orga096c28" class="outline-3">
+<h3 id="orga096c28">Master theorem</h3>
+</div>
+<div id="outline-container-orgf8a3153" class="outline-3">
+<h3 id="orgf8a3153">Maximum increasing Subsequence</h3>
+<div class="outline-text-3" id="text-orgf8a3153">
+<p>
+It has three different solution,
+</p>
+</div>
+<div id="outline-container-orgba36c56" class="outline-4">
+<h4 id="orgba36c56">LCS C++</h4>
+</div>
+<div id="outline-container-orgcbc5709" class="outline-4">
+<h4 id="orgcbc5709">LCS python</h4>
+</div>
+<div id="outline-container-orgaeafffc" class="outline-4">
+<h4 id="orgaeafffc">Dynamic program C++</h4>
+<div class="outline-text-4" id="text-orgaeafffc">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;iostream&gt;</span>  
+<span style="color: #4f97d7; font-weight: bold;">using</span> <span style="color: #4f97d7; font-weight: bold;">namespace</span> <span style="color: #a45bad;">std</span>;  
+<span style="color: #bc6ec5;">#define</span> <span style="color: #bc6ec5; font-weight: bold;">len</span>(<span style="color: #7590db;">a</span>) (<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(a) / <span style="color: #4f97d7; font-weight: bold;">sizeof</span>(a[0])) <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;&#38271;&#24230;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">lis</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">arr</span>[], <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>)  
+{  
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">longest</span>[len];  
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>=0; i&lt;len; i++)  
+        longest[i] = 1;  
+
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span>=1; j&lt;len; j++) {  
+        <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>=0; i&lt;j; i++) {  
+            <span style="color: #4f97d7; font-weight: bold;">if</span> (arr[j]&gt;arr[i] &amp;&amp; longest[j]&lt;longest[i]+1){ <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27880;&#24847;longest[j]&lt;longest[i]+1&#36825;&#20010;&#26465;&#20214;&#65292;&#19981;&#33021;&#30465;&#30053;&#12290;  </span>
+                longest[j] = longest[i] + 1; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#35745;&#31639;&#20197;arr[j]&#32467;&#23614;&#30340;&#24207;&#21015;&#30340;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#38271;&#24230;  </span>
+            }  
+        }  
+    }  
+
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">max</span> = 0;  
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span>=0; j&lt;len; j++) {  
+        cout &lt;&lt; <span style="color: #2d9574;">"longest["</span> &lt;&lt; j &lt;&lt; <span style="color: #2d9574;">"]="</span> &lt;&lt; longest[j] &lt;&lt; endl;  
+        <span style="color: #4f97d7; font-weight: bold;">if</span> (longest[j] &gt; max) max = longest[j];  <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20174;longest[j]&#20013;&#25214;&#20986;&#26368;&#22823;&#20540;  </span>
+    }  
+    <span style="color: #4f97d7; font-weight: bold;">return</span> max;  
+}  
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()  
+{  
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">arr</span>[] = {1, 4, 5, 6, 2, 3, 8}; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27979;&#35797;&#25968;&#32452;  </span>
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">ret</span> = lis(arr, len(arr));  
+    cout &lt;&lt; <span style="color: #2d9574;">"max increment substring len="</span> &lt;&lt; ret &lt;&lt; endl;  
+    <span style="color: #4f97d7; font-weight: bold;">return</span> 0;  
+}  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd148f3" class="outline-4">
+<h4 id="orgbd148f3">Dynamic Program Python</h4>
+<div class="outline-text-4" id="text-orgbd148f3">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #7590db;">list1</span> = [2, 1, 3, 45, 76, 89, 457, 54, 4, 5, 3, 6, 7, 8, 4, 9]
+<span style="color: #7590db;">l</span> = <span style="color: #4f97d7;">len</span>(list1)
+<span style="color: #7590db;">a</span> = [1]*l
+<span style="color: #7590db;">b</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+
+
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i):
+        <span style="color: #4f97d7; font-weight: bold;">if</span> (list1[i] &gt; list1[j]) <span style="color: #4f97d7; font-weight: bold;">and</span> (a[i] &lt; (a[j] + 1)):
+            <span style="color: #7590db;">a</span>[i] = a[j]+1
+            b[i].append(list1[j])
+<span style="background-color: #292e34;"> </span>   b[i].append(list1[i])
+
+<span style="color: #4f97d7; font-weight: bold;">print</span>(a)
+<span style="color: #7590db;">maxa</span> = a.index(<span style="color: #4f97d7;">max</span>(a))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"the maximun length of LIS of list1 is {}"</span>.<span style="color: #4f97d7;">format</span>(<span style="color: #4f97d7;">max</span>(a)))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"the LIS is {}"</span>.<span style="color: #4f97d7;">format</span>(b[maxa]))
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb600bcf" class="outline-4">
+<h4 id="orgb600bcf">O(nlogn) method C++</h4>
+<div class="outline-text-4" id="text-orgb600bcf">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>  
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdlib.h&gt;</span>  
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>  
+
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">N</span> 9 <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;&#20803;&#32032;&#20010;&#25968;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">array</span>[N] = {2, 1, 6, 3, 5, 4, 8, 7, 9}; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#21407;&#25968;&#32452;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">B</span>[N]; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#22312;&#21160;&#24577;&#35268;&#21010;&#20013;&#20351;&#29992;&#30340;&#25968;&#32452;,&#29992;&#20110;&#35760;&#24405;&#20013;&#38388;&#32467;&#26524;,&#20854;&#21547;&#20041;&#19977;&#35328;&#20004;&#35821;&#35828;&#19981;&#28165;,&#35831;&#21442;&#35265;&#21338;&#25991;&#30340;&#35299;&#37322;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>; <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#29992;&#20110;&#26631;&#31034;B&#25968;&#32452;&#20013;&#30340;&#20803;&#32032;&#20010;&#25968;  </span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">LIS</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">array</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#35745;&#31639;&#26368;&#38271;&#36882;&#22686;&#23376;&#24207;&#21015;&#30340;&#38271;&#24230;,&#35745;&#31639;B&#25968;&#32452;&#30340;&#20803;&#32032;,array[]&#24490;&#29615;&#23436;&#19968;&#36941;&#21518;,B&#30340;&#38271;&#24230;len&#21363;&#20026;&#25152;&#27714;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">BiSearch</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">b</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">w</span>); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20570;&#20102;&#20462;&#25913;&#30340;&#20108;&#20998;&#25628;&#32034;&#31639;&#27861;  </span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()  
+{
+
+  printf(<span style="color: #2d9574;">"LIS: %d\n"</span>, LIS(array, N));  
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>;  
+  <span style="color: #4f97d7; font-weight: bold;">for</span>(i=0; i&lt;len; ++i)  
+    {  
+      printf(<span style="color: #2d9574;">"B[%d]=%d\n"</span>, i, B[i]);  
+    }  
+
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;  
+}  
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">LIS</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">array</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>)  
+{  
+
+  len = 1;  
+  B[0] = array[0];  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>, <span style="color: #7590db;">pos</span> = 0;
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">lis</span> =(<span style="color: #ce537a; font-weight: bold;">int</span> *) malloc(n*<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(<span style="color: #ce537a; font-weight: bold;">int</span>));
+
+  lis[0] = array[0];
+  <span style="color: #4f97d7; font-weight: bold;">for</span>(i=1; i&lt;n; ++i)  
+    {  
+      <span style="color: #4f97d7; font-weight: bold;">if</span>(array[i] &gt; B[len-1]) <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#22914;&#26524;&#22823;&#20110;B&#20013;&#26368;&#22823;&#30340;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#25554;&#20837;&#21040;B&#25968;&#32452;&#26411;&#23614;  </span>
+        {  
+          B[len] = array[i];  
+          ++len;
+          lis[i] = array[i]; 
+        }  
+      <span style="color: #4f97d7; font-weight: bold;">else</span>  
+        {  
+          pos = BiSearch(B, len, array[i]); <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20108;&#20998;&#26597;&#25214;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;</span>
+          lis[pos] = array[i];
+          B[pos] = array[i];  
+        }
+    }  
+
+  printf(<span style="color: #2d9574;">"the LIS is :\n"</span>);
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0; i &lt; n; ++i) {
+    printf(<span style="color: #2d9574;">"%d "</span>,lis[i]);
+  }
+  free(lis);
+  printf(<span style="color: #2d9574;">" \n"</span>);
+
+  <span style="color: #4f97d7; font-weight: bold;">return</span> len;  
+}  
+
+<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#20462;&#25913;&#30340;&#20108;&#20998;&#26597;&#25214;&#31639;&#27861;&#65292;&#36820;&#22238;&#25968;&#32452;&#20803;&#32032;&#38656;&#35201;&#25554;&#20837;&#30340;&#20301;&#32622;&#12290;  </span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">BiSearch</span>(<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">b</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">w</span>)  
+{  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">left</span> = 0, <span style="color: #7590db;">right</span> = len - 1;  
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">mid</span>;  
+  <span style="color: #4f97d7; font-weight: bold;">while</span> (left &lt;= right)  
+    {  
+      mid = left + (right-left)/2;  
+      <span style="color: #4f97d7; font-weight: bold;">if</span> (b[mid] &gt; w)  
+        right = mid - 1;  
+      <span style="color: #4f97d7; font-weight: bold;">else</span> <span style="color: #4f97d7; font-weight: bold;">if</span> (b[mid] &lt; w)  
+        left = mid + 1;  
+      <span style="color: #4f97d7; font-weight: bold;">else</span>    <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25214;&#21040;&#20102;&#35813;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#36820;&#22238;  </span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> mid;  
+    }  
+  <span style="color: #4f97d7; font-weight: bold;">return</span> left;<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#25968;&#32452;b&#20013;&#19981;&#23384;&#22312;&#35813;&#20803;&#32032;&#65292;&#21017;&#36820;&#22238;&#35813;&#20803;&#32032;&#24212;&#35813;&#25554;&#20837;&#30340;&#20301;&#32622;  </span>
+}  
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb9a51ec" class="outline-4">
+<h4 id="orgb9a51ec">O(nlogn) method Python</h4>
+<div class="outline-text-4" id="text-orgb9a51ec">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #7590db;">list1</span> = [2, 1, 3, 4, 5, 3, 6, 7, 8, 4, 9]
+<span style="color: #7590db;">l</span> = <span style="color: #4f97d7;">len</span>(list1)
+
+
+<span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">getpos</span>(list2, n, x):  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">binary search of postion</span>
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">left</span> = 0
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">right</span> = n-1
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">while</span> (left &lt;= right):
+        <span style="color: #7590db;">mid</span> = <span style="color: #4f97d7;">int</span>(left + (right-left)/2)
+        <span style="color: #4f97d7; font-weight: bold;">if</span> x &lt; list1[mid]:
+            <span style="color: #7590db;">right</span> = mid-1
+        <span style="color: #4f97d7; font-weight: bold;">elif</span> x &gt; list1[mid]:
+            <span style="color: #7590db;">left</span> = mid + 1
+        <span style="color: #4f97d7; font-weight: bold;">else</span>:
+            <span style="color: #4f97d7; font-weight: bold;">return</span> mid
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">return</span> left
+
+
+<span style="color: #7590db;">c</span> = [list1[0]]  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">copy the first element to c</span>
+
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">if</span> c[-1] &lt; list1[i]:  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if the new element is bigger than the last c, add it</span>
+        c.append(list1[i])
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">else</span>:
+        <span style="color: #7590db;">pos</span> = getpos(c, <span style="color: #4f97d7;">len</span>(c), list1[i])  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if not, find the right pos</span>
+        <span style="color: #7590db;">c</span>[pos-1] = list1[i]
+
+<span style="color: #4f97d7; font-weight: bold;">print</span>(c)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc1149dc" class="outline-3">
+<h3 id="orgc1149dc">maximum submatrix</h3>
+<div class="outline-text-3" id="text-orgc1149dc">
+</div>
+<div id="outline-container-org82f5562" class="outline-4">
+<h4 id="org82f5562">Brute force solution Python</h4>
+<div class="outline-text-4" id="text-org82f5562">
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> random
+<span style="color: #7590db;">l</span> = 6
+<span style="color: #7590db;">a</span> = [[]]*l
+<span style="color: #7590db;">gsm</span> = [[]]*l
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">a</span>[i] = [random.randint(-5, 5) <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"Original random matrix  \n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l):
+        <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"{:&gt;4d}"</span>.<span style="color: #4f97d7;">format</span>(a[i][j]), end=<span style="color: #2d9574;">""</span>)
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
+
+<span style="color: #4f97d7;">max</span> = 0
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">distance between x dimension of submatrix</span>
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">for</span> xstart <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i-1, l):                            <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">x start  of submatrix</span>
+        <span style="color: #4f97d7; font-weight: bold;">for</span> xstop <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(i+xstart, l+1-i+1):              <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">x stop    of submatrix</span>
+            <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">distance between y dimension of submatrix</span>
+            <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(1, l):
+                <span style="color: #4f97d7; font-weight: bold;">for</span> ystart <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(j-1, l):                 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y start of submatrix</span>
+                    <span style="color: #4f97d7; font-weight: bold;">for</span> ystop <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(j+ystart, l+1-j+1):   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y stop of submatrix</span>
+                        <span style="color: #7590db;">lip</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+                        <span style="color: #7590db;">count</span> = 0
+                        <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(xstart, xstop):
+                            <span style="color: #4f97d7; font-weight: bold;">for</span> y <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(ystart, ystop):
+                                lip[x].append(a[x][y])
+                                <span style="color: #7590db;">count</span> += a[x][y]
+                        <span style="color: #4f97d7; font-weight: bold;">if</span> count &gt; <span style="color: #4f97d7;">max</span>:
+                            <span style="color: #7590db;">lipmax</span> = [[] <span style="color: #4f97d7; font-weight: bold;">for</span> x <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(l)]
+                            <span style="color: #4f97d7;">max</span> = count
+                            <span style="color: #7590db;">lipmax</span> = lip
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"maximux submatrix :\n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">for</span> i <span style="color: #4f97d7; font-weight: bold;">in</span> <span style="color: #4f97d7;">range</span>(<span style="color: #4f97d7;">len</span>(lipmax)):
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">for</span> j <span style="color: #4f97d7; font-weight: bold;">in</span> lipmax[i]:
+        <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"{:&gt;4d}"</span>.<span style="color: #4f97d7;">format</span>(j), end=<span style="color: #2d9574;">""</span>)
+
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"\n"</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"The summary is "</span>, <span style="color: #4f97d7;">max</span>)
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: sx</p>
-<p class="date">Created: 2020-07-02 Do 00:32</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: silin</p>
+<p class="date">Created: 2020-11-23 Mo 20:20</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

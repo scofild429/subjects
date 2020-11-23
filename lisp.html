@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mo 19:49 -->
+<!-- 2020-11-23 Mo 19:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Physik</title>
+<title>Lisp</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="silin" />
 <style type="text/css">
@@ -229,37 +229,310 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Physik</h1>
+<h1 class="title">Lisp</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org659ef8a">Classical physics</a></li>
-<li><a href="#orgbda61e4">Particle physics</a></li>
-<li><a href="#org21236e1">GR</a></li>
-<li><a href="#org35dbe20">Quantum</a></li>
+<li><a href="#org5dcf710">command</a>
+<ul>
+<li><a href="#org683ba31">execute</a></li>
+</ul>
+</li>
+<li><a href="#org63f0a86">List</a></li>
+<li><a href="#org0e08d0f">Evaluation</a></li>
+<li><a href="#org8786b38">Buffer</a></li>
+<li><a href="#orgb471765">let</a></li>
+<li><a href="#org8fffccd">Special Form</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orga5268cf">defun</a></li>
+<li><a href="#org35f9e62">let</a></li>
+<li><a href="#org8d0915f">if</a></li>
+<li><a href="#orga554c05">if-then</a></li>
+<li><a href="#orga66d87e">save-excursion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org39b4df8">code</a></li>
+<li><a href="#orga446589">Emacs lisp programm</a>
+<ul>
+<li><a href="#org9360232">file management</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org659ef8a" class="outline-2">
-<h2 id="org659ef8a">Classical physics</h2>
+
+<div id="outline-container-org5dcf710" class="outline-2">
+<h2 id="org5dcf710">command</h2>
+<div class="outline-text-2" id="text-org5dcf710">
+</div>
+<div id="outline-container-org683ba31" class="outline-3">
+<h3 id="org683ba31">execute</h3>
+<div class="outline-text-3" id="text-org683ba31">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">command</td>
+<td class="org-left">explain</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-e</td>
+<td class="org-left">result in minibuffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-j</td>
+<td class="org-left">result under the cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x ielm</td>
+<td class="org-left">in elisp interactive mode</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgbda61e4" class="outline-2">
-<h2 id="orgbda61e4">Particle physics</h2>
+<div id="outline-container-org63f0a86" class="outline-2">
+<h2 id="org63f0a86">List</h2>
+<div class="outline-text-2" id="text-org63f0a86">
+<div class="org-src-container">
+<pre class="src src-elisp">(concat <span style="color: #2d9574;">"abd"</span> <span style="color: #2d9574;">"def"</span>)
+(+ 34 9)
+
+(substring <span style="color: #2d9574;">"0123456789"</span> 2 8)
+
+(<span style="color: #4f97d7; font-weight: bold;">setq</span> Emacs 'My-favour)
+
+(message <span style="color: #2d9574;">"Am today %s I start to learn emacs %d "</span> <span style="color: #2d9574;">"niaho"</span> 09)
+<span style="color: #2aa1ae; background-color: #292e34;">;</span><span style="color: #2aa1ae; background-color: #292e34;">"Am today niaho I start to learn emacs 9 "</span>
+(message <span style="color: #2d9574;">"He saw %d %s"</span>
+(- fill-column 32)
+(concat <span style="color: #2d9574;">"red "</span>
+(substring
+<span style="color: #2d9574;">"The quick brown foxes jumped."</span> 16 21)
+<span style="color: #2d9574;">" leaping."</span>))
+<span style="color: #2aa1ae; background-color: #292e34;">;</span><span style="color: #2aa1ae; background-color: #292e34;">"He saw 38 red foxes leaping."</span>
+(<span style="color: #4f97d7; font-weight: bold;">setq</span> trees '(pine fir oak maple)
+           herbivores '(gazelle antelope zebra))
+
+</pre>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org21236e1" class="outline-2">
-<h2 id="org21236e1">GR</h2>
+<div id="outline-container-org0e08d0f" class="outline-2">
+<h2 id="org0e08d0f">Evaluation</h2>
+<div class="outline-text-2" id="text-org0e08d0f">
+<p>
+#+BEGIN<sub>SRC</sub> elisp
+</p>
+
+<p>
+(buffer-file-name)
+(setq a 300)
+(* 34 67 45
+#+END<sub>SRC</sub>)
+</p>
+</div>
 </div>
 
-<div id="outline-container-org35dbe20" class="outline-2">
-<h2 id="org35dbe20">Quantum</h2>
+<div id="outline-container-org8786b38" class="outline-2">
+<h2 id="org8786b38">Buffer</h2>
+<div class="outline-text-2" id="text-org8786b38">
+<div class="org-src-container">
+<pre class="src src-elisp">(buffer-name)
+
+(current-buffer)
+
+(other-buffer)
+
+(switch-to-buffer (other-buffer))
+
+(buffer-size)
+
+(point)
+
+(point-min)
+
+(point-max)
+
+(<span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">multipy-by-seven</span> (number)
+<span style="color: #9f8766;">"Multipy NUMBER by seven"</span>
+(* 7 number))
+
+(multipy-by-seven 4)
+
+(<span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">multipy-by-seven</span> (number))
+
+(<span style="color: #4f97d7; font-weight: bold;">interactive</span> <span style="color: #2d9574;">"p"</span>)
+
+(message <span style="color: #2d9574;">"the result is %d"</span> (* 7 number))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb471765" class="outline-2">
+<h2 id="orgb471765">let</h2>
+<div class="outline-text-2" id="text-orgb471765">
+<p>
+(let ((one "the first")))
+(let ((two 'the-second)))
+</p>
+</div>
+</div>
+<div id="outline-container-org8fffccd" class="outline-2">
+<h2 id="org8fffccd">Special Form</h2>
+<div class="outline-text-2" id="text-org8fffccd">
+</div>
+<div id="outline-container-orga5268cf" class="outline-4">
+<h4 id="orga5268cf">defun</h4>
+<div class="outline-text-4" id="text-orga5268cf">
+<p>
+(defun name-of-function (argument-list)
+  "documentation&#x2026;"
+  body&#x2026;)
+</p>
+</div>
+</div>
+<div id="outline-container-org35f9e62" class="outline-4">
+<h4 id="org35f9e62">let</h4>
+<div class="outline-text-4" id="text-org35f9e62">
+<p>
+(let ((zebra "stripes")
+      (tiger "fierce"))
+  (message "One kind of animal has %s and another is %s."
+	   zebra tiger))
+</p>
+</div>
+</div>
+<div id="outline-container-org8d0915f" class="outline-4">
+<h4 id="org8d0915f">if</h4>
+<div class="outline-text-4" id="text-org8d0915f">
+<p>
+(if true-or-false-test
+    action-to-carry-out-if-the-test-returns-true)
+</p>
+</div>
+</div>
+<div id="outline-container-orga554c05" class="outline-4">
+<h4 id="orga554c05">if-then</h4>
+<div class="outline-text-4" id="text-orga554c05">
+<p>
+(if true-or-false-test
+    action-to-carry-out-if-the-test-returns-true
+  action-to-carry-out-if-the-test-returns-false)
+</p>
+
+<p>
+(if 4
+    'true
+  'false)
+</p>
+
+<p>
+(if nil
+    'true
+  'false)
+</p>
+</div>
+</div>
+<div id="outline-container-orga66d87e" class="outline-4">
+<h4 id="orga66d87e">save-excursion</h4>
+<div class="outline-text-4" id="text-orga66d87e">
+<p>
+(message "We are %d characters into this buffer."
+	 (save-excursion
+	   (- (point)
+	      (goto-char (point-min)) (point))))
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org39b4df8" class="outline-2">
+<h2 id="org39b4df8">code</h2>
+<div class="outline-text-2" id="text-org39b4df8">
+<p>
+char count
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">cheap-count-words</span>()
+  (<span style="color: #4f97d7; font-weight: bold;">interactive</span>)
+  (<span style="color: #4f97d7; font-weight: bold;">let</span> ((words 0))
+    (goto-char (point-min))
+    (<span style="color: #4f97d7; font-weight: bold;">while</span> (forward-word)
+      (<span style="color: #4f97d7; font-weight: bold;">setq</span> words (1+ words)))
+    (message (format <span style="color: #2d9574;">"Words is Buffer : %s"</span> words))
+    words)
+  )
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga446589" class="outline-2">
+<h2 id="orga446589">Emacs lisp programm</h2>
+<div class="outline-text-2" id="text-orga446589">
+</div>
+<div id="outline-container-org9360232" class="outline-3">
+<h3 id="org9360232">file management</h3>
+<div class="outline-text-3" id="text-org9360232">
+<p>
+read file :: insert-file-contents
+ and copy file :: write-region
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #292e34;">;;</span><span style="color: #2aa1ae; background-color: #292e34;">read file and print out</span>
+(<span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">read-file-as-lines</span> (file-path)
+  (<span style="color: #4f97d7; font-weight: bold;">with-temp-buffer</span>
+    (insert-file-contents file-path)
+    (split-string (buffer-string) <span style="color: #2d9574;">"\n"</span> t)))
+
+(read-file-as-lines <span style="color: #2d9574;">"~/Desktop/110.py"</span>)
+
+<span style="color: #2aa1ae; background-color: #292e34;">;;</span><span style="color: #2aa1ae; background-color: #292e34;">read file and copy to another</span>
+(<span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">copy-file-to-file</span> (fromfile tofile)
+  (<span style="color: #4f97d7; font-weight: bold;">with-temp-buffer</span>
+    (insert-file-contents fromfile)
+    (<span style="color: #4f97d7; font-weight: bold;">setq</span> copy-test-path tofile)
+    (write-region (point-min) (point-max) copy-test-path)
+    (write-region <span style="color: #2d9574;">"new  content"</span> nil copy-test-path t)))
+
+(copy-file-to-file <span style="color: #2d9574;">"~/Desktop/110.py"</span> <span style="color: #2d9574;">"~/Desktop/112.py"</span>)
+
+
+
+
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-11-23 Mo 19:49</p>
+<p class="date">Created: 2020-11-23 Mo 19:55</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

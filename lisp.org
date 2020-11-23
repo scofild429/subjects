@@ -1,0 +1,155 @@
+#+TITLE: Lisp
+#+OPTIONS: num:nil
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
+#+startup: content
+
+* command
+** execute
+
+| command  | explain                   |
+| C-c C-e  | result in minibuffer      |
+| C-j      | result under the cursor   |
+| M-x ielm | in elisp interactive mode |
+|          |                           |
+
+* List 
+#+BEGIN_SRC elisp
+(concat "abd" "def")
+(+ 34 9)
+
+(substring "0123456789" 2 8)
+
+(setq Emacs 'My-favour)
+
+(message "Am today %s I start to learn emacs %d " "niaho" 09)
+;"Am today niaho I start to learn emacs 9 "
+(message "He saw %d %s"
+(- fill-column 32)
+(concat "red "
+(substring
+"The quick brown foxes jumped." 16 21)
+" leaping."))
+;"He saw 38 red foxes leaping."
+(setq trees '(pine fir oak maple)
+           herbivores '(gazelle antelope zebra))
+
+#+END_SRC
+
+#+RESULTS:
+| gazelle | antelope | zebra |
+
+* Evaluation
+#+BEGIN_SRC elisp
+
+(buffer-file-name)
+(setq a 300)
+(* 34 67 45
+#+END_SRC)
+
+* Buffer
+#+BEGIN_SRC elisp
+(buffer-name)
+
+(current-buffer)
+
+(other-buffer)
+
+(switch-to-buffer (other-buffer))
+
+(buffer-size)
+
+(point)
+
+(point-min)
+
+(point-max)
+
+(defun multipy-by-seven (number)
+"Multipy NUMBER by seven"
+(* 7 number))
+
+(multipy-by-seven 4)
+
+(defun multipy-by-seven (number))
+
+(interactive "p")
+
+(message "the result is %d" (* 7 number))
+#+END_SRC
+* let
+(let ((one "the first")))
+(let ((two 'the-second)))
+* Special Form
+*** defun
+     (defun name-of-function (argument-list)
+       "documentation..."
+       body...)
+*** let 
+     (let ((zebra "stripes")
+           (tiger "fierce"))
+       (message "One kind of animal has %s and another is %s."
+                zebra tiger))
+*** if 
+     (if true-or-false-test
+         action-to-carry-out-if-the-test-returns-true)
+*** if-then
+     (if true-or-false-test
+         action-to-carry-out-if-the-test-returns-true
+       action-to-carry-out-if-the-test-returns-false)
+
+     (if 4
+         'true
+       'false)
+     
+     (if nil
+         'true
+       'false)
+*** save-excursion
+(message "We are %d characters into this buffer."
+	 (save-excursion
+	   (- (point)
+	      (goto-char (point-min)) (point))))
+* code 
+char count
+#+begin_src emacs-lisp
+(defun cheap-count-words()
+  (interactive)
+  (let ((words 0))
+    (goto-char (point-min))
+    (while (forward-word)
+      (setq words (1+ words)))
+    (message (format "Words is Buffer : %s" words))
+    words)
+  )
+
+#+end_src
+
+* Emacs lisp programm
+** file management
+
+read file :: insert-file-contents
+ and copy file :: write-region
+
+#+begin_src emacs-lisp
+  ;;read file and print out
+  (defun read-file-as-lines (file-path)
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (split-string (buffer-string) "\n" t)))
+
+  (read-file-as-lines "~/Desktop/110.py")
+
+  ;;read file and copy to another
+  (defun copy-file-to-file (fromfile tofile)
+    (with-temp-buffer
+      (insert-file-contents fromfile)
+      (setq copy-test-path tofile)
+      (write-region (point-min) (point-max) copy-test-path)
+      (write-region "new  content" nil copy-test-path t)))
+
+  (copy-file-to-file "~/Desktop/110.py" "~/Desktop/112.py")
+
+
+
+
+#+end_src

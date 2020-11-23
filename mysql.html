@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-11-23 Mo 19:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MySql</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="silin" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">MySql</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgaed0307">配置</a>
+<ul>
+<li><a href="#org864d7a1">安装</a>
+<ul>
+<li><a href="#org814b1b0">电脑的root用户</a></li>
+<li><a href="#org48f4fba">电脑的普通用户进入配置</a></li>
+</ul>
+</li>
+<li><a href="#orgb02f8ee">给数据库添加用户</a></li>
+<li><a href="#org2ed178f">查看数据库及添加数据库</a></li>
+<li><a href="#org983621f">中文</a></li>
+<li><a href="#org0a97c0d">特殊字符</a></li>
+<li><a href="#org924004e">执行sql文件</a></li>
+</ul>
+</li>
+<li><a href="#orgfcce1b9">进入数据库并操作</a>
+<ul>
+<li><a href="#org33e1cc4">进入数据库</a></li>
+<li><a href="#orgae906e5">插入表格</a></li>
+<li><a href="#org606b04c">插入值</a></li>
+<li><a href="#org35b207e">查看表格</a></li>
+<li><a href="#orge0965d4">编辑表格</a></li>
+<li><a href="#org9b622f0">读取内容</a></li>
+<li><a href="#org0a6baef">高级条件查询</a></li>
+</ul>
+</li>
+<li><a href="#org6f01b75">管理</a>
+<ul>
+<li><a href="#orgbdebbb9">用户管理</a></li>
+<li><a href="#org0dfb4da">权限</a>
+<ul>
+<li><a href="#orgd554a89">查询</a></li>
+<li><a href="#org5678f96">授予</a></li>
+<li><a href="#orgfd954ac">撤销</a></li>
+</ul>
+</li>
+<li><a href="#orga084fdc">时区</a></li>
+<li><a href="#orgef61b47">删除</a></li>
+<li><a href="#org754d310">更新</a></li>
+</ul>
+</li>
+<li><a href="#orga7a4eca">备份和还原</a>
+<ul>
+<li><a href="#org5a65357">check the database</a></li>
+<li><a href="#org862b67d">dump database</a></li>
+<li><a href="#org3ecb4f0">delete database</a></li>
+<li><a href="#org27488d5">recover testforjava</a></li>
+</ul>
+</li>
+<li><a href="#orgce55be1">权限</a></li>
+<li><a href="#org856a2bd">数据的备份</a></li>
+<li><a href="#org1327a1e">python connect with mysql Beispile</a></li>
+<li><a href="#orgc5ceb31">java connect with mysql</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaed0307" class="outline-2">
+<h2 id="orgaed0307">配置</h2>
+<div class="outline-text-2" id="text-orgaed0307">
+</div>
+<div id="outline-container-org864d7a1" class="outline-3">
+<h3 id="org864d7a1">安装</h3>
+<div class="outline-text-3" id="text-org864d7a1">
+<pre class="example">
+sudo apt install mysql-server
+sudo mysql_secure_installation
+</pre>
+
+<p>
+此时是给电脑的root用户，创建了一个mysql里root用户的数据库
+</p>
+</div>
+<div id="outline-container-org814b1b0" class="outline-4">
+<h4 id="org814b1b0">电脑的root用户</h4>
+<div class="outline-text-4" id="text-org814b1b0">
+<p>
+上面默认设置的是电脑root用户的密码，也就是说只能 sudo 登陆 : sudo mysql -u root -p
+</p>
+</div>
+</div>
+
+<div id="outline-container-org48f4fba" class="outline-4">
+<h4 id="org48f4fba">电脑的普通用户进入配置</h4>
+<div class="outline-text-4" id="text-org48f4fba">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">step</td>
+<td class="org-left">env</td>
+<td class="org-left">command</td>
+<td class="org-left">explain</td>
+</tr>
+
+<tr>
+<td class="org-right">01</td>
+<td class="org-left">terminal</td>
+<td class="org-left">sudo mysql -u root -p</td>
+<td class="org-left">电脑root进入mysql的root</td>
+</tr>
+
+<tr>
+<td class="org-right">02</td>
+<td class="org-left">mysql</td>
+<td class="org-left">select User, Host, plugin from user;</td>
+<td class="org-left">获取</td>
+</tr>
+
+<tr>
+<td class="org-right">03</td>
+<td class="org-left">mysql</td>
+<td class="org-left">update user set plugin='mysql_ native_ password';</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">04</td>
+<td class="org-left">mysql</td>
+<td class="org-left">select User, Host, plugin from user;</td>
+<td class="org-left">获取</td>
+</tr>
+
+<tr>
+<td class="org-right">05</td>
+<td class="org-left">mysql</td>
+<td class="org-left">flush privileges;</td>
+<td class="org-left">权限更新 in mysqld:skip-grant-tables</td>
+</tr>
+
+<tr>
+<td class="org-right">06</td>
+<td class="org-left">mysql <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></td>
+<td class="org-left">C-d C-d</td>
+<td class="org-left">退出</td>
+</tr>
+
+<tr>
+<td class="org-right">07</td>
+<td class="org-left">terminal</td>
+<td class="org-left">mysql -u root    BUT NOT (mysql -u root -p)</td>
+<td class="org-left">不能 -p, 密码为空，直接Enter进入</td>
+</tr>
+
+<tr>
+<td class="org-right">08</td>
+<td class="org-left">mysql</td>
+<td class="org-left">set password for root@localhost = '123'</td>
+<td class="org-left">老版本  = password('123');</td>
+</tr>
+
+<tr>
+<td class="org-right">09</td>
+<td class="org-left">error</td>
+<td class="org-left">123 is too simple, just not satisfy the</td>
+<td class="org-left">requirement to password so check the password requirement.</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">mysql</td>
+<td class="org-left">show variables like 'validate_ password%';</td>
+<td class="org-left">显示密码设置要求</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left">mysql</td>
+<td class="org-left">set global validate_ password_ length=3;</td>
+<td class="org-left">设置密码长度要求 为 3</td>
+</tr>
+
+<tr>
+<td class="org-right">12</td>
+<td class="org-left">mysql</td>
+<td class="org-left">set global validate_ password_ policy=0;</td>
+<td class="org-left">设置密码要求概要  为 0</td>
+</tr>
+
+<tr>
+<td class="org-right">13</td>
+<td class="org-left">mysql</td>
+<td class="org-left">set password for root@localhost = '123'</td>
+<td class="org-left">老版本  = password('123');</td>
+</tr>
+
+<tr>
+<td class="org-right">14</td>
+<td class="org-left">terminal</td>
+<td class="org-left">mysql -u root -p</td>
+<td class="org-left">密码 123 , 登陆时不需要 sudo 开头</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb02f8ee" class="outline-3">
+<h3 id="orgb02f8ee">给数据库添加用户</h3>
+<div class="outline-text-3" id="text-orgb02f8ee">
+<p>
+在进入数据库的root后，mysql 添加普通用户 <a href="https://www.jianshu.com/p/d7b9c468f20d">简书连接</a> .
+</p>
+
+<p>
+create USER 'sx'@'localhost' IDENTIFIED BY 'scofild';
+创建sx用户，只能本地连接，秘密scofild
+</p>
+
+<p>
+GRANT ALL ON testforjava.course TO 'sx'@'localhost';
+开放testforjava数据集中的course数据表的所有全线给sx 用户
+</p>
+
+<p>
+退出后登陆 sx 用户
+mysql -u sx -p 
+scofild
+</p>
+
+<p>
+便只能看到有权限的数据集
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2ed178f" class="outline-3">
+<h3 id="org2ed178f">查看数据库及添加数据库</h3>
+<div class="outline-text-3" id="text-org2ed178f">
+<p>
+show databases;
+</p>
+
+<p>
+create databese kurs;
+</p>
+
+<p>
+drop databases kurs;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org983621f" class="outline-3">
+<h3 id="org983621f">中文</h3>
+<div class="outline-text-3" id="text-org983621f">
+<p>
+听说mysql的utf8不是真的utf8，需要使用utf8mb4.
+在用户登陆后用set charactater server database = utf8 或者utf8mb4， 只要重开接入，设置就复原。
+只有在/etc/mysql/中的mysql.cnf中的clint/mysqld/mysql字段加入以上设定，重启生效
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a97c0d" class="outline-3">
+<h3 id="org0a97c0d">特殊字符</h3>
+<div class="outline-text-3" id="text-org0a97c0d">
+<ul class="org-ul">
+<li>用`ry-vue`</li>
+</ul>
+<p>
+create database `ry-vue`;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org924004e" class="outline-3">
+<h3 id="org924004e">执行sql文件</h3>
+<div class="outline-text-3" id="text-org924004e">
+<p>
+mysql -u root  -p xxxx
+use database;
+source &#x2026;/file.sql 
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfcce1b9" class="outline-2">
+<h2 id="orgfcce1b9">进入数据库并操作</h2>
+<div class="outline-text-2" id="text-orgfcce1b9">
+</div>
+<div id="outline-container-org33e1cc4" class="outline-3">
+<h3 id="org33e1cc4">进入数据库</h3>
+<div class="outline-text-3" id="text-org33e1cc4">
+<p>
+create databese testforjava;
+use testforjava;
+</p>
+</div>
+</div>
+<div id="outline-container-orgae906e5" class="outline-3">
+<h3 id="orgae906e5">插入表格</h3>
+<div class="outline-text-3" id="text-orgae906e5">
+<p>
+create table course(id int primary key atuo<sub>increment</sub>,  kurs<sub>name</sub> varchar(50), kurs<sub>length</sub>
+varchar(50),teacher varchar(50), categeory varchar(50));
+for later version, only works for auto<sub>increment</sub>, not for identity(m,n)
+</p>
+</div>
+</div>
+<div id="outline-container-org606b04c" class="outline-3">
+<h3 id="org606b04c">插入值</h3>
+<div class="outline-text-3" id="text-org606b04c">
+<p>
+insert into kurs values(1, 'C++', 23, 'su', 'basic');
+insert into kurs values (2, 'Python', 50, 'morvan', 'hard');
+insert into kurs values(3, 'CLI', 22, 'su', 'basic');
+</p>
+
+
+<p>
+或者 不完整信息
+</p>
+
+<p>
+insert into kurs(id, kurs<sub>name</sub>, categeory) values(4, 'java', 'basic'); 
+(指定属性给值)
+</p>
+</div>
+</div>
+<div id="outline-container-org35b207e" class="outline-3">
+<h3 id="org35b207e">查看表格</h3>
+<div class="outline-text-3" id="text-org35b207e">
+<p>
+show tables;
+</p>
+
+<p>
+describe course;
+</p>
+</div>
+</div>
+<div id="outline-container-orge0965d4" class="outline-3">
+<h3 id="orge0965d4">编辑表格</h3>
+<div class="outline-text-3" id="text-orge0965d4">
+<p>
+alter table course rename kurs;  (重命名)
+</p>
+
+<p>
+alter table kurs add link varchar(50); (添加属性，列)
+</p>
+
+<p>
+alter table kurs drop column link;   (将该列删除)
+</p>
+
+<p>
+alter table kurs modify teacher varchar(100); (修改该列的属性，增加容量)
+</p>
+
+<p>
+alter table kurs change column teacher lecture varchar(100); (修改该列的名称，和属性，)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9b622f0" class="outline-3">
+<h3 id="org9b622f0">读取内容</h3>
+<div class="outline-text-3" id="text-org9b622f0">
+<p>
+select * from kurs;
+</p>
+
+<p>
+select kurs<sub>name</sub>, lecture from kurs;
+</p>
+
+<p>
+读取内容时，不重复显示
+</p>
+
+<p>
+select distinct lecture from kurs;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a6baef" class="outline-3">
+<h3 id="org0a6baef">高级条件查询</h3>
+<div class="outline-text-3" id="text-org0a6baef">
+<p>
+select * from course where course<sub>name</sub> = 'gnome';
+</p>
+
+<p>
+select * from course where course<sub>length</sub> &gt; 10;
+</p>
+
+<p>
+select * from course where lecture='su' and categeory='adv';
+(满足这两个要求的)
+select * from course order by  course<sub>length</sub> desc;
+(由课程长度有小到大排序) 后面加desc 则反序排序
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org6f01b75" class="outline-2">
+<h2 id="org6f01b75">管理</h2>
+<div class="outline-text-2" id="text-org6f01b75">
+</div>
+<div id="outline-container-orgbdebbb9" class="outline-3">
+<h3 id="orgbdebbb9">用户管理</h3>
+<div class="outline-text-3" id="text-orgbdebbb9">
+<p>
+show databases;
+use mysql;
+show tables;
+</p>
+
+<p>
+mysqld &#x2013;skip-grant-tables (开启mysql的无验证登陆，对于遗失密码后）
+select host,user from user; (查看所有用户)
+</p>
+
+<p>
+create user si identified by 'lin'; (添加si用户，密码为lin)
+</p>
+
+<p>
+drop user si; (删除si用户)
+</p>
+
+<p>
+rename user si to shi; (将si重命名为shi)
+</p>
+
+<p>
+set password = password('new');  (将当前用户密码改为new)
+</p>
+
+<p>
+set password for si = password(link); (将si用户密码重置为link)
+</p>
+</div>
+</div>
+<div id="outline-container-org0dfb4da" class="outline-3">
+<h3 id="org0dfb4da">权限</h3>
+<div class="outline-text-3" id="text-org0dfb4da">
+</div>
+<div id="outline-container-orgd554a89" class="outline-4">
+<h4 id="orgd554a89">查询</h4>
+<div class="outline-text-4" id="text-orgd554a89">
+<p>
+show grants for 'newuser'@'localhost'
+</p>
+</div>
+</div>
+<div id="outline-container-org5678f96" class="outline-4">
+<h4 id="org5678f96">授予</h4>
+<div class="outline-text-4" id="text-org5678f96">
+<p>
+grants 权限列表 on 数据库名.表明 to '用户'@'主机名'
+grants all on <b>.</b> 'newuser'@'localhost'
+</p>
+</div>
+</div>
+<div id="outline-container-orgfd954ac" class="outline-4">
+<h4 id="orgfd954ac">撤销</h4>
+<div class="outline-text-4" id="text-orgfd954ac">
+<p>
+revoke delete on <b>.</b> from 'newuser'@'localhost'
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga084fdc" class="outline-3">
+<h3 id="orga084fdc">时区</h3>
+<div class="outline-text-3" id="text-orga084fdc">
+<p>
+set global time<sub>zone</sub> = '+8:00';  ##修改mysql全局时区为北京时间，即我们所在的东8区
+set time<sub>zone</sub> = '+8:00';  ##修改当前会话时区
+flush privileges;  #立即生效
+</p>
+</div>
+</div>
+<div id="outline-container-orgef61b47" class="outline-3">
+<h3 id="orgef61b47">删除</h3>
+<div class="outline-text-3" id="text-orgef61b47">
+<p>
+delect * from course where id =2;
+</p>
+
+<p>
+delect * from course 删除整个表的信息
+</p>
+</div>
+</div>
+<div id="outline-container-org754d310" class="outline-3">
+<h3 id="org754d310">更新</h3>
+<div class="outline-text-3" id="text-org754d310">
+<p>
+update course set lecture = 'Lee'  where id =3;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga7a4eca" class="outline-2">
+<h2 id="orga7a4eca">备份和还原</h2>
+<div class="outline-text-2" id="text-orga7a4eca">
+</div>
+<div id="outline-container-org5a65357" class="outline-3">
+<h3 id="org5a65357">check the database</h3>
+<div class="outline-text-3" id="text-org5a65357">
+<div class="org-src-container">
+<pre class="src src-sql" id="org7a362de">show tables;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org862b67d" class="outline-3">
+<h3 id="org862b67d">dump database</h3>
+<div class="outline-text-3" id="text-org862b67d">
+<div class="org-src-container">
+<pre class="src src-sh">mysqldump -uroot -p123456 testforjava &gt; ~/Desktop/mysql.sql
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3ecb4f0" class="outline-3">
+<h3 id="org3ecb4f0">delete database</h3>
+<div class="outline-text-3" id="text-org3ecb4f0">
+<div class="org-src-container">
+<pre class="src src-sql" id="orge2fce09"><span style="color: #4f97d7; font-weight: bold;">drop</span> database testforjava;
+show databases;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org27488d5" class="outline-3">
+<h3 id="org27488d5">recover testforjava</h3>
+<div class="outline-text-3" id="text-org27488d5">
+<div class="org-src-container">
+<pre class="src src-sql" id="orgea3ef5a"><span style="color: #4f97d7; font-weight: bold;">create</span> database testforjava;
+use testforjava;
+<span style="color: #4f97d7; font-weight: bold;">source</span> ~/Desktop/mysql.<span style="color: #4f97d7; font-weight: bold;">sql</span>
+show databases;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce55be1" class="outline-2">
+<h2 id="orgce55be1">权限</h2>
+<div class="outline-text-2" id="text-orgce55be1">
+<p>
+grant all privileges on <b>.</b> to 'shi'@'%' identified by 'lining';
+</p>
+
+<p>
+grant all privileges on <b>.</b> to 'root'@'%' identified by 'lining';
+</p>
+</div>
+</div>
+
+<div id="outline-container-org856a2bd" class="outline-2">
+<h2 id="org856a2bd">数据的备份</h2>
+<div class="outline-text-2" id="text-org856a2bd">
+<p>
+mysqldump -u root -p kurs &gt; firstForFun.sql;
+(在root下将kurs数据库备份为FirstForFun.sql)
+</p>
+
+<p>
+mysql -u root -p kurs &lt; Firstforfun.sql
+(将备份文件FirstForFun.sql恢复为kurs数据库)
+</p>
+
+<p>
+(此两个语句是在退出sql后的terminal执行的)
+</p>
+</div>
+</div>
+<div id="outline-container-org1327a1e" class="outline-2">
+<h2 id="org1327a1e">python connect with mysql Beispile</h2>
+<div class="outline-text-2" id="text-org1327a1e">
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #4f97d7; font-weight: bold;">import</span> pymysql
+<span style="color: #7590db;">db</span> = pymysql.connect(<span style="color: #2d9574;">"localhost"</span>, <span style="color: #2d9574;">"root"</span>, <span style="color: #2d9574;">"123456"</span>, <span style="color: #2d9574;">"testforjava"</span>)
+<span style="color: #7590db;">cursor</span> = db.cursor()
+<span style="color: #7590db;">sql</span> = <span style="color: #2d9574;">"""create table  IF NOT EXISTS course(id int,  kurs_name varchar(50), kurs_length varchar(50),teacher varchar(50), categeory varchar(50))"""</span>
+cursor.execute(sql)
+<span style="color: #7590db;">sql</span> = <span style="color: #2d9574;">"""insert into course values(7, 'CLI', 22, 'su', 'basic')"""</span>
+cursor.execute(sql)
+<span style="color: #7590db;">sql</span> = <span style="color: #2d9574;">"""insert into course values(8, 'CLI', 22, 'su', 'basic')"""</span>
+cursor.execute(sql)
+db.commit()
+
+<span style="color: #7590db;">sql1</span> = <span style="color: #2d9574;">"""select * from course"""</span>
+cursor.execute(sql1)
+<span style="color: #7590db;">results</span> = cursor.fetchall()
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">'\n'</span>)
+<span style="color: #4f97d7; font-weight: bold;">for</span> row <span style="color: #4f97d7; font-weight: bold;">in</span> results:
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">num</span> = row[0]
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">name</span> = row[1]
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">age</span> = row[2]
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">right</span> = row[3]
+<span style="background-color: #292e34;"> </span>   <span style="color: #7590db;">dis</span> = row[4]
+<span style="background-color: #292e34;"> </span>   <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"num is %7s, name is %7s, age is %7s, right is %7s, dis is %7s"</span> %
+          (num, name, age, right, dis))
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if __name__ == "__main__":</span>
+cursor.close()
+
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div id="outline-container-orgc5ceb31" class="outline-2">
+<h2 id="orgc5ceb31">java connect with mysql</h2>
+<div class="outline-text-2" id="text-orgc5ceb31">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #4f97d7; font-weight: bold;">import</span> <span style="color: #a45bad;">java</span>.<span style="color: #a45bad;">sql</span>.*;
+<span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">JavaConnSQL</span>
+{
+    <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #4f97d7; font-weight: bold;">final</span> <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">JDBC_DRIVER</span> = <span style="color: #2d9574;">"com.mysql.cj.jdbc.Driver"</span>;  
+    <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #4f97d7; font-weight: bold;">final</span> <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">DB_URL</span> = <span style="color: #2d9574;">"jdbc:mysql://localhost:3306/testforjava?useSSL=false&amp;serverTimezone=UTC"</span>;
+    <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #4f97d7; font-weight: bold;">final</span> <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">USER</span> = <span style="color: #2d9574;">"root"</span>;
+    <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #4f97d7; font-weight: bold;">final</span> <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">PASS</span> = <span style="color: #2d9574;">"123456"</span>;
+    <span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>( <span style="color: #ce537a; font-weight: bold;">String</span>[] <span style="color: #7590db;">args</span> )
+    {
+        System.out.println( <span style="color: #2d9574;">"Hello World!"</span> );
+        System.out.println(<span style="color: #2d9574;">"&#22312;dir&#20013;&#29983;&#25104;&#30340;&#20195;&#30721;&#65292; &#22914;&#26524;dir&#20013;&#26377;&#39537;&#21160;&#65292;&#21017;&#21487;&#20197;&#25191;&#34892;mysql&#30340;&#36830;&#25509;"</span>);
+        System.out.println(<span style="color: #2d9574;">"&#25552;&#21069;&#25191;&#34892;"</span>);
+        System.out.println(<span style="color: #2d9574;">"export CLASSPATH=mysql-connector-java-8.0.20.jar:. "</span>);
+        <span style="color: #ce537a; font-weight: bold;">Connection</span> <span style="color: #7590db;">conn</span> = <span style="color: #a45bad;">null</span>;
+        <span style="color: #ce537a; font-weight: bold;">Statement</span> <span style="color: #7590db;">stmt</span> = <span style="color: #a45bad;">null</span>;
+        <span style="color: #4f97d7; font-weight: bold;">try</span>{
+            Class.forName(JDBC_DRIVER);
+            System.out.println(<span style="color: #2d9574;">"&#36830;&#25509;&#25968;&#25454;&#24211;..."</span>);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            System.out.println(<span style="color: #2d9574;">" &#23454;&#20363;&#21270;Statement&#23545;&#35937;..."</span>);
+            stmt = conn.createStatement();
+            <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">sql</span>;
+            sql = <span style="color: #2d9574;">"SELECT id, kurs_name FROM course"</span>;
+            <span style="color: #ce537a; font-weight: bold;">ResultSet</span> <span style="color: #7590db;">rs</span> = stmt.executeQuery(sql);
+
+            <span style="color: #4f97d7; font-weight: bold;">while</span>(rs.next()){
+                <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">id</span>  = rs.getInt(<span style="color: #2d9574;">"id"</span>);
+                <span style="color: #ce537a; font-weight: bold;">String</span> <span style="color: #7590db;">name</span> = rs.getString(<span style="color: #2d9574;">"kurs_name"</span>);
+                <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#36755;&#20986;&#25968;&#25454;</span>
+                System.out.print(<span style="color: #2d9574;">"ID: "</span> + id);
+                System.out.print(<span style="color: #2d9574;">", kurs name &#31449;&#28857;&#21517;&#31216;: "</span> + name);
+                System.out.print(<span style="color: #2d9574;">"\n"</span>);
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        }<span style="color: #4f97d7; font-weight: bold;">catch</span>(<span style="color: #ce537a; font-weight: bold;">SQLException</span> <span style="color: #7590db;">se</span>){
+            <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#22788;&#29702; JDBC &#38169;&#35823;</span>
+            se.printStackTrace();
+        }<span style="color: #4f97d7; font-weight: bold;">catch</span>(<span style="color: #ce537a; font-weight: bold;">Exception</span> <span style="color: #7590db;">e</span>){
+            <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#22788;&#29702; Class.forName &#38169;&#35823;</span>
+            e.printStackTrace();
+        }
+    }
+}
+
+</pre>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+此后，电脑的root用户将不能登陆，而此时电脑的普通,  用户可以登陆，但是没有设置密码，不能用 -p 登陆
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: silin</p>
+<p class="date">Created: 2020-11-23 Mo 19:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

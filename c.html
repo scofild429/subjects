@@ -1,0 +1,1569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-09-11 Fr 15:08 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>C</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="sx" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">C</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5a3d670">Program</a>
+<ul>
+<li><a href="#org505bbec">int converse to 8, 16 Base and char with ASCII</a></li>
+<li><a href="#org98b5594">Primzahl</a></li>
+<li><a href="#org92a1d8c">atoi &amp; itoa</a></li>
+</ul>
+</li>
+<li><a href="#orgcdca5a7">Point&amp;array</a>
+<ul>
+<li><a href="#org60b97b5">pointer and array description</a></li>
+<li><a href="#orge85f0d8">Beispile</a></li>
+<li><a href="#orga18f703">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</a></li>
+<li><a href="#org0232756">Summary</a></li>
+<li><a href="#orgcfefe74">2 Order Point</a>
+<ul>
+<li><a href="#orgfe7b74f">Assignment to int *</a></li>
+<li><a href="#orgcf28666">Dichotomy</a></li>
+<li><a href="#org39a0e6f">1D array and 1D Point array [] &gt; * &gt; +</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge6a3cd5">Polymorphism</a>
+<ul>
+<li><a href="#orgfed3f55">C++ 先基后子</a></li>
+<li><a href="#orgff92564">Python 可基可子</a></li>
+<li><a href="#org0e4fe24">Java 先子后基，还必须子实列指向基类型</a></li>
+</ul>
+</li>
+<li><a href="#orgba39a80">Scanf</a>
+<ul>
+<li><a href="#org908874b">input matching for multi input Scanf()</a></li>
+<li><a href="#orgbf7e73d">清空每次输入的所有缓存</a></li>
+<li><a href="#org0aa535b">Scanf(%{*}{width}type)</a></li>
+<li><a href="#orgea719d6">each time only reserive 3 agruments</a></li>
+<li><a href="#org43b89fc">special requirements</a></li>
+</ul>
+</li>
+<li><a href="#orge0b904a">Notes</a>
+<ul>
+<li><a href="#orgcf7ac6f">pass the agruments to program</a></li>
+<li><a href="#org56c1a7f">malloc for 2 diamesion</a></li>
+<li><a href="#org66f2007">pass 2 diamesion array to function</a></li>
+<li><a href="#org659c014">char for string</a></li>
+<li><a href="#org7ad2b9e">Headfile</a></li>
+<li><a href="#org4e4628c">reference</a></li>
+<li><a href="#org5d5631e">class</a></li>
+<li><a href="#orgca83e1b">const</a></li>
+<li><a href="#orgd9e606b">static</a></li>
+<li><a href="#org01b8b26">GDB</a></li>
+</ul>
+</li>
+<li><a href="#org10cfc9e">Compile</a>
+<ul>
+<li><a href="#org308eb3d">Makefile</a></li>
+<li><a href="#org9c24b0f">Terminal Compile</a></li>
+<li><a href="#orgc91115c">Emacs Compile</a></li>
+<li><a href="#org195e5b0">Orgmode Compile</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="file:///home/sx/Dropbox/Projects/linux/Thread_Programme/README.html">pthread program</a>
+</p>
+
+<div id="outline-container-org5a3d670" class="outline-2">
+<h2 id="org5a3d670">Program</h2>
+<div class="outline-text-2" id="text-org5a3d670">
+</div>
+<div id="outline-container-org505bbec" class="outline-3">
+<h3 id="org505bbec">int converse to 8, 16 Base and char with ASCII</h3>
+<div class="outline-text-3" id="text-org505bbec">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>( )
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span> = 80;
+  printf(<span style="color: #2d9574;">"the input a is %d\n"</span>,a);
+  printf(<span style="color: #2d9574;">"converse to 8 base is %#o\n"</span>, a);
+  printf(<span style="color: #2d9574;">"converse to 16 base is %#X\n"</span>, a);
+  printf(<span style="color: #2d9574;">"converse to char is %c\n"</span>, a);
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98b5594" class="outline-3">
+<h3 id="org98b5594">Primzahl</h3>
+<div class="outline-text-3" id="text-org98b5594">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span><span style="color: #2d9574;">&lt;stdio.h&gt;</span> 
+<span style="color: #bc6ec5;">#include</span><span style="color: #2d9574;">"math.h"</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>( )
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>;
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span>;
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (i = 2; i &lt; 10; i++) {
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">temp</span> = (<span style="color: #ce537a; font-weight: bold;">int</span>)sqrt(i);
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (j = 1; j &lt;= 1000; j++) {
+      <span style="color: #4f97d7; font-weight: bold;">if</span> (j != 1 &amp;&amp; i%j == 0 ) {
+        <span style="color: #4f97d7; font-weight: bold;">break</span>;
+      }<span style="color: #4f97d7; font-weight: bold;">else</span> {
+        <span style="color: #4f97d7; font-weight: bold;">if</span> (j == temp) {
+          printf(<span style="color: #2d9574;">"%d \n"</span>,i);
+          <span style="color: #4f97d7; font-weight: bold;">break</span>;
+        }
+      }
+    }
+  }
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org92a1d8c" class="outline-3">
+<h3 id="org92a1d8c">atoi &amp; itoa</h3>
+<div class="outline-text-3" id="text-org92a1d8c">
+<p>
+atoi, 如有非数字字符，就为0
+itoa , 非ASCII标准函数库，看collection.
+</p>
+<div class="org-src-container">
+<pre class="src src-C++">
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #ce537a; font-weight: bold;">char</span>* <span style="color: #bc6ec5; font-weight: bold;">itoa</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">val</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">base</span>){
+  <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">buf</span>[32] = {0};
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 30;
+  <span style="color: #4f97d7; font-weight: bold;">for</span>(; val &amp;&amp; i ; --i, val /= base)
+    buf[i] = <span style="color: #2d9574;">"0123456789abcdef"</span>[val % base];
+  <span style="color: #4f97d7; font-weight: bold;">return</span> &amp;buf[i+1];
+}
+
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span> = 100;
+  <span style="color: #ce537a; font-weight: bold;">char</span>* <span style="color: #7590db;">Str</span> = itoa(a, 8);
+  printf(<span style="color: #2d9574;">"%s \n"</span>,Str);
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcdca5a7" class="outline-2">
+<h2 id="orgcdca5a7">Point&amp;array</h2>
+<div class="outline-text-2" id="text-orgcdca5a7">
+</div>
+<div id="outline-container-org60b97b5" class="outline-3">
+<h3 id="org60b97b5">pointer and array description</h3>
+<div class="outline-text-3" id="text-org60b97b5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">*p = a[n]</th>
+<th scope="col" class="org-left">p</th>
+<th scope="col" class="org-left">a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">the first Value</td>
+<td class="org-left">*p    /  p[0]</td>
+<td class="org-left">*a  /  a[0]</td>
+</tr>
+
+<tr>
+<td class="org-left">the n-th Value</td>
+<td class="org-left">*(p+n)/  p[n]</td>
+<td class="org-left">*a+n/  a[n]</td>
+</tr>
+
+<tr>
+<td class="org-left">the first Address</td>
+<td class="org-left">p     /</td>
+<td class="org-left">a   /  &amp;a[0]</td>
+</tr>
+
+<tr>
+<td class="org-left">the n-th  Address</td>
+<td class="org-left">p+n   /</td>
+<td class="org-left">&amp;a[n]</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-cpp"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;iostream&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(){
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span>[]={1,2,3,4,5};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">p</span> = a;
+  printf(<span style="color: #2d9574;">"Print this hallo!\n"</span>);
+  printf(<span style="color: #2d9574;">"for value\n"</span>);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,*p);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,*a);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,a[0]);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,p[0]);
+  printf(<span style="color: #2d9574;">"nihao :%d\n"</span>,*(p+1));
+  printf(<span style="color: #2d9574;">"%d\n"</span>,*a+1);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,a[1]+1);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,p[1]+1);
+  printf(<span style="color: #2d9574;">"for address:\n"</span>);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,p);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,a);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,&amp;a[0]);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,p+2);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,&amp;a[2]);
+  printf(<span style="color: #2d9574;">"%c\n"</span>,<span style="color: #2d9574;">"0123456789abcdef"</span>[3]);
+  <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">list</span> = <span style="color: #2d9574;">"0123456789abcdef"</span>;
+  printf(<span style="color: #2d9574;">"%s\n"</span>,&amp;list[10]);
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+Print this hallo!
+for value
+1
+1
+1
+1
+nihao :2
+2
+3
+3
+for address:
+609365712
+609365712
+609365712
+609365720
+
+609365720
+3
+abcdef
+</pre>
+
+<p>
+在传递过程中，
+数组的传递可以用指针来接受，
+指针的传递可以用数组来接受，但必须是指针类型的数组
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge85f0d8" class="outline-3">
+<h3 id="orge85f0d8">Beispile</h3>
+<div class="outline-text-3" id="text-orge85f0d8">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;ctype.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (argc &lt;= 1) {
+    <span style="color: #4f97d7; font-weight: bold;">return</span> -1;
+  }
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a</span> = argv[1][0];
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">b</span> = <span style="color: #2d9574;">'c'</span>;
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (isupper(a)) {
+    <span style="color: #4f97d7; font-weight: bold;">if</span>(tolower(a) == b){
+      printf(<span style="color: #2d9574;">"all right\n"</span>);
+    }<span style="color: #4f97d7; font-weight: bold;">else</span>{
+      printf(<span style="color: #2d9574;">"not the case \n"</span>);
+    }
+  }<span style="color: #4f97d7; font-weight: bold;">else</span>{
+    <span style="color: #4f97d7; font-weight: bold;">if</span> (a == b) {
+      printf(<span style="color: #2d9574;">"all right\n"</span>);
+    }<span style="color: #4f97d7; font-weight: bold;">else</span>{
+      printf(<span style="color: #2d9574;">"not the case \n"</span>);
+    }
+  }
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga18f703" class="outline-3">
+<h3 id="orga18f703">二维数组 转 二维数组指针 &amp; 指针数组 转 二级指针</h3>
+<div class="outline-text-3" id="text-orga18f703">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+ <span style="color: #2aa1ae; background-color: #292e34;">//   </span><span style="color: #2aa1ae; background-color: #292e34;">&#20108;&#32500;&#25968;&#32452; &#36716; &#20108;&#32500;&#25968;&#32452;&#25351;&#38024; </span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span>[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+  <span style="color: #ce537a; font-weight: bold;">int</span> (*<span style="color: #7590db;">p</span>)[3] = a;
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0; i &lt; 3; i++) {
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span> = 0; j &lt; 3; ++j) {
+      printf(<span style="color: #2d9574;">"%d  "</span>, *(*(p+i)+j));
+      printf(<span style="color: #2d9574;">"%d |"</span>, p[i][j] );
+    }
+    printf(<span style="color: #2d9574;">"  \n"</span>);
+  }
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#25351;&#38024;&#25968;&#32452;  &#36716;  &#20108;&#32423;&#25351;&#38024;</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">array</span>[3] = {a[0], a[1], a[2]};
+  <span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">q</span> = array;
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0; i &lt; 3; ++i) {
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span> = 0; j &lt; 3; ++j) {
+      printf(<span style="color: #2d9574;">"%d  "</span>, q[i][j] );
+      printf(<span style="color: #2d9574;">"%d |"</span>, *(*(q+i)+j));
+    }
+    printf(<span style="color: #2d9574;">"  \n"</span>);
+  }
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+
+<pre class="example">
+1  1 |2  2 |3  3 |  
+4  4 |5  5 |6  6 |  
+7  7 |8  8 |9  9 |  
+1  1 |2  2 |3  3 |  
+4  4 |5  5 |6  6 |  
+7  7 |8  8 |9  9 |
+</pre>
+
+
+<p>
+with dypedef, 数组指针接收二维数组
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #4f97d7; font-weight: bold;">typedef</span> <span style="color: #ce537a; font-weight: bold;">int</span>(*<span style="color: #ce537a; font-weight: bold;">R</span>)[3];
+
+<span style="color: #ce537a; font-weight: bold;">R</span> <span style="color: #bc6ec5; font-weight: bold;">fun</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b</span>[2][3]){
+  <span style="color: #4f97d7; font-weight: bold;">return</span> b;
+}
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>, <span style="color: #7590db;">j</span>;
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span>[2][3] = {1, 2, 3, 4, 5, 6};
+  <span style="color: #ce537a; font-weight: bold;">R</span> <span style="color: #7590db;">c</span> = fun(a);
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (i = 0; i &lt; 2; ++i) {
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (j = 0; j &lt; 3; ++j) {
+      printf(<span style="color: #2d9574;">"c[%d][%d] is %d \n"</span>, i, j, c[i][j]);
+    }
+  }
+ <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+c[0][0] is 1 
+c[0][1] is 2 
+c[0][2] is 3 
+c[1][0] is 4 
+</pre>
+
+<p>
+without dypedef
+</p>
+
+<pre class="example">
+c[1][1] is 5 
+c[1][2] is 6
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span>(*<span style="color: #7590db;">fun</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b</span>[2][3]))[3]{
+  <span style="color: #4f97d7; font-weight: bold;">return</span> b;
+}
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>, <span style="color: #7590db;">j</span>;
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span>[2][3] = {1, 2, 3, 4, 5, 6};
+  <span style="color: #ce537a; font-weight: bold;">int</span> (*<span style="color: #7590db;">c</span>)[3] = fun(a);
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (i = 0; i &lt; 2; ++i) {
+    <span style="color: #4f97d7; font-weight: bold;">for</span> (j = 0; j &lt; 3; ++j) {
+      printf(<span style="color: #2d9574;">"c[%d][%d] is %d \n"</span>, i, j, c[i][j]);
+    }
+  }
+ <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+
+<pre class="example">
+c[0][0] is 1 
+c[0][1] is 2 
+c[0][2] is 3 
+c[1][0] is 4 
+c[1][1] is 5 
+c[1][2] is 6
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org0232756" class="outline-3">
+<h3 id="org0232756">Summary</h3>
+<div class="outline-text-3" id="text-org0232756">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">1</th>
+<th scope="col" class="org-left">3</th>
+<th scope="col" class="org-left">2</th>
+<th scope="col" class="org-left">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Form</td>
+<td class="org-left">char *argv[]</td>
+<td class="org-left">int *a3[]</td>
+<td class="org-left">int *a2</td>
+<td class="org-left">int a4[][2]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">传递时时参</td>
+<td class="org-left">argv</td>
+<td class="org-left">a3</td>
+<td class="org-left">&amp;a2</td>
+<td class="org-left">a4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">接收时形参</td>
+<td class="org-left">char **p1</td>
+<td class="org-left">int **p3</td>
+<td class="org-left">int **p2</td>
+<td class="org-left">int(*p4)[2]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">argv[1][2]</td>
+<td class="org-left">a3[0][1]</td>
+<td class="org-left">a2[2]</td>
+<td class="org-left">a4[1][0]</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">p1[1][2]</td>
+<td class="org-left">p3[0][1]</td>
+<td class="org-left">p2[0][2]</td>
+<td class="org-left">p4[1][0]</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">*(*(p+1)+2)</td>
+<td class="org-left">*(*(p+0)+1)</td>
+<td class="org-left">*(*(p+0)+2)</td>
+<td class="org-left">*(*(p+1)+0)</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+
+{ 
+  <span style="color: #ce537a; font-weight: bold;">char</span> **<span style="color: #7590db;">p1</span> = argv;
+  printf(<span style="color: #2d9574;">"%c \n"</span>, argv[1][2]   );
+  printf(<span style="color: #2d9574;">"%c \n"</span>, p1[1][2]     );
+  printf(<span style="color: #2d9574;">"%c \n"</span>, *(*(p1+1)+2) );
+
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b2</span>[] = {1, 2, 3, 4, 5};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">a2</span> = b2;
+  <span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">p2</span> = &amp;a2;
+  printf(<span style="color: #2d9574;">"%d \n"</span>, a2[1]         );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, *(a2+1)       );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, p2[0][1]      );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, *(*(p2+0)+1)  );
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">m</span>[] = {1,2};
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span>[] = {3,4};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">a3</span>[] = {m, n};
+  <span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">p3</span> = a3;
+  printf(<span style="color: #2d9574;">"%d \n"</span>, a3[0][1]      );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, p3[0][1]      );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, *(*(p3+0)+1)  );
+
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a4</span>[][2]  ={{1,2},{3,4}};
+  <span style="color: #ce537a; font-weight: bold;">int</span> (*<span style="color: #7590db;">p4</span>)[2] = a4;
+  printf(<span style="color: #2d9574;">"%d \n"</span>, a4[1][0]      );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, p4[1][0]      );
+  printf(<span style="color: #2d9574;">"%d \n"</span>, *(*(p4+1)+0)  );
+
+}
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcfefe74" class="outline-3">
+<h3 id="orgcfefe74">2 Order Point</h3>
+<div class="outline-text-3" id="text-orgcfefe74">
+</div>
+<div id="outline-container-orgfe7b74f" class="outline-4">
+<h4 id="orgfe7b74f">Assignment to int *</h4>
+<div class="outline-text-4" id="text-orgfe7b74f">
+<p>
+For 2 order Point **a, we have assigned (*a, a, &amp;a) to int * separately.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">Point2order</span>(<span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">a</span>){
+  printf(<span style="color: #2d9574;">"**a : %d\n"</span>,**a );
+  printf(<span style="color: #2d9574;">"*a  : %d\n"</span>,*a );  
+  printf(<span style="color: #2d9574;">" a  : %d\n"</span>, a );
+  printf(<span style="color: #2d9574;">"&amp;a  : %d\n"</span>,&amp;a );
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">z</span> = *a;
+  printf(<span style="color: #2d9574;">"  int *z = *a : if z = *a\n"</span>);
+  printf(<span style="color: #2d9574;">"z  : %d\n"</span>, z );
+  printf(<span style="color: #2d9574;">"*a : %d\n"</span>, *a );
+  printf(<span style="color: #2d9574;">"if *z = **a\n"</span>);
+  printf(<span style="color: #2d9574;">"*z :%d\n"</span>, *z );
+  printf(<span style="color: #2d9574;">"**a:%d\n"</span>,  **a );
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">y</span> = a;
+  printf(<span style="color: #2d9574;">"  int *y = a : if y = a\n"</span>);
+  printf(<span style="color: #2d9574;">"y  : %d\n"</span>, y );
+  printf(<span style="color: #2d9574;">"a  : %d\n"</span>, a );
+  printf(<span style="color: #2d9574;">"if *y = *a\n"</span>);
+  printf(<span style="color: #2d9574;">"*y : %d\n"</span>, *y );
+  printf(<span style="color: #2d9574;">"*a : %d\n"</span>,  *a );
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">x</span> = &amp;a;
+  printf(<span style="color: #2d9574;">"  int *x = &amp;a : if x = &amp;a\n"</span>);
+  printf(<span style="color: #2d9574;">"x  : %d\n"</span>, x );
+  printf(<span style="color: #2d9574;">"&amp;a : %d\n"</span>, &amp;a );
+  printf(<span style="color: #2d9574;">"if *x = *(&amp;a)\n"</span>);
+  printf(<span style="color: #2d9574;">"*x : %d\n"</span>, *x );
+  printf(<span style="color: #2d9574;">"*&amp;a: %d\n"</span>,  *(&amp;a) );
+}
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">aa</span>[] = {10,20,30};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">a</span> = aa;
+  Point2order(&amp;a);
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf28666" class="outline-4">
+<h4 id="orgcf28666">Dichotomy</h4>
+<div class="outline-text-4" id="text-orgcf28666">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">dich</span>(<span style="color: #ce537a; font-weight: bold;">int</span> ** <span style="color: #7590db;">p</span>, <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">start</span>, <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">end</span>, <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">x</span>){
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (*p == <span style="color: #a45bad;">NULL</span>) {
+    <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+  }
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (x &lt;*start || x &gt; *end) {
+    <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+  }
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (x == *start || x == *end) {
+    <span style="color: #4f97d7; font-weight: bold;">return</span> 1;
+  }
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0;
+  <span style="color: #4f97d7; font-weight: bold;">for</span> (<span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">n</span> = *p; *n != *end; n++) {
+    i++;
+  }
+
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">mid</span> = *(*p+i/2);
+  <span style="color: #4f97d7; font-weight: bold;">if</span> (mid &gt;= x) {
+    <span style="color: #4f97d7; font-weight: bold;">return</span> dich(p, start, &amp;mid, x);
+  }<span style="color: #4f97d7; font-weight: bold;">else</span>{
+    <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">pos</span> = *p+i/2;
+    <span style="color: #4f97d7; font-weight: bold;">return</span> dich(&amp;pos, &amp;mid, end, x);
+  }
+}
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span>[] = {1,2,3,5,78,345,678,3456,34567,98765};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">p</span> = a;
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">x</span> = 5;
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">len</span>=<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(a)/<span style="color: #4f97d7; font-weight: bold;">sizeof</span>(<span style="color: #ce537a; font-weight: bold;">int</span>);
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">start</span> = a[0];
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">end</span> = a[len-1];
+
+  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">if(dich(&amp;p, a, &amp;end, x)){</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+  <span style="color: #4f97d7; font-weight: bold;">if</span>(dich(&amp;p, &amp;start, &amp;end, x)){
+    printf(<span style="color: #2d9574;">"In \n"</span>);
+  }<span style="color: #4f97d7; font-weight: bold;">else</span>{
+    printf(<span style="color: #2d9574;">"Not In\n"</span>);
+  }
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org39a0e6f" class="outline-4">
+<h4 id="org39a0e6f">1D array and 1D Point array [] &gt; * &gt; +</h4>
+<div class="outline-text-4" id="text-org39a0e6f">
+<p>
+*(p+1)== p[1]  and *p+1 == (*p)+1 
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funaa</span>(<span style="color: #ce537a; font-weight: bold;">char</span> **<span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"address mani after 2\n"</span>);
+  printf(<span style="color: #2d9574;">"funaa : %c\n"</span>, *p[0] );
+}
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funbb</span>(<span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"address mani after 2\n"</span>);
+  printf(<span style="color: #2d9574;">"funbb : %d\n"</span>, *p[0] );
+}
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funa</span>(<span style="color: #ce537a; font-weight: bold;">char</span> **<span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"value mani: \n"</span>);
+  printf(<span style="color: #2d9574;">"funa: the first %c\n"</span>, **p );
+  printf(<span style="color: #2d9574;">"funa: the third %c\n"</span>, *(   (*p+1)    +1)      );
+  <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">pa</span> = *p+2;
+  funaa(&amp;pa);
+  }
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funb</span>(<span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"value mani: \n"</span>);
+  printf(<span style="color: #2d9574;">"funb: the first %d\n"</span>, **p );
+  printf(<span style="color: #2d9574;">"funa: the third %d\n"</span>, *(   (*p+1)    +1)       );
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">pa</span> = *p +2;
+  funbb(&amp;pa);
+}
+
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funChar2OrderPoint</span>(<span style="color: #ce537a; font-weight: bold;">char</span> ** <span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"point arrar[0][0]:%c\n"</span>, *( *(p+0) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[0][1]:%c\n"</span>, p[0][1]                 );
+  printf(<span style="color: #2d9574;">"point arrar[0][2]:%c\n"</span>, *( *(p+0) +2)           );
+  printf(<span style="color: #2d9574;">"point arrar[1][0]:%c\n"</span>, *( *(p+1) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[1][1]:%c\n"</span>, *( *(p+1) +1)           );
+  printf(<span style="color: #2d9574;">"point arrar[1][2]:%c\n"</span>, *( *(p+1) +2)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][0]:%c\n"</span>, *( *(p+2) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][1]:%c\n"</span>, *( *(p+2) +1)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][2]:%c\n"</span>, *( *(p+2) +2)           );
+}
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">funInt2OrderPoint</span>(<span style="color: #ce537a; font-weight: bold;">int</span> ** <span style="color: #7590db;">p</span>){
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"point arrar[0][0]:%d\n"</span>, *( *(p+0) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[0][1]:%d\n"</span>, *( *(p+0) +1)           );
+  printf(<span style="color: #2d9574;">"point arrar[0][2]:%d\n"</span>, p[0][2]                 );
+  printf(<span style="color: #2d9574;">"point arrar[1][0]:%d\n"</span>, *( *(p+1) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[1][1]:%d\n"</span>, *( *(p+1) +1)           );
+  printf(<span style="color: #2d9574;">"point arrar[1][2]:%d\n"</span>, *( *(p+1) +2)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][0]:%d\n"</span>, *( *(p+2) +0)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][1]:%d\n"</span>, *( *(p+2) +1)           );
+  printf(<span style="color: #2d9574;">"point arrar[2][2]:%d\n"</span>, *( *(p+2) +2)           );
+}
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">char &#19968;&#32500;&#25968;&#32452;&#36716;&#20108;&#32423;&#25351;&#38024;</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a</span>[] =<span style="color: #2d9574;">"1234567"</span>;
+  <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">pa</span> = a;
+  funa(&amp;pa);
+  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">int &#19968;&#32500;&#25968;&#32452;&#36716;&#20108;&#32423;&#25351;&#38024;</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b</span>[] = {1,2,3,4,5,6,7};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">pb</span> = b;
+  funb(&amp;pb);
+  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">char &#25351;&#38024;&#25968;&#32452;&#36716;&#20108;&#32423;&#25351;&#38024;</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a1</span>[] =<span style="color: #2d9574;">"123"</span>;
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a2</span>[] = <span style="color: #2d9574;">"456"</span>;
+  <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a3</span>[] = <span style="color: #2d9574;">"789"</span>;
+  <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">chara</span> [] = {<span style="color: #2d9574;">"123"</span>, <span style="color: #2d9574;">"456"</span>, <span style="color: #2d9574;">"789"</span>};
+  <span style="color: #ce537a; font-weight: bold;">char</span> **<span style="color: #7590db;">poa</span> = chara;
+  funChar2OrderPoint(poa);
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"%s\n"</span>, *chara+2 );
+  printf(<span style="color: #2d9574;">"%s\n"</span>, *chara+1 );
+  printf(<span style="color: #2d9574;">"%s\n"</span>, *chara   );
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"%s\n"</span>, chara[0] );
+  printf(<span style="color: #2d9574;">"%s\n"</span>, chara[1] );
+  printf(<span style="color: #2d9574;">"%s\n"</span>, chara[2] );
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"%c\n"</span>,      chara[1][2]         );
+  printf(<span style="color: #2d9574;">"%c\n"</span>,*(    chara[1]      +2)   );
+  printf(<span style="color: #2d9574;">"%c\n"</span>,*(   *(chara+1)     +2)   );
+
+  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">int &#25351;&#38024;&#25968;&#32452;&#36716;&#20108;&#32423;&#25351;&#38024;</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b1</span>[] = {1,2,3};
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b2</span>[] = {4,5,6};
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">b3</span>[] = {7,8,9};
+  <span style="color: #ce537a; font-weight: bold;">int</span> *<span style="color: #7590db;">intb</span> [3] = {b1, b2, b3};
+  <span style="color: #ce537a; font-weight: bold;">int</span> **<span style="color: #7590db;">pob</span> = intb;
+  funInt2OrderPoint(pob);
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"&#22914;&#26524;&#25171;&#24320;&#35780;&#35770;&#65292;&#21487;&#20197;&#25191;&#34892;&#65292;&#20294;&#26159;&#20250;&#25253;&#35686;&#21578;&#65292;&#32467;&#26524;&#26159;&#23545;&#24212;&#20803;&#32032;&#30340;&#22320;&#22336;\n"</span>);
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", *intb+2 ); //&amp;3</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", *intb+1 ); //&amp;2</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", *intb   ); //&amp;1</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("\n");</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", intb[0] );  //&amp;123</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", intb[1] );  //&amp;456</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">printf("%d\n", intb[2] );  //&amp;789</span>
+  printf(<span style="color: #2d9574;">"\n"</span>);
+  printf(<span style="color: #2d9574;">"%d\n"</span>,      intb[1][2]         );
+  printf(<span style="color: #2d9574;">"%d\n"</span>,*(    intb[1]      +2)   );
+  printf(<span style="color: #2d9574;">"%d\n"</span>,*(   *(intb+1)     +2)   );
+
+  <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge6a3cd5" class="outline-2">
+<h2 id="orge6a3cd5">Polymorphism</h2>
+<div class="outline-text-2" id="text-orge6a3cd5">
+<p>
+多态可以在面向对象的三种语言中实现，C++, Java, Python
+</p>
+</div>
+<div id="outline-container-orgfed3f55" class="outline-3">
+<h3 id="orgfed3f55">C++ 先基后子</h3>
+<div class="outline-text-3" id="text-orgfed3f55">
+<p>
+需要借助虚函数来实现对相应多态函数的调用，在函数前加上virtual
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;iostream&gt;</span>
+<span style="color: #4f97d7; font-weight: bold;">using</span> <span style="color: #4f97d7; font-weight: bold;">namespace</span> <span style="color: #a45bad;">std</span>;
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>
+{
+<span style="color: #4f97d7; font-weight: bold;">public</span>:
+  <span style="color: #bc6ec5; font-weight: bold;">Animal</span>();
+  <span style="color: #4f97d7; font-weight: bold;">virtual</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>();
+};
+<span style="color: #a45bad;">Animal</span>::<span style="color: #bc6ec5; font-weight: bold;">Animal</span>(){};
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #a45bad;">Animal</span>::<span style="color: #bc6ec5; font-weight: bold;">run</span>(){cout &lt;&lt;<span style="color: #2d9574;">"Animal is running"</span>&lt;&lt;endl;}
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Dog</span> : <span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>
+{
+<span style="color: #4f97d7; font-weight: bold;">public</span>:
+  <span style="color: #bc6ec5; font-weight: bold;">Dog</span>();
+  <span style="color: #4f97d7; font-weight: bold;">virtual</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>();
+};
+<span style="color: #a45bad;">Dog</span>::<span style="color: #bc6ec5; font-weight: bold;">Dog</span>(){};
+<span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #a45bad;">Dog</span>::<span style="color: #bc6ec5; font-weight: bold;">run</span>(){cout &lt;&lt;<span style="color: #2d9574;">"Dog is running"</span>&lt;&lt;endl;}
+
+<span style="color: #ce537a; font-weight: bold;">Animal</span> *<span style="color: #7590db;">p</span> = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>;
+p-&gt;run();
+p = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Dog</span>;
+p-&gt;run();
+<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27492;&#26102;&#30340;p&#23601;&#26159;&#22810;&#24577;&#21464;&#37327;&#65292;&#20294;&#26159;&#21482;&#26377;&#36825;&#20010;&#21464;&#37327;&#20808;&#30001;&#22522;&#31867;&#29983;&#25104;&#65292;&#20877;&#25351;&#21521;&#23376;&#31867;</span>
+<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#21453;&#20043;&#26102;&#19981;&#33021;&#30340;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgff92564" class="outline-3">
+<h3 id="orgff92564">Python 可基可子</h3>
+<div class="outline-text-3" id="text-orgff92564">
+<div class="org-src-container">
+<pre class="src src-python">  <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Animal</span>(<span style="color: #4f97d7;">object</span>):
+      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+          <span style="color: #4f97d7; font-weight: bold;">self</span>.name =<span style="color: #2d9574;">'Animal name'</span>
+      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+          <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">'Animal is running'</span>)
+
+  <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Dog</span>(Animal):
+      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">__init__</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+          <span style="color: #4f97d7; font-weight: bold;">self</span>.name =<span style="color: #2d9574;">'Dog name'</span>
+      <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run</span>(<span style="color: #4f97d7; font-weight: bold;">self</span>):
+          <span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">'Dog is running'</span>)
+
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Polymorphism, all Class or instance will be checked the best passing</span>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mothode or character</span>
+  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">run_twice</span>(a):
+      a.run()
+  <span style="color: #4f97d7; font-weight: bold;">def</span> <span style="color: #bc6ec5; font-weight: bold;">name</span>(b):
+      <span style="color: #4f97d7; font-weight: bold;">print</span>(b.name)
+
+  <span style="color: #7590db;">ani</span> = Animal()
+  ani.name
+  ani.run()
+
+  <span style="color: #7590db;">ani</span> = Dog()
+  ani.name
+  ani.run()
+<span style="color: #2aa1ae; background-color: #292e34;">## </span><span style="color: #2aa1ae; background-color: #292e34;">ani &#21487;&#20197;&#20808;&#26377;&#22522;&#31867;&#23454;&#29616;&#20877;&#22810;&#24577;&#26144;&#23556;&#21040;&#23376;&#31867;&#65292;&#20063;&#21487;&#20197;&#21453;&#21521;&#23454;&#29616;</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e4fe24" class="outline-3">
+<h3 id="org0e4fe24">Java 先子后基，还必须子实列指向基类型</h3>
+<div class="outline-text-3" id="text-org0e4fe24">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
+    <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">dim1</span>;
+    <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">dim2</span>;
+    <span style="color: #bc6ec5; font-weight: bold;">Figure</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+        <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#26377;&#21442;&#30340;&#26500;&#36896;&#26041;&#27861;</span>
+        <span style="color: #4f97d7; font-weight: bold;">this</span>.dim1 = d1;
+        <span style="color: #4f97d7; font-weight: bold;">this</span>.dim2 = d2;
+    }
+    <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #bc6ec5; font-weight: bold;">area</span>() {
+        <span style="color: #2aa1ae; background-color: #292e34;">// </span><span style="color: #2aa1ae; background-color: #292e34;">&#29992;&#20110;&#35745;&#31639;&#23545;&#35937;&#30340;&#38754;&#31215;</span>
+        System.out.println(<span style="color: #2d9574;">"&#29238;&#31867;&#20013;&#35745;&#31639;&#23545;&#35937;&#38754;&#31215;&#30340;&#26041;&#27861;&#65292;&#27809;&#26377;&#23454;&#38469;&#24847;&#20041;&#65292;&#38656;&#35201;&#22312;&#23376;&#31867;&#20013;&#37325;&#20889;&#12290;"</span>);
+        <span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+    }
+}
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Rectangle</span> <span style="color: #4f97d7; font-weight: bold;">extends</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
+    <span style="color: #bc6ec5; font-weight: bold;">Rectangle</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+        <span style="color: #4f97d7; font-weight: bold;">super</span>(d1, d2);
+    }
+    <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #bc6ec5; font-weight: bold;">area</span>() {
+        System.out.println(<span style="color: #2d9574;">"&#38271;&#26041;&#24418;&#30340;&#38754;&#31215;&#65306;"</span>);
+        <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7; font-weight: bold;">super</span>.dim1 * <span style="color: #4f97d7; font-weight: bold;">super</span>.dim2;
+    }
+}
+
+<span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Triangle</span> <span style="color: #4f97d7; font-weight: bold;">extends</span> <span style="color: #ce537a; font-weight: bold;">Figure</span> {
+    <span style="color: #bc6ec5; font-weight: bold;">Triangle</span>(<span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d1</span>, <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #7590db;">d2</span>) {
+        <span style="color: #4f97d7; font-weight: bold;">super</span>(d1, d2);
+    }
+    <span style="color: #ce537a; font-weight: bold;">double</span> <span style="color: #bc6ec5; font-weight: bold;">area</span>() {
+        System.out.println(<span style="color: #2d9574;">"&#19977;&#35282;&#24418;&#30340;&#38754;&#31215;&#65306;"</span>);
+        <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #4f97d7; font-weight: bold;">super</span>.dim1 * <span style="color: #4f97d7; font-weight: bold;">super</span>.dim2 / 2;
+    }
+}
+
+<span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">Test</span> {
+    <span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #4f97d7; font-weight: bold;">static</span> <span style="color: #ce537a; font-weight: bold;">void</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">String</span>[] <span style="color: #7590db;">args</span>) {
+
+        <span style="color: #ce537a; font-weight: bold;">Figure</span> <span style="color: #7590db;">figure</span> = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Rectangle</span>(9, 9);
+        System.out.println(figure.area());
+        System.out.println(<span style="color: #2d9574;">"==============================="</span>);
+        figure = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Triangle</span>(6, 8);
+        System.out.println(figure.area());
+        System.out.println(<span style="color: #2d9574;">"==============================="</span>);
+        figure = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Figure</span>(10, 10);
+        System.out.println(figure.area());
+
+    }
+}
+
+  <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#27492;&#26102;&#30340;p&#23601;&#26159;&#22810;&#24577;&#21464;&#37327;&#65292;&#20294;&#26159;&#21482;&#26377;&#36825;&#20010;&#21464;&#37327;&#20808;&#30001;&#22522;&#31867;&#29983;&#25104;&#65292;&#20877;&#25351;&#21521;&#23376;&#31867;</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">&#21453;&#20043;&#26102;&#19981;&#33021;&#30340;. &#32780;&#19988;&#23376;&#31867;&#23454;&#21015;&#20351;&#29992;&#22522;&#31867;&#31867;&#22411;</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgba39a80" class="outline-2">
+<h2 id="orgba39a80">Scanf</h2>
+<div class="outline-text-2" id="text-orgba39a80">
+</div>
+<div id="outline-container-org908874b" class="outline-3">
+<h3 id="org908874b">input matching for multi input Scanf()</h3>
+<div class="outline-text-3" id="text-org908874b">
+<p>
+可以直接从控制台接受8， 10， 16 进制的数
+只有当控制字符串以格式控制符(%d、%c、%f) 开头时，键入的input才会忽略换行符,
+否则输入的空白符就不能忽略了，它会参与匹配过程
+</p>
+</div>
+</div>
+<div id="outline-container-orgbf7e73d" class="outline-3">
+<h3 id="orgbf7e73d">清空每次输入的所有缓存</h3>
+<div class="outline-text-3" id="text-orgbf7e73d">
+<p>
+scanf("%*[^\n]"); scanf("%*c");
+</p>
+</div>
+</div>
+<div id="outline-container-org0aa535b" class="outline-3">
+<h3 id="org0aa535b">Scanf(%{*}{width}type)</h3>
+<div class="outline-text-3" id="text-org0aa535b">
+<p>
+其中，{ } 表示可有可无。各个部分的具体含义是：
+type表示读取什么类型的数据，例如 %d、%s、%[a-z]、%[^\n] 等；type 必须有。
+width表示最大读取宽度，可有可无。
+*表示丢弃读取到的数据，可有可无。
+</p>
+</div>
+</div>
+<div id="outline-container-orgea719d6" class="outline-3">
+<h3 id="orgea719d6">each time only reserive 3 agruments</h3>
+<div class="outline-text-3" id="text-orgea719d6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;string.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>(<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">argc</span>, <span style="color: #ce537a; font-weight: bold;">char</span> *<span style="color: #7590db;">argv</span>[])
+{
+  <span style="color: #4f97d7; font-weight: bold;">while</span>(1){
+    <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">a</span>[3][10] = {<span style="color: #2d9574;">""</span>, <span style="color: #2d9574;">""</span>, <span style="color: #2d9574;">""</span>};
+    <span style="color: #ce537a; font-weight: bold;">char</span> <span style="color: #7590db;">b</span>[100];
+    scanf(<span style="color: #2d9574;">"%[^\n]"</span>, b);
+    printf(<span style="color: #2d9574;">"b is %s\n"</span>, b);
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">j</span> = 0;
+    <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span> = 0;
+    <span style="color: #4f97d7; font-weight: bold;">do</span>{
+      <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">k</span> = 0;
+      <span style="color: #4f97d7; font-weight: bold;">do</span>{
+        a[j][k] = b[i];
+        i++;
+        k++;
+      }<span style="color: #4f97d7; font-weight: bold;">while</span>(b[i] != <span style="color: #2d9574;">' '</span>);
+      printf(<span style="color: #2d9574;">"a[%d] iooooos %s\n"</span>, j, a[j]);
+      j++;
+      i++;
+    }  <span style="color: #4f97d7; font-weight: bold;">while</span> (j&lt;3);
+    scanf(<span style="color: #2d9574;">"%*[^\n]"</span>); scanf(<span style="color: #2d9574;">"%*c"</span>);
+  }
+<span style="color: #2aa1ae; background-color: #292e34;">//  </span><span style="color: #2aa1ae; background-color: #292e34;">return 0;</span>
+  }
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43b89fc" class="outline-3">
+<h3 id="org43b89fc">special requirements</h3>
+<div class="outline-text-3" id="text-org43b89fc">
+<ul class="org-ul">
+<li>Each time ask default 3 agreements, less is ok, the more will be ignored.</li>
+<li>scanf("%s", a); can't deal with more agreements.
+the more will be read next time</li>
+<li>scanf("%[^\n]", a); can't deal with less agreements,</li>
+</ul>
+<p>
+because without \n, I don't know where to stop 
+</p>
+
+<ul class="org-ul">
+<li>scanf("c%",a); can use '\n' and ' ' to determine the stop and number
+of agreements.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge0b904a" class="outline-2">
+<h2 id="orge0b904a">Notes</h2>
+<div class="outline-text-2" id="text-orge0b904a">
+</div>
+<div id="outline-container-orgcf7ac6f" class="outline-3">
+<h3 id="orgcf7ac6f">pass the agruments to program</h3>
+<div class="outline-text-3" id="text-orgcf7ac6f">
+<pre class="example">
+在src block 中提前定义:var a = 3
+javac test.java &amp;&amp;  echo 1 |java test 可以将1向StdInt传入
+gcc test.c &amp;&amp; echo 1 | ./a.out 可以将1向scanf("%d", &amp;a)传入的a
+</pre>
+</div>
+</div>
+<div id="outline-container-org56c1a7f" class="outline-3">
+<h3 id="org56c1a7f">malloc for 2 diamesion</h3>
+<div class="outline-text-3" id="text-org56c1a7f">
+<p>
+char <b>* commands;
+commands = (char *</b>)malloc(NUMOFCOM * sizeof(char *));
+for (int n = 0; n &lt; NUMOFCOM; n++)
+  commands[n] = (char *)malloc(sizeof(char) * COMLONG);
+</p>
+</div>
+</div>
+<div id="outline-container-org66f2007" class="outline-3">
+<h3 id="org66f2007">pass 2 diamesion array to function</h3>
+<div class="outline-text-3" id="text-org66f2007">
+<p>
+Even in function the index if out of the boundary of array, will be no
+error hit, and only return the valid index boundary.
+</p>
+</div>
+</div>
+<div id="outline-container-org659c014" class="outline-3">
+<h3 id="org659c014">char for string</h3>
+<div class="outline-text-3" id="text-org659c014">
+<p>
+char can define string with point (char *str) or with array(char
+str[]). but char *str cann't be changed anymore.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7ad2b9e" class="outline-3">
+<h3 id="org7ad2b9e">Headfile</h3>
+<div class="outline-text-3" id="text-org7ad2b9e">
+<pre class="example">
+
+old C(xx.h) add c at first and sub .h &gt; C++
+old C++ (xxx.h) aub .h &gt; C++
+</pre>
+</div>
+</div>
+<div id="outline-container-org4e4628c" class="outline-3">
+<h3 id="org4e4628c">reference</h3>
+<div class="outline-text-3" id="text-org4e4628c">
+<pre class="example">
+
+1. 如果在函数体中修改了形参的数据，那么实参的数据也会被修改，从而拥有“在
+   函数内部影响函数外部数据”的效果
+
+2. 不能返回局部数据（例如局部变量、局部对象、局部数组等）的引用，因为
+   当函数调用完成后局部数据就会被销毁，有可能在下次使用时数据就不存在
+   了
+
+3. 给引用添加 const 限定后，不但可以将引用绑定到临时数据，还可以将引用
+   绑定到类型相近的数据，这使得引用更加灵活和通用，它们背后的机制都是
+   临时变量
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5d5631e" class="outline-3">
+<h3 id="org5d5631e">class</h3>
+<div class="outline-text-3" id="text-org5d5631e">
+<pre class="example">
+
+1. 基类中的 protected 成员可以在派生类中使用，而基类中的 private 成员不能
+   在派生类中使用
+2. 只有一个作用域内的同名函数才具有重载关系，不同作用域内的同名函数是
+   会造成遮蔽
+3. 如果基类的成员变量被派生类的成员变量遮蔽， 基类成员仍会在实例化时被
+   创建，也可通过域解析符来访问。
+4. 构造函数会被逐级的显示或者默认的在派生类中被调用，并且可以被重载
+5. C++ 可以多继承不同的类（多继承和重继承），注意其构造函数的调用和成
+   员名称冲突，但是可以用域解析符来指明调用
+6. 即使是类的private成员，仍能通过创建的对象的地址偏移或者直接利用指针
+   进行访问。（有点花里胡哨的）
+7. C++中虚函数的唯一用处就是构成多态
+8. 引用不像指针灵活，指针可以随时改变指向，而引用只能指代固定的对象
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgca83e1b" class="outline-3">
+<h3 id="orgca83e1b">const</h3>
+<div class="outline-text-3" id="text-orgca83e1b">
+<pre class="example">
+
+const 的作用在C++中和宏很像#defind
+函数中const，修饰变量后可以将传入的参数，强制转换为设定的
+初始化 const 成员变量的唯一方法就是使用参数初始化
+类中的const， 变量，函数， 类， 只能互相承
+重要：在头文件中用const修饰全部变量后，就可以多次被引入了而不会出现重
+复定义的错
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd9e606b" class="outline-3">
+<h3 id="orgd9e606b">static</h3>
+<div class="outline-text-3" id="text-orgd9e606b">
+<pre class="example">
+
+statis 变量， 函数，全部对象可以共用，访问，无this指针。不能调用普通变量和函数类
+static 多被用来计数，可以在外部被改
+</pre>
+</div>
+</div>
+<div id="outline-container-org01b8b26" class="outline-3">
+<h3 id="org01b8b26">GDB</h3>
+<div class="outline-text-3" id="text-org01b8b26">
+<p>
+GDB debug
+can be done in terminal or in Emacs, recommend later one
+n
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">add break point</td>
+</tr>
+
+<tr>
+<td class="org-left">run</td>
+<td class="org-left">start the program</td>
+</tr>
+
+<tr>
+<td class="org-left">run argv</td>
+<td class="org-left">if argv needed</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">next</td>
+</tr>
+
+<tr>
+<td class="org-left">l</td>
+<td class="org-left">list source code 10 lines</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">print variables</td>
+</tr>
+
+<tr>
+<td class="org-left">s</td>
+<td class="org-left">go into functions</td>
+</tr>
+
+<tr>
+<td class="org-left">ignore</td>
+<td class="org-left">pass the break point</td>
+</tr>
+
+<tr>
+<td class="org-left">q</td>
+<td class="org-left">exit</td>
+</tr>
+
+<tr>
+<td class="org-left">set</td>
+<td class="org-left">set variable</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+</table>
+
+
+
+
+<div class="org-src-container">
+<pre class="src src-C">
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">a</span> = 3;
+printf(<span style="color: #2d9574;">"%d"</span>,a);
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org10cfc9e" class="outline-2">
+<h2 id="org10cfc9e">Compile</h2>
+<div class="outline-text-2" id="text-org10cfc9e">
+<p>
+There are four different kinds of Methods to compile a source file.
+</p>
+</div>
+<div id="outline-container-org308eb3d" class="outline-3">
+<h3 id="org308eb3d">Makefile</h3>
+<div class="outline-text-3" id="text-org308eb3d">
+<p>
+There is a folder called Makefile, into this folder, and call
+"make" in terminal, don't forget "make clean" to clean it.
+</p>
+</div>
+</div>
+<div id="outline-container-org9c24b0f" class="outline-3">
+<h3 id="org9c24b0f">Terminal Compile</h3>
+<div class="outline-text-3" id="text-org9c24b0f">
+<p>
+In pthread<sub>and</sub><sub>pid</sub> folder with terminal with "g++/gcc file.c -o file",
+and then "./file" to call it
+</p>
+</div>
+</div>
+<div id="outline-container-orgc91115c" class="outline-3">
+<h3 id="orgc91115c">Emacs Compile</h3>
+<div class="outline-text-3" id="text-orgc91115c">
+<p>
+Also in pthread<sub>and</sub><sub>pid</sub> folder, open the resource code with Emacs,
+and then M-x compile(C-z k)
+call it in minibuffer with :
+"gcc -pthread create<sub>pthread.c</sub> -o create<sub>pthread</sub> &amp;&amp; ./create<sub>pthread</sub>"
+</p>
+</div>
+</div>
+<div id="outline-container-org195e5b0" class="outline-3">
+<h3 id="org195e5b0">Orgmode Compile</h3>
+<div class="outline-text-3" id="text-org195e5b0">
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">&lt;stdio.h&gt;</span>
+<span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #bc6ec5; font-weight: bold;">main</span>()
+{
+printf(<span style="color: #2d9574;">"nihao"</span>);
+<span style="color: #4f97d7; font-weight: bold;">return</span> 0;
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: sx</p>
+<p class="date">Created: 2020-09-11 Fr 15:08</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
