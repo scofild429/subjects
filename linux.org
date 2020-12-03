@@ -576,6 +576,17 @@ ipfs files ls /Docu
 
 ipfs file cp /ipfs/HASH
 
+** GPG
+|------------------+---------------------------------------------------------|
+| terminal encrypt | gpg --recipient ID --output en.org --encrypt source.org |
+| terminal decrypt | gpg  en.org                                             |
+| emacs encrypt    | epa-encrypt-file                                        |
+| emacs decrypt    | epa-decrypt-file                                        |
+
+encrypt by terminal, once decrypt by emacs, just as normal file, can be edited anytime
+encrypt by emacs with password, passwd will be ask every time by after edit
+
+
 * System control
 ** system backup
 mount rsync

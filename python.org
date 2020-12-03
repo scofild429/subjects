@@ -4200,6 +4200,28 @@ tf.image.random_crop(x,[224,224,3])
 | A-.     | open the relate source file       |
 |---------+-----------------------------------|
 
+** jupyter
+#+begin_src sh
+sudo apt install jupyter
+sudo apt install jupyter lab
+pip install jupyterthemes
+jt -t monokai -f fira -fs 13 -nf ptsans -nfs 11 -N -kl -cursw 5 -cursc r -cellw 95% -T
+
+#+end_src
+Helf -> edit shortcut
+|------------+------------------------------|
+| j          | next cell                    |
+| k          | previous cell                |
+| f          | pull the cell to the top     |
+| i          | intercept cell               |
+| c          | clear results                |
+| space      | next site                    |
+| ctrl space | previous site                |
+| ctrl enter | execute and to the next cell |
+| C-M-m      | close mainbar                |
+| C-M-n      | close toolbar                |
+|------------+------------------------------|
+
 * Machine Learning
 ** Math for ML
 *** Matrix

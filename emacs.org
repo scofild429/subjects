@@ -2,9 +2,10 @@
 #+OPTIONS: num:nil
 #+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
 #+STARTUP: content
-
 * customize
 ** helps
+#+begin_src 
+
 C-h v comands
 customize the settings
 C-M-\ zusammen runs the command indent-region (ESC C-\ getrennt)
@@ -14,7 +15,7 @@ C-q runs the command quoted-insert
 C-d runs the command org-delete-char
 M-DEL (translated from <M-backspace>) runs the command backward-kill-word
 M eqaul to C-u
-
+#+end_src
 ** bookmark
  |---------+---------------|
  | C-x r m | bookmarks set |
@@ -187,6 +188,35 @@ M-x show-parent-mode  (Error :end file of parsing) can be caused by lack of pare
 
 
 * Org mode
+** rich text
+#+BEGIN_VERSE
+ Great clouds overhead
+ Tiny black birds rise and fall
+ Snow covers Emacs
+
+    ---AlexSchroeder
+#+END_VERSE
+
+
+#+BEGIN_QUOTE
+Everything should be made as simple as possible,
+but not any simpler ---Albert Einstein
+#+END_QUOTE
+
+
+#+BEGIN_CENTER
+Everything should be made as simple as possible, \\
+but not any simpler
+#+END_CENTER
+
+
+here I will try some *nows*, and this is to  be /funny/,
+and _underlined_.
+
+
+
+
+
 ** commods
 |---------------------------------------+-------------------------------|
 | org mode manual in emccs              | M-x org-info                  |
@@ -211,24 +241,28 @@ M-x show-parent-mode  (Error :end file of parsing) can be caused by lack of pare
 | C-c C-.  | go back       |                              |
 |----------+---------------+------------------------------|
 
-*** internal file
-link define options
 
+mark the link in file
 |----------------|
-| * headline     |  
+| * headline     |
 | #+NAME: target |
 | <<target>>     |
+| #+alias        |
+| #+title        |
+| org-store-link |
 |----------------|
 
-*** external file
 
+use the mark, which is marked
 #+begin_src 
 [[.../file.org::345]] go to the file of line 345
 [[.../file.org::target]] to to the file with target, 3 kinds of internal
-
 [[file:~/code/main.c::255  ]]               进入到 255 行
 [[file:~/xx.org::My Target ]]                   找到目标‘<<My Target>>’
 [[file:~/xx.org::#my-custom-id]]               查找自定义 id 的项
+
+org-insert-link
+
 
 #+end_src
 
@@ -355,6 +389,7 @@ C-l go back to the above directory
 keywords searching in all opened files, external files,
 
 #+end_src
+
 * SRC block
 ** commands
 |-------------+---------------------------------------------------------|
@@ -733,5 +768,6 @@ C-c C-l/o
 | C-c C-v     | ein:worksheet-set-output-visibility-all-km     |
 | C-c C-x     | Prefix Command                                 |
 |-------------+------------------------------------------------|
+
 
 
