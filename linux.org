@@ -511,21 +511,21 @@ Ansicht Anpassen to setting ungelesen
 ** EverSync
 Eversync sync all bookmarks between chrome and firefox with G Konten
 ** IPFS
-*** build from source
+#+begin_src 
+
 download go-ipfs and untar
 cp ipfs /usr/local/bin and sudo ./install.sh
 
-*** apt 
 sudo apt install ipfs
 
-*** config
 ipfs init
 export EDITOR=/usr/bin/emacs
 ipfs config edit
 ipfs id
 ipfs  help
+#+end_src
 
-*** start
+
 #+begin_src 
 
 mkdir IPFS
@@ -534,7 +534,8 @@ ipfs add hallo.org  :get file_hash
 ipfs cat file_hash
 ipfs.io/ipfs/file_hash
 #+end_src
-*** push
+
+ push
 
 #+begin_src 
 
@@ -551,7 +552,6 @@ ipfs key gen --type=rsa --size=2048 IPFS
 ipfs name publish --key=IPFS folder_hash
 #+end_src
 
-*** CORS
 
 #+BEGIN_SRC 
 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '["PUT", "GET", "POST","OPTIONS"]'
@@ -569,13 +569,14 @@ http://localhost:5001/webui
 
 #+END_SRC
 
-*** File
+#+begin_src 
+
 ipfs files mkdir /Docu
 
 ipfs files ls /Docu
 
 ipfs file cp /ipfs/HASH
-
+#+end_src
 ** GPG
 |------------------+---------------------------------------------------------|
 | terminal encrypt | gpg --recipient ID --output en.org --encrypt source.org |
@@ -585,7 +586,7 @@ ipfs file cp /ipfs/HASH
 
 encrypt by terminal, once decrypt by emacs, just as normal file, can be edited anytime
 encrypt by emacs with password, passwd will be ask every time by after edit
-
+if epa-file-select-key is t
 
 * System control
 ** system backup
@@ -1133,3 +1134,39 @@ git clone
 git push
 
 #+END_SRC
+
+* note                                                                :crypt:
+-----BEGIN PGP MESSAGE-----
+
+jA0ECQMCZnPhy397Vjz/0uoBN1HthbTwBC8Lz4oWahdDirG0DCK40qKx5LV5SwXP
+XjbEuvTJKxhCRuA4eeqgAqhCNuusbhqrGwk8G8DGMuFVvuogC4fKbmO6RSyAwrkh
+S8OZfJ6ZibPmlVIQW4vOwNTlLMm3ttOnvnHhRzgKNHIT+t19qBDnyOKAT0KfTDR7
+vdom6Fp7/8PkmMLO8ZehU/U5+rPr+Y/d0g958TchYGQQDyr2BW+rAKkhsMfjLGBO
+OfGjG8xg0Xfj+2NPB3nITz8q7Y7H6Q6TaaP9s+HTPUTv6n3GxLXoJnFbXEIwvt22
+FbN+oRdpw1S/gSHm/Plse9MxSGgWNrLYHIFTIyIqqxewxGq5HI/0dGqsD6oyb55p
+G9sPzWiuokgibMSOLtK4HEiCPmAtzuW5EqWuVEq72r599lHHSWJmmKHK2c0wUmLB
+FCpQJEItJpel+UjVc8JQ1enpfjaspP5HzTZNRU+KtAEtqZeQenGGAzBGGKqVw3UE
+RmyIQh4/1de6A3Pin2ZfQ+4rYB+HEKKBR5/qo0Vh4XmGyLV/pwI21NYyp+15dwo9
+Fv2QVABKq6hJFWIPD8pyORhKJFgEVD4/+U3oP3mjJpcSEquGOIMc5SsHdjH7HMTv
+W4oz+6tLTdo+GivAj16aLq0V0SJRe0kr9Hhekf2WbVG1taCzTCIOrbqZpuLhHSiV
+we2+Q4QjLMJ/opfWPQ8g0n9bXmokCnIb/2O0ZYiX9zwZmSYKdX8jliQw9qwShll/
+1IZ9A+p8caGjPpPvDbQiB+ALk6jWGB4MYUllJXnT8e2sf3lUpSi+vIk//AKwLh5p
+YpTRjEfHoFvQzYmsBd71jKoiziMXaXrsVFZl1noJXOLSGTHAg1UqGZKJK28xGJOK
+dQb2Dm35sEudqOmom3Nqjbj53XMsNYULtsVPP6+tE8R07E5qutvJZYd069ccPJEA
+WFQn0ok2bhNbCLtalscsTjVLN3QjqxGO46qZ+ExjmIfGa26qXc3RPeZQwJmEiK4t
+IzNd9iDtkf1QGWtkdd2MVGXIRdc+LKnJ3GatRiRT+n/IU8dceQch9UEWJgdf5YWm
+R4dJgXtLyD/NWPgRn/el1ldBamuXPVQVfrPLzeKURe6SY+hpVqM2JUS8HIbLfa/Z
+YfSsUejCCNpZR7OMIfFyctD7SjpgTQwdTHzzWq9BRrFKupEFy0HGTBXYVYK5Mf/O
+uXRtxHBO+G7/532vICWf8xeMNBOonSEWEBrKmE1mMu8h2jjiNkMoRqgSg4VQg0dt
+HwisXF2sPlZUX/cEm7dHdbW26OBSHIowiDVtijHOg3VdQMp8gNfqB7caBX/nHrCv
+2HZNA7H1ndINmemLc2xKwWftzpMtMcx99aj3lwzd/gsjwKnHEVHz13bsSA/knraO
+x+NnHjxYG6bwFX/T6BYcjtm7n0xke5lfYl8/UCMgAttnUS5xtI0e8YVXaH7o6JOT
+pUvrBrx/a3hKYBSRbgLHOIqq59uxxAn983Po/kOnrCkvnIw44vih02D0WzO6qBcs
+NgJjK/0TQBOhQBWWFJ2xwnyf0nUdenXE8mqxXhKGYtINDnkuRC/g+YMqoPOSPoVl
+IQ9NCSgHOmwTYOnJk+FGobV6UKbfqOi8KJjyNSWxMSBwwTC6BTUafOXnuf2vVVtH
+gIOJEpsjBqZR++ynrt2QKoOCsxeXf3CMkg8aU1S7BK6Tv42ms/czQEp86WuniuSz
++UcDXjcxNt77w9wk+9Ypj1OHmag0oQ1tFMdT8L8Gs5nCI20n7Rr87Daqep9kr7Fl
+wTvbp2i4CNFrixtpKsQAVT/+QLsH9UOJbUN5FwY/Ldyhs9Xhp07sSj/OhTjVM2Sf
+Rf+xpNZfp2cjQWUE
+=AXxO
+-----END PGP MESSAGE-----
