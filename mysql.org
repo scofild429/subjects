@@ -11,6 +11,8 @@ sudo mysql_secure_installation
 
 此时是给电脑的root用户，创建了一个mysql里root用户的数据库
 *** 电脑的root用户
+sudo apt install mysql-server
+sudo mysql_secure_installation
 上面默认设置的是电脑root用户的密码，也就是说只能 sudo 登陆 : sudo mysql -u root -p
 
 *** 电脑的普通用户进入配置
@@ -31,7 +33,8 @@ sudo mysql_secure_installation
 |   11 | mysql                    | set global validate_ password_ length=3;          | 设置密码长度要求 为 3                                      |
 |   12 | mysql                    | set global validate_ password_ policy=0;          | 设置密码要求概要  为 0                                     |
 |   13 | mysql                    | set password for root@localhost = '123'           | 老版本  = password('123');                                 |
-|   14 | terminal                 | mysql -u root -p                                  | 密码 123 , 登陆时不需要 sudo 开头                          |
+|   14 | mysql                    | flush privileges;                                 | 权限更新 in mysqld:skip-grant-tables                       |
+|   15 | terminal                 | mysql -u root -p                                  | 密码 123 , 登陆时不需要 sudo 开头                          |
 |------+--------------------------+---------------------------------------------------+------------------------------------------------------------|
 
 ** 给数据库添加用户
@@ -57,10 +60,20 @@ create databese kurs;
 
 drop databases kurs;
 
-** 中文
-   听说mysql的utf8不是真的utf8，需要使用utf8mb4.
-   在用户登陆后用set charactater server database = utf8 或者utf8mb4， 只要重开接入，设置就复原。
-   只有在/etc/mysql/中的mysql.cnf中的clint/mysqld/mysql字段加入以上设定，重启生效
+** 中文设置 
+
+| show variables like 'character%'; |
+|                                   |
+
+
+听说mysql的utf8不是真的utf8，需要使用utf8mb4.
+在用户登陆后用set charactater server database = utf8 或者utf8mb4， 只要重开接入，设置就复原。
+只有在/etc/mysql/中的mysql.cnf中的clint/mysqld/mysql字段加入以上设定，重启生效
+
+| 在[client]下追加 | default-character-set=utf8 |
+| 在[mysqld]下追加 | character-set-server=utf8  |
+| 在[mysql]下追加  | default-character-set=utf8 |
+
  
 ** 特殊字符
  - 用`ry-vue` 

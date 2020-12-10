@@ -1,0 +1,44 @@
+#+TITLE: Data Science
+#+OPTIONS: num:nil
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
+#+startup: content
+
+
+
+* Sensor Dataverarbeitung
+Tensor Fehler, Präzision: stochastisch
+Richtigkeit: systematisch
+
+
+
+
+* Sensor Data Fusion
+** concepts
+|----------------+-----------------------------------------------------|
+| competitive    | many sensor for the same place für higher accuracy  |
+| complementary  | many sensor for many places für higher completeness |
+| dead reckoning | errors accumulation over previous knowlegde         |
+|----------------+-----------------------------------------------------|
+
+$$ y = H x + e $$
+|----------------------+-----------------------------------------------|
+| measurement equation | projects the state onto the measurement space |
+| y                    | measurement                                   |
+| x                    | state                                         |
+| H                    | measurement matrix                            |
+| e                    | measurement error                             |
+|----------------------+-----------------------------------------------|
+
+*Jacobian Matrix* one order
+
+
+*Hessian Matrix*  two order
+
+*Partial Matrix*
+- $$ \frac{\partial}{\partial x}c^{T}x = \frac{\partial}{\partial x}x^{T}c  = c $$
+- $$ \frac{\partial}{\partial x}x^{T}Ax = 2 Ax $$
+- $$ \frac{\partial}{\partial x}Ax = \frac{\partial}{\partial x}x^{T}A = A $$
+
+  
+
+

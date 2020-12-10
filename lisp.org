@@ -3,6 +3,17 @@
 #+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
 #+startup: content
 
+* root
+
+S-express can be atmo or list
+car : get the first S-express
+cdr : get the rest list
+cons : need a S-express and a list : put the first S-express into the second list
+(null? l) if l is null?
+(atom? l) if l is atmo?
+(member? ele list)
+(rember ele list)
+
 * command
 ** execute
 

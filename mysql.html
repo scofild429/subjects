@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mo 20:48 -->
+<!-- 2020-12-10 Do 22:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MySql</title>
@@ -234,69 +234,69 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2763e60">配置</a>
+<li><a href="#orgbc16d4b">配置</a>
 <ul>
-<li><a href="#orgcee9055">安装</a>
+<li><a href="#orgc697911">安装</a>
 <ul>
-<li><a href="#org8d487a5">电脑的root用户</a></li>
-<li><a href="#org9d792f9">电脑的普通用户进入配置</a></li>
+<li><a href="#org445c7d1">电脑的root用户</a></li>
+<li><a href="#org42b15c1">电脑的普通用户进入配置</a></li>
 </ul>
 </li>
-<li><a href="#org4be6958">给数据库添加用户</a></li>
-<li><a href="#orgd23a627">查看数据库及添加数据库</a></li>
-<li><a href="#org0a270e9">中文</a></li>
-<li><a href="#org9f20422">特殊字符</a></li>
-<li><a href="#org3271cf4">执行sql文件</a></li>
+<li><a href="#orgfe1d854">给数据库添加用户</a></li>
+<li><a href="#org80c3744">查看数据库及添加数据库</a></li>
+<li><a href="#org6e4a128">中文设置</a></li>
+<li><a href="#org720dda1">特殊字符</a></li>
+<li><a href="#org5bc10a5">执行sql文件</a></li>
 </ul>
 </li>
-<li><a href="#org0769e3c">进入数据库并操作</a>
+<li><a href="#orgb14df18">进入数据库并操作</a>
 <ul>
-<li><a href="#org3e526ad">进入数据库</a></li>
-<li><a href="#org315975f">插入表格</a></li>
-<li><a href="#orgf5c6e34">插入值</a></li>
-<li><a href="#org5869f8d">查看表格</a></li>
-<li><a href="#orge66401d">编辑表格</a></li>
-<li><a href="#orgaf06f38">读取内容</a></li>
-<li><a href="#org4c73c72">高级条件查询</a></li>
+<li><a href="#org2df3ac5">进入数据库</a></li>
+<li><a href="#org124acdf">插入表格</a></li>
+<li><a href="#org23409b1">插入值</a></li>
+<li><a href="#org37419ad">查看表格</a></li>
+<li><a href="#org70c18b8">编辑表格</a></li>
+<li><a href="#org35e81ee">读取内容</a></li>
+<li><a href="#org503e6da">高级条件查询</a></li>
 </ul>
 </li>
-<li><a href="#org9fd9eec">管理</a>
+<li><a href="#org481e0a7">管理</a>
 <ul>
-<li><a href="#org3a48224">用户管理</a></li>
-<li><a href="#orged74144">权限</a>
+<li><a href="#org1e0a27e">用户管理</a></li>
+<li><a href="#orgcb98380">权限</a>
 <ul>
-<li><a href="#orgd781caa">查询</a></li>
-<li><a href="#org462ae15">授予</a></li>
-<li><a href="#orga0e150d">撤销</a></li>
+<li><a href="#orgf7ccaf2">查询</a></li>
+<li><a href="#org5d468f8">授予</a></li>
+<li><a href="#org4686787">撤销</a></li>
 </ul>
 </li>
-<li><a href="#orgaf50af4">时区</a></li>
-<li><a href="#orgf92abda">删除</a></li>
-<li><a href="#orge9c21fe">更新</a></li>
+<li><a href="#org7cbbca0">时区</a></li>
+<li><a href="#org8fc3287">删除</a></li>
+<li><a href="#org78e5423">更新</a></li>
 </ul>
 </li>
-<li><a href="#org4fb8260">备份和还原</a>
+<li><a href="#org310f2fc">备份和还原</a>
 <ul>
-<li><a href="#org840cd76">check the database</a></li>
-<li><a href="#org004bb59">dump database</a></li>
-<li><a href="#orga95b2eb">delete database</a></li>
-<li><a href="#org5e39001">recover testforjava</a></li>
+<li><a href="#org03c81f7">check the database</a></li>
+<li><a href="#orgae9a8e0">dump database</a></li>
+<li><a href="#org74a3449">delete database</a></li>
+<li><a href="#orgbb897b2">recover testforjava</a></li>
 </ul>
 </li>
-<li><a href="#org87488d7">权限</a></li>
-<li><a href="#org52adbc0">数据的备份</a></li>
-<li><a href="#org37ad3ad">python connect with mysql Beispile</a></li>
-<li><a href="#orgdd6ca41">java connect with mysql</a></li>
+<li><a href="#orgeef6426">权限</a></li>
+<li><a href="#orged8bde6">数据的备份</a></li>
+<li><a href="#orgf6c10ef">python connect with mysql Beispile</a></li>
+<li><a href="#org61a48f3">java connect with mysql</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2763e60" class="outline-2">
-<h2 id="org2763e60">配置</h2>
-<div class="outline-text-2" id="text-org2763e60">
+<div id="outline-container-orgbc16d4b" class="outline-2">
+<h2 id="orgbc16d4b">配置</h2>
+<div class="outline-text-2" id="text-orgbc16d4b">
 </div>
-<div id="outline-container-orgcee9055" class="outline-3">
-<h3 id="orgcee9055">安装</h3>
-<div class="outline-text-3" id="text-orgcee9055">
+<div id="outline-container-orgc697911" class="outline-3">
+<h3 id="orgc697911">安装</h3>
+<div class="outline-text-3" id="text-orgc697911">
 <pre class="example">
 sudo apt install mysql-server
 sudo mysql_secure_installation
@@ -306,18 +306,20 @@ sudo mysql_secure_installation
 此时是给电脑的root用户，创建了一个mysql里root用户的数据库
 </p>
 </div>
-<div id="outline-container-org8d487a5" class="outline-4">
-<h4 id="org8d487a5">电脑的root用户</h4>
-<div class="outline-text-4" id="text-org8d487a5">
+<div id="outline-container-org445c7d1" class="outline-4">
+<h4 id="org445c7d1">电脑的root用户</h4>
+<div class="outline-text-4" id="text-org445c7d1">
 <p>
+sudo apt install mysql-server
+sudo mysql<sub>secure</sub><sub>installation</sub>
 上面默认设置的是电脑root用户的密码，也就是说只能 sudo 登陆 : sudo mysql -u root -p
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9d792f9" class="outline-4">
-<h4 id="org9d792f9">电脑的普通用户进入配置</h4>
-<div class="outline-text-4" id="text-org9d792f9">
+<div id="outline-container-org42b15c1" class="outline-4">
+<h4 id="org42b15c1">电脑的普通用户进入配置</h4>
+<div class="outline-text-4" id="text-org42b15c1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -431,6 +433,13 @@ sudo mysql_secure_installation
 
 <tr>
 <td class="org-right">14</td>
+<td class="org-left">mysql</td>
+<td class="org-left">flush privileges;</td>
+<td class="org-left">权限更新 in mysqld:skip-grant-tables</td>
+</tr>
+
+<tr>
+<td class="org-right">15</td>
 <td class="org-left">terminal</td>
 <td class="org-left">mysql -u root -p</td>
 <td class="org-left">密码 123 , 登陆时不需要 sudo 开头</td>
@@ -441,9 +450,9 @@ sudo mysql_secure_installation
 </div>
 </div>
 
-<div id="outline-container-org4be6958" class="outline-3">
-<h3 id="org4be6958">给数据库添加用户</h3>
-<div class="outline-text-3" id="text-org4be6958">
+<div id="outline-container-orgfe1d854" class="outline-3">
+<h3 id="orgfe1d854">给数据库添加用户</h3>
+<div class="outline-text-3" id="text-orgfe1d854">
 <p>
 在进入数据库的root后，mysql 添加普通用户 <a href="https://www.jianshu.com/p/d7b9c468f20d">简书连接</a> .
 </p>
@@ -470,9 +479,9 @@ scofild
 </div>
 </div>
 
-<div id="outline-container-orgd23a627" class="outline-3">
-<h3 id="orgd23a627">查看数据库及添加数据库</h3>
-<div class="outline-text-3" id="text-orgd23a627">
+<div id="outline-container-org80c3744" class="outline-3">
+<h3 id="org80c3744">查看数据库及添加数据库</h3>
+<div class="outline-text-3" id="text-org80c3744">
 <p>
 show databases;
 </p>
@@ -487,20 +496,65 @@ drop databases kurs;
 </div>
 </div>
 
-<div id="outline-container-org0a270e9" class="outline-3">
-<h3 id="org0a270e9">中文</h3>
-<div class="outline-text-3" id="text-org0a270e9">
+<div id="outline-container-org6e4a128" class="outline-3">
+<h3 id="org6e4a128">中文设置</h3>
+<div class="outline-text-3" id="text-org6e4a128">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">show variables like 'character%';</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
 <p>
 听说mysql的utf8不是真的utf8，需要使用utf8mb4.
 在用户登陆后用set charactater server database = utf8 或者utf8mb4， 只要重开接入，设置就复原。
 只有在/etc/mysql/中的mysql.cnf中的clint/mysqld/mysql字段加入以上设定，重启生效
 </p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">在[client]下追加</td>
+<td class="org-left">default-character-set=utf8</td>
+</tr>
+
+<tr>
+<td class="org-left">在[mysqld]下追加</td>
+<td class="org-left">character-set-server=utf8</td>
+</tr>
+
+<tr>
+<td class="org-left">在[mysql]下追加</td>
+<td class="org-left">default-character-set=utf8</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
-<div id="outline-container-org9f20422" class="outline-3">
-<h3 id="org9f20422">特殊字符</h3>
-<div class="outline-text-3" id="text-org9f20422">
+
+<div id="outline-container-org720dda1" class="outline-3">
+<h3 id="org720dda1">特殊字符</h3>
+<div class="outline-text-3" id="text-org720dda1">
 <ul class="org-ul">
 <li>用`ry-vue`</li>
 </ul>
@@ -510,9 +564,9 @@ create database `ry-vue`;
 </div>
 </div>
 
-<div id="outline-container-org3271cf4" class="outline-3">
-<h3 id="org3271cf4">执行sql文件</h3>
-<div class="outline-text-3" id="text-org3271cf4">
+<div id="outline-container-org5bc10a5" class="outline-3">
+<h3 id="org5bc10a5">执行sql文件</h3>
+<div class="outline-text-3" id="text-org5bc10a5">
 <p>
 mysql -u root  -p xxxx
 use database;
@@ -522,22 +576,22 @@ source &#x2026;/file.sql
 </div>
 </div>
 
-<div id="outline-container-org0769e3c" class="outline-2">
-<h2 id="org0769e3c">进入数据库并操作</h2>
-<div class="outline-text-2" id="text-org0769e3c">
+<div id="outline-container-orgb14df18" class="outline-2">
+<h2 id="orgb14df18">进入数据库并操作</h2>
+<div class="outline-text-2" id="text-orgb14df18">
 </div>
-<div id="outline-container-org3e526ad" class="outline-3">
-<h3 id="org3e526ad">进入数据库</h3>
-<div class="outline-text-3" id="text-org3e526ad">
+<div id="outline-container-org2df3ac5" class="outline-3">
+<h3 id="org2df3ac5">进入数据库</h3>
+<div class="outline-text-3" id="text-org2df3ac5">
 <p>
 create databese testforjava;
 use testforjava;
 </p>
 </div>
 </div>
-<div id="outline-container-org315975f" class="outline-3">
-<h3 id="org315975f">插入表格</h3>
-<div class="outline-text-3" id="text-org315975f">
+<div id="outline-container-org124acdf" class="outline-3">
+<h3 id="org124acdf">插入表格</h3>
+<div class="outline-text-3" id="text-org124acdf">
 <p>
 create table course(id int primary key atuo<sub>increment</sub>,  kurs<sub>name</sub> varchar(50), kurs<sub>length</sub>
 varchar(50),teacher varchar(50), categeory varchar(50));
@@ -545,9 +599,9 @@ for later version, only works for auto<sub>increment</sub>, not for identity(m,n
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5c6e34" class="outline-3">
-<h3 id="orgf5c6e34">插入值</h3>
-<div class="outline-text-3" id="text-orgf5c6e34">
+<div id="outline-container-org23409b1" class="outline-3">
+<h3 id="org23409b1">插入值</h3>
+<div class="outline-text-3" id="text-org23409b1">
 <p>
 insert into kurs values(1, 'C++', 23, 'su', 'basic');
 insert into kurs values (2, 'Python', 50, 'morvan', 'hard');
@@ -565,9 +619,9 @@ insert into kurs(id, kurs<sub>name</sub>, categeory) values(4, 'java', 'basic');
 </p>
 </div>
 </div>
-<div id="outline-container-org5869f8d" class="outline-3">
-<h3 id="org5869f8d">查看表格</h3>
-<div class="outline-text-3" id="text-org5869f8d">
+<div id="outline-container-org37419ad" class="outline-3">
+<h3 id="org37419ad">查看表格</h3>
+<div class="outline-text-3" id="text-org37419ad">
 <p>
 show tables;
 </p>
@@ -577,9 +631,9 @@ describe course;
 </p>
 </div>
 </div>
-<div id="outline-container-orge66401d" class="outline-3">
-<h3 id="orge66401d">编辑表格</h3>
-<div class="outline-text-3" id="text-orge66401d">
+<div id="outline-container-org70c18b8" class="outline-3">
+<h3 id="org70c18b8">编辑表格</h3>
+<div class="outline-text-3" id="text-org70c18b8">
 <p>
 alter table course rename kurs;  (重命名)
 </p>
@@ -602,9 +656,9 @@ alter table kurs change column teacher lecture varchar(100); (修改该列的名
 </div>
 </div>
 
-<div id="outline-container-orgaf06f38" class="outline-3">
-<h3 id="orgaf06f38">读取内容</h3>
-<div class="outline-text-3" id="text-orgaf06f38">
+<div id="outline-container-org35e81ee" class="outline-3">
+<h3 id="org35e81ee">读取内容</h3>
+<div class="outline-text-3" id="text-org35e81ee">
 <p>
 select * from kurs;
 </p>
@@ -623,9 +677,9 @@ select distinct lecture from kurs;
 </div>
 </div>
 
-<div id="outline-container-org4c73c72" class="outline-3">
-<h3 id="org4c73c72">高级条件查询</h3>
-<div class="outline-text-3" id="text-org4c73c72">
+<div id="outline-container-org503e6da" class="outline-3">
+<h3 id="org503e6da">高级条件查询</h3>
+<div class="outline-text-3" id="text-org503e6da">
 <p>
 select * from course where course<sub>name</sub> = 'gnome';
 </p>
@@ -643,13 +697,13 @@ select * from course order by  course<sub>length</sub> desc;
 </div>
 </div>
 </div>
-<div id="outline-container-org9fd9eec" class="outline-2">
-<h2 id="org9fd9eec">管理</h2>
-<div class="outline-text-2" id="text-org9fd9eec">
+<div id="outline-container-org481e0a7" class="outline-2">
+<h2 id="org481e0a7">管理</h2>
+<div class="outline-text-2" id="text-org481e0a7">
 </div>
-<div id="outline-container-org3a48224" class="outline-3">
-<h3 id="org3a48224">用户管理</h3>
-<div class="outline-text-3" id="text-org3a48224">
+<div id="outline-container-org1e0a27e" class="outline-3">
+<h3 id="org1e0a27e">用户管理</h3>
+<div class="outline-text-3" id="text-org1e0a27e">
 <p>
 show databases;
 use mysql;
@@ -682,39 +736,39 @@ set password for si = password(link); (将si用户密码重置为link)
 </p>
 </div>
 </div>
-<div id="outline-container-orged74144" class="outline-3">
-<h3 id="orged74144">权限</h3>
-<div class="outline-text-3" id="text-orged74144">
+<div id="outline-container-orgcb98380" class="outline-3">
+<h3 id="orgcb98380">权限</h3>
+<div class="outline-text-3" id="text-orgcb98380">
 </div>
-<div id="outline-container-orgd781caa" class="outline-4">
-<h4 id="orgd781caa">查询</h4>
-<div class="outline-text-4" id="text-orgd781caa">
+<div id="outline-container-orgf7ccaf2" class="outline-4">
+<h4 id="orgf7ccaf2">查询</h4>
+<div class="outline-text-4" id="text-orgf7ccaf2">
 <p>
 show grants for 'newuser'@'localhost'
 </p>
 </div>
 </div>
-<div id="outline-container-org462ae15" class="outline-4">
-<h4 id="org462ae15">授予</h4>
-<div class="outline-text-4" id="text-org462ae15">
+<div id="outline-container-org5d468f8" class="outline-4">
+<h4 id="org5d468f8">授予</h4>
+<div class="outline-text-4" id="text-org5d468f8">
 <p>
 grants 权限列表 on 数据库名.表明 to '用户'@'主机名'
 grants all on <b>.</b> 'newuser'@'localhost'
 </p>
 </div>
 </div>
-<div id="outline-container-orga0e150d" class="outline-4">
-<h4 id="orga0e150d">撤销</h4>
-<div class="outline-text-4" id="text-orga0e150d">
+<div id="outline-container-org4686787" class="outline-4">
+<h4 id="org4686787">撤销</h4>
+<div class="outline-text-4" id="text-org4686787">
 <p>
 revoke delete on <b>.</b> from 'newuser'@'localhost'
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf50af4" class="outline-3">
-<h3 id="orgaf50af4">时区</h3>
-<div class="outline-text-3" id="text-orgaf50af4">
+<div id="outline-container-org7cbbca0" class="outline-3">
+<h3 id="org7cbbca0">时区</h3>
+<div class="outline-text-3" id="text-org7cbbca0">
 <p>
 set global time<sub>zone</sub> = '+8:00';  ##修改mysql全局时区为北京时间，即我们所在的东8区
 set time<sub>zone</sub> = '+8:00';  ##修改当前会话时区
@@ -722,9 +776,9 @@ flush privileges;  #立即生效
 </p>
 </div>
 </div>
-<div id="outline-container-orgf92abda" class="outline-3">
-<h3 id="orgf92abda">删除</h3>
-<div class="outline-text-3" id="text-orgf92abda">
+<div id="outline-container-org8fc3287" class="outline-3">
+<h3 id="org8fc3287">删除</h3>
+<div class="outline-text-3" id="text-org8fc3287">
 <p>
 delect * from course where id =2;
 </p>
@@ -734,9 +788,9 @@ delect * from course 删除整个表的信息
 </p>
 </div>
 </div>
-<div id="outline-container-orge9c21fe" class="outline-3">
-<h3 id="orge9c21fe">更新</h3>
-<div class="outline-text-3" id="text-orge9c21fe">
+<div id="outline-container-org78e5423" class="outline-3">
+<h3 id="org78e5423">更新</h3>
+<div class="outline-text-3" id="text-org78e5423">
 <p>
 update course set lecture = 'Lee'  where id =3;
 </p>
@@ -744,23 +798,23 @@ update course set lecture = 'Lee'  where id =3;
 </div>
 </div>
 
-<div id="outline-container-org4fb8260" class="outline-2">
-<h2 id="org4fb8260">备份和还原</h2>
-<div class="outline-text-2" id="text-org4fb8260">
+<div id="outline-container-org310f2fc" class="outline-2">
+<h2 id="org310f2fc">备份和还原</h2>
+<div class="outline-text-2" id="text-org310f2fc">
 </div>
-<div id="outline-container-org840cd76" class="outline-3">
-<h3 id="org840cd76">check the database</h3>
-<div class="outline-text-3" id="text-org840cd76">
+<div id="outline-container-org03c81f7" class="outline-3">
+<h3 id="org03c81f7">check the database</h3>
+<div class="outline-text-3" id="text-org03c81f7">
 <div class="org-src-container">
-<pre class="src src-sql" id="org5a1ffce">show tables;
+<pre class="src src-sql" id="org86d87ee">show tables;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org004bb59" class="outline-3">
-<h3 id="org004bb59">dump database</h3>
-<div class="outline-text-3" id="text-org004bb59">
+<div id="outline-container-orgae9a8e0" class="outline-3">
+<h3 id="orgae9a8e0">dump database</h3>
+<div class="outline-text-3" id="text-orgae9a8e0">
 <div class="org-src-container">
 <pre class="src src-sh">mysqldump -uroot -p123456 testforjava &gt; ~/Desktop/mysql.sql
 </pre>
@@ -768,22 +822,22 @@ update course set lecture = 'Lee'  where id =3;
 </div>
 </div>
 
-<div id="outline-container-orga95b2eb" class="outline-3">
-<h3 id="orga95b2eb">delete database</h3>
-<div class="outline-text-3" id="text-orga95b2eb">
+<div id="outline-container-org74a3449" class="outline-3">
+<h3 id="org74a3449">delete database</h3>
+<div class="outline-text-3" id="text-org74a3449">
 <div class="org-src-container">
-<pre class="src src-sql" id="orgea20b86"><span style="color: #4f97d7; font-weight: bold;">drop</span> database testforjava;
+<pre class="src src-sql" id="org822e20f"><span style="color: #4f97d7; font-weight: bold;">drop</span> database testforjava;
 show databases;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5e39001" class="outline-3">
-<h3 id="org5e39001">recover testforjava</h3>
-<div class="outline-text-3" id="text-org5e39001">
+<div id="outline-container-orgbb897b2" class="outline-3">
+<h3 id="orgbb897b2">recover testforjava</h3>
+<div class="outline-text-3" id="text-orgbb897b2">
 <div class="org-src-container">
-<pre class="src src-sql" id="org5c4dc1f"><span style="color: #4f97d7; font-weight: bold;">create</span> database testforjava;
+<pre class="src src-sql" id="orgd6d70e1"><span style="color: #4f97d7; font-weight: bold;">create</span> database testforjava;
 use testforjava;
 <span style="color: #4f97d7; font-weight: bold;">source</span> ~/Desktop/mysql.<span style="color: #4f97d7; font-weight: bold;">sql</span>
 show databases;
@@ -793,9 +847,9 @@ show databases;
 </div>
 </div>
 
-<div id="outline-container-org87488d7" class="outline-2">
-<h2 id="org87488d7">权限</h2>
-<div class="outline-text-2" id="text-org87488d7">
+<div id="outline-container-orgeef6426" class="outline-2">
+<h2 id="orgeef6426">权限</h2>
+<div class="outline-text-2" id="text-orgeef6426">
 <p>
 grant all privileges on <b>.</b> to 'shi'@'%' identified by 'lining';
 </p>
@@ -806,9 +860,9 @@ grant all privileges on <b>.</b> to 'root'@'%' identified by 'lining';
 </div>
 </div>
 
-<div id="outline-container-org52adbc0" class="outline-2">
-<h2 id="org52adbc0">数据的备份</h2>
-<div class="outline-text-2" id="text-org52adbc0">
+<div id="outline-container-orged8bde6" class="outline-2">
+<h2 id="orged8bde6">数据的备份</h2>
+<div class="outline-text-2" id="text-orged8bde6">
 <p>
 mysqldump -u root -p kurs &gt; firstForFun.sql;
 (在root下将kurs数据库备份为FirstForFun.sql)
@@ -824,9 +878,9 @@ mysql -u root -p kurs &lt; Firstforfun.sql
 </p>
 </div>
 </div>
-<div id="outline-container-org37ad3ad" class="outline-2">
-<h2 id="org37ad3ad">python connect with mysql Beispile</h2>
-<div class="outline-text-2" id="text-org37ad3ad">
+<div id="outline-container-orgf6c10ef" class="outline-2">
+<h2 id="orgf6c10ef">python connect with mysql Beispile</h2>
+<div class="outline-text-2" id="text-orgf6c10ef">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #4f97d7; font-weight: bold;">import</span> pymysql
@@ -866,9 +920,9 @@ cursor.close()
 
 
 
-<div id="outline-container-orgdd6ca41" class="outline-2">
-<h2 id="orgdd6ca41">java connect with mysql</h2>
-<div class="outline-text-2" id="text-orgdd6ca41">
+<div id="outline-container-org61a48f3" class="outline-2">
+<h2 id="org61a48f3">java connect with mysql</h2>
+<div class="outline-text-2" id="text-org61a48f3">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #4f97d7; font-weight: bold;">import</span> <span style="color: #a45bad;">java</span>.<span style="color: #a45bad;">sql</span>.*;
 <span style="color: #4f97d7; font-weight: bold;">public</span> <span style="color: #4f97d7; font-weight: bold;">class</span> <span style="color: #ce537a; font-weight: bold;">JavaConnSQL</span>
@@ -934,7 +988,7 @@ cursor.close()
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-11-23 Mo 20:48</p>
+<p class="date">Created: 2020-12-10 Do 22:18</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

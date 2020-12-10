@@ -137,6 +137,34 @@ put this in .bashrc under root file
 alias freemem="sync; echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared' "
 #+end_src
 * commands
+** sammary
+#+begin_src 
+mkdir -p test/src
+less :space to next, b to previous
+#+end_src
+
+#+begin_src
+fdisk -l
+
+fdisk /dev/nvme0n1p4 (m, p, n, ...)
+mkfs.ext4 /dev/nvme0n1p4
+sudo emacs /etc/fstab
+/dev/nvme0n1p4 /home/silin/4GB ext4 defaults 0 0
+#+end_src
+in /etc/fstab, the command must be correct, otherwise the system can't booted.
+
+#+begin_src  sh :results output
+  w
+  last
+  passwd username  (will be asked the new password for username)
+  umask
+  cat < source1.c >> source2.c (add source1.c to the end of source2.c)
+
+
+#+end_src
+
+
+
 ** file management
 
 在~内找filename的文件
@@ -175,14 +203,19 @@ curl ifconfig.me
 ** grep sort
 grep -n "xxx" ./test.txt
 sort (--reverse -t " " -k 3 ) test.csv
-** soft link 
+** link 
+softlink 
+#+begin_src 
 ln -s filename linkname // 快捷方式
+ln -s sourcefile softlinkname
 filename加上绝对路径，linkname被移动后，仍能访问访问文件
-
-** hard link
+#+end_src
+ hard link
+#+begin_src 
 ln filename linkname   //硬链接
 不占用磁盘空间，重复连接到文件的inode点。
 可以在不同地方通过硬连接对文件进行操作
+#+end_src
 
 ** cd to program with which
 cd $(dirname $(which cling))
@@ -506,6 +539,12 @@ sudo apt-get install libmpv-dev mpv
 #+begin_src 
 Alt to open the menubar,
 Ansicht Anpassen to setting ungelesen
+#+end_src
+
+#+begin_src 
+For Filter:
+cd ~/.thunderbird/4r373mm9.default-release/ImapMail/imap.gmail.com
+import msgFilterRules.dat to Gmail
 #+end_src
 
 ** EverSync
@@ -1135,38 +1174,3 @@ git push
 
 #+END_SRC
 
-* note                                                                :crypt:
------BEGIN PGP MESSAGE-----
-
-jA0ECQMCZnPhy397Vjz/0uoBN1HthbTwBC8Lz4oWahdDirG0DCK40qKx5LV5SwXP
-XjbEuvTJKxhCRuA4eeqgAqhCNuusbhqrGwk8G8DGMuFVvuogC4fKbmO6RSyAwrkh
-S8OZfJ6ZibPmlVIQW4vOwNTlLMm3ttOnvnHhRzgKNHIT+t19qBDnyOKAT0KfTDR7
-vdom6Fp7/8PkmMLO8ZehU/U5+rPr+Y/d0g958TchYGQQDyr2BW+rAKkhsMfjLGBO
-OfGjG8xg0Xfj+2NPB3nITz8q7Y7H6Q6TaaP9s+HTPUTv6n3GxLXoJnFbXEIwvt22
-FbN+oRdpw1S/gSHm/Plse9MxSGgWNrLYHIFTIyIqqxewxGq5HI/0dGqsD6oyb55p
-G9sPzWiuokgibMSOLtK4HEiCPmAtzuW5EqWuVEq72r599lHHSWJmmKHK2c0wUmLB
-FCpQJEItJpel+UjVc8JQ1enpfjaspP5HzTZNRU+KtAEtqZeQenGGAzBGGKqVw3UE
-RmyIQh4/1de6A3Pin2ZfQ+4rYB+HEKKBR5/qo0Vh4XmGyLV/pwI21NYyp+15dwo9
-Fv2QVABKq6hJFWIPD8pyORhKJFgEVD4/+U3oP3mjJpcSEquGOIMc5SsHdjH7HMTv
-W4oz+6tLTdo+GivAj16aLq0V0SJRe0kr9Hhekf2WbVG1taCzTCIOrbqZpuLhHSiV
-we2+Q4QjLMJ/opfWPQ8g0n9bXmokCnIb/2O0ZYiX9zwZmSYKdX8jliQw9qwShll/
-1IZ9A+p8caGjPpPvDbQiB+ALk6jWGB4MYUllJXnT8e2sf3lUpSi+vIk//AKwLh5p
-YpTRjEfHoFvQzYmsBd71jKoiziMXaXrsVFZl1noJXOLSGTHAg1UqGZKJK28xGJOK
-dQb2Dm35sEudqOmom3Nqjbj53XMsNYULtsVPP6+tE8R07E5qutvJZYd069ccPJEA
-WFQn0ok2bhNbCLtalscsTjVLN3QjqxGO46qZ+ExjmIfGa26qXc3RPeZQwJmEiK4t
-IzNd9iDtkf1QGWtkdd2MVGXIRdc+LKnJ3GatRiRT+n/IU8dceQch9UEWJgdf5YWm
-R4dJgXtLyD/NWPgRn/el1ldBamuXPVQVfrPLzeKURe6SY+hpVqM2JUS8HIbLfa/Z
-YfSsUejCCNpZR7OMIfFyctD7SjpgTQwdTHzzWq9BRrFKupEFy0HGTBXYVYK5Mf/O
-uXRtxHBO+G7/532vICWf8xeMNBOonSEWEBrKmE1mMu8h2jjiNkMoRqgSg4VQg0dt
-HwisXF2sPlZUX/cEm7dHdbW26OBSHIowiDVtijHOg3VdQMp8gNfqB7caBX/nHrCv
-2HZNA7H1ndINmemLc2xKwWftzpMtMcx99aj3lwzd/gsjwKnHEVHz13bsSA/knraO
-x+NnHjxYG6bwFX/T6BYcjtm7n0xke5lfYl8/UCMgAttnUS5xtI0e8YVXaH7o6JOT
-pUvrBrx/a3hKYBSRbgLHOIqq59uxxAn983Po/kOnrCkvnIw44vih02D0WzO6qBcs
-NgJjK/0TQBOhQBWWFJ2xwnyf0nUdenXE8mqxXhKGYtINDnkuRC/g+YMqoPOSPoVl
-IQ9NCSgHOmwTYOnJk+FGobV6UKbfqOi8KJjyNSWxMSBwwTC6BTUafOXnuf2vVVtH
-gIOJEpsjBqZR++ynrt2QKoOCsxeXf3CMkg8aU1S7BK6Tv42ms/czQEp86WuniuSz
-+UcDXjcxNt77w9wk+9Ypj1OHmag0oQ1tFMdT8L8Gs5nCI20n7Rr87Daqep9kr7Fl
-wTvbp2i4CNFrixtpKsQAVT/+QLsH9UOJbUN5FwY/Ldyhs9Xhp07sSj/OhTjVM2Sf
-Rf+xpNZfp2cjQWUE
-=AXxO
------END PGP MESSAGE-----
