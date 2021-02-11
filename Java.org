@@ -1,10 +1,10 @@
 #+TITLE: Java
 #+OPTIONS: num:nil
 #+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
-#+STARTUP: content
-* stdlib
-** StdInt echo
-#+begin_src java
+#+STARTUP: overview
+* java Settings
+** StdInt echo with stdlib
+#+begin_src java  :classname test
   class test
   {
       public static void main(String[] args) {
@@ -18,30 +18,27 @@
   }
 #+end_src
 
+
+download : [[https://introcs.cs.princeton.edu/java/stdlib/][stdlib herunterladen]]
 #+begin_src 
-
-download : https://introcs.cs.princeton.edu/java/stdlib/
 add this to classpath: export CLASSPATH=.:/home/sx/Documents/Java/classpath/*
-
+emacs should started by terminal, in order to inherit the envirement variables
 M-x compile
 javac test.java && echo 2 3.9803 |java test
 #+end_src
 
-* java Settings
-** execute in Emacs for separate packages
+** execute a single java file  in Emacs in a packages 
 #+BEGIN_SRC 
 cd ./../../../../ && javac -d . com/jimmysun/algorithms/chapter1_1/Ex37.java  && java com/jimmysun/algorithms/chapter1_1/Ex37
 #+END_SRC 
 ** Entpacken
 jar xvf date.jar
 ** Notes
-
 %o %d %x %f Integer.toBinaryString(a)
 用补码来记录正数和负数，0 to 127 to -128 to -1 to 0 .....
 小数浮点型float要加f, 否则是double
 
-** JAVA_HOME
-
+** find JAVA_HOME
 which java just a link
 #+begin_src sh
 which java 
@@ -67,7 +64,18 @@ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'
 #+RESULTS:
 : java.home = /usr/lib/jvm/java-11-openjdk-amd64
 
-* Tpye Conversion Error
+** package 
+在同一类中，可以直接调用彼此的方法和属性，在同一包中，如果要调用其他类
+的方法，要指明类的地方
+** jar execution
+java -jar 执行jar包,不须指定启动类的入口，程序指定了main class 的入口
+java -jar  xxx.jar
+
+java -cp  执行jar包,须要指定启动类的入口，程序没有指定main class 的入口
+java -cp /target/xxxx.jar  com.mycompany.app.App
+
+* Java programmierung
+** Tpye Conversion Error
 #+BEGIN_SRC java :classname Type_Conversion_Error :results output
   class Type_Conversion_Error
   {
@@ -90,39 +98,82 @@ java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home'
 : d
 : d
 
-* String
+** String als final 
 #+begin_src java
   String s = "hallo";
   System.out.println(s.hashcode());
 #+end_src
 s 是用private final char[] 储存的，不能更改，可用hash码检验
 
-* reflection 
-
-#+begin_src java
-class test
+** Random_uniform
+#+BEGIN_SRC java :classname StdRandom_uniform :results output
+import java.util.*;
+class StdRandom_uniform
 {
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
-		
-	Class cls1 = String.class;
-	System.out.println(cls1.hashCode());
-	
-	String s = "Hello";
-	Class cls2 = s.getClass();
-	System.out.println(cls2.hashCode());
-
-
-	Class cls3 = Class.forName("java.lang.String");
-	System.out.println(cls3.hashCode());
-	
+	int a = StdRandom.uniform(10);
+	System.out.println(a);
     }
 }
 
-#+end_src
 
-* Array
-** find a element in array and print out
+#+END_SRC
+
+#+RESULTS:
+
+** toBinaryString & toString
+#+BEGIN_SRC java :classname Binary :results output
+class Binary
+{
+    public static void main(String[] args)
+    {
+	int  x = Integer.MAX_VALUE;
+	System.out.println(x);
+	String s = Integer.toBinaryString(x);
+	System.out.println("0"+s);
+
+	int y = x +1;	
+	String ss = Integer.toBinaryString(y);	
+	System.out.println(y);
+	System.out.println(ss);
+
+    }
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+: 2147483647
+: 01111111111111111111111111111111
+: -2147483648
+: 10000000000000000000000000000000
+** null class 
+return its reference
+#+BEGIN_SRC java :classname null_class :results output
+
+class null_class
+{
+    public static void main(String[] args)
+    {
+        P p = new P();
+        System.out.println(p);
+    }
+}
+
+class P{
+    public P(){
+    }
+}
+
+#+END_SRC
+
+#+RESULTS:
+: P@d716361
+
+** Array
+*** find a element in array and print out
 
 #+BEGIN_SRC java  :results output :classname test
 
@@ -160,7 +211,7 @@ class test
 
 #+RESULTS:
 
-** clone array
+*** clone array
 #+BEGIN_SRC java  :classname copyarray :results output  
   class copyarray
   {
@@ -209,7 +260,7 @@ class test
 : a2 will still the same
 : 1 2 3 4 5 6 7 
 
-** generate a random array
+*** generate a random array
 #+BEGIN_SRC java  :classname rarray
 import java.util.*;
 class rarray
@@ -249,8 +300,7 @@ class rarray
 
 #+END_SRC
 
-* 2DArray
-** 2Darray of class Instance
+*** 2Darray of class Instance
 #+BEGIN_SRC java :classname multiDiaClass :results output
   class multiDiaClass
   {
@@ -290,8 +340,91 @@ class rarray
 : In this class  n is 7 
 : In this class  n is 8 
 : In this class  n is 9 
+** 匿名类
+在形参内，new 一个类，不用赋予引用名，并可以重写内部方法
+** Annotation
+修饰方法，可以有成员变量，default
 
-* ArrayList
+元注解
+| @Retention  | Source, Class, RunTime |
+| @Target     | 确定可修饰的类型       |
+| @Documented | 生成Javadoc文档        |
+
+** HashMap
+数组，链表，红黑树
+1， 如果key的hash没有重复，则放入
+2，如果hash有相同，比较key值，无重复也放入
+3，如果key有重复，则改变该value
+
+** Generic
+对一个对象设定某一类别，确保类型安全
+
+** Collections
+比较与数组，优势很大
+contains(obj) 会调用obj的equals方法，对于自定义的类，要重写该类的equals。
+Iterator hasNext next()
+
+** Lambda
+实现了抽象方法（接口）的具体实例化
+
+** equals and == 
+== 对与基本类型，比较值，  对于引用类型来说是比较的是引用是否一样
+equals 如无重写则和== 一样，如果重写，则按照重写，一般比较个特性内容是否一样
+
+** 函数式接口
+只有一个抽象方法，可以使用lambda简化很多。
+
+** 方法引用
+Lambda表达式的简化，
+当对于Lambda表达式的操作已经有现成的实现方法后，调用此方法
+1, 对象：：非静态方法（实例方法）
+2, 类：： 静态方法
+3, 类：：非静态方法
+Cosumer 有唯一方法 accept()
+Supplier有唯一方法 get()
+
+** 比较
+*** Comparable
+要对自定义的类按照某个特性自然排序，
+可以在该类中实现此接口，并重写CompareTo方法
+返回 1, 0, -1
+
+*** Comparator
+特制某种临时的排序方式，可在
+形参的类变量中用匿名类来重写Compare方法
+
+** reflection 
+动态的Reflction API
+可以获得对象的任意内容，并加以操作
+通过Class类类创建实例
+getConstructor
+getClardedMethod
+
+用途：在运行时才决定的类创建，带有动态语言的特征
+
+#+begin_src java
+class test
+{
+    public static void main(String[] args) throws Exception
+    {
+		
+	Class cls1 = String.class;
+	System.out.println(cls1.hashCode());
+	
+	String s = "Hello";
+	Class cls2 = s.getClass();
+	System.out.println(cls2.hashCode());
+
+
+	Class cls3 = Class.forName("java.lang.String");
+	System.out.println(cls3.hashCode());
+	
+    }
+}
+
+#+end_src
+
+** ArrayList
 #+BEGIN_SRC java :classname ArrayListl :results output
   import java.util.ArrayList;
   class ArrayListl
@@ -311,1095 +444,65 @@ class rarray
 #+RESULTS:
 : [niahoma]
 
-* Random
-** Random_uniform
-#+BEGIN_SRC java :classname StdRandom_uniform :results output
-import java.util.*;
-class StdRandom_uniform
-{
-    public static void main(String[] args)
-    {
-	int a = StdRandom.uniform(10);
-	System.out.println(a);
-    }
-}
-
-
-#+END_SRC
-
-#+RESULTS:
-
-* toBinaryString & toString
-#+BEGIN_SRC java :classname Binary :results output
-class Binary
-{
-    public static void main(String[] args)
-    {
-	int  x = Integer.MAX_VALUE;
-	System.out.println(x);
-	String s = Integer.toBinaryString(x);
-	System.out.println("0"+s);
-
-	int y = x +1;	
-	String ss = Integer.toBinaryString(y);	
-	System.out.println(y);
-	System.out.println(ss);
-
-    }
-}
-
-
-#+END_SRC
-
-#+RESULTS:
-: 2147483647
-: 01111111111111111111111111111111
-: -2147483648
-: 10000000000000000000000000000000
-
-* class
-** null class 
-return its reference
-#+BEGIN_SRC java :classname null_class :results output
-
-class null_class
-{
-    public static void main(String[] args)
-    {
-        P p = new P();
-        System.out.println(p);
-    }
-}
-
-class P{
-    public P(){
-    }
-}
-
-#+END_SRC
-
-#+RESULTS:
-: P@d716361
-
-* interface 接口
+** interface
 需要被实现，以添加某些接口设定特定的功能
-* abstract class 抽象类
+** abstract class 抽象类
 抽象类中的抽象方法不能实现，只能申明，也不能实列化
 只有在其子类中实现后，才能使用
 
 可以用来作接口 
-
 需要被继承，获得主体功能，但是可以被重写和添加自己需要的特定功能
+如果有一个抽象方法未被重写，就只能保持为抽象类
 
-* intern class 内部类
+** intern class 内部类
 内部类可以访问外部类的成员和方法，反之不行
 静态类要依靠外部类的实列化对象来实列化
 
-* static class 静态类
+** static class 静态类
 可以直接实列化
 也可以直接调用，例如Math.abs(-2)
-* package 
-在同一类中，可以直接调用彼此的方法和属性，在同一包中，如果要调用其他类
-的方法，要指明类的地方
+** Stream
+.Stream
+.Parallelstream
+stream.of
+stream.interator
+stream.generate
+.filter
+.limit
+.skip
+.distinct
+.map
+.flatMap
+.sorted()
+.sorted(lambda expression)
+.anyMatch
+.allMatch
+.noneMatch
+.findFirst
+.findAny
+.count
+.min
+.max
+.ForEach()
+.reduce()
+** 多肽
+*** 概念
+父类引用指向子类实体对象
+当调用时，如果指向的子类有相同名的方法，执行的是指向子类的方法
+父类引用: 作形参      子类实体对象: 作实参
 
-* 多肽
-** 重写
+不适用于属性
+
+*** 重写
 编译时：
 程序内，同函数名，不同输入变量
-** 重载
+*** 重载
 运行时：
 类内，同方法名，不同输入变量
-** 重调
+*** 重调
 执行时：(invoke)
 库内，同方法名，不同输入变量
 toString
-
-* Factory mode
-** one product one factory many many design
-一个产品，在一个工厂里有多个设计实现
-
-** one product many factory many design
-一个产品，在多个各自的工厂里，有自己特有的设计实现
-
-** many  product many factory many design
-对于多个产品，在多个各自的工厂里，有自己特有的对每个产品的设计实现
-
-* jar execution
-java -jar 执行jar包,不须指定启动类的入口，程序指定了main class 的入口
-java -jar  xxx.jar
-
-java -cp  执行jar包,须要指定启动类的入口，程序没有指定main class 的入口
-java -cp /target/xxxx.jar  com.mycompany.app.App
-
-* apache2 
-  sudo apt install apache2
-  sudo systemctl restart apache2
-  cd /etc/apache2/ 
-  1. ports.conf -> add new post
-  2. appache.conf ->  add new folder
-  3. cd sites-available emacs 000-default.conf -> add server of post and folder
-
-* Nginx with php 
-  sudo apt install nginx
-  sudo systemctl restart nginx
-  sudo apt install php
-  sudo apt install php-fpm
-  check if exit: /var/run/php/php7.2-fpm.sock
-  
-  emacs /etc/php/7.2/fpm/pool.d/www.conf  -> listen = /run/php/php7.2-fpm.sock
-  
-  cd /etc/nginx/sites-available
-    emacs default 
-
-#+begin_src 
-list  post
-root  folder
-location ~ \.php${
-	 include snippets/fastcgi-php.conf;
-	 fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-	 include fastcgi_params;
-}
-
-
-#+end_src
-
-vollstandig
-#+begin_src 
-################### 9020 FOR php ##################################################################################
-server {
-	listen 9020;
-	listen [::]:9020;
-
-	# SSL configuration
-	#
-	# listen 443 ssl default_server;
-	# listen [::]:443 ssl default_server;
-	#
-	# Note: You should disable gzip for SSL traffic.
-	# See: https://bugs.debian.org/773332
-	#
-	# Read up on ssl_ciphers to ensure a secure configuration.
-	# See: https://bugs.debian.org/765782
-	#
-	# Self signed certs generated by the ssl-cert package
-	# Don't use them in a production server!
-	#
-	# include snippets/snakeoil.conf;
-
-	root /home/sx/Documents/nginx9020;
-
-	# Add index.php to the list if you are using PHP
-	index index.html index.htm index.nginx-debian.html index.php;
-
-	server_name _;
-
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
-	}
-
-	# pass PHP scripts to FastCGI server
-	#
-	location ~ \.php$ {
-		include snippets/fastcgi-php.conf;
-	
-		# With php-fpm (or other unix sockets):
-		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-		# With php-cgi (or other tcp sockets):
-		include fastcgi_params;
-		#fastcgi_pass 127.0.0.1:9000;
-	}
-
-	# deny access to .htaccess files, if Apache's document root
-	# concurs with nginx's one
-	#
-	#location ~ /\.ht {
-	#	deny all;
-	#}
-}
-
-
-
-#+end_src
-  
-* WordPress Web development in AWS
-** 构建后台
-没事不要执行该代码
-#+begin_src 
-cd ~/Documents/web/key_aws
-ssh ubuntu@3.124.205.43 -i pass1aws.pem
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install apache2
-sudo systemctl status apache2
-sudo systemctl enable apache2
-sudo apt install mariadb-server mariadb-client
-sudo systemctl start mariadb
-sudo systemctl status mariadb
-sudo mysql_secure_installation ...
-sudo systemctl restart mariadb
-sudo apt install php php-mysql php-gd php-cli php-common
-sudo apt install wget unzip
-sudo wget https://wordpress.org/latest.zip
-sudo unzip latest.zip
-sudo cp -r wordpress/* /var/www/html/
-cd /var/www/html/
-sudo chown www-data:www-data -R /var/www/html/
-sudo rm index.html 
-## Now go to the IP webseit, when need database, do so
-sudo mysql -u root -p
-Enter
-##  create database wordpress;
-create database wordpress;
-create user "wpadmin"@"%" identified by "wpadminpw";
-grant all privileges on wordpress.* to "wpadmin"@"%";
-exit;
-#+end_src
-back to the IP webseit,
-pass the database , username and password,
-set username and password for wordpress,
-到此，可以用IP 地址访问前端和后台了
-** 解析域名
-route53, 用域名创建NS
-A-IPV4,名称为空， 值为IP
-CNAME，名称www, 值为域名
-再将A 和CNAME 放到namecheap的域名的DNS管理中
-** ssl
-#+begin_src 
-sudo a2enmod ssl
-sudo systemctl restart apache2
-cd ~
-wget https://dl.eff.org/certbot-auto
-chmod a+x certbot-auto
-sudo ./certbot-auto --apache....
-#+end_src
-go to https://www.sslshopper.com/ssl-checker.html and check you domina
-
-** scp
-transfer file to linux instance of CE2
-#+begin_src 
-scp -i pass1aws.pem init.el ubuntu@3.124.205.43:.emacs.d
-#+end_src
-
-** external html
-- 将文件传到部署根目录
-- 复制文件xxx.html 为page-xxx.php到应用主题根目录
-- 创建页面，先只写标题，保存后改别名，slug 为xxx
-- 发布后，将页面设为菜单就能访问
-
-* Web Design Envirement in Emacs
-** lsp-mode
-** lsp-java
-** dap-mode
-
-** Spring Boot
- Emacs : M-x lsp-java-springboot-generate
- after build the project, it can be compiled by Maven,and run
-
-** project build digraph
- #+BEGIN_src
-   digraph diagramm {
-           Emacs  [shape=box,color=red]
-           LspJavaSpringInitizer [shape=box,color=red]
-           Config [shape=box,color=red]
-           dapDebug [shape=box,color=red]
-           Programmierung [shape=box,color=red]
-           Terminal ->  Maven建包;
-           Maven建包 -> Maven加依赖pom;
-           Maven加依赖pom -> OpenEmacsFile;
-           OpenEmacsFile ->   Programmierung;
-           Programmierung -> MavenCompile;
-           MavenCompile -> MavenPackage;
-           MavenCompile -> dapDebug[label = "也可./mvnx"];
-           MavenPackage -> 执行jar包;
-           MavenPackage -> dapDebug;
-           执行jar包 -> dapDebug;
-           Emacs -> LspJavaSpringInitizer;
-           LspJavaSpringInitizer -> Config;
-           Config -> Programmierung;
-           Programmierung -> dapDebug;
-           dapDebug -> Webbroser;
-   }
- #+END_src
-
-#+begin_src 
-1 add the to the above SRC begin:  dot :file ../sysconf/foto/webbuild.png
-2 delete the output :  [[file:../sysconf/foto/webbuild.png]]
-3 push the sysc repository, because the foto is located in it
-4 add the link from sysc repository  https://github.com/scofild429/sysc/blob/master/foto/webbuild.png
-#+end_src
-
-[[https://github.com/scofild429/sysc/blob/master/foto/webbuild.png][webbuild.png]]
-
-** appeared Problem
-*** server is not startup
- 1, workspace 有重叠和包含，
- 2, 需要重启 lsp mode
-*** can't find the main class to start project
- mvn compile 出现问题，大多数时候是依赖的问题
-
-*** 没有对应的补全
- mvn 依赖的version 不同会有不同的包，补全也不同
-
-* HTML
-** link
-HTML 链接是通过 <a> 标签进行定义的。
-在 href 属性中指定链接的地址
-图像的名称和尺寸是以属性的形式提供的。
-HTML 标签对大小写不敏感
-| a   | link      |
-| img | images    |
-| p   | paragraph |
-|     |           |
-#+begin_src html
-<a href="http://www.w3school.com.cn">This is a link</a>
-<img src="w3school.jpg" width="104" height="142" />
-<p>This is my first paragraph.</p>
-#+end_src
-
-** general
-|---------+-------------------------------+----------------------|
-| M ;     | comment/uncomment lines       | 反/注释              |
-| C-c C-f | toggle folding on a tag/block | 打开/关闭块          |
-| C-c C-i | indent entire buffer          | 规范缩进整个buffer   |
-| C-c C-m | mark and expand               | 选中整个所在的块内容 |
-| C-c C-s | insert snippet                | 插入函数操作片段     |
-|         |                               |                      |
-
-
-
-
-* Maven
-** package all the dependencies together as a jar 
-if I want to package them to a package to a jar
-[[https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven][starkoverflow hitting]]
-and this plugin to pom.xml
-#+begin_src 
-<build>
-  <plugins>
-    <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>fully.qualified.MainClass</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
-#+end_src
-
-package and Execute 
-- run with : mvn clean compile assembly:single
-- mvn package
-and now this jar file can be called
-- java -cp target/xxxx....xx.jar com.mycompany.app.App 
-** customize locally archetype
-to the local repository
-#+begin_src sh
-  cd ~/.m2/repository/org/apache/maven/archetypes/maven-archetype-quickstart/1.4/
-#+end_src
-open the jar file, and change the pom.xml
-
-* Spring
-** xml方式
-*** IOC & DI
-bean 创建普通类 ：拿到IOC权力后，可有3种DI
-- Set注入 利用set方法
-- cost注入 利用构造方法，可和set 注入混用
-- auto注入 byTpye / byName 
-
-bean工厂
-bean也可以创建配置类，方法一样，但是该类的实现配置依赖要完整
-
-模式： 单例和多例：生命周期：创建和销毁时间
-*** AOP 
-
-切入点 和 增强
-动态代理，(JDK，接口) (CGLib, 接口)
-
-前置，后置，环绕
-class 1 -> Bean 1
-Bean 1 + pointcut(expression,within,args) + class 2 -> Bean 2
-
-** 注解方式
-*** 申明 
-Service  Repository Component Controller Transaction
-
-*** 注入
-Resource(输入)
-Autowire (类型)
-
-*** AOP 
-Aspect, 同样3种
-
-** 配置类方式
-
-* SpingMVC
-* Spring Boot
-Emacs : M-x lsp-java-springboot-generate
-after build the project, it can be compiled by Maven,and run
-
-* MySQL
-** 事务隔离
-1 可同时访问修改   脏读
-2 隔离访问        不可重返读
-3 单人访问        幻读
-** single java file connect to mysql
-
-1.download the driver to a current to java file
-
-[[https://jar-download.com/artifacts/mysql/mysql-connector-java][official web]], and in my case 
-
-mysql-connector-java-8.0.20.jar
-
-2.add the current path to the CLASSPATH
-
-export CLASSPATH=mysql-connector-java-8.0.20.jar:.
-
-3.compile and connect
-** mvn project connect to mysql
-*** execute in emacs
-1. create mvn project
-2. find the plugin of mysql and add it to pom.xml
-3. programmierung 
-4. the connection can be call in the dabug of emacs
-M-x :dap-debug
-*** execute as a jar file
-if I want to package them to a package to a jar
-[[https://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven][starkoverflow hitting]]
-and this plugin to pom.xml
-#+begin_src 
-<build>
-  <plugins>
-    <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>fully.qualified.MainClass</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
-#+end_src
-and run with : mvn clean compile assembly:single
-
-and then mvn package
-
-can be called by jar file
-
-java -cp target/xxxx....xx.jar com.mycompany.app.App 
-** springboot
-just call the plugins at the start
-
-** 事务
-** 事务隔离
-** 范式
-** 连接池
-** 外键
-** 多表
-** single java file connect to mysql
-
-1. download the driver to a current to java file ,[[https://jar-download.com/artifacts/mysql/mysql-connector-java][official web]], and in my case 
-
-   - mysql-connector-java-8.0.20.jar
-
-2. add the current path to the CLASSPATH
-
-   - export CLASSPATH=mysql-connector-java-8.0.20.jar:.
-
-3. compile and connect
-
-** execute in emacs
-1. create mvn project
-2. find the plugin of mysql and add it to pom.xml
-3. programmierung 
-4. the connection can be call in the dabug of emacs
-M-x :dap-debug
-* JDBC
-- Driver
-- connection
-- mysql
-- execute
-- statement
-- preperedstatement
-- close
-
-* mybatis
-** framework
-*** springboot
-**** pom.xml 
-<dependency>
- <groupId>com.baomidou</groupId>
- <artifactId>mybatis-plus-boot-starter</artifactId>
- <version>3.3.0</version>
-</dependency>
-
-**** application.yml
-配置mybatis, 指示Mapper.xml的位置
-mapper-locations: classpath:mapper/*/*Mapper.xml
-
-***** Mybatias configuration(appeared.yml)
-| prppreties                               |
-| settings                                 |
-| typeAliases                              |
-| typeHanders                              |
-| plugins                                  |
-| envirements                              |
-| mapper(url, resource, class, Annotation) |
-|                                          |
-
-***** *Mapper.xml
-| query:                  | resultMap/resultType |
-| insert, update, delete: | parameterType        |
-
-
-**** Applicaton.java
-启动类, 指示bean扫描的位置
-@MapperScan(basePackages = {"com.sxt.system.mapper"})
-
-**** Route
-web requirement -> controller -> server -> serverIpm  ->
-*Mapper.xml(self def)
-自定义的在*Mapper.xml内找到数据库的入口，
-默认的可以直接调用。
-
-
-*** spring
-
-
-** 流程
-- 获取字节输入流
-- 构建SqlSessioFactory
-- 生产SqlSession
-- 执行Dao
-- 释放资源
-
-** 延迟加载
-** 缓存
-** 一级缓存
-SqlSession
-** 二级缓存
-SqlSessionFactory
-** 注解开发
-
-* redis
-  1. without password : redis-cli 
-  2. with password    : redis-cli -h localhost -p 6379 -a 123456
-  PING -> PONG
-
-* Shiro
-* Servlet
-* c3p0
-* Rruid
-* Bootstrap
-* JQuery
-** JQuery选择器
-
-|---------------------------+---------------+-------------|
-| elements chooser          | class chooser | id  chooser |
-| $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
-|                           |               |             |
-
-** CSS 选择器
-
-|------------------+---------------+-------------|
-| elements chooser | class chooser | id  chooser |
-| p, div, h2       | .test         | #test       |
-|                  |               |             |
-
-** operation function
-
-| toggle | fade   | slide  | animate    | stop     | clain       |
-| text   | html   | val    | attr       | append   | prepend     |
-| after  | before | remove | empty      | addclass | removeclass |
-| css    | width  | height | perent     | childen  | siblings    |
-| load   | get    | post   | noConflict |          |             |
-
-* IDEA
-** Jetbrain Settings
-
-|-------------------------+--------------------------------|
-| Toggle sticky Selection | 设置快捷键来设定开始mark的位置 |
-|                         |                                |
-
-** Ctrl
-
-|---------+------------------------+------------------------------|
-| Ctrl  + | expand                 | 展开代码                     |
-| Ctrl  - | Collapse               | 折叠代码                     |
-| Ctrl  d | compare the difference | 同打开文件比较代码           |
-| Ctrl  k | yank                   | yank                         |
-| Ctrl  y | paste                  | 粘贴                         |
-| Ctrl  a | active options         | 打开可用功能，例如创建新方法 |
-|         |                        |                              |
-
-** Alt
-
-|------------+---------------+----------------------|
-| Alt  t     | open terminal | 打开terminal         |
-| Alt  Enter | Generate/New  | 生成/新建            |
-| Alt  ;     | comment       | 注释行(单行不必选中) |
-| Alt  .     | go to define  | 查看定义             |
-| Alt  w     | cope          | 复制                   |
-| Alt  l     | reformat file | 格式化文件格式(缩进) |
-| Alt  y     | paste         | 粘贴                   |
-|            |               |                      |
-
-** Ctrl Alt 
-|------------------+--------------------------------+------------------|
-| Ctrl  Alt  ,     | close the main menu bar        | 关闭menu bar     |
-| Ctrl  Alt  f     | Full screen mode               | 全屏             |
-| Ctrl  Alt  m     | main menu                      | 关闭main menu    |
-| Ctrl  Alt  l     | line number                    | 行数             |
-| Ctrl  Alt  r     | run                            | run, debug, test |
-| Ctrl  Alt  del   | close project                  | 关闭项目         |
-| Ctrl  Alt  Spc   | extend Selection               | 扩展选取         |
-| Ctrl  Alt  u     | Undo                           | 撤销             |
-| Ctrl  Alt  Enter | external emacs                 | emacs            |
-| Ctrl  Alt  c     | new class                      | 新建类           |
-| Ctrl  Alt  p     | new file                       | 新建文件         |
-| Ctrl  Alt  b     | open Tool windows bar function | 打开周围的功能   |
-| Ctrl  Alt  v     | .var                           | 类型赋值         |
-| Ctrl  Alt  l     | reformat region                | 格式化文件块     |
-| Ctrl  Alt  i     | go to Implement                | 去实现类         |
-|                  |                                |                  |
-
-** Shift Alt 
-
-| shift   Alt   up   | move line up   | 行上移 |
-| shift   Alt   down | move line down | 行下移 |
-|                    |                |        |
-
-
-
-|----------+----------------+----------------|
-| C-x, C-c | close tab page | 关闭打开的文件 |
-
-* AJAX
-* Session und Cookie
-1. Browser send request to server with name, password...
-2. if the authentication is passed, server generate a SessionID,
-and search the results, giving back browser response(name, password,
-results Sessionid..) Sessionid will be saved in SERVER.
-3. get the response, browser save the name, password and Sessionid as 
-Cookie.
-4. send request again, browser get the name, password, and Sessionid
-   from Cookie, and send the requests
-5. server check the Sessionid only if possible, and send the results
-   and name, password again as response back to browser.
-
-Only the first time response, Sessionid will be send back to browser.
-
-* RuoYi-Vue
-** backup deployment
-*** redis
-#+begin_src 
-
-sudo apt install redis-server
-sudo snap install redis-desktop-manager
-
-sem /etc/redis/redis.conf
-bind 127.0.0.1
-requirepass 123456
-
-sudo systemctl restart redis-server
-or
-sudo service redis-server restart
-
-#+end_src
-
-*** mysql
-*** tomcat
-configuration for IDEA as local Tomcat
-
-*** schnitt
-redis
-mysql 
-uploadPath
-system log.path
-check localhost:8080
-
-*** ssh 
-set to be false
-*** dependence from jdk8
-
-#+begin_src 
-	    <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-#+end_src
-
-** frontend deployment
-*** build
-#+begin_src 
-cd ruoyi-ui
-npm run build:prod
-npm run build:stage
-cp -r dist/* ~/Documens/nginx9010/
-#+end_src
-*** 验证码 for nginx
-#+begin_src 
-#####################9010 NOT for php ############################################################################
-
-
-server {
-	listen 9010;
-	listen [::]:9010;
-
-	# SSL configuration
-	#
-	# listen 443 ssl default_server;
-	# listen [::]:443 ssl default_server;
-	#
-	# Note: You should disable gzip for SSL traffic.
-	# See: https://bugs.debian.org/773332
-	#
-	# Read up on ssl_ciphers to ensure a secure configuration.
-	# See: https://bugs.debian.org/765782
-	#
-	# Self signed certs generated by the ssl-cert package
-	# Don't use them in a production server!
-	#
-	# include snippets/snakeoil.conf;
-
-
-
-	# Add index.php to the list if you are using PHP
-
-
-	server_name _;
-
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		root /home/sx/Documents/nginx9010;
-		index index.html index.htm index.nginx-debian.html index.php;
-		try_files $uri $uri/ =404;
-	}
-
-	# deny access to .htaccess files, if Apache's document root
-	# concurs with nginx's one
-	#
-	#location ~ /\.ht {
-	#	deny all;
-	#}
-
-	location /prod-api/{
-			proxy_set_header Host $http_host;
-			proxy_set_header X-Real-IP $remote_addr;
-			proxy_set_header REMOTE-HOST $remote_addr;
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_pass http://localhost:8080/;
-		}
-
-        error_page   500 502 503 504  /50x.html;
-
-	location = /50x.html {
-            root   html;
-        }
-
-}
-
-#+end_src
-
-* Web Design Envirement
-** lsp-mode
-** lsp-java
-** dap-mode
-* appeared Problem
-** server is not startup
-1, workspace 有重叠和包含，
-2, 需要重启 lsp mode
-** can't find the main class to start project
-mvn compile 出现问题，大多数时候是依赖的问题
-
-** 没有对应的补全
-mvn 依赖的version 不同会有不同的包，补全也不同
-
-* deployment
-
-** local Nginx deployment
-
-
-sudo apt install nginx
-
-/etc/nginx/ 是其配置文件夹，里面有很多include文件，
-nginx 的默认设置在其中一个 default 文件里。
-本机html仓库 /var/www/html
-将项目放在此文件夹下，运行对于的端口即可
-本机开机后,该文件的会被自动部署,端口可见
-*** fire wall 80 port if necessary
-#+BEGIN_SRC 
-  add port :
-sudo apt install firewalld
-  sudo firewall-cmd --add-port=80/tcp --permanent
-  sudo firewall-cmd --remove-port=80/tcp --permanent
-   restart firewall:
-  sudo  firewall-cmd --reload
-   check port:
-  sudo  firewall-cmd --list-all
-#+END_SRC
-*** nginx control
-#+BEGIN_SRC 
-sudo apt systemctl stop nginx
-nginx -s stop
-sudo apt systemctl start nginx
-nginx -s reload
-#+END_SRC
-
-#+RESULTS:
-
-*** uninstall
-sudo apt-get purge nginx nginx-common
-
-
-** Docker envirement deployment
-
-|--------------------------------------------+-----------------|
-| comands                                    | expains         |
-|--------------------------------------------+-----------------|
-| docker images                              | 查看容器        |
-| docker pull nginx  [fn:nginx]              | 新增            |
-| docker run -d -p 80:80 nginx [fn:docker-v] | 开始，id， 后台 |
-| docker exec -it xxxxxx bash                | 前台进入，      |
-| docker commit xxxxxx newname               | 生成新容器      |
-| docker kill -s KILL xxxxxx                 | 关闭            |
-|--------------------------------------------+-----------------|
-
-
-[fn:nginx] 对于新到手的项目可以直接放到容器的nginx根目录（快速部署 /usr/share/nginx/html），可以在映射的
-本机端口进入
-
-
-[fn:docker-v] to my case:
-#+begin_src 
-sudo docker run -d -p 80:80 -v /home/sx/Documents/Java/ANANProject/layuimini/:/usr/share/nginx/html/ nginx
-#+end_src
-
-Beispile
-#+begin_src 
-
-sudo docker images
-sudo docker pull nginx
-sudo docker run -d -p 80:80 nginx -> id:xxxxxxx
-sudo docker exec -it -v /....../project:/usr/share/nginx/html xxxxxxx
-build in - > local host :80  
-#+end_src
-
-* Vue
-id 选择器的名字不能是数字
-** npm
-npm install 将会执行package.json 的设定，
-在IDAE里可以选中package.json 里的 build:prod字段，run
-
-
-** 操作
-vd 是vue里的data属性
-
-vm 是vue里的mothods方法
-
-ht 是html里的标签
-
-|------------------------------+-----------------------------+-------------------------------------|
-| {{vd}}                       | 占位                        |                                     |
-| v-text="vd"                  | 替换                        |                                     |
-| v-html="vd"                  | 替换并渲染                  |                                     |
-| v-bind:ht="vd"               | :ht="vd" 设置属性           | 可用3元表达式或者数据的元素对象指定 |
-| v-on:ht="vm"                 | @ht="vm"                    | on methode(可自定义)                |
-| v-mode="vd"                  | 只在表单中暴露vd,并操作     |                                     |
-| v-for="(item,index) in "vd"" | vd时vue中可迭代元素或在对象 |                                     |
-| v-for="i in 10"              | 1,,,,,9                     |                                     |
-| push                         | 后加                        |                                     |
-| unshift                      | 前加                        |                                     |
-| v-if                         | 删除不显示的元素            |                                     |
-| v-show                       | display 不显示的元素        |                                     |
-|                              |                             |                                     |
-|                              |                             |                                     |
-
-
-** 生命周期
-|---------------+----------------------------------------|
-| beforeCreate  | 加载vue系统构造，但是可以接触到Dom元素 |
-| created       | 加载自定义的data,mothods, filter.....  |
-| beforeMounte  | 创建特性在内存                         |
-| mounted       | 加载特性，渲染页面                     |
-| beforeupdate  | 更改特性                               |
-| updated       | 渲染更改的特性                         |
-| beforedestroy | 准备清除特性                           |
-| destroy       |                                        |
-|               |                                        |
-
-
-** component
-1, 用extends编写template
-2, 在component中编写template
-3, 在vue 外部，script模块中编写template
-4, 在vue的组件中使用变量和方法，必须在组件中用函数定义，
-
-* PHP
-** var
-变量在函数之外还是函数之内
-* MongoDB
-** open the mongodb service
-
-|-------------+-----------|
-| commonds    | functions |
-|-------------+-----------|
-| or          | $inc      |
-| in          | $mul      |
-| exist       | $rename   |
-| gl          | $set      |
-| sort        | $unset    |
-| limit       |           |
-| skip        |           |
-| /x/         |           |
-| /^x/        |           |
-| upsert      |           |
-| rename      |           |
-| getIndexs   |           |
-| createIndex |           |
-| dropIndex   |           |
-|             |           |
-
-
-#+begin_src sh :dir /sudo::
-sudo systemctl start mongod
-#+end_src
-
-** create database, collections, and drops 
-:admin  at the first step, we must login into one  database
-
-#+begin_src mongo  :db admin
-  show dbs;
-  use xiaoma;
-  db.createCollection("posts");
-  show collections;
-  db.posts.drop();
-  db.dropDatabase();
-#+end_src
-
-** create database, collections, and documents
-
-#+begin_src mongo  :db admin
-  use xiaoma;
-  db.createCollection("posts");
-  show collections;
-
-  db.posts.insert({ 
-      title: "my first blog",
-      content: "can be start"
-  });
-  db.posts.insert({ 
-      title: "my second blog",
-      content: "can be start now",
-      tag: ["unknow type"]
-  });
-
-  for(var i = 3;i<=10;i++){
-      db.posts.insert( {title :"this is my "+i+"th blog"});
-  };
-  db.posts.find();
-  db.posts.count();
-  db.posts.remove({});
-  db.posts.drop();
-  db.dropDatabase();
-#+end_src
-
-** backup and restore
-mongo xiaoma  : can just get in xiaoma database
-*** 01, create documents
-#+begin_src mongo :db admin
-  use xiaoma;
-  db.createCollection("posts");
-  show collections;
-
-  db.posts.insert({ 
-      title: "my first blog",
-      content: "can be start"
-  });
-  db.posts.insert({ 
-      title: "my second blog",
-      content: "can be start now",
-      tag: ["unknow type"]
-  });
-
-  for(var i = 3;i<=10;i++){
-      db.posts.insert( {title :"this is my "+i+"th blog"});
-  };
-
-  db.posts.find();
-  db.posts.count();
-
-#+end_src
-
-*** 02, dump
-#+begin_src sh
-  cd ~/Desktop/
-  mkdir mongobk
-  cd mongobk
-  mongodump -d xiaoma
-
-#+end_src
-
-
-*** 03, delete documents
-#+begin_src mongo :db admin
-  use xiaoma;
-  db.posts.remove({});
-  db.posts.find();
-  exit;
-#+end_src
-
-
-*** 04, restore
-#+begin_src sh
-cd ~/Desktop/mongobk
-mongorestore --drop
-#+end_src
-
-*** 05, check
-#+begin_src mongo :db admin
-  use xiaoma;
-  db.posts.find();
-  db.posts.drop();
-  db.dropDatabase();
-#+end_src
-
-
 
 * Interview java
 ** 1. JDK 和 JRE 有什么区别？
@@ -5650,5 +4753,65 @@ jconsole 和 jvisualvm 这两款视图监控工具。
   #+BEGIN_SRC
     -XX:+PrintGCDetails：打印 gc 详细信息。
   #+END_SRC
+
+* IDEA commands
+** Jetbrain Settings
+|-------------------------+-------------------------------------+--------------------|
+| Toggle sticky Selection | C-spc                               | 设定开始mark的位置 |
+|-------------------------+-------------------------------------+--------------------|
+| C-x, C-c                | close tab page                      | 关闭打开的文件     |
+| shift   Alt   up        | move line up                        | 行上移             |
+| shift   Alt   down      | move line down                      | 行下移             |
+|-------------------------+-------------------------------------+--------------------|
+| Ctrl  (alt/shift)  +    | Folding/expand (recursively/ all)   | 展开代码           |
+| Ctrl  (alt/shift)  -    | Folding/Collapse (recursively/ all) | 折叠代码           |
+| Ctrl  d                 | compare the difference              | 同打开文件比较代码 |
+
+| Ctrl Shift o | load Maven file |
+| Alt  Enter   | show die Action |
+| F10          | Consturctor     |
+|              |                 |
+** Alt
+
+comand mode
+|--------------+---------------------+----------------------|
+| Alt  t       | open terminal       | 打开terminal         |
+| Alt Einfg    | Generate /New       | 生成/新建            |
+| Ctrl Einfg   | New                 | 新建                 |
+| Alt  ;       | comment line        | 注释行(单行不必选中) |
+| Alt  shift ; | comment block       | 注释块               |
+| Alt  w       | cope                | 复制                 |
+| Alt  l       | reformat file       | 格式化文件格式(缩进) |
+| Alt  y       | paste               | 粘贴                 |
+| Ctrl  y      | paste  from history | 粘贴                 |
+| Alt  i       | go to Implement     | 去实现类             |
+| Alt  f       | go to File          | 去文件               |
+| Alt  c       | go to Class         | 去类                 |
+| Alt  s       | go to Symbol        | 去符号定义           |
+| Alt  g       | go to line          | 去行                 |
+| Alt  .       | go to Declaration   | 去查看定义           |
+| Alt  d       | database            |                      |
+** Ctrl Alt 
+|------------------+--------------------+--------------------|
+| f11              | Full screen mode   | 全屏               |
+| Ctrl  Alt  m     | main menu          | 关闭/打开main menu |
+| Ctrl  Alt  l     | line number        | 行数               |
+| Ctrl  Alt  r     | run                | run, debug, test   |
+| Ctrl  Alt  del   | close project      | 关闭项目           |
+| Ctrl  Alt  Spc   | extend Selection   | 扩展选取           |
+| Ctrl  Alt  u     | Undo               | 撤销               |
+| Ctrl  Alt  Enter | external emacs     | emacs              |
+| Ctrl  Alt  c     | new class          | 新建类             |
+| Ctrl  Alt  b     | Tool Window Bars   | 打开周围的功能     |
+| Ctrl  Alt  v     | introduce Variable | 自动生成类型赋值   |
+|                  |                    |                    |
+
+** Debug
+Step over
+Step into
+Step force into
+Step Out
+return
+Stop
 
 

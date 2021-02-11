@@ -1,0 +1,492 @@
+#+TITLE: JS
+#+OPTIONS: num:nil
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
+#+STARTUP: overview
+
+* JS
+** set array 去重 求交 
+#+begin_src js :results output
+  let arr = [1,2,3,4,5,6,7,4,5,6];
+  let arr2 = [2,4,6];
+  let result = [...new Set(arr)].filter( item => new Set(arr2).has(item));
+  console.log(result);
+#+end_src
+
+#+RESULTS:
+: [ 2, 4, 6 ]
+
+** Class
+*** ES5
+
+class mit generate function
+#+begin_src js :results output
+  function Phone(brand, price){
+      this.brand = brand;
+      this.price = price;
+  }
+
+  Phone.prototype.call = function(){
+      console.log("I want to make a phone");
+  }
+
+  let Huawei = new Phone("HuAwei", 5998);
+
+  console.log(Huawei)
+
+#+end_src
+
+#+RESULTS:
+: Phone { brand: 'HuAwei', price: 5998 }
+
+*** ES6
+
+#+begin_src js :results output
+  class Phone{
+      constructor(brand, price){
+          this.brand = brand;
+          this.price = price;
+      }
+
+      call(){
+          console.log("I will make a call");
+      }
+  }
+
+  let onePlus = new  Phone("1+", 2000);
+  console.log(onePlus);
+
+#+end_src
+
+#+RESULTS:
+: Phone { brand: '1+', price: 2000 }
+
+** setTimeout
+#+begin_src js :results output
+
+  setTimeout(  function(){console.log("1090kjk0")}    , 2000);
+  setTimeout(  ()=>{console.log("10900")}             , 2000);
+
+  setTimeout(  ()=>{      } , 2000);
+
+#+end_src
+
+#+RESULTS:
+: 1090kjk0
+: 10900
+** no name function
+#+begin_src js :results output
+  (()=>{console.log("testtest") })();
+#+end_src
+#+RESULTS:
+: testtest
+
+#+begin_src js :results output
+  (function(){console.log("testtest")})()
+#+end_src
+
+#+RESULTS:
+: testtest
+
+* ES6
+** 数组和对象可以被解构的赋值
+** 模板字符串可以换行，拼接
+** 函数的定义和调用都要指定类型
+** 箭头函数
+相当静态的this,
+不能构造对象实例化
+#+begin_src js :results output :exports both
+let qual = n => n*n
+#+end_src
+
+#+RESULTS:
+
+
+** 迭代器
+** 生成器
+
+* callback
+** callback named function 
+#+begin_src js :results output
+   var test = function(msg, callback){
+       setTimeout(function(){ console.log(msg);   }, 2000);
+       //console.log(msg);
+       callback(); 
+   }
+  function  justcall(){
+       console.log("juskjktcallkkjk to i ");
+   }
+  var just = function(){
+       console.log("juskjktcallkkjk to i ");
+   }
+   test("nisho 0p", justcall)
+   test("nisho 0p", just)
+#+end_src
+
+#+RESULTS:
+: juskjktcallkkjk to i 
+: juskjktcallkkjk to i 
+: nisho 0p
+: nisho 0p
+
+** callback no named function
+#+begin_src js :results output
+  var test = function(msg , didi){
+//      setTimeout( ()=>{   console.log(msg);   } , 2000);
+      console.log(msg);
+      didi(msg);
+  }
+
+  test("kdjfi", msg => {
+      console.log(msg);
+  });
+#+end_src
+
+#+RESULTS:
+: kdjfi
+: kdjfi
+
+** no named function callback no named function
+#+begin_src js :results output
+  (
+      (msg , didi) => {
+          console.log(msg);
+          //          setTimeout(  ()=>{    didi(msg);  } , 2000);  // can only be used in  function body
+          didi(msg); 
+      }
+  )
+  ( "kdiikkjkjk",
+    msg => {
+        console.log(msg);
+    }
+  )
+#+end_src
+
+* Module programmierung
+
+* AJAX
+* Vue
+id 选择器的名字不能是数字
+** npm
+npm install 将会执行package.json 的设定，
+在IDAE里可以选中package.json 里的 build:prod字段，run
+
+
+** 操作
+vd 是vue里的data属性
+
+vm 是vue里的mothods方法
+
+ht 是html里的标签
+
+|------------------------------+-----------------------------+-------------------------------------|
+| {{vd}}                       | 占位                        |                                     |
+| v-text="vd"                  | 替换                        |                                     |
+| v-html="vd"                  | 替换并渲染                  |                                     |
+| v-bind:ht="vd"               | :ht="vd" 设置属性           | 可用3元表达式或者数据的元素对象指定 |
+| v-on:ht="vm"                 | @ht="vm"                    | on methode(可自定义)                |
+| v-mode="vd"                  | 只在表单中暴露vd,并操作     |                                     |
+| v-for="(item,index) in "vd"" | vd时vue中可迭代元素或在对象 |                                     |
+| v-for="i in 10"              | 1,,,,,9                     |                                     |
+| push                         | 后加                        |                                     |
+| unshift                      | 前加                        |                                     |
+| v-if                         | 删除不显示的元素            |                                     |
+| v-show                       | display 不显示的元素        |                                     |
+|                              |                             |                                     |
+|                              |                             |                                     |
+
+
+** 生命周期
+|---------------+----------------------------------------|
+| beforeCreate  | 加载vue系统构造，但是可以接触到Dom元素 |
+| created       | 加载自定义的data,mothods, filter.....  |
+| beforeMounte  | 创建特性在内存                         |
+| mounted       | 加载特性，渲染页面                     |
+| beforeupdate  | 更改特性                               |
+| updated       | 渲染更改的特性                         |
+| beforedestroy | 准备清除特性                           |
+| destroy       |                                        |
+|               |                                        |
+
+
+** component
+1, 用extends编写template
+2, 在component中编写template
+3, 在vue 外部，script模块中编写template
+4, 在vue的组件中使用变量和方法，必须在组件中用函数定义，
+* TS
+
+after change the tsconfig.json, use the command to compile ts to js continual.
+#+begin_src 
+tsc -watch
+#+end_src
+
+* JQuery
+** JQuery选择器
+
+|---------------------------+---------------+-------------|
+| elements chooser          | class chooser | id  chooser |
+| $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
+|                           |               |             |
+
+** CSS 选择器
+
+|------------------+---------------+-------------|
+| elements chooser | class chooser | id  chooser |
+| p, div, h2       | .test         | #test       |
+|                  |               |             |
+
+** operation function
+
+| toggle | fade   | slide  | animate    | stop     | clain       |
+| text   | html   | val    | attr       | append   | prepend     |
+| after  | before | remove | empty      | addclass | removeclass |
+| css    | width  | height | perent     | childen  | siblings    |
+| load   | get    | post   | noConflict |          |             |
+* HTML
+** link
+HTML 链接是通过 <a> 标签进行定义的。
+在 href 属性中指定链接的地址
+图像的名称和尺寸是以属性的形式提供的。
+HTML 标签对大小写不敏感
+| a   | link      |
+| img | images    |
+| p   | paragraph |
+|     |           |
+#+begin_src html
+<a href="http://www.w3school.com.cn">This is a link</a>
+<img src="w3school.jpg" width="104" height="142" />
+<p>This is my first paragraph.</p>
+#+end_src
+
+** general
+|---------+-------------------------------+----------------------|
+| M ;     | comment/uncomment lines       | 反/注释              |
+| C-c C-f | toggle folding on a tag/block | 打开/关闭块          |
+| C-c C-i | indent entire buffer          | 规范缩进整个buffer   |
+| C-c C-m | mark and expand               | 选中整个所在的块内容 |
+| C-c C-s | insert snippet                | 插入函数操作片段     |
+|         |                               |                      |
+* Nginx with php 
+  sudo apt install nginx
+  sudo systemctl restart nginx
+  sudo apt install php
+  sudo apt install php-fpm
+  check if exit: /var/run/php/php7.2-fpm.sock
+  
+  emacs /etc/php/7.2/fpm/pool.d/www.conf  -> listen = /run/php/php7.2-fpm.sock
+  
+  cd /etc/nginx/sites-available
+    emacs default 
+
+#+begin_src 
+list  post
+root  folder
+location ~ \.php${
+	 include snippets/fastcgi-php.conf;
+	 fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	 include fastcgi_params;
+}
+
+
+#+end_src
+
+vollstandig
+#+begin_src 
+################### 9020 FOR php ##################################################################################
+server {
+	listen 9020;
+	listen [::]:9020;
+
+	# SSL configuration
+	#
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+	#
+	# Note: You should disable gzip for SSL traffic.
+	# See: https://bugs.debian.org/773332
+	#
+	# Read up on ssl_ciphers to ensure a secure configuration.
+	# See: https://bugs.debian.org/765782
+	#
+	# Self signed certs generated by the ssl-cert package
+	# Don't use them in a production server!
+	#
+	# include snippets/snakeoil.conf;
+
+	root /home/sx/Documents/nginx9020;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html index.php;
+
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+	# pass PHP scripts to FastCGI server
+	#
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+	
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+		# With php-cgi (or other tcp sockets):
+		include fastcgi_params;
+		#fastcgi_pass 127.0.0.1:9000;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+}
+
+
+
+#+end_src
+  
+* RuoYi-Vue
+** backup deployment
+*** redis
+#+begin_src 
+sudo apt install redis-cli
+sudo apt install redis-server
+sudo snap install redis-desktop-manager
+
+sem /etc/redis/redis.conf
+bind 127.0.0.1
+requirepass 123456
+
+sudo systemctl restart redis-server
+or
+sudo service redis-server restart
+
+#+end_src
+
+#+begin_src 
+  1. without password : redis-cli 
+  2. with password    : redis-cli -h localhost -p 6379 -a 123456
+  PING -> PONG
+  #+end_src
+
+*** mysql
+*** tomcat
+configuration for IDEA as local Tomcat
+
+*** schnitt
+redis
+mysql 
+uploadPath
+system log.path
+check localhost:8080
+
+*** ssh 
+set to be false
+*** dependence from jdk8
+
+#+begin_src 
+	    <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+#+end_src
+
+** frontend deployment
+*** build
+#+begin_src 
+cd ruoyi-ui
+npm run build:prod
+npm run build:stage
+cp -r dist/* ~/Documens/nginx9010/
+#+end_src
+*** 验证码 for nginx
+#+begin_src 
+#####################9010 NOT for php ############################################################################
+
+
+server {
+	listen 9010;
+	listen [::]:9010;
+
+	# SSL configuration
+	#
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+	#
+	# Note: You should disable gzip for SSL traffic.
+	# See: https://bugs.debian.org/773332
+	#
+	# Read up on ssl_ciphers to ensure a secure configuration.
+	# See: https://bugs.debian.org/765782
+	#
+	# Self signed certs generated by the ssl-cert package
+	# Don't use them in a production server!
+	#
+	# include snippets/snakeoil.conf;
+
+
+
+	# Add index.php to the list if you are using PHP
+
+
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		root /home/sx/Documents/nginx9010;
+		index index.html index.htm index.nginx-debian.html index.php;
+		try_files $uri $uri/ =404;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+
+	location /prod-api/{
+			proxy_set_header Host $http_host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header REMOTE-HOST $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_pass http://localhost:8080/;
+		}
+
+        error_page   500 502 503 504  /50x.html;
+
+	location = /50x.html {
+            root   html;
+        }
+
+}
+
+#+end_src
+
+

@@ -74,7 +74,6 @@ drop databases kurs;
 | 在[mysqld]下追加 | character-set-server=utf8  |
 | 在[mysql]下追加  | default-character-set=utf8 |
 
- 
 ** 特殊字符
  - 用`ry-vue` 
  create database `ry-vue`;

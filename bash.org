@@ -1,0 +1,320 @@
+#+TITLE: Bash Scripts
+#+OPTIONS: num:nil
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
+#+startup: content
+* 1-Hello Bash Scripting
+
+#+begin_src sh :results output :exports both
+echo "nihao, hello world" > ~/Schreibtisch/bashtest.txt
+cat ~/Schreibtisch/bashtest.txt
+#+end_src
+
+#+RESULTS:
+: nihao, hello world
+
+* 2-Redirect to file
+in emacs shell the context can be given by terminal, ended with enter and  C-d
+but in terminal only C-d works
+#+begin_src sh :results output :exports both
+ cat >> bashtest.txt  
+#+end_src
+
+* 3-Comments
+EOF can be replaced by anything, and the text will be output,
+weather is with " " ''
+#+begin_src sh :results output :exports both
+ cat << EOF
+     here is what you want 
+ EOF
+
+
+#+end_src
+
+#+RESULTS:
+:     here is what you want 
+
+* 4-Conditional Statements
+#+begin_src sh :results output :exports both
+  count=10
+
+  if [[ $count -eq  10 ]]
+  then
+       echo "count is 10"
+  fi
+
+
+  if (( $count  >  100 ))
+  then
+      echo  "22222222222222222222if"
+  else
+      echo "111111111111111111else"
+  fi
+
+#+end_src
+
+#+RESULTS:
+: 111111111111111111else
+
+* 5-Loops
+#+begin_src sh :results output :exports both
+  count=10
+  while [ $count -lt 20 ]
+  do
+      echo "$count"
+      count=$((count+1))
+  done
+  #+end_src
+
+#+begin_src bash :results output :exports both
+  for var in 1 2 2 2; do
+      echo $var
+  done
+  #+end_src
+
+#+begin_src bash :results output :exports both
+
+  for ((i = 0; i <= 10; i++ ))
+  do 
+      echo $i
+  done
+
+
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  0
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  #+end_example
+
+* 6-Script input
+
+#+begin_src bash :results output :exports both
+ args=($@)
+ echo $#
+
+#+end_src
+
+#+RESULTS:
+: 0
+
+#+begin_src bash :results output :exports both
+  while read line; do
+      echo "$line"
+  done < "${1:-/dev/stdin}"
+#+end_src
+
+#+RESULTS:
+: while read line; do
+: echo "$line"
+
+* 7-Script output
+#+begin_src bash :results output :exports both
+ls -al 1>~/Schreibtisch/stdoutput.txt 2>~/Schreibtisch/stderroutput.txt
+#+end_src
+
+#+RESULTS:
+
+#+begin_src bash :results output :exports both
+ls +al >file1.txt 2>&1
+#+end_src
+
+* 8-how to send output from one script to another scrpt
+
+For secondhello.sh
+#+begin_src bash :results output :exports both
+echo "the massage is: $MESSAGE"
+#+end_src
+ 
+
+For hello.sh
+#+begin_src bash :results output :exports both
+MESSAGE="Hello it's me"
+export MESSAGE
+./secondHello.sh
+#+end_src
+
+execute hello.sh
+
+* 9-String Processing
+^ first later Capital
+^^ all Capital
+#+begin_src bash :results output :exports both
+str1="niaho"
+echo ${str1^}
+echo ${str1^^}
+#+end_src
+
+#+RESULTS:
+: Niaho
+: NIAHO
+
+* 10-Numbers and Arithmetic
+#+begin_src bash :results output :exports both
+a=10
+b=20
+echo  $(( a+b ))
+echo  $(( a-b ))
+echo  $(( a*b ))
+echo  $(( a/b ))
+echo  $(( a%b ))
+
+echo $(expr $a + $b )
+echo $(expr $a - $b )
+echo $(expr $a \* $b )
+echo $(expr $a / $b )
+echo $(expr $a % $b )
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+30
+-10
+200
+0
+10
+30
+-10
+200
+0
+10
+#+end_example
+
+* 11-Declare Command
+-r readonly, can't be changed
+#+begin_src bash :results output :exports both
+declare -r pwdfilee=/etc/apm
+echo $pwdfilee 
+#+end_src
+
+#+RESULTS:
+: /etc/apm
+
+* 12-Arrays
+#+begin_src bash :results output :exports both
+car=('BMW' 'TOYOTA' 'BILI')
+echo "${car[@]}"
+echo "${car[1]}"
+unset car[1]
+echo "${car[@]}"
+echo ${#car[@]}
+car[2]='ROVER'
+echo "${car[@]}"
+echo ${#car[@]}
+#+end_src
+
+#+RESULTS:
+: BMW TOYOTA BILI
+: TOYOTA
+: BMW BILI
+: 2
+: BMW ROVER
+: 2
+
+* 13-Functions
+#+begin_src bash :results output :exports both
+  function printhowisthename()
+  {
+      echo $1
+  }
+  printhowisthename lining
+#+end_src
+
+#+RESULTS:
+: lining
+
+#+begin_src bash :results output :exports both
+  function localfunktion(){
+      returevalue="localfunktion"
+  }
+  returevalue="globalfunktion"
+  echo $returevalue
+
+  localfunktion
+  echo $returevalue
+
+#+end_src
+
+#+RESULTS:
+: globalfunktion
+: localfunktion
+
+* 14-Files and Directories
+#+begin_src bash :results output :exports both
+
+
+
+#+end_src
+
+* 15-Send Email Via Script
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 16-Curl in Scripts
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 17-Professional Menus
+#+begin_src bash :results output :exports both
+#! /bin/bash
+select car in BMW ROVER AUDI BENLI
+do
+    case $car in
+	BMW)
+	    echo "BMW SELECTED";;
+	ROVER)
+	    echo "ROVER SELECTED";;
+	AUDI)
+	    echo "AUDI SELECTED";;
+        BENLI)
+	    echo "BENLI SELECTED";;
+	*)
+	    echo "ERROR! please only give number 0 to 4";;
+	esac
+done
+
+#+end_src
+
+#+RESULTS:
+
+* 18-Wait for filesystem events with inotify
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 19-Introduction to grep
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 20-Introduction to awk
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 21-Introduction to sed
+
+#+begin_src bash :results output :exports both
+
+#+end_src
+
+* 22-Debugging bash scripts
+
+

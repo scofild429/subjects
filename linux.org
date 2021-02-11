@@ -163,8 +163,6 @@ in /etc/fstab, the command must be correct, otherwise the system can't booted.
 
 #+end_src
 
-
-
 ** file management
 
 在~内找filename的文件
@@ -223,7 +221,24 @@ cd $(dirname $(which cling))
 ** awk 
  delete the repeat : awk '!a[$0]++' file.txt
 
+** less
+
+| J     | down          |
+| K     | up            |
+| Space | next page     |
+| b     | previous page |
+| /     | search        |
+| n     | next mark     |
+| N     | previous mark |
+| q     | quit          |
+
 * Useful Software
+** tar
+#+BEGIN_SRC 
+tar -zvcf xxx.tar.gz xxx
+tar -zvxf xxx.tar.gz
+#+END_SRC
+
 ** fcitx for sougou
 #+BEGIN_SRC 
 1. sudo apt install fcitx
@@ -1017,7 +1032,7 @@ semctl(semid, 0, IPC_RMID, NULL);
 ** tips
 Raw 文件
 ** Git installation in Linux
-#+BEGIN_SRC 
+
 1. sudo apt install git
 
 2. local configuration
@@ -1031,10 +1046,10 @@ Raw 文件
 #+begin_src sh
    ssh-keygen -t rsa -C "email2"
 #+end_src
+
 and then just all enter as default
    warming: email1 == email2
 
-#+END_SRC
 ** Webconfig
 #+BEGIN_SRC 
 1. go to Fold Docu1, and in terminal git init to create local  repository
@@ -1059,85 +1074,6 @@ and then just all enter as default
 5. username3 and xxxx if necessary
 6. later push it only use git push origin master
 #+END_SRC
-** Magit Commit "C-x g" in E** Github on Windows
-#+BEGIN_SRC 
-1.  download git(scm) for windows
-2. copy package to somewhere to install
-3. choose the install path and editor
-4. create a NEW Repository and copy its ADDRESS
-create a file, .ssh and
-ssh-keygen -t rsa -C "your_email@example.com"
-and the id_rsa.pub into Github(New SSH key)
-5. to Desktop, git init
-6. create file, git add, git commit
-7. git remote and NAMe ADDRESS
-8. git push NAMe master
-#+END_SRC
-** Merge with aother branch
-
-#+BEGIN_SRC 
-after pull, git checkout dev
-git push -u name dev 
-
-#+END_SRC
-** Gitcommond
-*** 创建mybranch分支
-
-git branch mybrauch
-git checkout mybrauch
-create .gitignore
-git add -A
-git reset xxx.tex
-git status
-git commit -m "commit"
-git add -A 
-git commit -m "mybrauch"
-git push -u origin mybrauch
-
-*** merge mybranch分支到master分支
-git checkout master
-git pull origin master
-git branch --merged
-git merge mybrauch
-git push origin master
-
-*** 删除mybranch分支
-git branch --merged
-git branch -d mybrauch
-git branch -a 
-git push origin --delete mybrauch
-
-** commands
-
-add 添加索引  
-
-编辑当前文件后，想恢复，且未添加索引(未 add) ：  git checkout --file
-编辑当前文件后，想恢复，但已添加索引(已 add) ：  git reset HEAD file 再 git checkout --file
-编辑当前文件后，想查变动，且未添加索引(未 add) ： git diff
-编辑当前文件后，想查变动，但已添加索引(已 add) ： git diff --cached
-编辑当前文件后，已提交(已 add),想撤出索引 ：    git rm --cached  file
-
-编辑后，强制回到最近一次添加索引的版本：        git reset --hard HEAD
-编辑后，强制回到最近倒数第二次添加索引的版本：   git reset --hard HEAD~
-编辑后，强制回到最近倒数第n次添加索引的版本：    git reset --hard HEAD~n
-
-如果将HEAD换成对应的ID， 也可以回到之前相应的版本。 但是如果想再回去，
-又没有记住之前的ID， 可以用，       git reflog 查询.
-
-
-
-commit 添加提交
-和上次commit提交融合，不产生新的提交记录：  git commit --amend
-
-
-branch 新分支
-创建新的分支： git branch development
-带着全部家当去新的分支： git checkout development
-
-merge 融合分支
-如果此时只有development分支改变，可以直接回到master, 把development分支
-merge 过来   git merge development
-
 
 ** Magit
 #+BEGIN_SRC 
@@ -1147,30 +1083,87 @@ C      : to commit
 C-c C-c : to finish commit
 P and p to push
 #+END_SRC
-** github conflict with local git
-#+BEGIN_SRC 
-delete from github
-1. delete in github seit
-2. git pull origin master
-3. edit anyhow and push
-#+END_SRC
+** Git branch
+*** git branch  创建development分支
+#+begin_src 
+branch 创建 新分支
+创建新的分支： git branch development
+带着全部家当去新的分支： git checkout development
+git add -A 
+git commit -m "development"
+git push -u origin development
+#+end_src
+*** git merge 可以 merge mybranch分支到master分支
+#+begin_src 
+merge 融合分支
+如果此时只有development分支改变，可以直接回到master, 把development分支
+merge 过来   git merge development
 
-#+BEGIN_SRC 
-delete from local git
-git rm -r  target
-git add *
-git commit -m "commit"
+git checkout master
+git pull origin master
+git branch --merged
+git merge development
 git push origin master
+#+end_src
+*** 删除mybranch分支
+#+begin_src 
 
-#+END_SRC
+git branch --merged
+git branch -d mybrauch
+git branch -a 
+git push origin --delete mybrauch
+#+end_src
+*** git rm
+**** git rm --cached file
+#+begin_src 
+编辑当前文件后，已提交(已 add),想撤出索引 ：    git rm --cached  file
+after that, I can check the delete file with git status or git diff --cached.
+#+end_src
+**** recover after git rm
+#+begin_src 
+if I want , I can git add * to call all back again, but nothing to commit
+#+end_src
+**** confirm to delete file in local directory
+#+begin_src 
+if I ready want to delete this,
+using rm file  delete the file in local directory, 
+but git status and diff --cached remands this still, 
+only after commit, there's no signal for the deleted file anymore.
+#+end_src
+**** recover after delete in local directory
+#+begin_src 
+git reflog
+git reset --hard ID
+#+end_src
+*** git multi commit
 
-** new system merge
-#+BEGIN_SRC 
-sudo apt install git
-config 3646
-add ssh-key
-git clone
-git push
+commit 添加提交
+和上次commit提交融合，不产生新的提交记录：  git commit --amend
 
-#+END_SRC
+** commands to recover
+*** after only save 
+|----------------------+-----------------------------------------------------|
+| git diff             | can see the different comparing to last time commit |
+| git checkout -- file | git diff: NULL, file has been recovered             |
+|----------------------+-----------------------------------------------------|
+
+*** after git add file
+|----------------------+---------------------------------------------------------|
+| git diff             | dit diff :NULL                                          |
+| git diff --cached    | can see the different comparing to the last time commit |
+| git reset HEAD file  | git diff -- cached : NULL                               |
+| git checkout -- file | file has been recovered                                 |
+|----------------------+---------------------------------------------------------|
+
+*** after git commit file
+
+#+begin_src 
+
+编辑后，强制回到最近一次添加索引的版本：        git reset --hard HEAD
+编辑后，强制回到最近倒数第二次添加索引的版本：   git reset --hard HEAD~
+编辑后，强制回到最近倒数第n次添加索引的版本：    git reset --hard HEAD~n
+
+如果将HEAD换成对应的ID， 也可以回到之前相应的版本。 但是如果想再回去，
+又没有记住之前的ID， 可以用，       git reflog 查询.
+#+end_src
 

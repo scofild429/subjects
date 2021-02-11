@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-12-03 Do 17:49 -->
+<!-- 2020-12-28 Mo 21:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: auto;
+    overflow: visible;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -205,26 +205,50 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 </head>
 <body>
@@ -234,170 +258,174 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d12c48">Install</a>
+<li><a href="#orgee7f5dc">Install</a>
 <ul>
-<li><a href="#orge82f6fe">系统盘恢复</a></li>
-<li><a href="#orga612b6a">写入系统</a></li>
-<li><a href="#org1338a59">安装</a></li>
-<li><a href="#orgc1ed90a">Update nvidia drivers for linux</a></li>
-<li><a href="#orge61b6d9">chinese</a></li>
+<li><a href="#org8c14fce">系统盘恢复</a></li>
+<li><a href="#org23178ba">写入系统</a></li>
+<li><a href="#orgd7d0319">安装</a></li>
+<li><a href="#orgcd58a05">Update nvidia drivers for linux</a></li>
+<li><a href="#orgded5801">chinese</a></li>
 </ul>
 </li>
-<li><a href="#orge7f6c0c">System configuration collection</a>
+<li><a href="#org608572f">System configuration collection</a>
 <ul>
-<li><a href="#org64bed5f">open fire wall  for port</a></li>
-<li><a href="#org8d36fd0">Shutdown Keyboard default</a></li>
-<li><a href="#org8061ac5">autostart</a></li>
-<li><a href="#orgc5415fa">exchange Control Key and Caps Key</a></li>
-<li><a href="#org56ed6ab">right key no response</a></li>
-<li><a href="#orga5c0415">hotkey</a></li>
-<li><a href="#org4442129">clear caches</a></li>
+<li><a href="#org7926f80">open fire wall  for port</a></li>
+<li><a href="#orgab4eb86">Shutdown Keyboard default</a></li>
+<li><a href="#org7c45e43">autostart</a></li>
+<li><a href="#org6682a08">exchange Control Key and Caps Key</a></li>
+<li><a href="#orgf680bd7">right key no response</a></li>
+<li><a href="#orgaf2527c">hotkey</a></li>
+<li><a href="#orgafdecba">clear caches</a></li>
 </ul>
 </li>
-<li><a href="#org4786c36">commands</a>
+<li><a href="#org7a29aa9">commands</a>
 <ul>
-<li><a href="#orgede84b4">file management</a></li>
-<li><a href="#org6fca71a">directory operation</a></li>
-<li><a href="#org5e68980">find uninstall and remove software</a></li>
-<li><a href="#org189ab60">su password config</a></li>
-<li><a href="#orgaf650d9">get IP address</a></li>
-<li><a href="#org0da9bb0">grep sort</a></li>
-<li><a href="#org8d6ac76">soft link</a></li>
-<li><a href="#orgbba5793">hard link</a></li>
-<li><a href="#orga14fe6a">cd to program with which</a></li>
-<li><a href="#org46f06db">awk</a></li>
+<li><a href="#orgf4e6b21">sammary</a></li>
+<li><a href="#orgda4d69c">file management</a></li>
+<li><a href="#org878f5b7">directory operation</a></li>
+<li><a href="#org8fba90c">find uninstall and remove software</a></li>
+<li><a href="#org9c3ec1a">su password config</a></li>
+<li><a href="#org03dd6a2">get IP address</a></li>
+<li><a href="#orgc826d6a">grep sort</a></li>
+<li><a href="#org1c2e3d3">link</a></li>
+<li><a href="#org5bc760c">cd to program with which</a></li>
+<li><a href="#orgfa0be5b">awk</a></li>
 </ul>
 </li>
-<li><a href="#org0ac6976">Useful Software</a>
+<li><a href="#org5fa08cf">Useful Software</a>
 <ul>
-<li><a href="#org3f7a25b">fcitx for sougou</a></li>
-<li><a href="#orgae23a42">eog</a></li>
-<li><a href="#org7ed2d54">Okular</a></li>
-<li><a href="#orga3e68a4">xournal</a></li>
-<li><a href="#org06fd76f">evince</a></li>
-<li><a href="#orgbafecfb">stardict</a></li>
-<li><a href="#org6f54372">kmplayer</a></li>
-<li><a href="#org447abe1">simplescreenrecorder</a></li>
-<li><a href="#org00ec639">Cvim</a></li>
-<li><a href="#org70e99a7">hotopea</a></li>
-<li><a href="#org9792c37">manual png create png</a></li>
-<li><a href="#org8991afd">gpg for secret</a></li>
-<li><a href="#org7873fbb">ranger</a></li>
-<li><a href="#orga59949b">pdftk</a></li>
-<li><a href="#org03a4881">Linux connect to Android</a></li>
-<li><a href="#org3a95768">docker</a></li>
-<li><a href="#org026e136">gs</a></li>
-<li><a href="#org4d74bb1">mpv player</a></li>
-<li><a href="#orgd7bc7f2">mellplayer</a></li>
-<li><a href="#orgc5b3582">thunderbird</a></li>
-<li><a href="#org4c5bef7">EverSync</a></li>
-<li><a href="#org0510f48">IPFS</a></li>
-<li><a href="#orgf3b1dfb">GPG</a></li>
+<li><a href="#orgbd3d294">tar</a></li>
+<li><a href="#org8aa5f2b">fcitx for sougou</a></li>
+<li><a href="#org32b323e">eog</a></li>
+<li><a href="#org8ba56c9">Okular</a></li>
+<li><a href="#org88bbb0b">xournal</a></li>
+<li><a href="#org8a57549">evince</a></li>
+<li><a href="#org1b4f096">stardict</a></li>
+<li><a href="#org81c5cf4">kmplayer</a></li>
+<li><a href="#orga883caa">simplescreenrecorder</a></li>
+<li><a href="#org9196324">Cvim</a></li>
+<li><a href="#orgd8a5c56">hotopea</a></li>
+<li><a href="#orgc6da6b7">manual png create png</a></li>
+<li><a href="#orgf6c3225">gpg for secret</a></li>
+<li><a href="#org49076e0">ranger</a></li>
+<li><a href="#orga92896e">pdftk</a></li>
+<li><a href="#org170efdd">Linux connect to Android</a></li>
+<li><a href="#orga8b1b08">docker</a></li>
+<li><a href="#org972a715">gs</a></li>
+<li><a href="#orgbc2f685">mpv player</a></li>
+<li><a href="#org320a4ee">mellplayer</a></li>
+<li><a href="#orgf6f6ea4">thunderbird</a></li>
+<li><a href="#orgd7d573d">EverSync</a></li>
+<li><a href="#org9f16668">IPFS</a></li>
+<li><a href="#org921e584">GPG</a></li>
 </ul>
 </li>
-<li><a href="#org664966b">System control</a>
+<li><a href="#org8a3a7d9">System control</a>
 <ul>
-<li><a href="#org279e920">system backup</a></li>
-<li><a href="#orgca00f3d">system performance</a></li>
+<li><a href="#org74a1f9e">system backup</a></li>
+<li><a href="#orgfb655bd">system performance</a></li>
 </ul>
 </li>
-<li><a href="#org470cdc7">chinese config</a>
+<li><a href="#orgce05083">chinese config</a>
 <ul>
-<li><a href="#orgbc01390">emacs chinese input</a></li>
-<li><a href="#org28e7850">chinese output pdf</a></li>
+<li><a href="#orgb90f23d">emacs chinese input</a></li>
+<li><a href="#orgc460d2e">chinese output pdf</a></li>
 </ul>
 </li>
-<li><a href="#org1aebb9a">hardware</a>
+<li><a href="#org7c08db7">hardware</a>
 <ul>
-<li><a href="#orga7b8424">memery</a></li>
+<li><a href="#org2fd56cf">memery</a></li>
 </ul>
 </li>
-<li><a href="#org9e0e4ba">Makefile</a>
+<li><a href="#org634d4fd">Makefile</a>
 <ul>
-<li><a href="#org2d87297">格式</a></li>
-<li><a href="#orgec146eb">1example</a></li>
-<li><a href="#org588b930">2修改后只编译改动后的文件</a></li>
-<li><a href="#orgc4cd7bf">3使用自动变量</a></li>
-<li><a href="#org1d32742">4增加可移植性</a></li>
-<li><a href="#org138f580">5清洁中间的生成的不必要保存文件</a></li>
+<li><a href="#orgca84110">格式</a></li>
+<li><a href="#orgbd69f6f">1example</a></li>
+<li><a href="#orgbb09101">2修改后只编译改动后的文件</a></li>
+<li><a href="#org3c7afc3">3使用自动变量</a></li>
+<li><a href="#orgbb022dc">4增加可移植性</a></li>
+<li><a href="#org1bf38d6">5清洁中间的生成的不必要保存文件</a></li>
 </ul>
 </li>
-<li><a href="#org82340dc">link</a>
+<li><a href="#org50873ec">link</a>
 <ul>
-<li><a href="#org7b3f700">静态库的制作</a>
+<li><a href="#orga4482da">静态库的制作</a>
 <ul>
-<li><a href="#org2c82083">库方</a></li>
-<li><a href="#org37e39c2">甲方</a></li>
-<li><a href="#org6b24477">特点</a></li>
+<li><a href="#org43d1629">库方</a></li>
+<li><a href="#org90eae06">甲方</a></li>
+<li><a href="#org3b0329e">特点</a></li>
 </ul>
 </li>
-<li><a href="#org6243487">动态库的制作</a>
+<li><a href="#org35401b0">动态库的制作</a>
 <ul>
-<li><a href="#org45a7b1e">环境变量</a></li>
-<li><a href="#org2c58866">修改配置文件</a></li>
-<li><a href="#orgb7df730">通过函数加载</a></li>
+<li><a href="#org8c06cd5">环境变量</a></li>
+<li><a href="#org601f75e">修改配置文件</a></li>
+<li><a href="#orgcf56b9d">通过函数加载</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org860247f">BetreibenSystem</a>
+<li><a href="#org6b00929">BetreibenSystem</a>
 <ul>
-<li><a href="#org34f9ce6">exit</a></li>
-<li><a href="#org493edb6">named pipe</a></li>
-<li><a href="#org1389adc">unnamed pipe</a></li>
-<li><a href="#orga0b6c0a">memcpy</a></li>
-<li><a href="#org2527a6d">kill</a></li>
-<li><a href="#org4940ca5">raise</a></li>
-<li><a href="#orgf01a93a">alarm</a></li>
-<li><a href="#org24fa24d">pause</a></li>
-<li><a href="#orgec4fa8c">signal</a></li>
-<li><a href="#orgd3f2d87">key</a></li>
-<li><a href="#org56a77a8">shmget</a></li>
-<li><a href="#orgc7d6fbc">shmat</a></li>
-<li><a href="#org51109ce">shmdt</a></li>
-<li><a href="#orgd19c9b8">shmctl</a></li>
-<li><a href="#org1fa6cf5">IPC manipulation</a></li>
-<li><a href="#orgf5f53b8">msgget</a></li>
-<li><a href="#orgfbb08ea">msgctl</a></li>
-<li><a href="#org410f9cd">msgsnd</a></li>
-<li><a href="#orgd2425e3">msgrcv</a></li>
-<li><a href="#org73ca6ea">semget</a></li>
-<li><a href="#orgb56c693">semctl</a></li>
+<li><a href="#org341b367">exit</a></li>
+<li><a href="#org86a96a0">named pipe</a></li>
+<li><a href="#orgf1d15b3">unnamed pipe</a></li>
+<li><a href="#orge0d5d03">memcpy</a></li>
+<li><a href="#org3f9b189">kill</a></li>
+<li><a href="#org9e30c96">raise</a></li>
+<li><a href="#org037262a">alarm</a></li>
+<li><a href="#org7c2d699">pause</a></li>
+<li><a href="#orga25760b">signal</a></li>
+<li><a href="#org6f09043">key</a></li>
+<li><a href="#orgb331f99">shmget</a></li>
+<li><a href="#orgb51ce4b">shmat</a></li>
+<li><a href="#org939e227">shmdt</a></li>
+<li><a href="#org93a8e61">shmctl</a></li>
+<li><a href="#org2102fb8">IPC manipulation</a></li>
+<li><a href="#org3e7e1ee">msgget</a></li>
+<li><a href="#org661e519">msgctl</a></li>
+<li><a href="#org325c687">msgsnd</a></li>
+<li><a href="#orgb5c3421">msgrcv</a></li>
+<li><a href="#orgb396614">semget</a></li>
+<li><a href="#org0a49e5f">semctl</a></li>
 </ul>
 </li>
-<li><a href="#org32c870d">Git</a>
+<li><a href="#org589917b">Git</a>
 <ul>
-<li><a href="#orga1c6310">tips</a></li>
-<li><a href="#org175473f">Git installation in Linux</a></li>
-<li><a href="#orgc645c81">Webconfig</a></li>
-<li><a href="#org5eee56e">Connection</a></li>
-<li><a href="#org9a6b00d">Magit Commit "C-x g" in E** Github on Windows</a></li>
-<li><a href="#org120effb">Merge with aother branch</a></li>
-<li><a href="#org317f970">Gitcommond</a>
+<li><a href="#org062dd09">tips</a></li>
+<li><a href="#org62bcde8">Git installation in Linux</a></li>
+<li><a href="#org2bc392f">Webconfig</a></li>
+<li><a href="#orgf39e90c">Connection</a></li>
+<li><a href="#orgd8d009a">Magit</a></li>
+<li><a href="#org6cce8be">Git branch</a>
 <ul>
-<li><a href="#org6d850c9">创建mybranch分支</a></li>
-<li><a href="#org5be2431">merge mybranch分支到master分支</a></li>
-<li><a href="#org061aab6">删除mybranch分支</a></li>
+<li><a href="#org9b69ae1">git branch  创建development分支</a></li>
+<li><a href="#org4976a79">git merge 可以 merge mybranch分支到master分支</a></li>
+<li><a href="#orgcd3dfe8">删除mybranch分支</a></li>
+<li><a href="#org5a99354">git rm</a></li>
+<li><a href="#orgd2fad9b">git multi commit</a></li>
 </ul>
 </li>
-<li><a href="#org2982ba2">commands</a></li>
-<li><a href="#org4be9a5c">Magit</a></li>
-<li><a href="#orgd2546a0">github conflict with local git</a></li>
-<li><a href="#org6ff4f67">new system merge</a></li>
+<li><a href="#orgd8218ce">commands to recover</a>
+<ul>
+<li><a href="#orge2021d5">after only save</a></li>
+<li><a href="#org297bb13">after git add file</a></li>
+<li><a href="#org2d14f7b">after git commit file</a></li>
 </ul>
 </li>
-<li><a href="#org7e8477b">note&#xa0;&#xa0;&#xa0;<span class="tag"><span class="crypt">crypt</span></span></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org9d12c48" class="outline-2">
-<h2 id="org9d12c48">Install</h2>
-<div class="outline-text-2" id="text-org9d12c48">
+<div id="outline-container-orgee7f5dc" class="outline-2">
+<h2 id="orgee7f5dc">Install</h2>
+<div class="outline-text-2" id="text-orgee7f5dc">
 </div>
-<div id="outline-container-orge82f6fe" class="outline-3">
-<h3 id="orge82f6fe">系统盘恢复</h3>
-<div class="outline-text-3" id="text-orge82f6fe">
+<div id="outline-container-org8c14fce" class="outline-3">
+<h3 id="org8c14fce">系统盘恢复</h3>
+<div class="outline-text-3" id="text-org8c14fce">
 <pre class="example">
 1. WIN+R diskpart
 2. select disk (Disk)
@@ -406,9 +434,9 @@
 </pre>
 </div>
 </div>
-<div id="outline-container-orga612b6a" class="outline-3">
-<h3 id="orga612b6a">写入系统</h3>
-<div class="outline-text-3" id="text-orga612b6a">
+<div id="outline-container-org23178ba" class="outline-3">
+<h3 id="org23178ba">写入系统</h3>
+<div class="outline-text-3" id="text-org23178ba">
 <ol class="org-ol">
 <li>下载ubuntu</li>
 <li>下载USBwriter并安装</li>
@@ -417,17 +445,17 @@
 </div>
 </div>
 
-<div id="outline-container-org1338a59" class="outline-3">
-<h3 id="org1338a59">安装</h3>
-<div class="outline-text-3" id="text-org1338a59">
+<div id="outline-container-orgd7d0319" class="outline-3">
+<h3 id="orgd7d0319">安装</h3>
+<div class="outline-text-3" id="text-orgd7d0319">
 <pre class="example">
 my computer : F12
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc1ed90a" class="outline-3">
-<h3 id="orgc1ed90a">Update nvidia drivers for linux</h3>
-<div class="outline-text-3" id="text-orgc1ed90a">
+<div id="outline-container-orgcd58a05" class="outline-3">
+<h3 id="orgcd58a05">Update nvidia drivers for linux</h3>
+<div class="outline-text-3" id="text-orgcd58a05">
 <pre class="example">
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt update 
@@ -442,9 +470,9 @@ watch -n 1 nvidia-smi
 </div>
 </div>
 
-<div id="outline-container-orge61b6d9" class="outline-3">
-<h3 id="orge61b6d9">chinese</h3>
-<div class="outline-text-3" id="text-orge61b6d9">
+<div id="outline-container-orgded5801" class="outline-3">
+<h3 id="orgded5801">chinese</h3>
+<div class="outline-text-3" id="text-orgded5801">
 <p>
 export LC<sub>CTYPE</sub>=zh<sub>CN.UTF</sub>-8
 sudo apt-get -y install language-pack-zh-hans
@@ -453,13 +481,13 @@ sudo apt-get -y install language-pack-zh-hans
 </div>
 </div>
 </div>
-<div id="outline-container-orge7f6c0c" class="outline-2">
-<h2 id="orge7f6c0c">System configuration collection</h2>
-<div class="outline-text-2" id="text-orge7f6c0c">
+<div id="outline-container-org608572f" class="outline-2">
+<h2 id="org608572f">System configuration collection</h2>
+<div class="outline-text-2" id="text-org608572f">
 </div>
-<div id="outline-container-org64bed5f" class="outline-3">
-<h3 id="org64bed5f">open fire wall  for port</h3>
-<div class="outline-text-3" id="text-org64bed5f">
+<div id="outline-container-org7926f80" class="outline-3">
+<h3 id="org7926f80">open fire wall  for port</h3>
+<div class="outline-text-3" id="text-org7926f80">
 <p>
 add port :
 sudo firewall-cmd &#x2013;add-port=80/tcp &#x2013;permanent
@@ -471,9 +499,9 @@ sudo  firewall-cmd &#x2013;list-all
 </div>
 </div>
 
-<div id="outline-container-org8d36fd0" class="outline-3">
-<h3 id="org8d36fd0">Shutdown Keyboard default</h3>
-<div class="outline-text-3" id="text-org8d36fd0">
+<div id="outline-container-orgab4eb86" class="outline-3">
+<h3 id="orgab4eb86">Shutdown Keyboard default</h3>
+<div class="outline-text-3" id="text-orgab4eb86">
 <pre class="example">
 
 1. $ xinput list 
@@ -499,9 +527,9 @@ Name=touchpad enable
 </pre>
 </div>
 </div>
-<div id="outline-container-org8061ac5" class="outline-3">
-<h3 id="org8061ac5">autostart</h3>
-<div class="outline-text-3" id="text-org8061ac5">
+<div id="outline-container-org7c45e43" class="outline-3">
+<h3 id="org7c45e43">autostart</h3>
+<div class="outline-text-3" id="text-org7c45e43">
 <p>
 Thunderbird
 </p>
@@ -520,9 +548,9 @@ Comment=thunderbird
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc5415fa" class="outline-3">
-<h3 id="orgc5415fa">exchange Control Key and Caps Key</h3>
-<div class="outline-text-3" id="text-orgc5415fa">
+<div id="outline-container-org6682a08" class="outline-3">
+<h3 id="org6682a08">exchange Control Key and Caps Key</h3>
+<div class="outline-text-3" id="text-org6682a08">
 <p>
 在/etc/default/keyboard文件中添加:
 </p>
@@ -544,18 +572,18 @@ $ sudo apt install gnome-tweak-tool
 </div>
 </div>
 
-<div id="outline-container-org56ed6ab" class="outline-3">
-<h3 id="org56ed6ab">right key no response</h3>
-<div class="outline-text-3" id="text-org56ed6ab">
+<div id="outline-container-orgf680bd7" class="outline-3">
+<h3 id="orgf680bd7">right key no response</h3>
+<div class="outline-text-3" id="text-orgf680bd7">
 <pre class="example">
 gsettings set org.gnome.desktop.peripherals.touchpad click-method areas
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orga5c0415" class="outline-3">
-<h3 id="orga5c0415">hotkey</h3>
-<div class="outline-text-3" id="text-orga5c0415">
+<div id="outline-container-orgaf2527c" class="outline-3">
+<h3 id="orgaf2527c">hotkey</h3>
+<div class="outline-text-3" id="text-orgaf2527c">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -667,9 +695,9 @@ in Einstellung, the executable command can be used in command for customized hot
 </div>
 </div>
 
-<div id="outline-container-org4442129" class="outline-3">
-<h3 id="org4442129">clear caches</h3>
-<div class="outline-text-3" id="text-org4442129">
+<div id="outline-container-orgafdecba" class="outline-3">
+<h3 id="orgafdecba">clear caches</h3>
+<div class="outline-text-3" id="text-orgafdecba">
 <p>
 put this in .bashrc under root file
 </p>
@@ -680,13 +708,47 @@ put this in .bashrc under root file
 </div>
 </div>
 </div>
-<div id="outline-container-org4786c36" class="outline-2">
-<h2 id="org4786c36">commands</h2>
-<div class="outline-text-2" id="text-org4786c36">
+<div id="outline-container-org7a29aa9" class="outline-2">
+<h2 id="org7a29aa9">commands</h2>
+<div class="outline-text-2" id="text-org7a29aa9">
 </div>
-<div id="outline-container-orgede84b4" class="outline-3">
-<h3 id="orgede84b4">file management</h3>
-<div class="outline-text-3" id="text-orgede84b4">
+<div id="outline-container-orgf4e6b21" class="outline-3">
+<h3 id="orgf4e6b21">sammary</h3>
+<div class="outline-text-3" id="text-orgf4e6b21">
+<pre class="example">
+mkdir -p test/src
+less :space to next, b to previous
+</pre>
+
+<pre class="example">
+fdisk -l
+
+fdisk /dev/nvme0n1p4 (m, p, n, ...)
+mkfs.ext4 /dev/nvme0n1p4
+sudo emacs /etc/fstab
+/dev/nvme0n1p4 /home/silin/4GB ext4 defaults 0 0
+</pre>
+<p>
+in /etc/fstab, the command must be correct, otherwise the system can't booted.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">w
+last
+passwd username  (will be asked the new password for username)
+<span style="color: #4f97d7;">umask</span>
+cat &lt; source1.c &gt;&gt; source2.c (add source1.c to the end of source2.c)
+
+
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgda4d69c" class="outline-3">
+<h3 id="orgda4d69c">file management</h3>
+<div class="outline-text-3" id="text-orgda4d69c">
 <p>
 在~内找filename的文件
 find ~ -name filename
@@ -715,9 +777,9 @@ echo | sort -n .sdsv<sub>history</sub> |uniq &gt; .sdsv
 </div>
 </div>
 
-<div id="outline-container-org6fca71a" class="outline-3">
-<h3 id="org6fca71a">directory operation</h3>
-<div class="outline-text-3" id="text-org6fca71a">
+<div id="outline-container-org878f5b7" class="outline-3">
+<h3 id="org878f5b7">directory operation</h3>
+<div class="outline-text-3" id="text-org878f5b7">
 <pre class="example">
 tree -L 2
 alias open='nautilus'
@@ -725,9 +787,9 @@ open .
 </pre>
 </div>
 </div>
-<div id="outline-container-org5e68980" class="outline-3">
-<h3 id="org5e68980">find uninstall and remove software</h3>
-<div class="outline-text-3" id="text-org5e68980">
+<div id="outline-container-org8fba90c" class="outline-3">
+<h3 id="org8fba90c">find uninstall and remove software</h3>
+<div class="outline-text-3" id="text-org8fba90c">
 <pre class="example">
 sudo apt list --installed | grep software
 whereis software
@@ -736,64 +798,65 @@ sudo apt-get autoremove
 </pre>
 </div>
 </div>
-<div id="outline-container-org189ab60" class="outline-3">
-<h3 id="org189ab60">su password config</h3>
-<div class="outline-text-3" id="text-org189ab60">
+<div id="outline-container-org9c3ec1a" class="outline-3">
+<h3 id="org9c3ec1a">su password config</h3>
+<div class="outline-text-3" id="text-org9c3ec1a">
 <p>
 sudo passwd :to configure the password of root user
 </p>
 </div>
 </div>
-<div id="outline-container-orgaf650d9" class="outline-3">
-<h3 id="orgaf650d9">get IP address</h3>
-<div class="outline-text-3" id="text-orgaf650d9">
+<div id="outline-container-org03dd6a2" class="outline-3">
+<h3 id="org03dd6a2">get IP address</h3>
+<div class="outline-text-3" id="text-org03dd6a2">
 <p>
 curl ifconfig.me
 </p>
 </div>
 </div>
-<div id="outline-container-org0da9bb0" class="outline-3">
-<h3 id="org0da9bb0">grep sort</h3>
-<div class="outline-text-3" id="text-org0da9bb0">
+<div id="outline-container-orgc826d6a" class="outline-3">
+<h3 id="orgc826d6a">grep sort</h3>
+<div class="outline-text-3" id="text-orgc826d6a">
 <p>
 grep -n "xxx" ./test.txt
 sort (&#x2013;reverse -t " " -k 3 ) test.csv
 </p>
 </div>
 </div>
-<div id="outline-container-org8d6ac76" class="outline-3">
-<h3 id="org8d6ac76">soft link</h3>
-<div class="outline-text-3" id="text-org8d6ac76">
+<div id="outline-container-org1c2e3d3" class="outline-3">
+<h3 id="org1c2e3d3">link</h3>
+<div class="outline-text-3" id="text-org1c2e3d3">
 <p>
-ln -s filename linkname // 快捷方式
-filename加上绝对路径，linkname被移动后，仍能访问访问文件
+softlink 
 </p>
-</div>
-</div>
-
-<div id="outline-container-orgbba5793" class="outline-3">
-<h3 id="orgbba5793">hard link</h3>
-<div class="outline-text-3" id="text-orgbba5793">
+<pre class="example">
+ln -s filename linkname // 快捷方式
+ln -s sourcefile softlinkname
+filename加上绝对路径，linkname被移动后，仍能访问访问文件
+</pre>
 <p>
+hard link
+</p>
+<pre class="example">
 ln filename linkname   //硬链接
 不占用磁盘空间，重复连接到文件的inode点。
 可以在不同地方通过硬连接对文件进行操作
-</p>
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orga14fe6a" class="outline-3">
-<h3 id="orga14fe6a">cd to program with which</h3>
-<div class="outline-text-3" id="text-orga14fe6a">
+<div id="outline-container-org5bc760c" class="outline-3">
+<h3 id="org5bc760c">cd to program with which</h3>
+<div class="outline-text-3" id="text-org5bc760c">
 <p>
 cd $(dirname $(which cling))
 </p>
 </div>
 </div>
 
-<div id="outline-container-org46f06db" class="outline-3">
-<h3 id="org46f06db">awk</h3>
-<div class="outline-text-3" id="text-org46f06db">
+<div id="outline-container-orgfa0be5b" class="outline-3">
+<h3 id="orgfa0be5b">awk</h3>
+<div class="outline-text-3" id="text-orgfa0be5b">
 <p>
 delete the repeat : awk '!a[$0]++' file.txt
 </p>
@@ -801,13 +864,23 @@ delete the repeat : awk '!a[$0]++' file.txt
 </div>
 </div>
 
-<div id="outline-container-org0ac6976" class="outline-2">
-<h2 id="org0ac6976">Useful Software</h2>
-<div class="outline-text-2" id="text-org0ac6976">
+<div id="outline-container-org5fa08cf" class="outline-2">
+<h2 id="org5fa08cf">Useful Software</h2>
+<div class="outline-text-2" id="text-org5fa08cf">
 </div>
-<div id="outline-container-org3f7a25b" class="outline-3">
-<h3 id="org3f7a25b">fcitx for sougou</h3>
-<div class="outline-text-3" id="text-org3f7a25b">
+<div id="outline-container-orgbd3d294" class="outline-3">
+<h3 id="orgbd3d294">tar</h3>
+<div class="outline-text-3" id="text-orgbd3d294">
+<pre class="example">
+tar -zvcf xxx.tar.gz xxx
+tar -zvxf xxx.tar.gz
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8aa5f2b" class="outline-3">
+<h3 id="org8aa5f2b">fcitx for sougou</h3>
+<div class="outline-text-3" id="text-org8aa5f2b">
 <pre class="example">
 1. sudo apt install fcitx
 download sougou
@@ -817,17 +890,17 @@ download sougou
 </div>
 </div>
 
-<div id="outline-container-orgae23a42" class="outline-3">
-<h3 id="orgae23a42">eog</h3>
-<div class="outline-text-3" id="text-orgae23a42">
+<div id="outline-container-org32b323e" class="outline-3">
+<h3 id="org32b323e">eog</h3>
+<div class="outline-text-3" id="text-org32b323e">
 <pre class="example">
 eog xxx.png to view png with bluit in software eog
 </pre>
 </div>
 </div>
-<div id="outline-container-org7ed2d54" class="outline-3">
-<h3 id="org7ed2d54">Okular</h3>
-<div class="outline-text-3" id="text-org7ed2d54">
+<div id="outline-container-org8ba56c9" class="outline-3">
+<h3 id="org8ba56c9">Okular</h3>
+<div class="outline-text-3" id="text-org8ba56c9">
 <pre class="example">
 sudo apt-get install okular
 F2 to constimizer
@@ -846,26 +919,26 @@ SPC-p bookmark up
 </pre>
 </div>
 </div>
-<div id="outline-container-orga3e68a4" class="outline-3">
-<h3 id="orga3e68a4">xournal</h3>
-<div class="outline-text-3" id="text-orga3e68a4">
+<div id="outline-container-org88bbb0b" class="outline-3">
+<h3 id="org88bbb0b">xournal</h3>
+<div class="outline-text-3" id="text-org88bbb0b">
 <pre class="example">
 sudo apt install xournal
 </pre>
 </div>
 </div>
-<div id="outline-container-org06fd76f" class="outline-3">
-<h3 id="org06fd76f">evince</h3>
-<div class="outline-text-3" id="text-org06fd76f">
+<div id="outline-container-org8a57549" class="outline-3">
+<h3 id="org8a57549">evince</h3>
+<div class="outline-text-3" id="text-org8a57549">
 <pre class="example">
 evince xxx.pdf to view pdf file
 
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbafecfb" class="outline-3">
-<h3 id="orgbafecfb">stardict</h3>
-<div class="outline-text-3" id="text-orgbafecfb">
+<div id="outline-container-org1b4f096" class="outline-3">
+<h3 id="org1b4f096">stardict</h3>
+<div class="outline-text-3" id="text-org1b4f096">
 <pre class="example">
 1 stardict 
 2 sdcv
@@ -877,17 +950,17 @@ In terminal open with sdcv
 </pre>
 </div>
 </div>
-<div id="outline-container-org6f54372" class="outline-3">
-<h3 id="org6f54372">kmplayer</h3>
-<div class="outline-text-3" id="text-org6f54372">
+<div id="outline-container-org81c5cf4" class="outline-3">
+<h3 id="org81c5cf4">kmplayer</h3>
+<div class="outline-text-3" id="text-org81c5cf4">
 <p>
 sudo apt install kmplayer
 </p>
 </div>
 </div>
-<div id="outline-container-org447abe1" class="outline-3">
-<h3 id="org447abe1">simplescreenrecorder</h3>
-<div class="outline-text-3" id="text-org447abe1">
+<div id="outline-container-orga883caa" class="outline-3">
+<h3 id="orga883caa">simplescreenrecorder</h3>
+<div class="outline-text-3" id="text-orga883caa">
 <pre class="example">
 
 sudo apt install simplescreenrecorder
@@ -898,9 +971,9 @@ Ctrl + Shift + Alt + V start or pause
 </pre>
 </div>
 </div>
-<div id="outline-container-org00ec639" class="outline-3">
-<h3 id="org00ec639">Cvim</h3>
-<div class="outline-text-3" id="text-org00ec639">
+<div id="outline-container-org9196324" class="outline-3">
+<h3 id="org9196324">Cvim</h3>
+<div class="outline-text-3" id="text-org9196324">
 <pre class="example">
 C-j moive to left 
 C-k moive to right
@@ -908,9 +981,9 @@ C-k moive to right
 </pre>
 </div>
 </div>
-<div id="outline-container-org70e99a7" class="outline-3">
-<h3 id="org70e99a7">hotopea</h3>
-<div class="outline-text-3" id="text-org70e99a7">
+<div id="outline-container-orgd8a5c56" class="outline-3">
+<h3 id="orgd8a5c56">hotopea</h3>
+<div class="outline-text-3" id="text-orgd8a5c56">
 <p>
 登陆photopea网站后，新建并上传图片
 设置白色背景：图像 -&gt; 调整 -&gt; 色阶  点击下面的白色 后点击要处理的图片区域
@@ -918,9 +991,9 @@ C-k moive to right
 </p>
 </div>
 </div>
-<div id="outline-container-org9792c37" class="outline-3">
-<h3 id="org9792c37">manual png create png</h3>
-<div class="outline-text-3" id="text-org9792c37">
+<div id="outline-container-orgc6da6b7" class="outline-3">
+<h3 id="orgc6da6b7">manual png create png</h3>
+<div class="outline-text-3" id="text-orgc6da6b7">
 <p>
 after edit a file.dot
 </p>
@@ -931,9 +1004,9 @@ dot -Tpng -O file.dot
 </div>
 </div>
 
-<div id="outline-container-org8991afd" class="outline-3">
-<h3 id="org8991afd">gpg for secret</h3>
-<div class="outline-text-3" id="text-org8991afd">
+<div id="outline-container-orgf6c3225" class="outline-3">
+<h3 id="orgf6c3225">gpg for secret</h3>
+<div class="outline-text-3" id="text-orgf6c3225">
 <pre class="example">
 gpg --list-secret-keys
 gpg -r user -e xxx.file
@@ -944,17 +1017,17 @@ after change xxx.file :gpg --verify xxx.file.gpg
 </div>
 </div>
 
-<div id="outline-container-org7873fbb" class="outline-3">
-<h3 id="org7873fbb">ranger</h3>
-<div class="outline-text-3" id="text-org7873fbb">
+<div id="outline-container-org49076e0" class="outline-3">
+<h3 id="org49076e0">ranger</h3>
+<div class="outline-text-3" id="text-org49076e0">
 <p>
 apt install
 </p>
 </div>
 </div>
-<div id="outline-container-orga59949b" class="outline-3">
-<h3 id="orga59949b">pdftk</h3>
-<div class="outline-text-3" id="text-orga59949b">
+<div id="outline-container-orga92896e" class="outline-3">
+<h3 id="orga92896e">pdftk</h3>
+<div class="outline-text-3" id="text-orga92896e">
 <p>
 <a href="http://www.pdflabs.com/docs/install-pdftk/">official web link</a>
 </p>
@@ -1027,9 +1100,9 @@ apt install
 </div>
 </div>
 
-<div id="outline-container-org03a4881" class="outline-3">
-<h3 id="org03a4881">Linux connect to Android</h3>
-<div class="outline-text-3" id="text-org03a4881">
+<div id="outline-container-org170efdd" class="outline-3">
+<h3 id="org170efdd">Linux connect to Android</h3>
+<div class="outline-text-3" id="text-org170efdd">
 <pre class="example">
 kedconnect on linux
 kedconnect on android
@@ -1043,9 +1116,9 @@ The file can be found in Download folder of each devices
 </div>
 </div>
 
-<div id="outline-container-org3a95768" class="outline-3">
-<h3 id="org3a95768">docker</h3>
-<div class="outline-text-3" id="text-org3a95768">
+<div id="outline-container-orga8b1b08" class="outline-3">
+<h3 id="orga8b1b08">docker</h3>
+<div class="outline-text-3" id="text-orga8b1b08">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1095,18 +1168,18 @@ The file can be found in Download folder of each devices
 </div>
 </div>
 
-<div id="outline-container-org026e136" class="outline-3">
-<h3 id="org026e136">gs</h3>
-<div class="outline-text-3" id="text-org026e136">
+<div id="outline-container-org972a715" class="outline-3">
+<h3 id="org972a715">gs</h3>
+<div class="outline-text-3" id="text-org972a715">
 <p>
 remove active content from pdf 
 gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=CV.pdf -dBATCH CV.pdf
 </p>
 </div>
 </div>
-<div id="outline-container-org4d74bb1" class="outline-3">
-<h3 id="org4d74bb1">mpv player</h3>
-<div class="outline-text-3" id="text-org4d74bb1">
+<div id="outline-container-orgbc2f685" class="outline-3">
+<h3 id="orgbc2f685">mpv player</h3>
+<div class="outline-text-3" id="text-orgbc2f685">
 <p>
 sudo apt install mpv
 </p>
@@ -1288,36 +1361,42 @@ mp.register_event("start-file", find_and_add_entries)
 </div>
 </div>
 
-<div id="outline-container-orgd7bc7f2" class="outline-3">
-<h3 id="orgd7bc7f2">mellplayer</h3>
-<div class="outline-text-3" id="text-orgd7bc7f2">
+<div id="outline-container-org320a4ee" class="outline-3">
+<h3 id="org320a4ee">mellplayer</h3>
+<div class="outline-text-3" id="text-org320a4ee">
 <p>
 sudo apt-get install libmpv-dev mpv
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc5b3582" class="outline-3">
-<h3 id="orgc5b3582">thunderbird</h3>
-<div class="outline-text-3" id="text-orgc5b3582">
+<div id="outline-container-orgf6f6ea4" class="outline-3">
+<h3 id="orgf6f6ea4">thunderbird</h3>
+<div class="outline-text-3" id="text-orgf6f6ea4">
 <pre class="example">
 Alt to open the menubar,
 Ansicht Anpassen to setting ungelesen
 </pre>
+
+<pre class="example">
+For Filter:
+cd ~/.thunderbird/4r373mm9.default-release/ImapMail/imap.gmail.com
+import msgFilterRules.dat to Gmail
+</pre>
 </div>
 </div>
 
-<div id="outline-container-org4c5bef7" class="outline-3">
-<h3 id="org4c5bef7">EverSync</h3>
-<div class="outline-text-3" id="text-org4c5bef7">
+<div id="outline-container-orgd7d573d" class="outline-3">
+<h3 id="orgd7d573d">EverSync</h3>
+<div class="outline-text-3" id="text-orgd7d573d">
 <p>
 Eversync sync all bookmarks between chrome and firefox with G Konten
 </p>
 </div>
 </div>
-<div id="outline-container-org0510f48" class="outline-3">
-<h3 id="org0510f48">IPFS</h3>
-<div class="outline-text-3" id="text-org0510f48">
+<div id="outline-container-org9f16668" class="outline-3">
+<h3 id="org9f16668">IPFS</h3>
+<div class="outline-text-3" id="text-org9f16668">
 <pre class="example">
 
 download go-ipfs and untar
@@ -1388,9 +1467,9 @@ ipfs file cp /ipfs/HASH
 </pre>
 </div>
 </div>
-<div id="outline-container-orgf3b1dfb" class="outline-3">
-<h3 id="orgf3b1dfb">GPG</h3>
-<div class="outline-text-3" id="text-orgf3b1dfb">
+<div id="outline-container-org921e584" class="outline-3">
+<h3 id="org921e584">GPG</h3>
+<div class="outline-text-3" id="text-org921e584">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1431,13 +1510,13 @@ if epa-file-select-key is t
 </div>
 </div>
 
-<div id="outline-container-org664966b" class="outline-2">
-<h2 id="org664966b">System control</h2>
-<div class="outline-text-2" id="text-org664966b">
+<div id="outline-container-org8a3a7d9" class="outline-2">
+<h2 id="org8a3a7d9">System control</h2>
+<div class="outline-text-2" id="text-org8a3a7d9">
 </div>
-<div id="outline-container-org279e920" class="outline-3">
-<h3 id="org279e920">system backup</h3>
-<div class="outline-text-3" id="text-org279e920">
+<div id="outline-container-org74a1f9e" class="outline-3">
+<h3 id="org74a1f9e">system backup</h3>
+<div class="outline-text-3" id="text-org74a1f9e">
 <p>
 mount rsync
 </p>
@@ -1466,9 +1545,9 @@ rsync -aAXv /home/sx/ /media/sx/A672BA1B72B9EFE3/linuxbackup/home/
 </div>
 </div>
 
-<div id="outline-container-orgca00f3d" class="outline-3">
-<h3 id="orgca00f3d">system performance</h3>
-<div class="outline-text-3" id="text-orgca00f3d">
+<div id="outline-container-orgfb655bd" class="outline-3">
+<h3 id="orgfb655bd">system performance</h3>
+<div class="outline-text-3" id="text-orgfb655bd">
 <ol class="org-ol">
 <li>dependence</li>
 </ol>
@@ -1491,13 +1570,13 @@ search for : system moniter extension
 </div>
 </div>
 
-<div id="outline-container-org470cdc7" class="outline-2">
-<h2 id="org470cdc7">chinese config</h2>
-<div class="outline-text-2" id="text-org470cdc7">
+<div id="outline-container-orgce05083" class="outline-2">
+<h2 id="orgce05083">chinese config</h2>
+<div class="outline-text-2" id="text-orgce05083">
 </div>
-<div id="outline-container-orgbc01390" class="outline-3">
-<h3 id="orgbc01390">emacs chinese input</h3>
-<div class="outline-text-3" id="text-orgbc01390">
+<div id="outline-container-orgb90f23d" class="outline-3">
+<h3 id="orgb90f23d">emacs chinese input</h3>
+<div class="outline-text-3" id="text-orgb90f23d">
 <p>
 sudo apt install fcitx
 download sougou for linux
@@ -1522,9 +1601,9 @@ so in emacs can input sougou, here we go
 </div>
 </div>
 
-<div id="outline-container-org28e7850" class="outline-3">
-<h3 id="org28e7850">chinese output pdf</h3>
-<div class="outline-text-3" id="text-org28e7850">
+<div id="outline-container-orgc460d2e" class="outline-3">
+<h3 id="orgc460d2e">chinese output pdf</h3>
+<div class="outline-text-3" id="text-orgc460d2e">
 <p>
 for a orgmode file with 汉字
 pandoc xxxx.org -o xxxx.pdf
@@ -1542,13 +1621,13 @@ pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
 </div>
 </div>
 
-<div id="outline-container-org1aebb9a" class="outline-2">
-<h2 id="org1aebb9a">hardware</h2>
-<div class="outline-text-2" id="text-org1aebb9a">
+<div id="outline-container-org7c08db7" class="outline-2">
+<h2 id="org7c08db7">hardware</h2>
+<div class="outline-text-2" id="text-org7c08db7">
 </div>
-<div id="outline-container-orga7b8424" class="outline-3">
-<h3 id="orga7b8424">memery</h3>
-<div class="outline-text-3" id="text-orga7b8424">
+<div id="outline-container-org2fd56cf" class="outline-3">
+<h3 id="org2fd56cf">memery</h3>
+<div class="outline-text-3" id="text-org2fd56cf">
 <pre class="example">
 寻址能力 = 2^地址总线宽度
 处理能力 = 2^数据总线宽度
@@ -1558,17 +1637,17 @@ pandoc test.org -o test.pdf --pdf-engine=xelatex -V mainfont="AR PL KaitiM GB"
 </div>
 </div>
 
-<div id="outline-container-org9e0e4ba" class="outline-2">
-<h2 id="org9e0e4ba">Makefile</h2>
-<div class="outline-text-2" id="text-org9e0e4ba">
+<div id="outline-container-org634d4fd" class="outline-2">
+<h2 id="org634d4fd">Makefile</h2>
+<div class="outline-text-2" id="text-org634d4fd">
 <p>
 gcc 调用 make 来构造
 </p>
 </div>
 
-<div id="outline-container-org2d87297" class="outline-3">
-<h3 id="org2d87297">格式</h3>
-<div class="outline-text-3" id="text-org2d87297">
+<div id="outline-container-orgca84110" class="outline-3">
+<h3 id="orgca84110">格式</h3>
+<div class="outline-text-3" id="text-orgca84110">
 <p>
 目标 ： 依赖
 Tab 命令
@@ -1576,9 +1655,9 @@ Tab 命令
 </div>
 </div>
 
-<div id="outline-container-orgec146eb" class="outline-3">
-<h3 id="orgec146eb">1example</h3>
-<div class="outline-text-3" id="text-orgec146eb">
+<div id="outline-container-orgbd69f6f" class="outline-3">
+<h3 id="orgbd69f6f">1example</h3>
+<div class="outline-text-3" id="text-orgbd69f6f">
 <p>
 实列文件：add.c  head.h   main.c   maul.c  sub.c  
 直接在terminal 用gcc ：$ gcc add.c main.c sub.c -o app
@@ -1599,9 +1678,9 @@ $ make
 </div>
 </div>
 
-<div id="outline-container-org588b930" class="outline-3">
-<h3 id="org588b930">2修改后只编译改动后的文件</h3>
-<div class="outline-text-3" id="text-org588b930">
+<div id="outline-container-orgbb09101" class="outline-3">
+<h3 id="orgbb09101">2修改后只编译改动后的文件</h3>
+<div class="outline-text-3" id="text-orgbb09101">
 <p>
 Makefile :
 $ touch Makefile
@@ -1631,9 +1710,9 @@ $ make
 </div>
 </div>
 
-<div id="outline-container-orgc4cd7bf" class="outline-3">
-<h3 id="orgc4cd7bf">3使用自动变量</h3>
-<div class="outline-text-3" id="text-orgc4cd7bf">
+<div id="outline-container-org3c7afc3" class="outline-3">
+<h3 id="org3c7afc3">3使用自动变量</h3>
+<div class="outline-text-3" id="text-org3c7afc3">
 <p>
 $@ :目标
 $&lt; :第一个依赖 
@@ -1660,9 +1739,9 @@ $ make
 </div>
 </div>
 
-<div id="outline-container-org1d32742" class="outline-3">
-<h3 id="org1d32742">4增加可移植性</h3>
-<div class="outline-text-3" id="text-org1d32742">
+<div id="outline-container-orgbb022dc" class="outline-3">
+<h3 id="orgbb022dc">4增加可移植性</h3>
+<div class="outline-text-3" id="text-orgbb022dc">
 <p>
 wildcard :查找指定目录下的指定类型文件
 src = $(wildcard ./*.c)
@@ -1700,9 +1779,9 @@ $ make
 </div>
 </div>
 
-<div id="outline-container-org138f580" class="outline-3">
-<h3 id="org138f580">5清洁中间的生成的不必要保存文件</h3>
-<div class="outline-text-3" id="text-org138f580">
+<div id="outline-container-org1bf38d6" class="outline-3">
+<h3 id="org1bf38d6">5清洁中间的生成的不必要保存文件</h3>
+<div class="outline-text-3" id="text-org1bf38d6">
 <p>
 make 一般直接执行终结目标，但是可以直接指定make的函数
 clean : 删除不必要的文件，-f : 强制删除，不管有没有该文件，- : 前置-后，遇到错误执行，直接跳过
@@ -1735,17 +1814,17 @@ $ make clean
 </div>
 </div>
 
-<div id="outline-container-org82340dc" class="outline-2">
-<h2 id="org82340dc">link</h2>
-<div class="outline-text-2" id="text-org82340dc">
+<div id="outline-container-org50873ec" class="outline-2">
+<h2 id="org50873ec">link</h2>
+<div class="outline-text-2" id="text-org50873ec">
 </div>
-<div id="outline-container-org7b3f700" class="outline-3">
-<h3 id="org7b3f700">静态库的制作</h3>
-<div class="outline-text-3" id="text-org7b3f700">
+<div id="outline-container-orga4482da" class="outline-3">
+<h3 id="orga4482da">静态库的制作</h3>
+<div class="outline-text-3" id="text-orga4482da">
 </div>
-<div id="outline-container-org2c82083" class="outline-4">
-<h4 id="org2c82083">库方</h4>
-<div class="outline-text-4" id="text-org2c82083">
+<div id="outline-container-org43d1629" class="outline-4">
+<h4 id="org43d1629">库方</h4>
+<div class="outline-text-4" id="text-org43d1629">
 <p>
 include/head.h  lib/  src/
 将在src/中编写要实现的文件
@@ -1764,9 +1843,9 @@ ar : -archive 打包
 </div>
 </div>
 
-<div id="outline-container-org37e39c2" class="outline-4">
-<h4 id="org37e39c2">甲方</h4>
-<div class="outline-text-4" id="text-org37e39c2">
+<div id="outline-container-org90eae06" class="outline-4">
+<h4 id="org90eae06">甲方</h4>
+<div class="outline-text-4" id="text-org90eae06">
 <p>
 根据include/head.h 的头文件编写自己的应用文件main.c
 编译main.c并链接头文件和库 
@@ -1779,9 +1858,9 @@ ar : -archive 打包
 </div>
 </div>
 
-<div id="outline-container-org6b24477" class="outline-4">
-<h4 id="org6b24477">特点</h4>
-<div class="outline-text-4" id="text-org6b24477">
+<div id="outline-container-org3b0329e" class="outline-4">
+<h4 id="org3b0329e">特点</h4>
+<div class="outline-text-4" id="text-org3b0329e">
 <p>
 优点： 加载块，移植方便
 缺点 ：部署更新麻烦，引用的重复文件重复储存，浪费空间
@@ -1790,9 +1869,9 @@ ar : -archive 打包
 </div>
 </div>
 
-<div id="outline-container-org6243487" class="outline-3">
-<h3 id="org6243487">动态库的制作</h3>
-<div class="outline-text-3" id="text-org6243487">
+<div id="outline-container-org35401b0" class="outline-3">
+<h3 id="org35401b0">动态库的制作</h3>
+<div class="outline-text-3" id="text-org35401b0">
 <p>
 编译    $ gcc *.c -c -fpic -I ../include
 -fpic 或者 fPIC : 特殊命令
@@ -1811,9 +1890,9 @@ $ gcc main.c -I ./inculde/ -L ./lib/ -lxxx -o app
 </p>
 </div>
 
-<div id="outline-container-org45a7b1e" class="outline-4">
-<h4 id="org45a7b1e">环境变量</h4>
-<div class="outline-text-4" id="text-org45a7b1e">
+<div id="outline-container-org8c06cd5" class="outline-4">
+<h4 id="org8c06cd5">环境变量</h4>
+<div class="outline-text-4" id="text-org8c06cd5">
 <p>
 临时设置   
   $ export LD<sub>LIBRARY</sub><sub>PATH</sub>=./lib
@@ -1839,9 +1918,9 @@ $ source /etc/profile
 </div>
 </div>
 
-<div id="outline-container-org2c58866" class="outline-4">
-<h4 id="org2c58866">修改配置文件</h4>
-<div class="outline-text-4" id="text-org2c58866">
+<div id="outline-container-org601f75e" class="outline-4">
+<h4 id="org601f75e">修改配置文件</h4>
+<div class="outline-text-4" id="text-org601f75e">
 <p>
 配置文件/etc/ld.so.conf
 $ sudo cat "绝对路径/lib" &gt;&gt; /etc/ld.so.conf
@@ -1850,9 +1929,9 @@ $ sudo ldconfig -v 激活配置
 </div>
 </div>
 
-<div id="outline-container-orgb7df730" class="outline-4">
-<h4 id="orgb7df730">通过函数加载</h4>
-<div class="outline-text-4" id="text-orgb7df730">
+<div id="outline-container-orgcf56b9d" class="outline-4">
+<h4 id="orgcf56b9d">通过函数加载</h4>
+<div class="outline-text-4" id="text-orgcf56b9d">
 <p>
 dlopen dlclose dlsym
 </p>
@@ -1861,22 +1940,22 @@ dlopen dlclose dlsym
 </div>
 </div>
 
-<div id="outline-container-org860247f" class="outline-2">
-<h2 id="org860247f">BetreibenSystem</h2>
-<div class="outline-text-2" id="text-org860247f">
+<div id="outline-container-org6b00929" class="outline-2">
+<h2 id="org6b00929">BetreibenSystem</h2>
+<div class="outline-text-2" id="text-org6b00929">
 </div>
-<div id="outline-container-org34f9ce6" class="outline-3">
-<h3 id="org34f9ce6">exit</h3>
-<div class="outline-text-3" id="text-org34f9ce6">
+<div id="outline-container-org341b367" class="outline-3">
+<h3 id="org341b367">exit</h3>
+<div class="outline-text-3" id="text-org341b367">
 <p>
 exit(0) will also send signal 17 (SIGCHID) to its father thread;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org493edb6" class="outline-3">
-<h3 id="org493edb6">named pipe</h3>
-<div class="outline-text-3" id="text-org493edb6">
+<div id="outline-container-org86a96a0" class="outline-3">
+<h3 id="org86a96a0">named pipe</h3>
+<div class="outline-text-3" id="text-org86a96a0">
 <ol class="org-ol">
 <li>In current directory:   mkfifo("./myfifo", 0777);</li>
 </ol>
@@ -1903,9 +1982,9 @@ can be controled by pipe variable
 </div>
 </div>
 
-<div id="outline-container-org1389adc" class="outline-3">
-<h3 id="org1389adc">unnamed pipe</h3>
-<div class="outline-text-3" id="text-org1389adc">
+<div id="outline-container-orgf1d15b3" class="outline-3">
+<h3 id="orgf1d15b3">unnamed pipe</h3>
+<div class="outline-text-3" id="text-orgf1d15b3">
 <ol class="org-ol">
 <li><p>
 In one process diff threads
@@ -1926,18 +2005,18 @@ remeber: wirte at frist in fd[1], and then read at fd[0]
 </div>
 </div>
 
-<div id="outline-container-orga0b6c0a" class="outline-3">
-<h3 id="orga0b6c0a">memcpy</h3>
-<div class="outline-text-3" id="text-orga0b6c0a">
+<div id="outline-container-orge0d5d03" class="outline-3">
+<h3 id="orge0d5d03">memcpy</h3>
+<div class="outline-text-3" id="text-orge0d5d03">
 <p>
 memcpy(p, "niao",4);
 </p>
 </div>
 </div>
 
-<div id="outline-container-org2527a6d" class="outline-3">
-<h3 id="org2527a6d">kill</h3>
-<div class="outline-text-3" id="text-org2527a6d">
+<div id="outline-container-org3f9b189" class="outline-3">
+<h3 id="org3f9b189">kill</h3>
+<div class="outline-text-3" id="text-org3f9b189">
 <p>
 kill(pid, 9);
 send signal 9 to pid process
@@ -1945,18 +2024,18 @@ send signal 9 to pid process
 </div>
 </div>
 
-<div id="outline-container-org4940ca5" class="outline-3">
-<h3 id="org4940ca5">raise</h3>
-<div class="outline-text-3" id="text-org4940ca5">
+<div id="outline-container-org9e30c96" class="outline-3">
+<h3 id="org9e30c96">raise</h3>
+<div class="outline-text-3" id="text-org9e30c96">
 <p>
 raise(9);  == kill(getpid(), 9);
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf01a93a" class="outline-3">
-<h3 id="orgf01a93a">alarm</h3>
-<div class="outline-text-3" id="text-orgf01a93a">
+<div id="outline-container-org037262a" class="outline-3">
+<h3 id="org037262a">alarm</h3>
+<div class="outline-text-3" id="text-org037262a">
 <p>
 alarm(10);   wait for 10 seconds and kill itself
 send signal as 14 to itself
@@ -1964,27 +2043,27 @@ send signal as 14 to itself
 </div>
 </div>
 
-<div id="outline-container-org24fa24d" class="outline-3">
-<h3 id="org24fa24d">pause</h3>
-<div class="outline-text-3" id="text-org24fa24d">
+<div id="outline-container-org7c2d699" class="outline-3">
+<h3 id="org7c2d699">pause</h3>
+<div class="outline-text-3" id="text-org7c2d699">
 <p>
 pause(); stoped for ever
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgec4fa8c" class="outline-3">
-<h3 id="orgec4fa8c">signal</h3>
-<div class="outline-text-3" id="text-orgec4fa8c">
+<div id="outline-container-orga25760b" class="outline-3">
+<h3 id="orga25760b">signal</h3>
+<div class="outline-text-3" id="text-orga25760b">
 <p>
 signal(signal<sub>ID</sub>, self<sub>function</sub>); self function or SIG<sub>ING</sub> or SIG<sub>DFL</sub>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd3f2d87" class="outline-3">
-<h3 id="orgd3f2d87">key</h3>
-<div class="outline-text-3" id="text-orgd3f2d87">
+<div id="outline-container-org6f09043" class="outline-3">
+<h3 id="org6f09043">key</h3>
+<div class="outline-text-3" id="text-org6f09043">
 <p>
 key can be 2 differ
 </p>
@@ -2004,9 +2083,9 @@ key can be 2 differ
 </div>
 </div>
 
-<div id="outline-container-org56a77a8" class="outline-3">
-<h3 id="org56a77a8">shmget</h3>
-<div class="outline-text-3" id="text-org56a77a8">
+<div id="outline-container-orgb331f99" class="outline-3">
+<h3 id="orgb331f99">shmget</h3>
+<div class="outline-text-3" id="text-orgb331f99">
 <p>
 shmid = shmget(IPC<sub>PRIVATE</sub>, 128, 0777);
 shmid = shmget(key, 128, IPC<sub>CREAT</sub> | 0777);
@@ -2014,9 +2093,9 @@ shmid = shmget(key, 128, IPC<sub>CREAT</sub> | 0777);
 </div>
 </div>
 
-<div id="outline-container-orgc7d6fbc" class="outline-3">
-<h3 id="orgc7d6fbc">shmat</h3>
-<div class="outline-text-3" id="text-orgc7d6fbc">
+<div id="outline-container-orgb51ce4b" class="outline-3">
+<h3 id="orgb51ce4b">shmat</h3>
+<div class="outline-text-3" id="text-orgb51ce4b">
 <p>
 char *p  = (char *) shmat(shmid, NULL, 0);
 after mapping to p : can be manipulated
@@ -2026,9 +2105,9 @@ printf("%s", p);
 </div>
 </div>
 
-<div id="outline-container-org51109ce" class="outline-3">
-<h3 id="org51109ce">shmdt</h3>
-<div class="outline-text-3" id="text-org51109ce">
+<div id="outline-container-org939e227" class="outline-3">
+<h3 id="org939e227">shmdt</h3>
+<div class="outline-text-3" id="text-org939e227">
 <p>
 delete the mapping of p to shared memory 
 shmdt(p); 
@@ -2038,9 +2117,9 @@ segmention fault
 </div>
 </div>
 
-<div id="outline-container-orgd19c9b8" class="outline-3">
-<h3 id="orgd19c9b8">shmctl</h3>
-<div class="outline-text-3" id="text-orgd19c9b8">
+<div id="outline-container-org93a8e61" class="outline-3">
+<h3 id="org93a8e61">shmctl</h3>
+<div class="outline-text-3" id="text-org93a8e61">
 <p>
 delete the created shared memory
 shmctl(shmid, IPC<sub>RMID</sub>, NULL); == iprcm -m shmid
@@ -2048,9 +2127,9 @@ shmctl(shmid, IPC<sub>RMID</sub>, NULL); == iprcm -m shmid
 </div>
 </div>
 
-<div id="outline-container-org1fa6cf5" class="outline-3">
-<h3 id="org1fa6cf5">IPC manipulation</h3>
-<div class="outline-text-3" id="text-org1fa6cf5">
+<div id="outline-container-org2102fb8" class="outline-3">
+<h3 id="org2102fb8">IPC manipulation</h3>
+<div class="outline-text-3" id="text-org2102fb8">
 <p>
 show : ipcs -m(shared memory) -q(message queue) -s(semaphores) 
 delete : ipcrm -m shmid /-q msgid /-s semid
@@ -2058,54 +2137,54 @@ delete : ipcrm -m shmid /-q msgid /-s semid
 </div>
 </div>
 
-<div id="outline-container-orgf5f53b8" class="outline-3">
-<h3 id="orgf5f53b8">msgget</h3>
-<div class="outline-text-3" id="text-orgf5f53b8">
+<div id="outline-container-org3e7e1ee" class="outline-3">
+<h3 id="org3e7e1ee">msgget</h3>
+<div class="outline-text-3" id="text-org3e7e1ee">
 <p>
 msgid= msgget(IPC<sub>PRIVATE</sub>, 0777);
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgfbb08ea" class="outline-3">
-<h3 id="orgfbb08ea">msgctl</h3>
-<div class="outline-text-3" id="text-orgfbb08ea">
+<div id="outline-container-org661e519" class="outline-3">
+<h3 id="org661e519">msgctl</h3>
+<div class="outline-text-3" id="text-org661e519">
 <p>
 msgctl(msgid, IPC<sub>RMID</sub>, NULL); == ipcrm -q msgid
 </p>
 </div>
 </div>
 
-<div id="outline-container-org410f9cd" class="outline-3">
-<h3 id="org410f9cd">msgsnd</h3>
-<div class="outline-text-3" id="text-org410f9cd">
+<div id="outline-container-org325c687" class="outline-3">
+<h3 id="org325c687">msgsnd</h3>
+<div class="outline-text-3" id="text-org325c687">
 <p>
 msgsnd(msgid, (void *)&amp;sendbuffer, strlen(sendbuffer.message), 0);
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd2425e3" class="outline-3">
-<h3 id="orgd2425e3">msgrcv</h3>
-<div class="outline-text-3" id="text-orgd2425e3">
+<div id="outline-container-orgb5c3421" class="outline-3">
+<h3 id="orgb5c3421">msgrcv</h3>
+<div class="outline-text-3" id="text-orgb5c3421">
 <p>
 receivelen = msgrcv(msgid, (void *)&amp;receiverbuffer, messagelen, 100, 0);
 </p>
 </div>
 </div>
 
-<div id="outline-container-org73ca6ea" class="outline-3">
-<h3 id="org73ca6ea">semget</h3>
-<div class="outline-text-3" id="text-org73ca6ea">
+<div id="outline-container-orgb396614" class="outline-3">
+<h3 id="orgb396614">semget</h3>
+<div class="outline-text-3" id="text-orgb396614">
 <p>
 semid = semget(IPC<sub>PRIVATE,3</sub> ,  0777);
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb56c693" class="outline-3">
-<h3 id="orgb56c693">semctl</h3>
-<div class="outline-text-3" id="text-orgb56c693">
+<div id="outline-container-org0a49e5f" class="outline-3">
+<h3 id="org0a49e5f">semctl</h3>
+<div class="outline-text-3" id="text-org0a49e5f">
 <p>
 semctl(semid, 0, IPC<sub>RMID</sub>, NULL);
 </p>
@@ -2113,29 +2192,31 @@ semctl(semid, 0, IPC<sub>RMID</sub>, NULL);
 </div>
 </div>
 
-<div id="outline-container-org32c870d" class="outline-2">
-<h2 id="org32c870d">Git</h2>
-<div class="outline-text-2" id="text-org32c870d">
+<div id="outline-container-org589917b" class="outline-2">
+<h2 id="org589917b">Git</h2>
+<div class="outline-text-2" id="text-org589917b">
 </div>
-<div id="outline-container-orga1c6310" class="outline-3">
-<h3 id="orga1c6310">tips</h3>
-<div class="outline-text-3" id="text-orga1c6310">
+<div id="outline-container-org062dd09" class="outline-3">
+<h3 id="org062dd09">tips</h3>
+<div class="outline-text-3" id="text-org062dd09">
 <p>
 Raw 文件
 </p>
 </div>
 </div>
-<div id="outline-container-org175473f" class="outline-3">
-<h3 id="org175473f">Git installation in Linux</h3>
-<div class="outline-text-3" id="text-org175473f">
-<pre class="example">
-1. sudo apt install git
+<div id="outline-container-org62bcde8" class="outline-3">
+<h3 id="org62bcde8">Git installation in Linux</h3>
+<div class="outline-text-3" id="text-org62bcde8">
+<ol class="org-ol">
+<li>sudo apt install git</li>
 
-2. local configuration
-#+begin_src sh
-   git  config --global user.name "username1"
-   git  config --global user.email "email1"
+<li>local configuration</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-sh">git  config --global user.name <span style="color: #2d9574;">"username1"</span>
+git  config --global user.email <span style="color: #2d9574;">"email1"</span>
 </pre>
+</div>
 <p>
 git  config &#x2013;list
 </p>
@@ -2147,19 +2228,17 @@ git  config &#x2013;list
 <pre class="src src-sh">ssh-keygen -t rsa -C <span style="color: #2d9574;">"email2"</span>
 </pre>
 </div>
+
 <p>
 and then just all enter as default
    warming: email1 == email2
 </p>
+</div>
+</div>
 
-<p>
-#+END<sub>SRC</sub>
-</p>
-</div>
-</div>
-<div id="outline-container-orgc645c81" class="outline-3">
-<h3 id="orgc645c81">Webconfig</h3>
-<div class="outline-text-3" id="text-orgc645c81">
+<div id="outline-container-org2bc392f" class="outline-3">
+<h3 id="org2bc392f">Webconfig</h3>
+<div class="outline-text-3" id="text-org2bc392f">
 <pre class="example">
 1. go to Fold Docu1, and in terminal git init to create local  repository
 2. apply github count with:
@@ -2172,9 +2251,9 @@ and then just all enter as default
 </pre>
 </div>
 </div>
-<div id="outline-container-org5eee56e" class="outline-3">
-<h3 id="org5eee56e">Connection</h3>
-<div class="outline-text-3" id="text-org5eee56e">
+<div id="outline-container-orgf39e90c" class="outline-3">
+<h3 id="orgf39e90c">Connection</h3>
+<div class="outline-text-3" id="text-orgf39e90c">
 <pre class="example">
 
 1. in local computer Docu1, create our files and prepare to push to
@@ -2189,134 +2268,10 @@ and then just all enter as default
 </pre>
 </div>
 </div>
-<div id="outline-container-org9a6b00d" class="outline-3">
-<h3 id="org9a6b00d">Magit Commit "C-x g" in E** Github on Windows</h3>
-<div class="outline-text-3" id="text-org9a6b00d">
-<pre class="example">
-1.  download git(scm) for windows
-2. copy package to somewhere to install
-3. choose the install path and editor
-4. create a NEW Repository and copy its ADDRESS
-create a file, .ssh and
-ssh-keygen -t rsa -C "your_email@example.com"
-and the id_rsa.pub into Github(New SSH key)
-5. to Desktop, git init
-6. create file, git add, git commit
-7. git remote and NAMe ADDRESS
-8. git push NAMe master
-</pre>
-</div>
-</div>
-<div id="outline-container-org120effb" class="outline-3">
-<h3 id="org120effb">Merge with aother branch</h3>
-<div class="outline-text-3" id="text-org120effb">
-<pre class="example">
-after pull, git checkout dev
-git push -u name dev 
 
-</pre>
-</div>
-</div>
-<div id="outline-container-org317f970" class="outline-3">
-<h3 id="org317f970">Gitcommond</h3>
-<div class="outline-text-3" id="text-org317f970">
-</div>
-<div id="outline-container-org6d850c9" class="outline-4">
-<h4 id="org6d850c9">创建mybranch分支</h4>
-<div class="outline-text-4" id="text-org6d850c9">
-<p>
-git branch mybrauch
-git checkout mybrauch
-create .gitignore
-git add -A
-git reset xxx.tex
-git status
-git commit -m "commit"
-git add -A 
-git commit -m "mybrauch"
-git push -u origin mybrauch
-</p>
-</div>
-</div>
-
-<div id="outline-container-org5be2431" class="outline-4">
-<h4 id="org5be2431">merge mybranch分支到master分支</h4>
-<div class="outline-text-4" id="text-org5be2431">
-<p>
-git checkout master
-git pull origin master
-git branch &#x2013;merged
-git merge mybrauch
-git push origin master
-</p>
-</div>
-</div>
-
-<div id="outline-container-org061aab6" class="outline-4">
-<h4 id="org061aab6">删除mybranch分支</h4>
-<div class="outline-text-4" id="text-org061aab6">
-<p>
-git branch &#x2013;merged
-git branch -d mybrauch
-git branch -a 
-git push origin &#x2013;delete mybrauch
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org2982ba2" class="outline-3">
-<h3 id="org2982ba2">commands</h3>
-<div class="outline-text-3" id="text-org2982ba2">
-<p>
-add 添加索引  
-</p>
-
-<p>
-编辑当前文件后，想恢复，且未添加索引(未 add) ：  git checkout &#x2013;file
-编辑当前文件后，想恢复，但已添加索引(已 add) ：  git reset HEAD file 再 git checkout &#x2013;file
-编辑当前文件后，想查变动，且未添加索引(未 add) ： git diff
-编辑当前文件后，想查变动，但已添加索引(已 add) ： git diff &#x2013;cached
-编辑当前文件后，已提交(已 add),想撤出索引 ：    git rm &#x2013;cached  file
-</p>
-
-<p>
-编辑后，强制回到最近一次添加索引的版本：        git reset &#x2013;hard HEAD
-编辑后，强制回到最近倒数第二次添加索引的版本：   git reset &#x2013;hard HEAD~
-编辑后，强制回到最近倒数第n次添加索引的版本：    git reset &#x2013;hard HEAD~n
-</p>
-
-<p>
-如果将HEAD换成对应的ID， 也可以回到之前相应的版本。 但是如果想再回去，
-又没有记住之前的ID， 可以用，       git reflog 查询.
-</p>
-
-
-
-<p>
-commit 添加提交
-和上次commit提交融合，不产生新的提交记录：  git commit &#x2013;amend
-</p>
-
-
-<p>
-branch 新分支
-创建新的分支： git branch development
-带着全部家当去新的分支： git checkout development
-</p>
-
-<p>
-merge 融合分支
-如果此时只有development分支改变，可以直接回到master, 把development分支
-merge 过来   git merge development
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org4be9a5c" class="outline-3">
-<h3 id="org4be9a5c">Magit</h3>
-<div class="outline-text-3" id="text-org4be9a5c">
+<div id="outline-container-orgd8d009a" class="outline-3">
+<h3 id="orgd8d009a">Magit</h3>
+<div class="outline-text-3" id="text-orgd8d009a">
 <pre class="example">
 C-x g  : open the git buffer
 S or s : to stage
@@ -2326,90 +2281,189 @@ P and p to push
 </pre>
 </div>
 </div>
-<div id="outline-container-orgd2546a0" class="outline-3">
-<h3 id="orgd2546a0">github conflict with local git</h3>
-<div class="outline-text-3" id="text-orgd2546a0">
+<div id="outline-container-org6cce8be" class="outline-3">
+<h3 id="org6cce8be">Git branch</h3>
+<div class="outline-text-3" id="text-org6cce8be">
+</div>
+<div id="outline-container-org9b69ae1" class="outline-4">
+<h4 id="org9b69ae1">git branch  创建development分支</h4>
+<div class="outline-text-4" id="text-org9b69ae1">
 <pre class="example">
-delete from github
-1. delete in github seit
-2. git pull origin master
-3. edit anyhow and push
+branch 创建 新分支
+创建新的分支： git branch development
+带着全部家当去新的分支： git checkout development
+git add -A 
+git commit -m "development"
+git push -u origin development
 </pre>
-
+</div>
+</div>
+<div id="outline-container-org4976a79" class="outline-4">
+<h4 id="org4976a79">git merge 可以 merge mybranch分支到master分支</h4>
+<div class="outline-text-4" id="text-org4976a79">
 <pre class="example">
-delete from local git
-git rm -r  target
-git add *
-git commit -m "commit"
+merge 融合分支
+如果此时只有development分支改变，可以直接回到master, 把development分支
+merge 过来   git merge development
+
+git checkout master
+git pull origin master
+git branch --merged
+git merge development
 git push origin master
-
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org6ff4f67" class="outline-3">
-<h3 id="org6ff4f67">new system merge</h3>
-<div class="outline-text-3" id="text-org6ff4f67">
+<div id="outline-container-orgcd3dfe8" class="outline-4">
+<h4 id="orgcd3dfe8">删除mybranch分支</h4>
+<div class="outline-text-4" id="text-orgcd3dfe8">
 <pre class="example">
-sudo apt install git
-config 3646
-add ssh-key
-git clone
-git push
 
+git branch --merged
+git branch -d mybrauch
+git branch -a 
+git push origin --delete mybrauch
 </pre>
 </div>
 </div>
+<div id="outline-container-org5a99354" class="outline-4">
+<h4 id="org5a99354">git rm</h4>
+<div class="outline-text-4" id="text-org5a99354">
+</div>
+<ul class="org-ul">
+<li><a id="org127eaf8"></a>git rm &#x2013;cached file<br />
+<div class="outline-text-5" id="text-org127eaf8">
+<pre class="example">
+编辑当前文件后，已提交(已 add),想撤出索引 ：    git rm --cached  file
+after that, I can check the delete file with git status or git diff --cached.
+</pre>
+</div>
+</li>
+<li><a id="orge4b5121"></a>recover after git rm<br />
+<div class="outline-text-5" id="text-orge4b5121">
+<pre class="example">
+if I want , I can git add * to call all back again, but nothing to commit
+</pre>
+</div>
+</li>
+<li><a id="org64363a3"></a>confirm to delete file in local directory<br />
+<div class="outline-text-5" id="text-org64363a3">
+<pre class="example">
+if I ready want to delete this,
+using rm file  delete the file in local directory, 
+but git status and diff --cached remands this still, 
+only after commit, there's no signal for the deleted file anymore.
+</pre>
+</div>
+</li>
+<li><a id="org0f9006c"></a>recover after delete in local directory<br />
+<div class="outline-text-5" id="text-org0f9006c">
+<pre class="example">
+git reflog
+git reset --hard ID
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd2fad9b" class="outline-4">
+<h4 id="orgd2fad9b">git multi commit</h4>
+<div class="outline-text-4" id="text-orgd2fad9b">
+<p>
+commit 添加提交
+和上次commit提交融合，不产生新的提交记录：  git commit &#x2013;amend
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org7e8477b" class="outline-2">
-<h2 id="org7e8477b">note&#xa0;&#xa0;&#xa0;<span class="tag"><span class="crypt">crypt</span></span></h2>
-<div class="outline-text-2" id="text-org7e8477b">
-<p>
-&#x2013;&#x2014;BEGIN PGP MESSAGE&#x2013;&#x2014;
-</p>
+<div id="outline-container-orgd8218ce" class="outline-3">
+<h3 id="orgd8218ce">commands to recover</h3>
+<div class="outline-text-3" id="text-orgd8218ce">
+</div>
+<div id="outline-container-orge2021d5" class="outline-4">
+<h4 id="orge2021d5">after only save</h4>
+<div class="outline-text-4" id="text-orge2021d5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-<p>
-jA0ECQMCZnPhy397Vjz/0uoBN1HthbTwBC8Lz4oWahdDirG0DCK40qKx5LV5SwXP
-XjbEuvTJKxhCRuA4eeqgAqhCNuusbhqrGwk8G8DGMuFVvuogC4fKbmO6RSyAwrkh
-S8OZfJ6ZibPmlVIQW4vOwNTlLMm3ttOnvnHhRzgKNHIT+t19qBDnyOKAT0KfTDR7
-vdom6Fp7/8PkmMLO8ZehU/U5+rPr+Y/d0g958TchYGQQDyr2BW+rAKkhsMfjLGBO
-OfGjG8xg0Xfj+2NPB3nITz8q7Y7H6Q6TaaP9s+HTPUTv6n3GxLXoJnFbXEIwvt22
-FbN+oRdpw1S/gSHm/Plse9MxSGgWNrLYHIFTIyIqqxewxGq5HI/0dGqsD6oyb55p
-G9sPzWiuokgibMSOLtK4HEiCPmAtzuW5EqWuVEq72r599lHHSWJmmKHK2c0wUmLB
-FCpQJEItJpel+UjVc8JQ1enpfjaspP5HzTZNRU+KtAEtqZeQenGGAzBGGKqVw3UE
-RmyIQh4/1de6A3Pin2ZfQ+4rYB+HEKKBR5/qo0Vh4XmGyLV/pwI21NYyp+15dwo9
-Fv2QVABKq6hJFWIPD8pyORhKJFgEVD4/+U3oP3mjJpcSEquGOIMc5SsHdjH7HMTv
-W4oz+6tLTdo+GivAj16aLq0V0SJRe0kr9Hhekf2WbVG1taCzTCIOrbqZpuLhHSiV
-we2+Q4QjLMJ/opfWPQ8g0n9bXmokCnIb/2O0ZYiX9zwZmSYKdX8jliQw9qwShll/
-1IZ9A+p8caGjPpPvDbQiB+ALk6jWGB4MYUllJXnT8e2sf3lUpSi+vIk//AKwLh5p
-YpTRjEfHoFvQzYmsBd71jKoiziMXaXrsVFZl1noJXOLSGTHAg1UqGZKJK28xGJOK
-dQb2Dm35sEudqOmom3Nqjbj53XMsNYULtsVPP6+tE8R07E5qutvJZYd069ccPJEA
-WFQn0ok2bhNbCLtalscsTjVLN3QjqxGO46qZ+ExjmIfGa26qXc3RPeZQwJmEiK4t
-IzNd9iDtkf1QGWtkdd2MVGXIRdc+LKnJ3GatRiRT+n/IU8dceQch9UEWJgdf5YWm
-R4dJgXtLyD/NWPgRn/el1ldBamuXPVQVfrPLzeKURe6SY+hpVqM2JUS8HIbLfa/Z
-YfSsUejCCNpZR7OMIfFyctD7SjpgTQwdTHzzWq9BRrFKupEFy0HGTBXYVYK5Mf/O
-uXRtxHBO+G7/532vICWf8xeMNBOonSEWEBrKmE1mMu8h2jjiNkMoRqgSg4VQg0dt
-HwisXF2sPlZUX/cEm7dHdbW26OBSHIowiDVtijHOg3VdQMp8gNfqB7caBX/nHrCv
-2HZNA7H1ndINmemLc2xKwWftzpMtMcx99aj3lwzd/gsjwKnHEVHz13bsSA/knraO
-x+NnHjxYG6bwFX/T6BYcjtm7n0xke5lfYl8/UCMgAttnUS5xtI0e8YVXaH7o6JOT
-pUvrBrx/a3hKYBSRbgLHOIqq59uxxAn983Po/kOnrCkvnIw44vih02D0WzO6qBcs
-NgJjK/0TQBOhQBWWFJ2xwnyf0nUdenXE8mqxXhKGYtINDnkuRC/g+YMqoPOSPoVl
-IQ9NCSgHOmwTYOnJk+FGobV6UKbfqOi8KJjyNSWxMSBwwTC6BTUafOXnuf2vVVtH
-gIOJEpsjBqZR++ynrt2QKoOCsxeXf3CMkg8aU1S7BK6Tv42ms/czQEp86WuniuSz
-+UcDXjcxNt77w9wk+9Ypj1OHmag0oQ1tFMdT8L8Gs5nCI20n7Rr87Daqep9kr7Fl
-wTvbp2i4CNFrixtpKsQAVT/+QLsH9UOJbUN5FwY/Ldyhs9Xhp07sSj/OhTjVM2Sf
-Rf+xpNZfp2cjQWUE
-=AXxO
-&#x2013;&#x2014;END PGP MESSAGE&#x2013;&#x2014;
-</p>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">git diff</td>
+<td class="org-left">can see the different comparing to last time commit</td>
+</tr>
+
+<tr>
+<td class="org-left">git checkout &#x2013; file</td>
+<td class="org-left">git diff: NULL, file has been recovered</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org297bb13" class="outline-4">
+<h4 id="org297bb13">after git add file</h4>
+<div class="outline-text-4" id="text-org297bb13">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">git diff</td>
+<td class="org-left">dit diff :NULL</td>
+</tr>
+
+<tr>
+<td class="org-left">git diff &#x2013;cached</td>
+<td class="org-left">can see the different comparing to the last time commit</td>
+</tr>
+
+<tr>
+<td class="org-left">git reset HEAD file</td>
+<td class="org-left">git diff &#x2013; cached : NULL</td>
+</tr>
+
+<tr>
+<td class="org-left">git checkout &#x2013; file</td>
+<td class="org-left">file has been recovered</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2d14f7b" class="outline-4">
+<h4 id="org2d14f7b">after git commit file</h4>
+<div class="outline-text-4" id="text-org2d14f7b">
+<pre class="example">
+
+编辑后，强制回到最近一次添加索引的版本：        git reset --hard HEAD
+编辑后，强制回到最近倒数第二次添加索引的版本：   git reset --hard HEAD~
+编辑后，强制回到最近倒数第n次添加索引的版本：    git reset --hard HEAD~n
+
+如果将HEAD换成对应的ID， 也可以回到之前相应的版本。 但是如果想再回去，
+又没有记住之前的ID， 可以用，       git reflog 查询.
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-12-03 Do 17:49</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2020-12-28 Mo 21:53</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

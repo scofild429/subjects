@@ -167,7 +167,6 @@ v (eww-view-source)
 
 C (url-cookie-list)
 
-
 * helpful mode for edit
 #+BEGIN_SRC 
 
@@ -185,7 +184,6 @@ M-x show-parent-mode  (Error :end file of parsing) can be caused by lack of pare
 | cut content for all select mark region  | C-x SPE C-w             |
 | post content for all select mark region | C-x SPE C-y             |
 |-----------------------------------------+-------------------------|
-
 
 * Org mode
 ** rich text
@@ -212,10 +210,6 @@ but not any simpler
 
 here I will try some *nows*, and this is to  be /funny/,
 and _underlined_.
-
-
-
-
 
 ** commods
 |---------------------------------------+-------------------------------|
@@ -400,6 +394,8 @@ keywords searching in all opened files, external files,
 | C-c '       | edit all src in a new buffer with mode                  |
 |-------------+---------------------------------------------------------|
 
+#+begin_quote
+#+end_quote
 ** options
 src 前缀  
 |----------------------------+--------------------------------------------|

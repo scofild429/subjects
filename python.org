@@ -713,6 +713,25 @@ using the decorator class
 display the name is Xiang, and the age is 21
 #+end_example
 
+** with * **
+#+begin_src ipython :results output :exports both
+  def function_with_one_star(*d):
+      print(d)
+
+  def function_with_two_stars(**d):
+      print(d)
+
+  function_with_one_star(1,2,3)
+
+  function_with_two_stars(a=1, b=2, c=3)
+
+
+#+end_src
+
+#+RESULTS:
+: (1, 2, 3)
+: {'a': 1, 'b': 2, 'c': 3}
+
 * Python small Program
 ** turtle movement
 #+BEGIN_SRC python
@@ -1523,33 +1542,33 @@ Anisotorpie
 Paar-Grauwertmatrix
 
 * python automotion
-** system manipulation
-#+begin_src ipython :results output
-  import os
-  import pandas as pd
-  for a in os.listdir(".."):
-      print(a)
-
+** system manipulation 
+*** os.getcwd()
+#+begin_src ipython :results output :exports both
+import os
+print(os.getcwd())
 #+end_src
 
 #+RESULTS:
-#+begin_example
-Physik.org
-ROS.org
-.git
-linux.html
-Physik.html
-WebDesign.html
-Math.org
-ai
-Math.html
-Inf.org
-linux.org
-WebDesign.org
-Inf.html
-ROS.html
-ltximg
-#+end_example
+: /home/silin/Dropbox/subjects
+
+*** os.chdir() 
+#+begin_src ipython  :results output :exports both
+import os
+os.chdir("../../Schreibtisch")
+print(os.getcwd())
+#+end_src
+
+#+RESULTS:
+: /home/silin/Schreibtisch
+
+*** os.listdir()
+#+begin_src ipython  :results output :exports both
+print(os.listdir())
+#+end_src
+
+#+RESULTS:
+: []
 
 * PyTorch
 ** Basic
@@ -1592,7 +1611,6 @@ ltximg
 : cuda:0 0.004456043243408203 tensor(141442.0938, device='cuda:0')
 : cuda:0 0.00037932395935058594 tensor(141442.0938, device='cuda:0')
 
-
 *** auto Derivative
 
 #+begin_src ipython :results output
@@ -1615,7 +1633,6 @@ ltximg
 #+RESULTS:
 : before: None None None
 : after: tensor(2.) tensor(1.) tensor(1.)
-
 
 *** small example
 #+begin_src ipython :results output
@@ -1680,10 +1697,120 @@ $$ \frac{d(out_{ij})}{d(x_{ij})}  = 3(2+4)/4 = 4.5$$
 
 
 
-
-
 ** Function
 *** x = x.new_ones(4,3)
+
+** Iterator DataLoader
+
+here, THE i is the number of iterations, each iteration has 20 iter
+#+begin_src ipython :results output
+  import torch
+  import numpy as np
+
+  i = np.array([a for a in range(100)])
+  i = torch.from_numpy(i)
+
+  test = torch.utils.data.DataLoader(i, batch_size=20,shuffle=False)
+  testiter = iter(test)
+
+  for k, data in enumerate(testiter):
+      print(k)
+
+
+#+end_src
+
+#+RESULTS:
+: 0
+: 1
+: 2
+: 3
+: 4
+
+** torch.max
+the return is a namedtuple
+dim = 0, 1, maximum of rows or columns
+#+begin_src ipython :results output
+import torch
+i = torch.randn(3,4)
+print(torch.max(i, 0))
+print(torch.max(i, 1))
+
+#+end_src
+
+#+RESULTS:
+: torch.return_types.max(
+: values=tensor([-0.1560,  0.1561,  0.9781,  0.4501]),
+: indices=tensor([1, 0, 1, 0]))
+: torch.return_types.max(
+: values=tensor([0.4904, 0.9781, 0.2857]),
+: indices=tensor([2, 2, 2]))
+
+
+
+** exsample 3 ploy
+#+begin_src ipython :results output
+  import torch
+  import math
+
+
+  class Polynomial3(torch.nn.Module):
+      def __init__(self):
+          """
+          In the constructor we instantiate four parameters and assign them as
+          member parameters.
+          """
+          super().__init__()
+          self.a = torch.nn.Parameter(torch.randn(()))
+          self.b = torch.nn.Parameter(torch.randn(()))
+          self.c = torch.nn.Parameter(torch.randn(()))
+          self.d = torch.nn.Parameter(torch.randn(()))
+
+      def forward(self, x):
+          """
+          In the forward function we accept a Tensor of input data and we must return
+          a Tensor of output data. We can use Modules defined in the constructor as
+          well as arbitrary operators on Tensors.
+          """
+          return self.a + self.b * x + self.c * x ** 2 + self.d * x ** 3
+
+      def string(self):
+          """
+          Just like any class in Python, you can also define custom method on PyTorch modules
+          """
+          return f'y = {self.a.item()} + {self.b.item()} x + {self.c.item()} x^2 + {self.d.item()} x^3'
+
+
+  # Create Tensors to hold input and outputs.
+  x = torch.linspace(-math.pi, math.pi, 2000)
+  y = torch.sin(x)
+
+  # Construct our model by instantiating the class defined above
+  model = Polynomial3()
+
+  # Construct our loss function and an Optimizer. The call to model.parameters()
+  # in the SGD constructor will contain the learnable parameters of the nn.Linear
+  # module which is members of the model.
+  criterion = torch.nn.MSELoss(reduction='sum')
+  optimizer = torch.optim.SGD(model.parameters(), lr=1e-6)
+  for t in range(2000):
+      # Forward pass: Compute predicted y by passing x to the model
+      y_pred = model(x)
+
+      # Compute and print loss
+      loss = criterion(y_pred, y)
+      if t % 100 == 99:
+          print(t, loss.item())
+
+      # Zero gradients, perform a backward pass, and update the weights.
+      optimizer.zero_grad()
+      loss.backward()
+      optimizer.step()
+
+  print(f'Result: {model.string()}')
+
+
+#+end_src
+
 * packages
 ** matplotlib.plot
 *** two linear plot 
@@ -3588,7 +3715,6 @@ to fix it, apt the driver 418-driver from apt again
 
 
 
-
 ** Tensorflow foundation
 *** 数值类型 
 |--------+------+---------+-----------------------+----------------------|
@@ -3693,7 +3819,6 @@ cor = tf.reduce_sum(out)
 #+begin_src 
 x = tf.pad(x,[[0,2]]) []内是padding 填充的方案，每个[]表示一个维度
 #+end_src
-
 
 
 *** advance manipulation
@@ -5088,3 +5213,61 @@ cluster priors:$$\pi_{k} = \frac{N_{k}}{N}$$
 ** link
 机器学习代码和课件可在此下 [fn:xiaoxiong]
 [fn:xiaoxiong]https://jia666-my.sharepoint.com/:f:/g/personal/hmp121_xkx_me/EsaG70R5NXdMgC7V1aYwyQcB5C-8nFiSYTWG3Uur9ZvbEA?e=1D2uPf
+
+* Deep learing
+
+Recepte Field Size
+viald = same: $RF = 1 + \sum (k_l -1)$
+viald != same : $RF = (RF^{'} -1)*s + k$
+* computer vision
+** Ubungs 01
+
+<<computer version ubung 01>>
+Solution erkälerung
+Mediuem 
+under Quantil 25%
+ober Quantil  75%
+
+Entopie
+$$ E = \sum h_{rel}(w) log^{\frac{1}{h_{rel}}(w)} = - \sum p log^{p}$$
+
+Anisotorpie 
+
+Paar-Grauwertmatrix
+* sensor Fusion
+** Sensor Dataverarbeitung
+Tensor Fehler, Präzision: stochastisch
+Richtigkeit: systematisch
+
+
+
+** concepts
+|----------------+-----------------------------------------------------|
+| competitive    | many sensor for the same place für higher accuracy  |
+| complementary  | many sensor for many places für higher completeness |
+| dead reckoning | errors accumulation over previous knowlegde         |
+|----------------+-----------------------------------------------------|
+
+$$ y = H x + e $$
+|----------------------+-----------------------------------------------|
+| measurement equation | projects the state onto the measurement space |
+| y                    | measurement                                   |
+| x                    | state                                         |
+| H                    | measurement matrix                            |
+| e                    | measurement error                             |
+|----------------------+-----------------------------------------------|
+
+*Jacobian Matrix* one order
+
+
+*Hessian Matrix*  two order
+
+*Partial Matrix*
+- $$ \frac{\partial}{\partial x}c^{T}x = \frac{\partial}{\partial x}x^{T}c  = c $$
+- $$ \frac{\partial}{\partial x}x^{T}Ax = 2 Ax $$
+- $$ \frac{\partial}{\partial x}Ax = \frac{\partial}{\partial x}x^{T}A = A $$
+
+  
+
+
+*** Sensor Data Fusion

@@ -164,3 +164,38 @@ read file :: insert-file-contents
 
 
 #+end_src
+* Function in orgmode
+#+begin_src emacs-lisp
+(+ 45 65)
+#+end_src
+
+#+RESULTS:
+: 110
+
+#+begin_src  emacs-lisp
+  (defun do-some-math(x y)
+    (* (+ x 20)
+       (- y 10) ) )
+#+end_src
+
+
+#+begin_src emacs-lisp
+  (defun multipy-many  (x &rest operands)
+    (dolist (operand operands) 
+      (when operand 
+        (setq x (* x operand)))) x)
+#+end_src
+
+
+interactive function als commands
+#+begin_src  emacs-lisp
+  (defun my-first-command()
+  (interactive)
+  (message "Hey , it works") )
+
+#+end_src
+
+#+RESULTS:
+: my-first-command
+
+
