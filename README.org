@@ -15,7 +15,7 @@
 | [[https://scofild429.github.io/subjects/python.html][python]]    |
 | [[https://scofild429.github.io/subjects/ROS.html][ROS]]       |
 | [[https://scofild429.github.io/subjects/mysql.html][mysql]]     |
-| [[https://scofild429.github.io/subjects/WegDesign.html][WebDesign]] |
+| [[https://scofild429.github.io/subjects/WebDesign.html][WebDesign]] |
 | [[https://scofild429.github.io/subjects/JS.html][JS]]        |
 |-----------|
 
