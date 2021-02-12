@@ -1,16 +1,21 @@
 * links to github Page
 
-[[https://scofild429.github.io/subjects/c.html][c]]
-[[https://scofild429.github.io/subjects/CS.html][CS]]
-[[https://scofild429.github.io/subjects/emacs.html][emacs]]
-[[https://scofild429.github.io/subjects/haskell.html][haskell]]
-[[https://scofild429.github.io/subjects/Java.html][Java]]
-[[https://scofild429.github.io/subjects/linux.html][linux]]
-[[https://scofild429.github.io/subjects/lisp.html][lisp]]
-[[https://scofild429.github.io/subjects/Math.html][Math]]
-[[https://scofild429.github.io/subjects/mysql.html][mysql]]
-[[https://scofild429.github.io/subjects/Physik.html][Physik]]
-[[https://scofild429.github.io/subjects/python.html][python]]
-[[https://scofild429.github.io/subjects/ROS.html][ROS]]
-
+|-----------|
+| [[https://scofild429.github.io/subjects/c.html][c]]         |
+| [[https://scofild429.github.io/subjects/CS.html][CS]]        |
+| [[https://scofild429.github.io/subjects/bash.html][bash]]      |
+| [[https://scofild429.github.io/subjects/emacs.html][emacs]]     |
+| [[https://scofild429.github.io/subjects/haskell.html][haskell]]   |
+| [[https://scofild429.github.io/subjects/Java.html][Java]]      |
+| [[https://scofild429.github.io/subjects/linux.html][linux]]     |
+| [[https://scofild429.github.io/subjects/lisp.html][lisp]]      |
+| [[https://scofild429.github.io/subjects/Math.html][Math]]      |
+| [[https://scofild429.github.io/subjects/mysql.html][mysql]]     |
+| [[https://scofild429.github.io/subjects/Physik.html][Physik]]    |
+| [[https://scofild429.github.io/subjects/python.html][python]]    |
+| [[https://scofild429.github.io/subjects/ROS.html][ROS]]       |
+| [[https://scofild429.github.io/subjects/mysql.html][mysql]]     |
+| [[https://scofild429.github.io/subjects/WegDesign.html][WebDesign]] |
+| [[https://scofild429.github.io/subjects/JS.html][JS]]        |
+|-----------|
 
