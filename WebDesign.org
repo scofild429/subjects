@@ -1,8 +1,7 @@
 #+TITLE: Webdesige
 #+OPTIONS: num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+startup: overview
-
+#+startup: content
 * config 
 ** Factory mode
 *** one product one factory many many design
@@ -252,9 +251,23 @@ java -cp target/xxxx....xx.jar com.mycompany.app.App
 
 just call the plugins at the start
 
-*** 事务
-*** 事务隔离
+*** 事务 Transaction
+#+begin_src 
+
+声明式：Annoation
+1, 配置事务管理器
+2, 开启事务注解
+3, 添加事务注解
+@Transaction(propagation, isolation, timeout, readout, (no)rollback)
+propagation;事务是否传播
+isolation:
+脏读：未提交的事务读取到另一个未提交的事务的原始数据
+不可重复读；未提交的事务读取到另一个提交的事务的原始数据
+幻读；未提交的事务读取到另一个提交的事务的修改数据
+#+end_src
+
 *** 范式
+| 原子性 | 一致性 | 隔离性 | 持久性 |
 *** 连接池
 *** 外键
 *** 多表
@@ -405,8 +418,6 @@ mongorestore --drop
 #+end_src
 
 
-
-
 * backend
 ** Spring
 *** sammelung:
@@ -553,20 +564,6 @@ queryForObject()查
 query()
 bachtupdate()
 
-*** Transaction
-#+begin_src 
-| 原子性 | 一致性 | 隔离性 | 持久性 |
-声明式：Annoation
-1, 配置事务管理器
-2, 开启事务注解
-3, 添加事务注解
-@Transaction(propagation, isolation, timeout, readout, (no)rollback)
-propagation;事务是否传播
-isolation:
-脏读：未提交的事务读取到另一个未提交的事务的原始数据
-不可重复读；未提交的事务读取到另一个提交的事务的原始数据
-幻读；未提交的事务读取到另一个提交的事务的修改数据
-#+end_src
 
 ** SpingMVC
 Web action -->  前端控制 --> Path --> 后端 --> handler --> 前端 

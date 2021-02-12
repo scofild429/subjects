@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-11-23 Mo 21:41 -->
+<!-- 2021-02-12 Fr 11:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Math</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: auto;
+    overflow: visible;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -205,26 +205,50 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -256,31 +280,340 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfb246c9">Advanced Math Methode</a>
+<li><a href="#org7a72607">Statistic</a>
 <ul>
-<li><a href="#org6004058">Transfromation</a>
-<ul>
-<li><a href="#orgbb524df">Fourier Transfromation</a></li>
-<li><a href="#org9067bf7">Laplace Transfromation</a></li>
+<li><a href="#org56047c3">Gauss distribution</a></li>
+<li><a href="#org5488eca">Co-variance matrix 协方差矩阵</a></li>
 </ul>
 </li>
-<li><a href="#org142362a">Convolution law</a></li>
+<li><a href="#org7cbde2b">linear Argebra</a>
+<ul>
+<li><a href="#org22ff819">Matrix</a>
+<ul>
+<li><a href="#org4f32e4e">Graph</a></li>
+<li><a href="#orga817f6c">transpose Matrix</a></li>
+<li><a href="#org6b16f66">Conjugate transpose Matrix</a></li>
+<li><a href="#org197b2c9">Normal Matrix</a></li>
+<li><a href="#org5447e93">Unitary Matrix</a></li>
+<li><a href="#org84c13e9">orthogonal matrix</a></li>
+<li><a href="#orgff22059">Hermitian matrix</a></li>
+</ul>
+</li>
+<li><a href="#org0107804">Transform</a>
+<ul>
+<li><a href="#org79289c8">Jacobin matrix</a></li>
+</ul>
+</li>
+<li><a href="#org57d2dd5">Eigenwertzerlegung</a></li>
+<li><a href="#org9f4bd91">Einzelwertzerlegung</a></li>
+</ul>
+</li>
+<li><a href="#org2c2b856">Advanced Math Methode</a>
+<ul>
+<li><a href="#org662ba36">Transfromation</a>
+<ul>
+<li><a href="#org43a38e0">Fourier Transfromation</a></li>
+<li><a href="#org20feae8">Laplace Transfromation</a></li>
+</ul>
+</li>
+<li><a href="#org8c052d2">Convolution law</a></li>
+<li><a href="#org37723c1">Grope Unvolstandige Theorie</a>
+<ul>
+<li><a href="#org96af3f5">Maxwell's Equations</a></li>
+<li><a href="#org016b603">sammlungen von Grope</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb246c9" class="outline-2">
-<h2 id="orgfb246c9">Advanced Math Methode</h2>
-<div class="outline-text-2" id="text-orgfb246c9">
+
+<div id="outline-container-org7a72607" class="outline-2">
+<h2 id="org7a72607">Statistic</h2>
+<div class="outline-text-2" id="text-org7a72607">
 </div>
-<div id="outline-container-org6004058" class="outline-3">
-<h3 id="org6004058">Transfromation</h3>
-<div class="outline-text-3" id="text-org6004058">
+<div id="outline-container-org56047c3" class="outline-3">
+<h3 id="org56047c3">Gauss distribution</h3>
+<div class="outline-text-3" id="text-org56047c3">
+<p>
+标准高斯分布的积分包含了高斯积分
+</p>
 </div>
-<div id="outline-container-orgbb524df" class="outline-4">
-<h4 id="orgbb524df">Fourier Transfromation</h4>
-<div class="outline-text-4" id="text-orgbb524df">
+</div>
+<div id="outline-container-org5488eca" class="outline-3">
+<h3 id="org5488eca">Co-variance matrix 协方差矩阵</h3>
+<div class="outline-text-3" id="text-org5488eca">
+<p>
+<a id="org1033b9e"></a>
+for i = {1&#x2026;n}, \(x_{i}\) is a random variable, which belong to
+Gaussian distribution
+</p>
+
+<p>
+set 
+ \[ X = \left( \begin{aligned}  x_{1} \\ x_{2}\\ . \\. \\x_{n}  \end{aligned}\right) \]
+</p>
+
+
+<p>
+\[ \bar{X} = \left( \begin{aligned}  \bar{x}_{1}
+\\ \bar{x}_{2}\\ . \\. \\ \bar{x}_{n}  \end{aligned} \right) \]
+co-variance matrix \(\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]\)
+</p>
+
+\begin{equation}
+\Sigma = 
+  \left(
+  \begin{array}{c}
+          x_{1}-\bar{x}_{1} \\
+          x_{2}-\bar{x}_{2} \\
+          x_{3}-\bar{x}_{3} \\
+          ..                \\
+          x_{n}-\bar{x}_{n} 
+ \end{array}
+ \right)
+   \left(
+  \begin{array}{ccccc}
+          x_{1}-\bar{x}_{1} &
+          x_{2}-\bar{x}_{2} &
+          x_{3}-\bar{x}_{3} &
+          ..                &
+          x_{n}-\bar{x}_{n} 
+  \end{array}
+  \right)
+\end{equation}
+<p>
+对角线上是对应元素的方差，其他是相对于两个元素的协方差
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7cbde2b" class="outline-2">
+<h2 id="org7cbde2b">linear Argebra</h2>
+<div class="outline-text-2" id="text-org7cbde2b">
+</div>
+<div id="outline-container-org22ff819" class="outline-3">
+<h3 id="org22ff819">Matrix</h3>
+<div class="outline-text-3" id="text-org22ff819">
+</div>
+<div id="outline-container-org4f32e4e" class="outline-4">
+<h4 id="org4f32e4e">Graph</h4>
+<div class="outline-text-4" id="text-org4f32e4e">
+<div class="org-src-container">
+<pre class="src src-dot">digraph diagramm {
+
+Symmetry  [shape=box,color=red]
+Normalit&#228;t  [shape=box,color=red]
+Diagroal [shape=box,color=red]
+
+SymmetricalMatrix -&gt; Symmetry[label= "A=A^{T}"] ;
+Symmetry -&gt; HermitianMatrix [label= "A=A^{*}"];
+
+orthogonalMatrix -&gt; Normalit&#228;t[label = "only real"];
+Normalit&#228;t -&gt;  UnitaryMatrix[label = "|A|=|A^{*}|=1"] ;
+
+
+Einzelwertzerlegung -&gt; Diagroal [label = "SVD"] ;
+Eigenwertzerlegung -&gt; Diagroal [label = "for real and symmetrisch"];
+Diagroal -&gt;  Unitaryzerlegung [label ="A=VIV*,I:identity"];
+
+}
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="foto/Matrix_Connection.png" alt="Matrix_Connection.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga817f6c" class="outline-4">
+<h4 id="orga817f6c">transpose Matrix</h4>
+<div class="outline-text-4" id="text-orga817f6c">
+<p>
+\(A^{T}\)
+</p>
+</div>
+</div>
+<div id="outline-container-org6b16f66" class="outline-4">
+<h4 id="org6b16f66">Conjugate transpose Matrix</h4>
+<div class="outline-text-4" id="text-org6b16f66">
+<p>
+\[ A^{*} = (\bar{A})^{T} = \bar{A^{T}}\]
+共轭转置矩阵, 先共轭再转置，还是先转置再共轭都可以。
+</p>
+</div>
+</div>
+<div id="outline-container-org197b2c9" class="outline-4">
+<h4 id="org197b2c9">Normal Matrix</h4>
+<div class="outline-text-4" id="text-org197b2c9">
+<p>
+\[ A^{*}A = A A^{*}\]
+正定矩阵, 是转置和本身满足交换律
+\[ A = URDU^{-1} \]
+可酉变换
+</p>
+</div>
+</div>
+<div id="outline-container-org5447e93" class="outline-4">
+<h4 id="org5447e93">Unitary Matrix</h4>
+<div class="outline-text-4" id="text-org5447e93">
+<p>
+\[ A^{*}A = A A^{*} = I \]
+ 酉矩阵，是正定矩阵, 即转置和本身满足交换律，而且等于 I 
+</p>
+</div>
+</div>
+<div id="outline-container-org84c13e9" class="outline-4">
+<h4 id="org84c13e9">orthogonal matrix</h4>
+<div class="outline-text-4" id="text-org84c13e9">
+<p>
+实数酉矩阵
+\[
+{\displaystyle Q^{T}=Q^{-1}\Leftrightarrow Q^{T}Q=QQ^{T}=I}
+\]
+得该矩阵的转置矩阵为其逆矩阵
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgff22059" class="outline-4">
+<h4 id="orgff22059">Hermitian matrix</h4>
+<div class="outline-text-4" id="text-orgff22059">
+<p>
+\[ A = A^{H}\], \(a_{i,j} = \bar{a_{j,i}}\)
+共轭对称
+埃尔米特矩阵，厄米特矩阵，厄米矩阵,所有元素对称出共轭
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0107804" class="outline-3">
+<h3 id="org0107804">Transform</h3>
+<div class="outline-text-3" id="text-org0107804">
+</div>
+<div id="outline-container-org79289c8" class="outline-4">
+<h4 id="org79289c8">Jacobin matrix</h4>
+<div class="outline-text-4" id="text-org79289c8">
+<p>
+wikipedia
+<a href="https://zh.wikipedia.org/wiki/%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5">chinese link</a>
+<a href="https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant">englich link</a>
+</p>
+
+<p>
+for \[ Y_{m} = f(X_{n}), Y =(y_{1}, y_{2}, y_{3}....y_{m}), X = (x_{1}
+,x_{2}....x_{n}) \]
+\[ d_{Y} = J d_{x}\],
+\[
+{\displaystyle \mathbf {J} ={\begin{bmatrix}{\dfrac {\partial \mathbf
+{f} }{\partial x_{1}}}&\cdots &{\dfrac {\partial \mathbf {f}
+}{\partial x_{n}}}\end{bmatrix}}={\begin{bmatrix}{\dfrac {\partial
+f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial
+x_{n}}}\\\vdots &\ddots &\vdots \\{\dfrac {\partial f_{m}}{\partial
+x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial
+x_{n}}}\end{bmatrix}}} 
+\]
+由球坐标系到直角坐标系的转化由 F: ℝ+ × [0, π] × [0, 2π) → ℝ3 函数给出，
+其分量为：
+\[
+{\displaystyle {\begin{aligned}x&=r\sin \theta \cos \varphi
+;\\y&=r\sin \theta \sin \varphi ;\\z&=r\cos \theta
+.\end{aligned}}}
+\]
+此坐标变换的雅可比矩阵是
+\[
+{\displaystyle \mathbf {J} _{\mathbf {F} }(r,\theta ,\varphi
+)={\begin{bmatrix}{\dfrac {\partial x}{\partial r}}&{\dfrac {\partial
+x}{\partial \theta }}&{\dfrac {\partial x}{\partial \varphi
+}}\\[1em]{\dfrac {\partial y}{\partial r}}&{\dfrac {\partial
+y}{\partial \theta }}&{\dfrac {\partial y}{\partial \varphi
+}}\\[1em]{\dfrac {\partial z}{\partial r}}&{\dfrac {\partial
+z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
+}}\end{bmatrix}}={\begin{bmatrix}\sin \theta \cos \varphi &r\cos
+\theta \cos \varphi &-r\sin \theta \sin \varphi \\\sin \theta \sin
+\varphi &r\cos \theta \sin \varphi &r\sin \theta \cos \varphi \\\cos
+\theta &-r\sin \theta &0\end{bmatrix}}.}
+\]
+其雅可比行列式为 r2 sin θ，由于 dV = dx dy dz，如果做变数变换的话其体
+积元(Volume element)，dV，会变成：dV = r2 sin θ dr dθ dφ。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57d2dd5" class="outline-3">
+<h3 id="org57d2dd5">Eigenwertzerlegung</h3>
+<div class="outline-text-3" id="text-org57d2dd5">
+<p>
+对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
+要转换： A = a*a.T
+</p>
+
+<p>
+\[ A=UBU^T \] 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
+<span style="color: #7590db;">a</span> = np.mat([[1,2,3,4],[1,1,1,1]])
+<span style="color: #7590db;">A</span> = a*a.T
+<span style="color: #7590db;">B</span>, <span style="color: #7590db;">U</span> = np.linalg.eig(A)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvalue of A : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(B)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvalue of a :(should be equal to the following) "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(np.sqrt(B))
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvactor : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(U)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f4bd91" class="outline-3">
+<h3 id="org9f4bd91">Einzelwertzerlegung</h3>
+<div class="outline-text-3" id="text-org9f4bd91">
+<p>
+但是对于一般矩阵，不是方阵，可以奇异值分解：
+\[ a = UBV^T , a^{t} = VBU^{T} \]
+\[ A = aa^{T} = UB^{2}U^{T}\]
+\[ A^{'}=a^{T}a=VB^{2}V^{T}\]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #4f97d7; font-weight: bold;">import</span> numpy <span style="color: #4f97d7; font-weight: bold;">as</span> np
+<span style="color: #7590db;">a</span> = np.mat([[1,2,3,4],[1,1,1,1]])
+<span style="color: #7590db;">U</span>, <span style="color: #7590db;">B</span>, <span style="color: #7590db;">Vt</span> = np.linalg.svd(a)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"left eigenvalue : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(U)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"eigenvactor of a : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(B)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(<span style="color: #2d9574;">"right eigenvalue : "</span>)
+<span style="color: #4f97d7; font-weight: bold;">print</span>(Vt)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c2b856" class="outline-2">
+<h2 id="org2c2b856">Advanced Math Methode</h2>
+<div class="outline-text-2" id="text-org2c2b856">
+</div>
+<div id="outline-container-org662ba36" class="outline-3">
+<h3 id="org662ba36">Transfromation</h3>
+<div class="outline-text-3" id="text-org662ba36">
+</div>
+<div id="outline-container-org43a38e0" class="outline-4">
+<h4 id="org43a38e0">Fourier Transfromation</h4>
+<div class="outline-text-4" id="text-org43a38e0">
 <p>
 periodical function \(f(t) = \sum \sin(\omega t)\) or \(f(t)=\sum
 \cos(\omega t)\).
@@ -318,9 +651,9 @@ and its inverse transfromation: \(F(\omega) \rightarrow f(t) =
 </div>
 </div>
 
-<div id="outline-container-org9067bf7" class="outline-4">
-<h4 id="org9067bf7">Laplace Transfromation</h4>
-<div class="outline-text-4" id="text-org9067bf7">
+<div id="outline-container-org20feae8" class="outline-4">
+<h4 id="org20feae8">Laplace Transfromation</h4>
+<div class="outline-text-4" id="text-org20feae8">
 <p>
 If \(f(x)\rightarrow \infty |_{x\rightarrow\infty}\) ,we can use \(e^{-\sigma t}\) to eliminate divergence.
 </p>
@@ -340,9 +673,9 @@ note: firstly force to convergence, then fourier transfromed.
 </div>
 </div>
 
-<div id="outline-container-org142362a" class="outline-3">
-<h3 id="org142362a">Convolution law</h3>
-<div class="outline-text-3" id="text-org142362a">
+<div id="outline-container-org8c052d2" class="outline-3">
+<h3 id="org8c052d2">Convolution law</h3>
+<div class="outline-text-3" id="text-org8c052d2">
 <p>
 Green function propagate function
  segment \(f(x)\)
@@ -355,12 +688,57 @@ convolution
 </p>
 </div>
 </div>
+
+<div id="outline-container-org37723c1" class="outline-3">
+<h3 id="org37723c1">Grope Unvolstandige Theorie</h3>
+<div class="outline-text-3" id="text-org37723c1">
+</div>
+<div id="outline-container-org96af3f5" class="outline-4">
+<h4 id="org96af3f5">Maxwell's Equations</h4>
+<div class="outline-text-4" id="text-org96af3f5">
+\begin{align}
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} & = \frac{4\pi}{c}\vec{\mathbf{j}} \\
+\nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+\nabla \cdot \vec{\mathbf{B}} & = 0
+\end{align}
+</div>
+</div>
+
+
+<div id="outline-container-org016b603" class="outline-4">
+<h4 id="org016b603">sammlungen von Grope</h4>
+<div class="outline-text-4" id="text-org016b603">
+<ol class="org-ol">
+<li>G本身和单位元称为G的平凡子集</li>
+<li>群的元素个数称为群的阶</li>
+<li>群的阶数是素数，则该群一定是循环群</li>
+<li>有限群的子集的阶数是该有限群的阶数的约数</li>
+<li>在置换群中，任何一个轮换都可以用其他的对换组合来实现</li>
+<li>在置换群中，如果一个置换能通过奇（偶）数次对换得到，那么它只能有奇
+（偶）数次对换得到</li>
+<li>在一个置换群中，可以奇置换和偶置换的个数应给相等</li>
+<li>由偶置换可以得到一个交错群（包括与单元群的置换）</li>
+<li>阿贝尔群</li>
+<li>\(\beta_1 \times H\) 元素\(\beta_1\) 左乘H的每一个元素得到的就叫: 元素
+\(\beta_1\) 关于H的左陪集</li>
+<li>右陪集亦然， 左右陪集可以不相等</li>
+<li>子群H中每个元素作用于群G,得到的左右陪集都相等，则称H为G的正规子群</li>
+<li>G本身和单位元{e}肯定都是正规子集，但是成为平凡正规子群</li>
+<li>只有群中有正规子集，这该群中肯定存在一个相应的对称</li>
+<li>阿贝尔群的子群肯定是正规子群</li>
+<li>只有当H是正规子群是，商群G/H才是一个群，否则只是一个空间</li>
+<li>单群，没有正规子群的群，是群论中的最小单元</li>
+</ol>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: silin</p>
-<p class="date">Created: 2020-11-23 Mo 21:41</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-02-12 Fr 11:44</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

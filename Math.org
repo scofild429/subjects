@@ -1,12 +1,11 @@
 #+TITLE: Math
 #+OPTIONS: num:nil
 #+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
-#+startup: content
-
-
-标准高斯分布的积分包含了高斯积分
+#+startup:  content
 
 * Statistic
+** Gauss distribution
+标准高斯分布的积分包含了高斯积分
 ** Co-variance matrix 协方差矩阵
 
 <<covariance matrix link for ML>>
@@ -44,6 +43,163 @@ co-variance matrix $\Sigma = E [(X-\bar{X})(X-\bar{X})^{T} ]$
 \end{equation}
 对角线上是对应元素的方差，其他是相对于两个元素的协方差
 
+
+* linear Argebra 
+** Matrix
+*** Graph
+ #+BEGIN_src dot :file foto/Matrix_Connection.png  :exports both
+    digraph diagramm {
+
+    Symmetry  [shape=box,color=red]
+    Normalität  [shape=box,color=red]
+    Diagroal [shape=box,color=red]
+
+    SymmetricalMatrix -> Symmetry[label= "A=A^{T}"] ;
+    Symmetry -> HermitianMatrix [label= "A=A^{*}"];
+
+    orthogonalMatrix -> Normalität[label = "only real"];
+    Normalität ->  UnitaryMatrix[label = "|A|=|A^{*}|=1"] ;
+
+
+    Einzelwertzerlegung -> Diagroal [label = "SVD"] ;
+    Eigenwertzerlegung -> Diagroal [label = "for real and symmetrisch"];
+    Diagroal ->  Unitaryzerlegung [label ="A=VIV*,I:identity"];
+
+    }
+ #+END_src
+
+ #+RESULTS:
+ [[file:foto/Matrix_Connection.png]]
+
+
+*** transpose Matrix
+$A^{T}$
+*** Conjugate transpose Matrix
+$$ A^{*} = (\bar{A})^{T} = \bar{A^{T}}$$
+共轭转置矩阵, 先共轭再转置，还是先转置再共轭都可以。
+*** Normal Matrix
+$$ A^{*}A = A A^{*}$$
+正定矩阵, 是转置和本身满足交换律
+$$ A = URDU^{-1} $$
+可酉变换
+*** Unitary Matrix
+$$ A^{*}A = A A^{*} = I $$
+ 酉矩阵，是正定矩阵, 即转置和本身满足交换律，而且等于 I 
+*** orthogonal matrix
+实数酉矩阵
+$$
+{\displaystyle Q^{T}=Q^{-1}\Leftrightarrow Q^{T}Q=QQ^{T}=I}
+$$
+得该矩阵的转置矩阵为其逆矩阵
+
+*** Hermitian matrix
+$$ A = A^{H}$$, $a_{i,j} = \bar{a_{j,i}}$
+共轭对称
+埃尔米特矩阵，厄米特矩阵，厄米矩阵,所有元素对称出共轭
+** Transform
+*** Jacobin matrix
+
+wikipedia
+[[https://zh.wikipedia.org/wiki/%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5][chinese link]]
+[[https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant][englich link]]
+
+for $$ Y_{m} = f(X_{n}), Y =(y_{1}, y_{2}, y_{3}....y_{m}), X = (x_{1}
+,x_{2}....x_{n}) $$
+$$ d_{Y} = J d_{x}$$,
+$$
+{\displaystyle \mathbf {J} ={\begin{bmatrix}{\dfrac {\partial \mathbf
+{f} }{\partial x_{1}}}&\cdots &{\dfrac {\partial \mathbf {f}
+}{\partial x_{n}}}\end{bmatrix}}={\begin{bmatrix}{\dfrac {\partial
+f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial
+x_{n}}}\\\vdots &\ddots &\vdots \\{\dfrac {\partial f_{m}}{\partial
+x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial
+x_{n}}}\end{bmatrix}}} 
+$$
+由球坐标系到直角坐标系的转化由 F: ℝ+ × [0, π] × [0, 2π) → ℝ3 函数给出，
+其分量为：
+$$
+{\displaystyle {\begin{aligned}x&=r\sin \theta \cos \varphi
+;\\y&=r\sin \theta \sin \varphi ;\\z&=r\cos \theta
+.\end{aligned}}}
+$$
+此坐标变换的雅可比矩阵是
+$$
+{\displaystyle \mathbf {J} _{\mathbf {F} }(r,\theta ,\varphi
+)={\begin{bmatrix}{\dfrac {\partial x}{\partial r}}&{\dfrac {\partial
+x}{\partial \theta }}&{\dfrac {\partial x}{\partial \varphi
+}}\\[1em]{\dfrac {\partial y}{\partial r}}&{\dfrac {\partial
+y}{\partial \theta }}&{\dfrac {\partial y}{\partial \varphi
+}}\\[1em]{\dfrac {\partial z}{\partial r}}&{\dfrac {\partial
+z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
+}}\end{bmatrix}}={\begin{bmatrix}\sin \theta \cos \varphi &r\cos
+\theta \cos \varphi &-r\sin \theta \sin \varphi \\\sin \theta \sin
+\varphi &r\cos \theta \sin \varphi &r\sin \theta \cos \varphi \\\cos
+\theta &-r\sin \theta &0\end{bmatrix}}.}
+$$
+其雅可比行列式为 r2 sin θ，由于 dV = dx dy dz，如果做变数变换的话其体
+积元(Volume element)，dV，会变成：dV = r2 sin θ dr dθ dφ。
+
+** Eigenwertzerlegung
+对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
+要转换： A = a*a.T
+
+$$ A=UBU^T $$ 
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  A = a*a.T
+  B, U = np.linalg.eig(A)
+  print("eigenvalue of A : ")
+  print(B)
+  print("eigenvalue of a :(should be equal to the following) ")
+  print(np.sqrt(B))
+  print("eigenvactor : ")
+  print(U)
+
+#+end_src
+
+#+RESULTS:
+: eigenvalue of A : 
+: [33.40121947  0.59878053]
+: eigenvalue of a : 
+: [5.77937881 0.77380911]
+: eigenvactor : 
+: [[ 0.94673755 -0.32200622]
+:  [ 0.32200622  0.94673755]]
+
+** Einzelwertzerlegung
+
+但是对于一般矩阵，不是方阵，可以奇异值分解：
+$$ a = UBV^T , a^{t} = VBU^{T} $$
+$$ A = aa^{T} = UB^{2}U^{T}$$
+$$ A^{'}=a^{T}a=VB^{2}V^{T}$$
+
+#+begin_src python :results output
+  import numpy as np
+  a = np.mat([[1,2,3,4],[1,1,1,1]])
+  U, B, Vt = np.linalg.svd(a)
+  print("left eigenvalue : ")
+  print(U)
+  print("eigenvactor of a : ")
+  print(B)
+  print("right eigenvalue : ")
+  print(Vt)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+left eigenvalue : 
+[[-0.94673755 -0.32200622]
+ [-0.32200622  0.94673755]]
+eigenvactor of a : 
+[5.77937881 0.77380911]
+right eigenvalue : 
+[[-0.21952944 -0.38334247 -0.5471555  -0.71096853]
+ [ 0.80734554  0.3912142  -0.02491713 -0.44104847]
+ [-0.40008743  0.25463292  0.69099646 -0.54554195]
+ [-0.37407225  0.79697056 -0.47172438  0.04882607]]
+#+end_example
 
 * Advanced Math Methode
 ** Transfromation
@@ -127,143 +283,3 @@ $(g \ast f)(x) = \int_{-\infty}^{\infty}f(t)g(x-t)dt$
 
 
 
-* linear Argebra 
-** Matrix
-*** Conjugate transpose Matrix
-
-$$ A^{*} = (\bar{A})^{T} = \bar{A^{T}}$$
-共轭转置矩阵, 先共轭再转置，还是先转置再共轭都可以。
-
-*** Normal Matrix
-
-$$ A^{*}A = A A^{*}$$
-正定矩阵, 是转置和本身满足交换律
-$$ A = URDU^{-1} $$
-可酉变换
-
-*** Unitary Matrix
-
-$$ A^{*}A = A A^{*} = I $$
- 酉矩阵，是正定矩阵, 即转置和本身满足交换律，而且等于 I 
-
-*** orthogonal matrix
-
-实数酉矩阵
-
-$$
-{\displaystyle Q^{T}=Q^{-1}\Leftrightarrow Q^{T}Q=QQ^{T}=I}
-$$
-得该矩阵的转置矩阵为其逆矩阵
-
-*** Hermitian matrix
-
-$$ A = A^{H}$$, $a_{i,j} = \bar{a_{j,i}}$
-共轭对称
-埃尔米特矩阵，厄米特矩阵，厄米矩阵,所有元素对称出共轭
-
-** Transform
-*** Jacobin matrix
-
-wikipedia
-[[https://zh.wikipedia.org/wiki/%E9%9B%85%E5%8F%AF%E6%AF%94%E7%9F%A9%E9%98%B5][chinese link]]
-[[https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant][englich link]]
-
-for $$ Y_{m} = f(X_{n}), Y =(y_{1}, y_{2}, y_{3}....y_{m}), X = (x_{1}
-,x_{2}....x_{n}) $$
-$$ d_{Y} = J d_{x}$$,
-$$
-{\displaystyle \mathbf {J} ={\begin{bmatrix}{\dfrac {\partial \mathbf
-{f} }{\partial x_{1}}}&\cdots &{\dfrac {\partial \mathbf {f}
-}{\partial x_{n}}}\end{bmatrix}}={\begin{bmatrix}{\dfrac {\partial
-f_{1}}{\partial x_{1}}}&\cdots &{\dfrac {\partial f_{1}}{\partial
-x_{n}}}\\\vdots &\ddots &\vdots \\{\dfrac {\partial f_{m}}{\partial
-x_{1}}}&\cdots &{\dfrac {\partial f_{m}}{\partial
-x_{n}}}\end{bmatrix}}} 
-$$
-由球坐标系到直角坐标系的转化由 F: ℝ+ × [0, π] × [0, 2π) → ℝ3 函数给出，
-其分量为：
-$$
-{\displaystyle {\begin{aligned}x&=r\sin \theta \cos \varphi
-;\\y&=r\sin \theta \sin \varphi ;\\z&=r\cos \theta
-.\end{aligned}}}
-$$
-此坐标变换的雅可比矩阵是
-$$
-{\displaystyle \mathbf {J} _{\mathbf {F} }(r,\theta ,\varphi
-)={\begin{bmatrix}{\dfrac {\partial x}{\partial r}}&{\dfrac {\partial
-x}{\partial \theta }}&{\dfrac {\partial x}{\partial \varphi
-}}\\[1em]{\dfrac {\partial y}{\partial r}}&{\dfrac {\partial
-y}{\partial \theta }}&{\dfrac {\partial y}{\partial \varphi
-}}\\[1em]{\dfrac {\partial z}{\partial r}}&{\dfrac {\partial
-z}{\partial \theta }}&{\dfrac {\partial z}{\partial \varphi
-}}\end{bmatrix}}={\begin{bmatrix}\sin \theta \cos \varphi &r\cos
-\theta \cos \varphi &-r\sin \theta \sin \varphi \\\sin \theta \sin
-\varphi &r\cos \theta \sin \varphi &r\sin \theta \cos \varphi \\\cos
-\theta &-r\sin \theta &0\end{bmatrix}}.}
-$$
-其雅可比行列式为 r2 sin θ，由于 dV = dx dy dz，如果做变数变换的话其体
-积元(Volume element)，dV，会变成：dV = r2 sin θ dr dθ dφ。
-
-** Eigenwertzerlegung
-
-对于矩阵求特征值特征向量，特征值分解，但是要求必须是方阵，如果不是，先
-要转换： A = a*a.T
-
-
-$$ A=UBU^T $$ 
-
-#+begin_src python :results output
-  import numpy as np
-  a = np.mat([[1,2,3,4],[1,1,1,1]])
-  A = a*a.T
-  B, U = np.linalg.eig(A)
-  print("eigenvalue of A : ")
-  print(B)
-  print("eigenvalue of a :(should be equal to the following) ")
-  print(np.sqrt(B))
-  print("eigenvactor : ")
-  print(U)
-
-#+end_src
-
-#+RESULTS:
-: eigenvalue of A : 
-: [33.40121947  0.59878053]
-: eigenvalue of a : 
-: [5.77937881 0.77380911]
-: eigenvactor : 
-: [[ 0.94673755 -0.32200622]
-:  [ 0.32200622  0.94673755]]
-
-** Einzelwertzerlegung
-
-但是对于一般矩阵，不是方阵，可以奇异值分解：
-$$ a = UBV^T , a^{t} = VBU^{T} $$
-$$ A = aa^{T} = UB^{2}U^{T}$$
-$$ A^{'}=a^{T}a=VB^{2}V^{T}$$
-
-#+begin_src python :results output
-  import numpy as np
-  a = np.mat([[1,2,3,4],[1,1,1,1]])
-  U, B, Vt = np.linalg.svd(a)
-  print("left eigenvalue : ")
-  print(U)
-  print("eigenvactor of a : ")
-  print(B)
-  print("right eigenvalue : ")
-  print(Vt)
-#+end_src
-
-#+RESULTS:
-#+begin_example
-left eigenvalue : 
-[[-0.94673755 -0.32200622]
- [-0.32200622  0.94673755]]
-eigenvactor of a : 
-[5.77937881 0.77380911]
-right eigenvalue : 
-[[-0.21952944 -0.38334247 -0.5471555  -0.71096853]
- [ 0.80734554  0.3912142  -0.02491713 -0.44104847]
- [-0.40008743  0.25463292  0.69099646 -0.54554195]
- [-0.37407225  0.79697056 -0.47172438  0.04882607]]
-#+end_example
