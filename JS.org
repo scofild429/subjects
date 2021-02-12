@@ -4,6 +4,7 @@
 #+STARTUP: overview
 
 * JS
+- State "DONE"       from "TODO"       [2021-02-12 Fr 16:23]
 ** set array 去重 求交 
 #+begin_src js :results output
   let arr = [1,2,3,4,5,6,7,4,5,6];
@@ -88,18 +89,140 @@ class mit generate function
 : testtest
 
 * ES6
-** 数组和对象可以被解构的赋值
-** 模板字符串可以换行，拼接
-** 函数的定义和调用都要指定类型
-** 箭头函数
-相当静态的this,
-不能构造对象实例化
+** let
+*** 不能重复赋值
 #+begin_src js :results output :exports both
-let qual = n => n*n
+  let a = 1;
+  let b = [];
+  let c = "kdjfie";
+  console.log(c)
+  let a = 3;
+
 #+end_src
 
 #+RESULTS:
 
+*** 有块级作用域
+#+begin_src js :results output :exports both
+  {
+      let girls = "meimei";
+
+      function fnnn(){
+          console.log(girls);
+      }
+
+      fnnn();
+  }
+
+  console.log(girls);
+#+end_src
+
+#+RESULTS:
+: meimei
+
+*** 没有变量提升
+#+begin_src js :results output :exports both
+console.log(song)
+let song = "kaka"
+
+#+end_src
+
+#+RESULTS:
+
+** const
+*** 注意
+初始一定要赋值
+一般使用大写
+不能修改
+有块级作用域
+*** 对象和复合型的可以修改
+#+begin_src js :results output :exports both
+const name = ["wangba", "wuqing", "tiankong"]
+name.push("gousi")
+console.log(name)
+
+#+end_src
+
+#+RESULTS:
+: [ 'wangba', 'wuqing', 'tiankong', 'gousi' ]
+
+*** 数组和对象可以被解构的赋值
+#+begin_src js :results output :exports both
+const F4 = ["zhangsan", "lisi", "wangwu", "zhaoliu"];
+let [f1, f2, f3, f4] = F4
+console.log(f2)
+
+#+end_src
+
+#+RESULTS:
+: lisi
+
+#+begin_src js :results output :exports both
+  const zhao = {
+      name: "benshan",
+      age:"unkownen",
+      xiaoping :function(){
+          console.log("I K y");
+      }
+  };
+  let {name, age, xiaoping} = zhao;
+  console.log(age);
+  console.log(xiaoping);
+  xiaoping();
+
+#+end_src
+
+#+RESULTS:
+: unkownen
+: [Function: xiaoping]
+: I K y
+
+** 模板字符串可以换行，拼接
+´${}´ 可以拼接变量 
+可以换行
+
+** 简化对象
+#+begin_src js :results output :exports both
+  let name = "sangguigu";
+  let change = function(){
+      console.log("I can make it");
+  };
+
+  const school = {
+      name,
+      change,
+      improve(){
+          console.log("We can help you");
+      }
+  };
+
+  console.log(school.name);
+  console.log(school.change);
+  school.change()
+  school.improve()
+
+#+end_src
+
+#+RESULTS:
+: sangguigu
+: [Function: change]
+: I can make it
+: We can help you
+
+** 箭头函数
+静态的this, 当前作用域的this，call都不能改变
+不能构造对象实例化
+不能使用arguments
+#+begin_src js :results output :exports both
+  let qual = n => n*n;
+  let fn = (a,b) => { return a*b};
+  console.log(qual(3))
+  console.log(fn(2,5));
+#+end_src
+
+#+RESULTS:
+: 9
+: 10
 
 ** 迭代器
 ** 生成器

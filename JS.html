@@ -1,0 +1,1362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-12 Fr 18:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JS</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="silin" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/bigblow_theme/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/bigblow_theme/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">JS</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3c3a9ea">JS</a>
+<ul>
+<li><a href="#org0a30788">set array 去重 求交</a></li>
+<li><a href="#orgec4b7f3">Class</a>
+<ul>
+<li><a href="#orgb214828">ES5</a></li>
+<li><a href="#org0cfbda8">ES6</a></li>
+</ul>
+</li>
+<li><a href="#orgfb4055c">setTimeout</a></li>
+<li><a href="#org421345a">no name function</a></li>
+</ul>
+</li>
+<li><a href="#orgc9ae1eb">ES6</a>
+<ul>
+<li><a href="#orga135361">let</a>
+<ul>
+<li><a href="#orgc7ff097">不能重复赋值</a></li>
+<li><a href="#org078b156">有块级作用域</a></li>
+<li><a href="#orgc630991">没有变量提升</a></li>
+</ul>
+</li>
+<li><a href="#orgc734376">数组和对象可以被解构的赋值</a></li>
+<li><a href="#orgdd1df11">模板字符串可以换行，拼接</a></li>
+<li><a href="#org2debbb6">函数的定义和调用都要指定类型</a></li>
+<li><a href="#orgafb7709">箭头函数</a></li>
+<li><a href="#orgc93804d">迭代器</a></li>
+<li><a href="#org6ed42e1">生成器</a></li>
+</ul>
+</li>
+<li><a href="#org553c5e2">callback</a>
+<ul>
+<li><a href="#orgf0ce8c6">callback named function</a></li>
+<li><a href="#org71842dc">callback no named function</a></li>
+<li><a href="#org8cdd7ef">no named function callback no named function</a></li>
+</ul>
+</li>
+<li><a href="#org2250ce7">Module programmierung</a></li>
+<li><a href="#org190593c">AJAX</a></li>
+<li><a href="#orgbfb765d">Vue</a>
+<ul>
+<li><a href="#orgf38a872">npm</a></li>
+<li><a href="#orga0e6b3d">操作</a></li>
+<li><a href="#org6f7298e">生命周期</a></li>
+<li><a href="#org05ae8c6">component</a></li>
+</ul>
+</li>
+<li><a href="#org86c0dda">TS</a></li>
+<li><a href="#orgbc708a7">JQuery</a>
+<ul>
+<li><a href="#orgaea6b6c">JQuery选择器</a></li>
+<li><a href="#org7042a46">CSS 选择器</a></li>
+<li><a href="#org2dd60cb">operation function</a></li>
+</ul>
+</li>
+<li><a href="#orgf73108e">HTML</a>
+<ul>
+<li><a href="#org0cc92e5">link</a></li>
+<li><a href="#org6402a58">general</a></li>
+</ul>
+</li>
+<li><a href="#orge02e207">Nginx with php</a></li>
+<li><a href="#orgddb67dc">RuoYi-Vue</a>
+<ul>
+<li><a href="#org6830960">backup deployment</a>
+<ul>
+<li><a href="#orgc4d8613">redis</a></li>
+<li><a href="#org4a34761">mysql</a></li>
+<li><a href="#orgd8e9424">tomcat</a></li>
+<li><a href="#orga5db7ab">schnitt</a></li>
+<li><a href="#org9d897a0">ssh</a></li>
+<li><a href="#org0290c56">dependence from jdk8</a></li>
+</ul>
+</li>
+<li><a href="#org98f73f1">frontend deployment</a>
+<ul>
+<li><a href="#org0fec73a">build</a></li>
+<li><a href="#org88afca3">验证码 for nginx</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3c3a9ea" class="outline-2">
+<h2 id="org3c3a9ea">JS</h2>
+<div class="outline-text-2" id="text-org3c3a9ea">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2021-02-12 Fr 16:23]</span></span></li>
+</ul>
+</div>
+<div id="outline-container-org0a30788" class="outline-3">
+<h3 id="org0a30788">set array 去重 求交</h3>
+<div class="outline-text-3" id="text-org0a30788">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">arr</span> = [1,2,3,4,5,6,7,4,5,6];
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">arr2</span> = [2,4,6];
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">result</span> = [...<span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Set</span>(arr)].filter( item =&gt; <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Set</span>(arr2).has(item));
+console.log(result);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec4b7f3" class="outline-3">
+<h3 id="orgec4b7f3">Class</h3>
+<div class="outline-text-3" id="text-orgec4b7f3">
+</div>
+<div id="outline-container-orgb214828" class="outline-4">
+<h4 id="orgb214828">ES5</h4>
+<div class="outline-text-4" id="text-orgb214828">
+<p>
+class mit generate function
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">function</span> <span style="color: #bc6ec5; font-weight: bold;">Phone</span>(<span style="color: #7590db;">brand</span>, <span style="color: #7590db;">price</span>){
+    <span style="color: #a45bad;">this</span>.brand = brand;
+    <span style="color: #a45bad;">this</span>.price = price;
+}
+
+Phone.<span style="color: #a45bad;">prototype</span>.call = <span style="color: #4f97d7; font-weight: bold;">function</span>(){
+    console.log(<span style="color: #2d9574;">"I want to make a phone"</span>);
+}
+
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">Huawei</span> = <span style="color: #4f97d7; font-weight: bold;">new</span> <span style="color: #ce537a; font-weight: bold;">Phone</span>(<span style="color: #2d9574;">"HuAwei"</span>, 5998);
+
+console.log(Huawei)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0cfbda8" class="outline-4">
+<h4 id="org0cfbda8">ES6</h4>
+<div class="outline-text-4" id="text-org0cfbda8">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">class</span> Phone{
+    constructor(brand, price){
+        <span style="color: #a45bad;">this</span>.brand = brand;
+        <span style="color: #a45bad;">this</span>.price = price;
+    }
+
+    call(){
+        console.log(<span style="color: #2d9574;">"I will make a call"</span>);
+    }
+}
+
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">onePlus</span> = <span style="color: #4f97d7; font-weight: bold;">new</span>  <span style="color: #ce537a; font-weight: bold;">Phone</span>(<span style="color: #2d9574;">"1+"</span>, 2000);
+console.log(onePlus);
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfb4055c" class="outline-3">
+<h3 id="orgfb4055c">setTimeout</h3>
+<div class="outline-text-3" id="text-orgfb4055c">
+<div class="org-src-container">
+<pre class="src src-js">
+setTimeout(  <span style="color: #4f97d7; font-weight: bold;">function</span>(){console.log(<span style="color: #2d9574;">"1090kjk0"</span>)}    , 2000);
+setTimeout(  ()=&gt;{console.log(<span style="color: #2d9574;">"10900"</span>)}             , 2000);
+
+setTimeout(  ()=&gt;{      } , 2000);
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org421345a" class="outline-3">
+<h3 id="org421345a">no name function</h3>
+<div class="outline-text-3" id="text-org421345a">
+<div class="org-src-container">
+<pre class="src src-js">(()=&gt;{console.log(<span style="color: #2d9574;">"testtest"</span>) })();
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-js">(<span style="color: #4f97d7; font-weight: bold;">function</span>(){console.log(<span style="color: #2d9574;">"testtest"</span>)})()
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc9ae1eb" class="outline-2">
+<h2 id="orgc9ae1eb">ES6</h2>
+<div class="outline-text-2" id="text-orgc9ae1eb">
+</div>
+<div id="outline-container-orga135361" class="outline-3">
+<h3 id="orga135361">let</h3>
+<div class="outline-text-3" id="text-orga135361">
+</div>
+<div id="outline-container-orgc7ff097" class="outline-4">
+<h4 id="orgc7ff097">不能重复赋值</h4>
+<div class="outline-text-4" id="text-orgc7ff097">
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">a</span> = 1;
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">b</span> = [];
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">c</span> = <span style="color: #2d9574;">"kdjfie"</span>;
+console.log(c)
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">a</span> = 3;
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org078b156" class="outline-4">
+<h4 id="org078b156">有块级作用域</h4>
+<div class="outline-text-4" id="text-org078b156">
+<div class="org-src-container">
+<pre class="src src-js">{
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">girls</span> = <span style="color: #2d9574;">"meimei"</span>
+}
+
+console.log(girls)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc630991" class="outline-4">
+<h4 id="orgc630991">没有变量提升</h4>
+<div class="outline-text-4" id="text-orgc630991">
+<div class="org-src-container">
+<pre class="src src-js">console.log(song)
+<span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">song</span> = <span style="color: #2d9574;">"kaka"</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc734376" class="outline-3">
+<h3 id="orgc734376">数组和对象可以被解构的赋值</h3>
+</div>
+<div id="outline-container-orgdd1df11" class="outline-3">
+<h3 id="orgdd1df11">模板字符串可以换行，拼接</h3>
+</div>
+<div id="outline-container-org2debbb6" class="outline-3">
+<h3 id="org2debbb6">函数的定义和调用都要指定类型</h3>
+</div>
+<div id="outline-container-orgafb7709" class="outline-3">
+<h3 id="orgafb7709">箭头函数</h3>
+<div class="outline-text-3" id="text-orgafb7709">
+<p>
+相当静态的this,
+不能构造对象实例化
+</p>
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #4f97d7; font-weight: bold;">let</span> <span style="color: #7590db;">qual</span> = n =&gt; n*n
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc93804d" class="outline-3">
+<h3 id="orgc93804d">迭代器</h3>
+</div>
+<div id="outline-container-org6ed42e1" class="outline-3">
+<h3 id="org6ed42e1">生成器</h3>
+</div>
+</div>
+
+<div id="outline-container-org553c5e2" class="outline-2">
+<h2 id="org553c5e2">callback</h2>
+<div class="outline-text-2" id="text-org553c5e2">
+</div>
+<div id="outline-container-orgf0ce8c6" class="outline-3">
+<h3 id="orgf0ce8c6">callback named function</h3>
+<div class="outline-text-3" id="text-orgf0ce8c6">
+<div class="org-src-container">
+<pre class="src src-js"> <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">test</span> = <span style="color: #4f97d7; font-weight: bold;">function</span>(<span style="color: #7590db;">msg</span>, <span style="color: #7590db;">callback</span>){
+     setTimeout(<span style="color: #4f97d7; font-weight: bold;">function</span>(){ console.log(msg);   }, 2000);
+     <span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">console.log(msg);</span>
+     callback(); 
+ }
+<span style="color: #4f97d7; font-weight: bold;">function</span>  <span style="color: #bc6ec5; font-weight: bold;">justcall</span>(){
+     console.log(<span style="color: #2d9574;">"juskjktcallkkjk to i "</span>);
+ }
+<span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">just</span> = <span style="color: #4f97d7; font-weight: bold;">function</span>(){
+     console.log(<span style="color: #2d9574;">"juskjktcallkkjk to i "</span>);
+ }
+ test(<span style="color: #2d9574;">"nisho 0p"</span>, justcall)
+ test(<span style="color: #2d9574;">"nisho 0p"</span>, just)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org71842dc" class="outline-3">
+<h3 id="org71842dc">callback no named function</h3>
+<div class="outline-text-3" id="text-org71842dc">
+<div class="org-src-container">
+<pre class="src src-js">  <span style="color: #4f97d7; font-weight: bold;">var</span> <span style="color: #7590db;">test</span> = <span style="color: #4f97d7; font-weight: bold;">function</span>(<span style="color: #7590db;">msg</span> , <span style="color: #7590db;">didi</span>){
+<span style="color: #2aa1ae; background-color: #292e34;">//      </span><span style="color: #2aa1ae; background-color: #292e34;">setTimeout( ()=&gt;{   console.log(msg);   } , 2000);</span>
+      console.log(msg);
+      didi(msg);
+  }
+
+  test(<span style="color: #2d9574;">"kdjfi"</span>, msg =&gt; {
+      console.log(msg);
+  });
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8cdd7ef" class="outline-3">
+<h3 id="org8cdd7ef">no named function callback no named function</h3>
+<div class="outline-text-3" id="text-org8cdd7ef">
+<div class="org-src-container">
+<pre class="src src-js">(
+    (msg , didi) =&gt; {
+        console.log(msg);
+        <span style="color: #2aa1ae; background-color: #292e34;">//          </span><span style="color: #2aa1ae; background-color: #292e34;">setTimeout(  ()=&gt;{    didi(msg);  } , 2000);  // can only be used in  function body</span>
+        didi(msg); 
+    }
+)
+( <span style="color: #2d9574;">"kdiikkjkjk"</span>,
+  msg =&gt; {
+      console.log(msg);
+  }
+)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2250ce7" class="outline-2">
+<h2 id="org2250ce7">Module programmierung</h2>
+</div>
+
+<div id="outline-container-org190593c" class="outline-2">
+<h2 id="org190593c">AJAX</h2>
+</div>
+<div id="outline-container-orgbfb765d" class="outline-2">
+<h2 id="orgbfb765d">Vue</h2>
+<div class="outline-text-2" id="text-orgbfb765d">
+<p>
+id 选择器的名字不能是数字
+</p>
+</div>
+<div id="outline-container-orgf38a872" class="outline-3">
+<h3 id="orgf38a872">npm</h3>
+<div class="outline-text-3" id="text-orgf38a872">
+<p>
+npm install 将会执行package.json 的设定，
+在IDAE里可以选中package.json 里的 build:prod字段，run
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orga0e6b3d" class="outline-3">
+<h3 id="orga0e6b3d">操作</h3>
+<div class="outline-text-3" id="text-orga0e6b3d">
+<p>
+vd 是vue里的data属性
+</p>
+
+<p>
+vm 是vue里的mothods方法
+</p>
+
+<p>
+ht 是html里的标签
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">{{vd}}</td>
+<td class="org-left">占位</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-text="vd"</td>
+<td class="org-left">替换</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-html="vd"</td>
+<td class="org-left">替换并渲染</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-bind:ht="vd"</td>
+<td class="org-left">:ht="vd" 设置属性</td>
+<td class="org-left">可用3元表达式或者数据的元素对象指定</td>
+</tr>
+
+<tr>
+<td class="org-left">v-on:ht="vm"</td>
+<td class="org-left">@ht="vm"</td>
+<td class="org-left">on methode(可自定义)</td>
+</tr>
+
+<tr>
+<td class="org-left">v-mode="vd"</td>
+<td class="org-left">只在表单中暴露vd,并操作</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-for="(item,index) in "vd""</td>
+<td class="org-left">vd时vue中可迭代元素或在对象</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-for="i in 10"</td>
+<td class="org-left">1,,,,,9</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">push</td>
+<td class="org-left">后加</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">unshift</td>
+<td class="org-left">前加</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-if</td>
+<td class="org-left">删除不显示的元素</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">v-show</td>
+<td class="org-left">display 不显示的元素</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org6f7298e" class="outline-3">
+<h3 id="org6f7298e">生命周期</h3>
+<div class="outline-text-3" id="text-org6f7298e">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">beforeCreate</td>
+<td class="org-left">加载vue系统构造，但是可以接触到Dom元素</td>
+</tr>
+
+<tr>
+<td class="org-left">created</td>
+<td class="org-left">加载自定义的data,mothods, filter&#x2026;..</td>
+</tr>
+
+<tr>
+<td class="org-left">beforeMounte</td>
+<td class="org-left">创建特性在内存</td>
+</tr>
+
+<tr>
+<td class="org-left">mounted</td>
+<td class="org-left">加载特性，渲染页面</td>
+</tr>
+
+<tr>
+<td class="org-left">beforeupdate</td>
+<td class="org-left">更改特性</td>
+</tr>
+
+<tr>
+<td class="org-left">updated</td>
+<td class="org-left">渲染更改的特性</td>
+</tr>
+
+<tr>
+<td class="org-left">beforedestroy</td>
+<td class="org-left">准备清除特性</td>
+</tr>
+
+<tr>
+<td class="org-left">destroy</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org05ae8c6" class="outline-3">
+<h3 id="org05ae8c6">component</h3>
+<div class="outline-text-3" id="text-org05ae8c6">
+<p>
+1, 用extends编写template
+2, 在component中编写template
+3, 在vue 外部，script模块中编写template
+4, 在vue的组件中使用变量和方法，必须在组件中用函数定义，
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org86c0dda" class="outline-2">
+<h2 id="org86c0dda">TS</h2>
+<div class="outline-text-2" id="text-org86c0dda">
+<p>
+after change the tsconfig.json, use the command to compile ts to js continual.
+</p>
+<pre class="example">
+tsc -watch
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgbc708a7" class="outline-2">
+<h2 id="orgbc708a7">JQuery</h2>
+<div class="outline-text-2" id="text-orgbc708a7">
+</div>
+<div id="outline-container-orgaea6b6c" class="outline-3">
+<h3 id="orgaea6b6c">JQuery选择器</h3>
+<div class="outline-text-3" id="text-orgaea6b6c">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">elements chooser</td>
+<td class="org-left">class chooser</td>
+<td class="org-left">id  chooser</td>
+</tr>
+
+<tr>
+<td class="org-left">$("p"), $("div"), $("h2")</td>
+<td class="org-left">$(".test")</td>
+<td class="org-left">$("#test")</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7042a46" class="outline-3">
+<h3 id="org7042a46">CSS 选择器</h3>
+<div class="outline-text-3" id="text-org7042a46">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">elements chooser</td>
+<td class="org-left">class chooser</td>
+<td class="org-left">id  chooser</td>
+</tr>
+
+<tr>
+<td class="org-left">p, div, h2</td>
+<td class="org-left">.test</td>
+<td class="org-left">#test</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2dd60cb" class="outline-3">
+<h3 id="org2dd60cb">operation function</h3>
+<div class="outline-text-3" id="text-org2dd60cb">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">toggle</td>
+<td class="org-left">fade</td>
+<td class="org-left">slide</td>
+<td class="org-left">animate</td>
+<td class="org-left">stop</td>
+<td class="org-left">clain</td>
+</tr>
+
+<tr>
+<td class="org-left">text</td>
+<td class="org-left">html</td>
+<td class="org-left">val</td>
+<td class="org-left">attr</td>
+<td class="org-left">append</td>
+<td class="org-left">prepend</td>
+</tr>
+
+<tr>
+<td class="org-left">after</td>
+<td class="org-left">before</td>
+<td class="org-left">remove</td>
+<td class="org-left">empty</td>
+<td class="org-left">addclass</td>
+<td class="org-left">removeclass</td>
+</tr>
+
+<tr>
+<td class="org-left">css</td>
+<td class="org-left">width</td>
+<td class="org-left">height</td>
+<td class="org-left">perent</td>
+<td class="org-left">childen</td>
+<td class="org-left">siblings</td>
+</tr>
+
+<tr>
+<td class="org-left">load</td>
+<td class="org-left">get</td>
+<td class="org-left">post</td>
+<td class="org-left">noConflict</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf73108e" class="outline-2">
+<h2 id="orgf73108e">HTML</h2>
+<div class="outline-text-2" id="text-orgf73108e">
+</div>
+<div id="outline-container-org0cc92e5" class="outline-3">
+<h3 id="org0cc92e5">link</h3>
+<div class="outline-text-3" id="text-org0cc92e5">
+<p>
+HTML 链接是通过 &lt;a&gt; 标签进行定义的。
+在 href 属性中指定链接的地址
+图像的名称和尺寸是以属性的形式提供的。
+HTML 标签对大小写不敏感
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">link</td>
+</tr>
+
+<tr>
+<td class="org-left">img</td>
+<td class="org-left">images</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">paragraph</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-html">&lt;<span style="color: #bc6ec5; font-weight: bold;">a</span> <span style="color: #7590db;">href</span>=<span style="color: #2d9574;">"http://www.w3school.com.cn"</span>&gt;This is a link&lt;/<span style="color: #bc6ec5; font-weight: bold;">a</span>&gt;
+&lt;<span style="color: #bc6ec5; font-weight: bold;">img</span> <span style="color: #7590db;">src</span>=<span style="color: #2d9574;">"w3school.jpg"</span> <span style="color: #7590db;">width</span>=<span style="color: #2d9574;">"104"</span> <span style="color: #7590db;">height</span>=<span style="color: #2d9574;">"142"</span> /&gt;
+&lt;<span style="color: #bc6ec5; font-weight: bold;">p</span>&gt;This is my first paragraph.&lt;/<span style="color: #bc6ec5; font-weight: bold;">p</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6402a58" class="outline-3">
+<h3 id="org6402a58">general</h3>
+<div class="outline-text-3" id="text-org6402a58">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">M ;</td>
+<td class="org-left">comment/uncomment lines</td>
+<td class="org-left">反/注释</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-f</td>
+<td class="org-left">toggle folding on a tag/block</td>
+<td class="org-left">打开/关闭块</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-i</td>
+<td class="org-left">indent entire buffer</td>
+<td class="org-left">规范缩进整个buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-m</td>
+<td class="org-left">mark and expand</td>
+<td class="org-left">选中整个所在的块内容</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-s</td>
+<td class="org-left">insert snippet</td>
+<td class="org-left">插入函数操作片段</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orge02e207" class="outline-2">
+<h2 id="orge02e207">Nginx with php</h2>
+<div class="outline-text-2" id="text-orge02e207">
+<p>
+sudo apt install nginx
+sudo systemctl restart nginx
+sudo apt install php
+sudo apt install php-fpm
+check if exit: /var/run/php/php7.2-fpm.sock
+</p>
+
+<p>
+emacs /etc/php/7.2/fpm/pool.d/www.conf  -&gt; listen = /run/php/php7.2-fpm.sock
+</p>
+
+<p>
+cd /etc/nginx/sites-available
+  emacs default 
+</p>
+
+<pre class="example">
+list  post
+root  folder
+location ~ \.php${
+	 include snippets/fastcgi-php.conf;
+	 fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	 include fastcgi_params;
+}
+
+
+</pre>
+
+<p>
+vollstandig
+</p>
+<pre class="example">
+################### 9020 FOR php ##################################################################################
+server {
+	listen 9020;
+	listen [::]:9020;
+
+	# SSL configuration
+	#
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+	#
+	# Note: You should disable gzip for SSL traffic.
+	# See: https://bugs.debian.org/773332
+	#
+	# Read up on ssl_ciphers to ensure a secure configuration.
+	# See: https://bugs.debian.org/765782
+	#
+	# Self signed certs generated by the ssl-cert package
+	# Don't use them in a production server!
+	#
+	# include snippets/snakeoil.conf;
+
+	root /home/sx/Documents/nginx9020;
+
+	# Add index.php to the list if you are using PHP
+	index index.html index.htm index.nginx-debian.html index.php;
+
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+	# pass PHP scripts to FastCGI server
+	#
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+
+		# With php-fpm (or other unix sockets):
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+		# With php-cgi (or other tcp sockets):
+		include fastcgi_params;
+		#fastcgi_pass 127.0.0.1:9000;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+}
+
+
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgddb67dc" class="outline-2">
+<h2 id="orgddb67dc">RuoYi-Vue</h2>
+<div class="outline-text-2" id="text-orgddb67dc">
+</div>
+<div id="outline-container-org6830960" class="outline-3">
+<h3 id="org6830960">backup deployment</h3>
+<div class="outline-text-3" id="text-org6830960">
+</div>
+<div id="outline-container-orgc4d8613" class="outline-4">
+<h4 id="orgc4d8613">redis</h4>
+<div class="outline-text-4" id="text-orgc4d8613">
+<pre class="example">
+sudo apt install redis-cli
+sudo apt install redis-server
+sudo snap install redis-desktop-manager
+
+sem /etc/redis/redis.conf
+bind 127.0.0.1
+requirepass 123456
+
+sudo systemctl restart redis-server
+or
+sudo service redis-server restart
+
+</pre>
+
+<pre class="example">
+1. without password : redis-cli 
+2. with password    : redis-cli -h localhost -p 6379 -a 123456
+PING -&gt; PONG
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4a34761" class="outline-4">
+<h4 id="org4a34761">mysql</h4>
+</div>
+<div id="outline-container-orgd8e9424" class="outline-4">
+<h4 id="orgd8e9424">tomcat</h4>
+<div class="outline-text-4" id="text-orgd8e9424">
+<p>
+configuration for IDEA as local Tomcat
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga5db7ab" class="outline-4">
+<h4 id="orga5db7ab">schnitt</h4>
+<div class="outline-text-4" id="text-orga5db7ab">
+<p>
+redis
+mysql 
+uploadPath
+system log.path
+check localhost:8080
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9d897a0" class="outline-4">
+<h4 id="org9d897a0">ssh</h4>
+<div class="outline-text-4" id="text-org9d897a0">
+<p>
+set to be false
+</p>
+</div>
+</div>
+<div id="outline-container-org0290c56" class="outline-4">
+<h4 id="org0290c56">dependence from jdk8</h4>
+<div class="outline-text-4" id="text-org0290c56">
+<pre class="example">
+    &lt;dependency&gt;
+    &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+    &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-impl&lt;/artifactId&gt;
+    &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-core&lt;/artifactId&gt;
+    &lt;version&gt;2.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.activation&lt;/groupId&gt;
+    &lt;artifactId&gt;activation&lt;/artifactId&gt;
+    &lt;version&gt;1.1.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98f73f1" class="outline-3">
+<h3 id="org98f73f1">frontend deployment</h3>
+<div class="outline-text-3" id="text-org98f73f1">
+</div>
+<div id="outline-container-org0fec73a" class="outline-4">
+<h4 id="org0fec73a">build</h4>
+<div class="outline-text-4" id="text-org0fec73a">
+<pre class="example">
+cd ruoyi-ui
+npm run build:prod
+npm run build:stage
+cp -r dist/* ~/Documens/nginx9010/
+</pre>
+</div>
+</div>
+<div id="outline-container-org88afca3" class="outline-4">
+<h4 id="org88afca3">验证码 for nginx</h4>
+<div class="outline-text-4" id="text-org88afca3">
+<pre class="example">
+#####################9010 NOT for php ############################################################################
+
+
+server {
+	listen 9010;
+	listen [::]:9010;
+
+	# SSL configuration
+	#
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+	#
+	# Note: You should disable gzip for SSL traffic.
+	# See: https://bugs.debian.org/773332
+	#
+	# Read up on ssl_ciphers to ensure a secure configuration.
+	# See: https://bugs.debian.org/765782
+	#
+	# Self signed certs generated by the ssl-cert package
+	# Don't use them in a production server!
+	#
+	# include snippets/snakeoil.conf;
+
+
+
+	# Add index.php to the list if you are using PHP
+
+
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		root /home/sx/Documents/nginx9010;
+		index index.html index.htm index.nginx-debian.html index.php;
+		try_files $uri $uri/ =404;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+
+	location /prod-api/{
+			proxy_set_header Host $http_host;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header REMOTE-HOST $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_pass http://localhost:8080/;
+		}
+
+	error_page   500 502 503 504  /50x.html;
+
+	location = /50x.html {
+	    root   html;
+	}
+
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: silin</p>
+<p class="date">Created: 2021-02-12 Fr 18:57</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

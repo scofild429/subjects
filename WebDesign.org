@@ -1,6 +1,6 @@
 #+TITLE: Webdesige
 #+OPTIONS: num:nil
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+SETUPFILE: /home/silin/.emacs.d/org-html-themes/org/theme-bigblow.setup
 #+startup: content
 * config 
 ** Factory mode
@@ -417,7 +417,134 @@ mongorestore --drop
   db.dropDatabase();
 #+end_src
 
+* frontend
+** JS
+some ES6 has to be connected [[file:JS.org][JS]] to here, 
 
+** ts
+** Vue
+*** Mustache
+{{item }} item von el can be here
+
+*** v-bind 
+v-bind: kann verbunden werden mit
+id, href, key, für characters von DOM elements
+
+*** v-show
+if v-show is false, the DOM element is already included, but will not be presented.
+
+*** v-if
+if v-if is false, the DOM element will be deleted
+
+** webpack
+#+begin_src 
+npm init -y
+npm i -D webpack webpack-cli typescript ts-loader
+
+设定生成的html的特性，包括使用模板
+npm i -D html-webpack-plugin
+
+设定项目的运行服务器
+npm i -D webpack-dev-server
+in package.json/"scripts":      "start": "webpack serve --open chromium-browser"
+and then in terminal: npm start
+
+
+删除上次的生成文件，整个dist目录
+npm i -D clean-webpack-plugin
+
+
+
+
+#+end_src
+
+#+begin_src js
+const path = require("path");
+
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+module.exports = {
+    entry: "./src/index.ts",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js",
+        // environment: {
+        //     arrowFunction: false,
+        // },
+    },
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        targets: {
+                                            chrome: "87",
+                                            // ie: "11",
+                                        },
+                                        corejs: "3",
+                                        useBuiltIns: "usage",
+                                    },
+                                ],
+                            ],
+                        },
+                    },
+                    "ts-loader",
+                ],
+                exclude: /node-modules/,
+            },
+        ],
+    },
+    plugins: [
+        new HTMLWebpackPlugin({
+            title: "APP For Webpack",
+        }),
+        new CleanWebpackPlugin(),
+    ],
+
+    //模块设定
+    resolve: {
+        extensions: [".ts", ".js"],
+    },
+};
+
+#+end_src
+** JQary
+*** JQuery选择器
+
+|---------------------------+---------------+-------------|
+| elements chooser          | class chooser | id  chooser |
+| $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
+|                           |               |             |
+*** CSS 选择器
+
+|------------------+---------------+-------------|
+| elements chooser | class chooser | id  chooser |
+| p, div, h2       | .test         | #test       |
+|                  |               |             |
+*** operation function
+
+| toggle | fade   | slide  | animate    | stop     | clain       |
+| text   | html   | val    | attr       | append   | prepend     |
+| after  | before | remove | empty      | addclass | removeclass |
+| css    | width  | height | perent     | childen  | siblings    |
+| load   | get    | post   | noConflict |          |             |
+
+** AJAX
+** Vue
+
+id 选择器的名字不能是数字
+
+** Servlet
+** Bootstrap
 * backend
 ** Spring
 *** sammelung:
@@ -5258,130 +5385,6 @@ export CLASSPATH
 source /etc/profile
 #+end_src
 
-* frontend
-** Vue
-*** Mustache
-{{item }} item von el can be here
-
-*** v-bind 
-v-bind: kann verbunden werden mit
-id, href, key, für characters von DOM elements
-
-*** v-show
-if v-show is false, the DOM element is already included, but will not be presented.
-
-*** v-if
-if v-if is false, the DOM element will be deleted
-
-** webpack
-#+begin_src 
-npm init -y
-npm i -D webpack webpack-cli typescript ts-loader
-
-设定生成的html的特性，包括使用模板
-npm i -D html-webpack-plugin
-
-设定项目的运行服务器
-npm i -D webpack-dev-server
-in package.json/"scripts":      "start": "webpack serve --open chromium-browser"
-and then in terminal: npm start
-
-
-删除上次的生成文件，整个dist目录
-npm i -D clean-webpack-plugin
-
-
-
-
-#+end_src
-
-#+begin_src js
-const path = require("path");
-
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
-module.exports = {
-    entry: "./src/index.ts",
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        // environment: {
-        //     arrowFunction: false,
-        // },
-    },
-    module: {
-        rules: [
-            {
-                test: /\.ts$/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: {
-                            presets: [
-                                [
-                                    "@babel/preset-env",
-                                    {
-                                        targets: {
-                                            chrome: "87",
-                                            // ie: "11",
-                                        },
-                                        corejs: "3",
-                                        useBuiltIns: "usage",
-                                    },
-                                ],
-                            ],
-                        },
-                    },
-                    "ts-loader",
-                ],
-                exclude: /node-modules/,
-            },
-        ],
-    },
-    plugins: [
-        new HTMLWebpackPlugin({
-            title: "APP For Webpack",
-        }),
-        new CleanWebpackPlugin(),
-    ],
-
-    //模块设定
-    resolve: {
-        extensions: [".ts", ".js"],
-    },
-};
-
-#+end_src
-** JQary
-*** JQuery选择器
-
-|---------------------------+---------------+-------------|
-| elements chooser          | class chooser | id  chooser |
-| $("p"), $("div"), $("h2") | $(".test")    | $("#test")  |
-|                           |               |             |
-*** CSS 选择器
-
-|------------------+---------------+-------------|
-| elements chooser | class chooser | id  chooser |
-| p, div, h2       | .test         | #test       |
-|                  |               |             |
-*** operation function
-
-| toggle | fade   | slide  | animate    | stop     | clain       |
-| text   | html   | val    | attr       | append   | prepend     |
-| after  | before | remove | empty      | addclass | removeclass |
-| css    | width  | height | perent     | childen  | siblings    |
-| load   | get    | post   | noConflict |          |             |
-
-** AJAX
-** Vue
-
-id 选择器的名字不能是数字
-
-** Servlet
-** Bootstrap
 * RuoYi-Vue project
 ** backup deployment
 *** redis

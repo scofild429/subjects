@@ -393,9 +393,6 @@ keywords searching in all opened files, external files,
 | C-c C-x C-l | view image of latex in pure orgmode                     |
 | C-c '       | edit all src in a new buffer with mode                  |
 |-------------+---------------------------------------------------------|
-
-#+begin_quote
-#+end_quote
 ** options
 src 前缀  
 |----------------------------+--------------------------------------------|
